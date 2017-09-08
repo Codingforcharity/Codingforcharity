@@ -1,0 +1,15 @@
+{
+  "name": "codingforcharity",
+  "version": "1.0.0",
+  "description": "Bringing developers and nonprofits together.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Codingforcharity/Codingforcharity.git"
+  },
+  "author": "Dylan, Dat, Andy",
+  "license": "MIT"
+}
