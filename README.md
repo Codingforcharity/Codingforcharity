@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="#"><img src="Codingforcharity/Codingforcharity/DevGive-Blue-Logo.png" alt="DevGive" width="200"></a>
+  <a href="#"><img src="https://raw.githubusercontent.com/Codingforcharity/Codingforcharity/master/DevGive-Blue-Logo.png" alt="DevGive" width="200"></a>
   <br>
   DevGive
   <br>
@@ -16,10 +16,10 @@ The [github issue tracker](https://github.com/codingforcharity/codingforcharity/
 
 ## Built With
 
-Bulma - The CSS framework used
-SASS - To extend CSS 
-GULP - PostProcessing CSS, build, and development tasks
-Node.js - Server
+Bulma - The CSS framework used <br>
+SASS - To extend CSS <br>
+GULP - PostProcessing CSS, build, and development tasks <br>
+Node.js - Server <br>
 
 ## Contributing
 
