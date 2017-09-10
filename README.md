@@ -1,70 +1,44 @@
-Project Title
+<h1 align="center">
+  <br>
+  <a href="#"><img src="Codingforcharity/Codingforcharity/DevGive-Blue-Logo.png" alt="DevGive" width="200"></a>
+  <br>
+  DevGive
+  <br>
+</h1>
 
-One Paragraph of project description goes here
+## Introduction
 
-Getting Started
+Coding for Charity is a group of like minded developers who felt it would be beneficial to build a web application detected to bringing passionate developers and non-profits together to build meaningful projects.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+## Questions and issues
 
-Prerequisites
+The [github issue tracker](https://github.com/codingforcharity/codingforcharity/issues) is **_only_** for bug reports and feature requests. Anything else, such as questions for help in using the site, should be posted in [StackOverflow](http://stackoverflow.com/questions/tagged/DevGive) under tags `DevGive` and `CodingForCharity`.
 
-What things you need to install the software and how to install them
+## Built With
 
-Give examples
-Installing
+Bulma - The CSS framework used
+SASS - To extend CSS 
+GULP - PostProcessing CSS, build, and development tasks
+Node.js - Server
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
-Give the example
-And repeat
-
-until finished
-End with an example of getting some data out of the system or using it for a little demo
-
-Running the tests
-
-Explain how to run the automated tests for this system
-
-Break down into end to end tests
-
-Explain what these tests test and why
-
-Give an example
-And coding style tests
-
-Explain what these tests test and why
-
-Give an example
-Deployment
-
-Add additional notes about how to deploy this on a live system
-
-Built With
-
-Dropwizard - The web framework used
-Maven - Dependency Management
-ROME - Used to generate RSS Feeds
-Contributing
+## Contributing
 
 Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
 
-Versioning
+## Versioning
 
 We use SemVer for versioning. For the versions available, see the tags on this repository.
 
-Authors
+## Authors
 
-Billie Thompson - Initial work - PurpleBooth
-See also the list of contributors who participated in this project.
+Dylan Brown, Dat Tran, & Andy Parker
 
-License
+## License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details
 
-Acknowledgments
+## Acknowledgments
 
-Hat tip to anyone who's code was used
-Inspiration
-etc
+DevMountain - thanks for providing office space used during development 
+Eric Patterson & Daanish Nasir - thanks for providing project management and development guidance
+Inspiration - FreeCodeCamp & VolunteerMatch
