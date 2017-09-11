@@ -20,6 +20,7 @@ Bulma - The CSS framework used <br>
 SASS - To extend CSS <br>
 GULP - PostProcessing CSS, build, and development tasks <br>
 Node.js - Server <br>
+Postgres - SQL Database
 
 ## Contributing
 

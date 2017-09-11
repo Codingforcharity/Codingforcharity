@@ -28,5 +28,9 @@ massive(connectionString).then(db => {
 
 app.get("/api/charities", serverCtrl.getCharities);
 app.post("/api/postuser", serverCtrl.postUser);
-
+app.get("/api/user/:id", serverCtrl.getUserById);
+app.post('/api/postproject', serverCtrl.postProject);
+app.get("/api/projects", serverCtrl.getProjects);
+app.get('/api/project/:id', serverCtrl.getProjectsById);
+app.put('/api/project/:id', serverCtrl.putProjectById);
 app.listen(3001, () => console.log('listening port 3001'));

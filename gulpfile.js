@@ -25,7 +25,7 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('sass', function(done) {
-    gulp.src('./scss/*.scss')
+    gulp.src('./scss/bulma.sass')
         .pipe(sass())
         .on('error', sass.logError)
         .pipe(gulp.dest('./public/css/'))
@@ -54,7 +54,7 @@ gulp.task('build', ['clean', 'sass', 'build-js'], function() {
 });
 
 gulp.task('watch', function() {
-    return gulp.watch(['./index.html', './scss/*.*scss', './public/**/*.js'], ['build']);
+    return gulp.watch(['./public/index.html', './scss/bulma.sass', './scss/style.scss', './public/**/*.js'], ['build']);
 });
 
 gulp.task('default', ['build', 'watch'])
