@@ -6,7 +6,8 @@ const Auth0Strategy = require('passport-auth0');
 const cors = require('cors');
 const massive = require('massive');
 const gulp = require('gulp');
-// const config = require("./config");
+const serverCtrl = require('./controllers/serverCtrl')
+    // const config = require("./config");
 const app = module.exports = express();
 
 app.use(cors());
@@ -19,6 +20,8 @@ app.use(bodyParser.json());
 // }));
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(express.static('public'));
-app.listen(3001, () => console.log('listening port 3001'));
+
+app.get("/api/charities", serverCtrl.getCharities);
+
+app.listen(3000, () => console.log('listening port 3000'));
