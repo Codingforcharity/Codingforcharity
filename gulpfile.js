@@ -20,21 +20,21 @@ var cachebust = new CacheBuster();
 
 gulp.task('clean', function(cb) {
     del([
-        './public/bundle'
+        './bundle'
     ], cb);
 });
 
 gulp.task('sass', function(done) {
-    gulp.src('./scss/bulma.sass')
+    gulp.src('./scss/style.scss')
         .pipe(sass())
         .on('error', sass.logError)
-        .pipe(gulp.dest('./public/css/'))
+        .pipe(gulp.dest('./bundle'))
         .pipe(cleanCss({
             keepSpecialComments: 0
         }))
         .pipe(rename({ extname: '.min.css' }))
-        .pipe(gulp.dest('./public/css/'))
-        .on('end', done);
+        .pipe(gulp.dest('./bundle'))
+        // .on('end', done);
 });
 
 gulp.task('build-js', function() {
@@ -45,16 +45,22 @@ gulp.task('build-js', function() {
         .pipe(concat('bundle.js'))
         //   .pipe(uglify())
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('./public/bundle'));
+        .pipe(gulp.dest('./bundle'));
 });
 
-gulp.task('build', ['clean', 'sass', 'build-js'], function() {
+gulp.task('html', function() {
+    return gulp.src("./public/**/*.html")
+            .pipe(gulp.dest('./bundle'))
+})
+
+
+gulp.task('build', ['clean', 'sass', 'build-js', 'html'], function() {
     return gulp.src('index.html')
         .pipe(cachebust.references())
 });
 
 gulp.task('watch', function() {
-    return gulp.watch(['./public/index.html', './scss/bulma.sass', './scss/style.scss', './public/**/*.js'], ['build']);
+    return gulp.watch(['./public/index.html', './scss/style.scss', './public/**/*.js'], ['build']);
 });
 
 gulp.task('default', ['build', 'watch'])

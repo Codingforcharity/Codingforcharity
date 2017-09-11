@@ -2,5 +2,4 @@
 config.js
 .env
 /node_modules
-/public/bundle/bundle.js
-/public/bundle/bundle.js.map
+/bundle
