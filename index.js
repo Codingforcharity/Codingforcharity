@@ -21,7 +21,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static('public'));
+app.use(express.static('bundle'));
 massive(connectionString).then(db => {
     app.set('db', db)
 })
@@ -29,8 +29,11 @@ massive(connectionString).then(db => {
 app.get("/api/charities", serverCtrl.getCharities);
 app.post("/api/postuser", serverCtrl.postUser);
 app.get("/api/user/:id", serverCtrl.getUserById);
+app.put('/api/user/:id', serverCtrl.putUserById);
 app.post('/api/postproject', serverCtrl.postProject);
 app.get("/api/projects", serverCtrl.getProjects);
 app.get('/api/project/:id', serverCtrl.getProjectsById);
 app.put('/api/project/:id', serverCtrl.putProjectById);
+app.delete('/api/projects/:id', serverCtrl.deleteProjectById);
+app.post('/api/chatroom/', serverCtrl.postChatRoom);
 app.listen(3001, () => console.log('listening port 3001'));

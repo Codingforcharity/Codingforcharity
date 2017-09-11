@@ -14,12 +14,19 @@ module.exports = {
             .catch((err) => res.status(200).send(err));
     },
     getUserById: function(req, res, next) {
-        console.log("GET USERS BY ID: " + req.params.id)
+        console.log("GET USER BY ID: " + req.params.id)
         const db = req.app.get('db');
         db.getUserById(req.params.id)
             .then((user) => res.status(200).send(user))
             .catch((err) => res.status(200).send(err));
 
+    },
+    putUserById: function(req, res, next) {
+        console.log("PUT USER BY ID: " + req.params.id)
+        const db = req.app.get('db');
+        db.putUserById(req.params.id, req.body.username, req.body.bio, req.body.ischarity)
+            .then((user) => res.status(200).send(user))
+            .catch((err) => res.status(200).send(err));
     },
     postProject: function(req, res, next) {
         console.log("POSTING PROJECT");
@@ -48,5 +55,17 @@ module.exports = {
         db.putProjectById(req.params.id, req.body.title, req.body.description)
             .then((project) => res.status(200).send(project))
             .catch((err) => res.status(200).send(err));
+    },
+    deleteProjectById: function(req, res, next) {
+        console.log("DELETING PROJECT BY ID: " + req.params.id);
+        const db = req.app.get('db');
+        db.deleteProjectById(req.params.id)
+            .then((project) => res.status(200).send(projects))
+            .catch((err) => res.status(200).send(err));
+    },
+    postChatRoom: function(req, res, next) {
+        console.log("CREATING A CHAT ROOM");
+        const db = req.app.get('db');
+        db.postChatRoom(req.body.name, req.body.userid);
     }
 }
