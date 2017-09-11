@@ -18,14 +18,14 @@ var gulp = require('gulp'),
 var CacheBuster = require('gulp-cachebust');
 var cachebust = new CacheBuster();
 
-gulp.task('clean', function(cb) {
-    del([
-        './bundle'
-    ], cb);
-});
+// gulp.task('clean', function(cb) {
+//     del([
+//         './bundle'
+//     ], cb);
+// });
 
 gulp.task('sass', function(done) {
-    gulp.src('./scss/style.scss')
+   return gulp.src('./scss/style.scss')
         .pipe(sass())
         .on('error', sass.logError)
         .pipe(gulp.dest('./bundle'))
@@ -54,13 +54,13 @@ gulp.task('html', function() {
 })
 
 
-gulp.task('build', ['clean', 'sass', 'build-js', 'html'], function() {
+gulp.task('build', ['sass', 'build-js', 'html'], function() {
     return gulp.src('index.html')
         .pipe(cachebust.references())
 });
 
 gulp.task('watch', function() {
-    return gulp.watch(['./public/index.html', './scss/style.scss', './public/**/*.js'], ['build']);
+    return gulp.watch(['./public/index.html', './public/views/**/*.html', './scss/style.scss', './public/**/*.js'], ['build']);
 });
 
 gulp.task('default', ['build', 'watch'])
