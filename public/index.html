@@ -5,16 +5,22 @@
     <title>Charity App</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
     <link href="css/home.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
+        <div ng-include="'./views/components/navbar.html'"></div>
+
     <ui-view></ui-view>
+
+    <div ng-include="'./views/components/footer.html'"></div>
+
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
-    <script src="./bundle/bundle.js"></script>
+    <script src="./bundle.js"></script>
 </body>
 
 </html>
