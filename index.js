@@ -6,22 +6,27 @@ const Auth0Strategy = require('passport-auth0');
 const cors = require('cors');
 const massive = require('massive');
 const gulp = require('gulp');
+const dotenv = require('dotenv');
+require('dotenv').config();
 const serverCtrl = require('./controllers/serverCtrl')
-    // const config = require("./config");
+const connectionString = process.env.DATABASE_URL;
 const app = module.exports = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-// app.use(session({
-//     resave: true, //Without this you get a constant warning about default values
-//     saveUninitialized: true, //Without this you get a constant warning about default values
-//     // secret: process.env.secret
-//     secret: config.secret
-// }));
+app.use(session({
+    resave: true, //Without this you get a constant warning about default values
+    saveUninitialized: true, //Without this you get a constant warning about default values`
+    secret: process.env.secret
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static('public'));
+massive(connectionString).then(db => {
+    app.set('db', db)
+})
 
 app.get("/api/charities", serverCtrl.getCharities);
+app.post("/api/postuser", serverCtrl.postUser);
 
-app.listen(3000, () => console.log('listening port 3000'));
+app.listen(3001, () => console.log('listening port 3001'));
