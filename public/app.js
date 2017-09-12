@@ -52,4 +52,6 @@ const app = angular.module("charityApp", ['ui.router'])
                 controller: 'messengerCtrl',
             })
         $urlRouterProvider.otherwise('/')
+
+        // test
     })
