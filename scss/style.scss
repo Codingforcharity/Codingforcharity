@@ -1,8 +1,8 @@
 @import '_variables';
 @import 'bulma';
 @import '_overrides';
-// Home View's CSS
 
+// Home View's CSS
 .home-main-container {
   height: 100%;
 }
@@ -10,7 +10,7 @@
 .home-main-image-container {
   background: url("./img/heart-in-hand.jpg") center 0 no-repeat;
   background-size: cover;
-  height: 80vh;
+  height: 76vh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -41,9 +41,9 @@
 }
 
 .home-logos-container img {
-  max-height: 180px;
-  max-width: 200px;
-  min-width: 200px;
+  max-height: 140px;
+  max-width: 140px;
+  min-width: 140px;
 }
 
 .home-examples-container {
@@ -240,6 +240,7 @@
 .createAccount-display-block {
   display: block;
 }
+
 
 
 

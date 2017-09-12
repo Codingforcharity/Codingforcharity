@@ -36,4 +36,4 @@ app.get('/api/project/:id', serverCtrl.getProjectsById);
 app.put('/api/project/:id', serverCtrl.putProjectById);
 app.delete('/api/projects/:id', serverCtrl.deleteProjectById);
 app.post('/api/chatroom/', serverCtrl.postChatRoom);
-app.listen(3001, () => console.log('listening port 3001'));
+app.listen(5001, () => console.log('listening port 5001'));
