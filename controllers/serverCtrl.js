@@ -66,6 +66,36 @@ module.exports = {
     postChatRoom: function(req, res, next) {
         console.log("CREATING A CHAT ROOM");
         const db = req.app.get('db');
-        db.postChatRoom(req.body.name, req.body.userid);
+        db.postChatRoom(req.body.name, req.body.userid)
+            .then((chatroom) => res.status(200).send(chatroom))
+            .catch((err) => res.status(200).send(err));
+    },
+    getChatRoomsByUser: function(req, res, next) {
+        console.log("GETTING CHAT ROOMS BY USERID: " + req.params.id);
+        const db = req.app.get('db');
+        db.getChatRoomsByUser(req.params.id)
+            .then((chatrooms) => res.status(200).send(chatrooms))
+            .catch((err) => res.status(200).send(err));
+    },
+    postMessage: function(req, res, next) {
+        console.log("POSTING A MESSAGE TO CHATROOM: " + req.params.id);
+        const db = req.app.get('db');
+        db.postMessage(req.body.message, req.body.userid, req.params.id, new Date())
+            .then((message) => res.status(200).send(message))
+            .catch((err) => res.status(200).send(err));
+    },
+    getMessages: function(req, res, next) {
+        console.log("GETTING USER MESSAGES FOR A CHAT ROOM: " + req.params.id);
+        const db = req.app.get('db');
+        db.getMessages(req.params.id, req.params.userid)
+            .then((messages) => res.status(200).send(messages))
+            .catch((err) => res.status(200).send(err));
+    },
+    getAllMessagesFromChat: function(req, res, next) {
+        console.log("GETTING ALL MESSAGES FOR CHATROOM: " + req.params.id);
+        const db = req.app.get('db');
+        db.getAllMessagesFromChat(req.params.id)
+            .then((messages) => res.status(200).send(messages))
+            .catch((err) => res.status(200).send(err));
     }
 }
