@@ -3,7 +3,7 @@
           <!-- <a class="navbar-item" href="#">
             <img src="/bundle/img/DevGive-Blue-Logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
           </a> -->
-          <div class="navbar-item" ui-href="home">
+          <div class="navbar-item" ui-href="/">
                 &nbsp;&nbsp;
                             <span class="icon">
                                     <i class="fa fa-laptop"></i>
@@ -85,6 +85,16 @@
               <div class="navbar-link" href="#">
                 How
               </div>
+              <a class="navbar-item" ui-sref='projectFeed'>
+                 Project Feed
+                </a>
+                <a class="navbar-item" ui-sref='accountDev'>
+                    Dev Profile
+                   </a>
+                   <a class="navbar-item" ui-sref='accountNonProfit'>
+                      Non-Profit Profile
+                     </a>
+
       </div>
       </div>
           <div class="navbar-end">
@@ -101,7 +111,7 @@
             <div class="navbar-item">
               <div class="field is-grouped">
                 <p class="control">
-                  <a class="bd-tw-button button">
+                  <a class="bd-tw-button button" ui-sref='login'>
         
         <span class="icon">
           <i class="fa fa-sign-in"></i>
@@ -113,7 +123,7 @@
       
                 </p>
                 <p class="control">
-                  <a class="button is-primary" href="https://github.com/jgthms/bulma/archive/0.5.2.zip">
+                  <a class="button is-primary" ui-sref="createAccount">
                     <span class="icon">
                       <i class="fa fa-user-plus"></i>
                     </span>
