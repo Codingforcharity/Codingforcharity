@@ -1,3 +1,181 @@
-// @import ''
-@import 'bulma';
-// @import 'andy'
+@import 'bulma'; // Dat's css
+
+.home-main-container {
+  height: 100%;
+}
+
+.home-main-image-container {
+  background: url("./img/heart-in-hand.jpg") center 0 no-repeat;
+  background-size: cover;
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.home-main-image-text-container {
+  color: black;
+  text-align: center;
+  font-weight: 900;
+  font-family: sans-serif;
+  font-style: italic;
+}
+
+.home-welcome-to {
+  font-size: 58px;
+}
+
+.home-devgiv-title {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.home-logos-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.home-logos-container img {
+  max-height: 180px;
+  max-width: 200px;
+  min-width: 200px;
+}
+
+.home-examples-container {
+  display: flex;
+  justify-content: center;
+}
+
+.center-home-examples {
+  max-width: 940px;
+}
+
+.home-resize-blockquote {
+  height: 20px;
+}
+
+.center-home-examples h1 {
+  font-size: 34px;
+}
+
+.home-examples-text {
+  margin-left: 34px;
+  font-size: 20px;
+}
+
+.home-pitch-main-container {
+  display: flex;
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+  width: 94vw;
+  height: 100%;
+  justify-content: center;
+  justify-content: space-around;
+}
+
+.section-1 {
+  width: 32%;
+  border: 3px solid black;
+  box-sizing: border-box;
+}
+
+.home-process-main-container {
+  display: flex;
+  justify-content: center;
+}
+
+.row2 {
+  display: flex;
+  width: 94vw;
+  height: 100%;
+  justify-content: center;
+  justify-content: space-around;
+}
+
+.section-2 {
+  width: 24%;
+  border: 3px solid black;
+  box-sizing: border-box;
+}
+
+.process-h1 h1 {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.testimonial-pic-container {
+  display: flex;
+  justify-content: center;
+}
+
+.center-testimonial-pic {
+  width: 940px;
+}
+
+.testmonial-name {
+  float: right;
+  display: block;
+  margin-right: 30px;
+}
+
+.testmonial-name h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.testmonial-name h3 {
+  background: #27ccc0;
+  color: white;
+  font-size: 18;
+  font-weight: 500;
+}
+
+.home-testimonial-pic {
+  float: right;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+
+.home-about-us-main-container {
+  display: flex;;
+  justify-content: center;
+}
+
+.home-center-summary {
+  width: 92vw;
+}
+
+.home-resize-summary {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.row3 {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  justify-content: space-around;
+}
+
+.section-3 {
+  width: 30%;
+  border: 3px solid black;
+  box-sizing: border-box;
+}
+
+.home-about-us-team {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.home-about-us-team-text-container {
+  width: 92vw;
+}
