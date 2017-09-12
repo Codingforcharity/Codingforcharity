@@ -1,0 +1,1 @@
+SELECT * FROM messages WHERE chatroomid = $1;

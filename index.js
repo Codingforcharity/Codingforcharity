@@ -26,6 +26,15 @@ massive(connectionString).then(db => {
     app.set('db', db)
 })
 
+passport.use(new Auth0Strategy({
+    domain: process.env.domain,
+    clientID: process.env.clientID,
+    clientSecret: process.env.clientSecret,
+    callbackURL: '/auth/callback'
+}, function(accessToken, refreshToken, extraParams, profile, done) {
+
+}))
+
 app.get("/api/charities", serverCtrl.getCharities);
 app.post("/api/postuser", serverCtrl.postUser);
 app.get("/api/user/:id", serverCtrl.getUserById);
@@ -36,4 +45,8 @@ app.get('/api/project/:id', serverCtrl.getProjectsById);
 app.put('/api/project/:id', serverCtrl.putProjectById);
 app.delete('/api/projects/:id', serverCtrl.deleteProjectById);
 app.post('/api/chatroom/', serverCtrl.postChatRoom);
+app.get('/api/chatrooms/:id', serverCtrl.getChatRoomsByUser);
+app.post("/api/message/:id", serverCtrl.postMessage);
+app.get('/api/messsages/:id/:userid', serverCtrl.getMessages);
+app.get('/api/messages/:id', serverCtrl.getAllMessagesFromChat);
 app.listen(3001, () => console.log('listening port 3001'));
