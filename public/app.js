@@ -18,7 +18,7 @@ const app = angular.module("charityApp", ['ui.router'])
             })
             .state('createAccount', {
                 url: '/sign-up',
-                templateUrl: '../public/views/createAccount/createAccount.html',
+                templateUrl: './views/createAccount/createAccount.html',
                 controller: 'createAccountCtrl',
             })
             .state('createProject', {

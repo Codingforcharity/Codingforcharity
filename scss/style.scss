@@ -1,5 +1,7 @@
 @import 'bulma'; // Dat's css
 
+// Home View's CSS
+
 .home-main-container {
   height: 100%;
 }
@@ -179,3 +181,70 @@
 .home-about-us-team-text-container {
   width: 92vw;
 }
+
+.home-contact-wrap {
+  text-align: center;
+}
+
+.home-contact-fieldset {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.home-contact-box {
+  width: 100%;
+  border-bottom: 1px solid #000;
+}
+
+.home-contact-screen-out {
+  overflow: hidden;
+  position: absolute;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  text-indent: -9999px;
+}
+
+.home-contact-inp_comm {
+  margin-top: 11px;
+  display: block;
+  width: 100%;
+  padding-left: 4px;
+  height: 50px;
+  border: 0 none !important;
+  font-size: 20px;
+  background: transparent;
+  color: black;
+  box-sizing: border-box;
+}
+
+.home-contact-acenter .home-contact-input {
+  display: block;
+  float: none;
+  width: 480px;
+  margin: 40px auto 0 auto;
+  padding: 13px 30px;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 21px;
+  background: none repeat scroll 0 #425b6c;
+  border: 1px solid #425b6c;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+// createAccount's CSS
+
+.createAccount-display-block {
+  display: block;
+}
+
+
+
+
+
+
+
+
+stop
