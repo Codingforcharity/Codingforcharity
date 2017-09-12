@@ -53,5 +53,5 @@ const app = angular.module("charityApp", ['ui.router'])
             })
         $urlRouterProvider.otherwise('/')
 
-        // gulp test
+        // test
     })

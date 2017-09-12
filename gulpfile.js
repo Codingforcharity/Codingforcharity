@@ -94,8 +94,7 @@ gulp.task('compile', function () {
                  ,   ext: 'js'
                  , tasks: ['build-js2', 'sass2', 'html2'] // compile synchronously onChange 
                  })
-        stream
-                .on('start', function () {
+                 .on('start', function () {
                     browserSync.init({
                         proxy: "http://localhost:5001",
                         port: 4000,
@@ -105,19 +104,21 @@ gulp.task('compile', function () {
                     console.error('Application has crashed!\n')
                     stream.emit('restart', 10)  // restart the server in 10 seconds
                 })
-                gulp.watch("scss/**/*", ['sass2']);
-                gulp.watch("public/**/*.html", ['html2']);
-                gulp.watch("public/**/*.html").on('change', browserSync.reload);
+                gulp.watch(["scss/**/*"], ['sass2']);
+                gulp.watch(["./public/**/*.html"], ['html2']);
+                gulp.watch("./public/**/*.html").on('change', browserSync.reload);
+                
+       return stream
   })
 
-  gulp.task('html2', function() {
+  gulp.task('html2', function(cb) {
     var stream = gulp.src("./public/**/*.html")
             .pipe(gulp.dest('./bundle'))
             console.log('Im html2')
     return stream
 })
 
-gulp.task('sass2', function() {
+gulp.task('sass2', function(cb) {
     var stream = gulp.src('./scss/style.scss')
          .pipe(sass())
          .on('error', sass.logError)
@@ -132,7 +133,7 @@ gulp.task('sass2', function() {
     return stream
  })
 
- gulp.task('build-js2', function() {
+ gulp.task('build-js2', function(cb) {
    var stream = gulp.src('./public/**/*.js')
         .pipe(sourcemaps.init())
         .pipe(print())
