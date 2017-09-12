@@ -1,3 +1,3 @@
-app.service('accountDevSrvc', function($http) {
+app.service('accountNonProfitSrvc', function($http) {
     
     })

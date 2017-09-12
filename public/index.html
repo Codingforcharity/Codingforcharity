@@ -2,7 +2,7 @@
 <html lang="en" ng-app="charityApp">
 
 <head>
-    <title>Charity App</title>
+    <title>DevGive</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="style.css" rel="stylesheet">
@@ -11,12 +11,11 @@
 
 <body>
     <div ng-include="'./views/components/navbar.html'"></div>
-
+      
     <ui-view></ui-view>
 
     <div ng-include="'./views/components/footer.html'"></div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
     <script src="./bundle.js"></script>
