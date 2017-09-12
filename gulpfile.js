@@ -74,7 +74,9 @@ gulp.task('default', ['build', 'watch'])
 // Andy's additions //
 //////////////////////
 
-var cache = new Cache();
+// var cache = new Cache();
+
+
 
 gulp.task('compile', function () {
     var stream = gulp.src('./public/**/*.js') // your ES2015 code 
@@ -88,7 +90,7 @@ gulp.task('compile', function () {
   gulp.task('serve', ['build-js2', 'sass2', 'html2'], function () {
     var stream = nodemon({
                    script: './index.js' // run ES5 code 
-                 , watch: ['public', 'scss'] // watch ES2015 code 
+                 , watch: ['public', '/index.js', '/controllers'] // watch ES2015 code 
                  ,   ext: 'js'
                  , tasks: ['build-js2', 'sass2', 'html2'] // compile synchronously onChange 
                  })
@@ -97,34 +99,36 @@ gulp.task('compile', function () {
                     browserSync.init({
                         proxy: "http://localhost:5001",
                         port: 4000,
-                        files: ['scss/**/*'],
-                //         server: {
-                //             baseDir: "./"
-                // }
             })
         })
                 .on('crash', function() {
                     console.error('Application has crashed!\n')
                     stream.emit('restart', 10)  // restart the server in 10 seconds
                 })
+                gulp.watch("scss/**/*", ['sass2']);
+                gulp.watch("public/**/*.html", ['html2']);
+                gulp.watch("public/**/*.html").on('change', browserSync.reload);
   })
 
   gulp.task('html2', function() {
     var stream = gulp.src("./public/**/*.html")
             .pipe(gulp.dest('./bundle'))
+            console.log('Im html2')
     return stream
 })
 
-gulp.task('sass2', function(done) {
+gulp.task('sass2', function() {
     var stream = gulp.src('./scss/style.scss')
          .pipe(sass())
          .on('error', sass.logError)
          .pipe(gulp.dest('./bundle'))
-         .pipe(cleanCss({
-             keepSpecialComments: 0
-         }))
-         .pipe(rename({ extname: '.min.css' }))
+        //  .pipe(cleanCss({
+        //      keepSpecialComments: 0
+        //  }))
+        //  .pipe(rename({ extname: '.min.css' }))
          .pipe(gulp.dest('./bundle'))
+         .pipe(browserSync.stream());   
+         console.log('Im sass2')    
     return stream
  })
 
@@ -139,3 +143,4 @@ gulp.task('sass2', function(done) {
         .pipe(gulp.dest('./bundle'));
     return stream
 })
+
