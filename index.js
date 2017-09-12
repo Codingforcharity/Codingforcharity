@@ -93,4 +93,4 @@ app.get('/api/chatrooms/:id', serverCtrl.getChatRoomsByUser);
 app.post("/api/message/:id", serverCtrl.postMessage);
 app.get('/api/messsages/:id/:userid', serverCtrl.getMessages);
 app.get('/api/messages/:id', serverCtrl.getAllMessagesFromChat);
-app.listen(3001, () => console.log('listening port 3001'));
+app.listen(process.env.PORT, () => console.log('listening port 5001'));
