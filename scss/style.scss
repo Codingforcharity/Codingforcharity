@@ -2,3 +2,33 @@
 @import 'bulma';
 @import '_overrides';
 
+.hero {
+  background: url("./img/heart-in-hand.jpg") center 0 no-repeat;
+  background-size: cover;
+  height: 76vh;
+}
+
+.home-logos-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.home-logos img {
+  max-height: 140px;
+  min-height: 140px;
+  max-width: 140px;
+  min-width: 140px;
+}
+
+.home-pitch-main-container {
+  display: flex;
+}
+
+.home-pitch-text {
+  width: 50%;
+}
+
+.adjust-joinus-img {
+  height: 223px;
+}
