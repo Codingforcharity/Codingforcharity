@@ -1,28 +1,5 @@
-@import '_variables';
-@import 'bulma';
-@import '_overrides';
-
 .hero {
-  background: url("./img/heart-in-hand.jpg") center 0 no-repeat;
-  background-size: cover;
-  height: 76vh;
-}
-
-.logos-container {
-  display: flex;
-  justify-content: space-around;
-}
-
-.icon {
-  max-height: 140px;
-  min-height: 140px;
-  max-width: 140px;
-  min-width: 140px;
-}
-
-.icon img {
-  max-height: 140px;
-  min-height: 140px;
-  max-width: 140px;
-  min-width: 140px;
-}
+    background: url("./img/heart-in-hand.jpg") center 0 no-repeat;
+    background-size: cover;
+    height: 76vh;
+  }
