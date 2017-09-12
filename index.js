@@ -74,9 +74,9 @@ app.get('/me', function(req, res) {
     res.send(req.user.user)
 })
 
-app.get('/auth/logout', function(req, res) {
+app.get('/auth/logout/:fullUrl', function(req, res) {
     req.logout();
-    res.redirect('https://dylandoesprogramming.auth0.com/v2/logout?returnTo=http%3A%2F%2Flocalhost:5001');
+    res.redirect('https://dylandoesprogramming.auth0.com/v2/logout?returnTo=' + req.params.fullUrl);
 })
 
 app.get("/api/charities", serverCtrl.getCharities);
