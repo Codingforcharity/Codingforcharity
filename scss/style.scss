@@ -24,6 +24,11 @@
   text-align: center;
 }
 
+.home-about-text h3 {
+  font-size: 36px;
+  text-align: center;
+}
+
 .home-logos img {
   max-height: 140px;
   min-height: 140px;
@@ -66,9 +71,53 @@
   background: #27ccc0;
   color: white;
   font-size: 18;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .home-testimonial-pic {
-  border-radius: 50%;
+   border-radius: 50%;
+   height: 150px;
+   width: 150px;
+ }
+
+ .home-testimonial-about-pic {
+   border-radius: 50%;
+   height: 150px;
+   width: 150px;
+   float: right;
+ }
+
+ .inscrease-about-font-size {
+   font-size: 20px;
+   font-weight: 700;
+ }
+
+.section-3 {
+  width: 30%;
+}
+
+.row3 {
+   display: flex;
+   width: 100%;
+   height: 100%;
+   justify-content: center;
+   justify-content: space-around;
+ }
+
+ .bold-team-name {
+   font-size: 18px;
+   font-weight: 600;
+ }
+
+.about-us-story {
+  font-weight: 400;
+  margin-left: 18px;
+}
+
+.team-add-font-family {
+  font-family: "Raleway", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+}
+
+.team-change-font-weight {
+  font-weight: 400;
 }
