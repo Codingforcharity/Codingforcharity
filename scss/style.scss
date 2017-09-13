@@ -1,11 +1,17 @@
 @import '_variables';
 @import 'bulma';
 @import '_overrides';
+@media screen and (min-width: 1452px) {
+  .container {
+    max-width: 1044px;
+    width: 1044px;
+  }
+}
 
 .hero {
   background: url("./img/heart-in-hand.jpg") center 0 no-repeat;
   background-size: cover;
-  height: 76vh;
+  height: 80vh;
 }
 
 .home-logos-container {
@@ -13,6 +19,10 @@
   justify-content: space-between;
 }
 
+.home-pitch-text h3 {
+  font-size: 36px;
+  text-align: center;
+}
 
 .home-logos img {
   max-height: 140px;
@@ -26,9 +36,39 @@
 }
 
 .home-pitch-text {
-  width: 50%;
+  width: 70%;
 }
 
-.adjust-joinus-img {
-  height: 223px;
+.home-resize-blockquote {
+  height: 26px;
+}
+
+.blockquote-margin {
+  margin-left: 40px;
+}
+
+.testimonial-pic-container {
+  float: right;
+  display: flex;
+}
+
+.display-testimonial-pic {
+  display: block;
+  text-align: center;
+}
+
+.testmonial-name h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.testmonial-name h3 {
+  background: #27ccc0;
+  color: white;
+  font-size: 18;
+  font-weight: 700;
+}
+
+.home-testimonial-pic {
+  border-radius: 50%;
 }
