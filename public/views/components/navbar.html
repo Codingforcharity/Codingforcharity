@@ -1,117 +1,116 @@
 <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
-        <!-- <div class="navbar-brand"> -->
-          <!-- <a class="navbar-item" href="#">
+  <!-- <div class="navbar-brand"> -->
+  <!-- <a class="navbar-item" href="#">
             <img src="/bundle/img/DevGive-Blue-Logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
           </a> -->
-          <div class="navbar-item" ui-href="/">
-                &nbsp;&nbsp;
-                            <span class="icon">
+ <div class="navbar-brand">
+  <div class="navbar-item" href="#">
+    &nbsp;&nbsp;
+    <span class="icon">
                                     <i class="fa fa-laptop"></i>
-                                  </span>
-                        &nbsp;&nbsp; 
-                        DevGive
-                                </div>
-      
-          <a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
+                                  </span> &nbsp;&nbsp; DevGive
+  </div>
+
+  <a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
             <span class="icon" style="color: #333;">
               <i class="fa fa-lg fa-github"></i>
             </span>
           </a>
-      
-          <a class="navbar-item is-hidden-desktop" href="#" target="_blank">
+
+  <a class="navbar-item is-hidden-desktop" href="#" target="_blank">
             <span class="icon" style="color: #55acee;">
               <i class="fa fa-lg fa-twitter"></i>
             </span>
           </a>
-      
-          <div class="navbar-burger burger" data-target="navMenuTransparentExample">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      
-        <div id="navMenuTransparentExample" class="navbar-menu">
-          <div class="navbar-start">
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link  is-active" href="/documentation/overview/start/">
+
+  <button class=" navbar-burger" data-target="navMenu">
+    <span>Profile</span>
+    <span>Project Feed</span>
+    <span>Login</span>
+  </button>
+</div>
+
+  <div id="navMenu" class="navbar-menu">
+    <div class="navbar-start">
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link  is-active" href="/documentation/overview/start/">
                 Docs
               </a>
-              <div class="navbar-dropdown is-boxed">
-                <a class="navbar-item " href="/documentation/overview/start/">
+        <div class="navbar-dropdown is-boxed">
+          <a class="navbar-item " href="/documentation/overview/start/">
                   Overview
                 </a>
-                <a class="navbar-item " href="http://bulma.io/documentation/modifiers/syntax/">
+          <a class="navbar-item " href="http://bulma.io/documentation/modifiers/syntax/">
                   Modifiers
                 </a>
-                <a class="navbar-item " href="http://bulma.io/documentation/columns/basics/">
+          <a class="navbar-item " href="http://bulma.io/documentation/columns/basics/">
                   Columns
                 </a>
-                <a class="navbar-item " href="http://bulma.io/documentation/layout/container/">
+          <a class="navbar-item " href="http://bulma.io/documentation/layout/container/">
                   Layout
                 </a>
-                <a class="navbar-item " href="http://bulma.io/documentation/form/general/">
+          <a class="navbar-item " href="http://bulma.io/documentation/form/general/">
                   Form
                 </a>
-                <a class="navbar-item " href="http://bulma.io/documentation/elements/box/">
+          <a class="navbar-item " href="http://bulma.io/documentation/elements/box/">
                   Elements
                 </a>
-                
-                  <a class="navbar-item is-active" href="http://bulma.io/documentation/components/breadcrumb/">
+
+          <a class="navbar-item is-active" href="http://bulma.io/documentation/components/breadcrumb/">
                     Components
                   </a>
-                
-                <hr class="navbar-divider">
-                <div class="navbar-item">
-                  <div>
-                    <p class="is-size-6-desktop">
-                      <strong class="has-text-info">0.5.2</strong>
-                    </p>
-                    
-                      <small>
+
+          <hr class="navbar-divider">
+          <div class="navbar-item">
+            <div>
+              <p class="is-size-6-desktop">
+                <strong class="has-text-info">0.5.2</strong>
+              </p>
+
+              <small>
                         <a class="bd-view-all-versions" href="/versions">View all versions</a>
                       </small>
-                    
-                  </div>
-                </div>
-              </div>
+
             </div>
-            <div class="navbar-item is-hoverable">
-              <a class="navbar-link " href="#">
+          </div>
+        </div>
+      </div>
+      <div class="navbar-item is-hoverable">
+        <a class="navbar-link " href="#">
                 Why
               </a>
-            </div>
-            <div class="navbar-item is-hoverable">
-              <div class="navbar-link" href="#">
-                How
-              </div>
-              <a class="navbar-item" ui-sref='projectFeed'>
+      </div>
+      <div class="navbar-item is-hoverable">
+        <div class="navbar-link" href="#">
+          How
+        </div>
+        <a class="navbar-item" ui-sref='projectFeed'>
                  Project Feed
                 </a>
-                <a class="navbar-item" ui-sref='accountDev'>
+        <a class="navbar-item" ui-sref='accountDev'>
                     Dev Profile
                    </a>
-                   <a class="navbar-item" ui-sref='accountNonProfit'>
+        <a class="navbar-item" ui-sref='accountNonProfit'>
                       Non-Profit Profile
                      </a>
 
       </div>
-      </div>
-          <div class="navbar-end">
-            <a class="navbar-item is-hidden-desktop-only" href="https://github.com/jgthms/bulma" target="_blank">
+    </div>
+    <div class="navbar-end">
+      <a class="navbar-item is-hidden-desktop-only" href="https://github.com/jgthms/bulma" target="_blank">
               <span class="icon" style="color: #333;">
                 <i class="fa fa-lg fa-github"></i>
               </span>
             </a>
-            <a class="navbar-item is-hidden-desktop-only" href="#" target="_blank">
+      <a class="navbar-item is-hidden-desktop-only" href="#" target="_blank">
               <span class="icon" style="color: #55acee;">
                 <i class="fa fa-lg fa-twitter"></i>
               </span>
             </a>
-            <div class="navbar-item">
-              <div class="field is-grouped">
-                <p class="control">
-                  <a class="bd-tw-button button" ui-sref='login'>
+      <div class="navbar-item">
+        <div class="field is-grouped">
+          <p class="control">
+            <a class="bd-tw-button button" ui-sref='login'>
         
         <span class="icon">
           <i class="fa fa-sign-in"></i>
@@ -120,18 +119,18 @@
           Sign-In
         </span>
       </a>
-      
-                </p>
-                <p class="control">
-                  <a class="button is-primary" ui-sref="createAccount">
+
+          </p>
+          <p class="control">
+            <a class="button is-primary" ui-sref="createAccount">
                     <span class="icon">
                       <i class="fa fa-user-plus"></i>
                     </span>
                     <span>Sign-Up</span>
                   </a>
-                </p>
-              </div>
-            </div>
-          </div>
+          </p>
         </div>
-      </nav>
+      </div>
+    </div>
+  </div>
+</nav>
