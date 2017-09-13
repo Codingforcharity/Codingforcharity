@@ -1,12 +1,21 @@
 @import '_variables';
 @import 'bulma';
 @import '_overrides';
+<<<<<<< HEAD
 // @media screen and (min-width: 1452px) {
 //   .container {
 //     max-width: 1044px;
 //     width: 1044px;
 //   }
 // }
+=======
+@media screen and (min-width: 1452px) {
+  .container {
+    max-width: 1044px;
+    width: 1044px;
+  }
+}
+>>>>>>> master
 
 .hero {
   background: url("./img/heart-in-hand.jpg") center 0 no-repeat;
