@@ -119,8 +119,8 @@
  }
 
  .bold-team-name {
-   font-size: 18px;
-   font-weight: 600;
+   font-size: 21px;
+   font-weight: 700;
  }
 
 .about-us-story {
@@ -136,21 +136,15 @@
   background-color: #d9dee2;
 }
 
-// working project view
-
-  .working-container {
-    max-width: 1044px;
-    width: 1044px;
+  .working-style-checkbox {
+    display: flex;
+    width: 100%;
   }
 
+  .message-body {
+    text-align: center;
+  }
 
-
-//
-=======
-  font-weight: 700;
-}
-
-.home-testimonial-pic {
-  border-radius: 50%;
-}
->>>>>>> master
+  .message-body a:hover {
+    border-bottom: 3px solid rgb(189,212,54);
+  }
