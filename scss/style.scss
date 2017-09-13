@@ -2,6 +2,7 @@
 @import 'bulma';
 @import '_overrides';
 <<<<<<< HEAD
+<<<<<<< HEAD
 // @media screen and (min-width: 1452px) {
 //   .container {
 //     max-width: 1044px;
@@ -9,12 +10,17 @@
 //   }
 // }
 =======
+=======
+>>>>>>> master
 @media screen and (min-width: 1452px) {
   .container {
     max-width: 1044px;
     width: 1044px;
   }
 }
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 
 .hero {
@@ -78,6 +84,7 @@
   background: #27ccc0;
   color: white;
   font-size: 18;
+<<<<<<< HEAD
   font-weight: 600;
 }
 
@@ -139,3 +146,11 @@
 
 
 //
+=======
+  font-weight: 700;
+}
+
+.home-testimonial-pic {
+  border-radius: 50%;
+}
+>>>>>>> master
