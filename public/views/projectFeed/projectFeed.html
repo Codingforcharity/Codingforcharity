@@ -3,16 +3,16 @@
         <div class="columns">
             <div class="column is-3">
                 <div class="card is-fullwidth">
-                    <header class="card-header">
+                    <header class="card-header" ng-if="curUser">
                     </header>
-                    <div class="card-content">
+                    <div class="card-content" ng-if="curUser">
                         <a class="card-avatar" ng-href="/#!/account/dev/{{curUser.id}}">
                             <img ng-src="{{curUser.profilepic}}" class="card-avatar-img">
                         </a>
 
                         <div class="card-user">
-                            <div class="card-user-name" ng-if="!curUser.username">
-                                <a ng-href="/#!/account/dev/{{curUser.id}}">{{curUser.username}}</a>
+                            <div class="card-user-name" ng-if="curUser.firstname">
+                                <a ng-href="/#!/account/dev/{{curUser.id}}">{{curUser.firstname}} {{curUser.lastname}}</a>
                             </div>
                             <span>
                       <a ng-href="/#!/account/dev/{{curUser.id}}">@<span>{{curUser.username}}</span></a>

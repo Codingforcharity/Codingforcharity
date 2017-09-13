@@ -70,8 +70,12 @@ passport.deserializeUser(function(user, done) {
 
 // Return user object from session
 app.get('/me', function(req, res) {
-    console.log(req.user.user)
-    res.send(req.user.user)
+    // console.log(req.user.user)
+    if (req.user) {
+        res.send(req.user.user)
+    } else {
+        res.send('not logged in!');
+    }
 })
 
 app.get('/auth/logout', function(req, res) {

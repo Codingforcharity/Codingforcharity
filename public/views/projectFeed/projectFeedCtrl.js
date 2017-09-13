@@ -13,9 +13,13 @@ app.controller('projectFeedCtrl', function($scope, projectFeedSrvc) {
     $scope.getLoggedUser = () => {
         projectFeedSrvc.getLoggedUser()
             .then((user) => {
-                $scope.curUser = Object.assign({}, user.data);
-                console.log($scope.curUser);
-                $scope.getProjects();
+                if (user.data == 'not logged in!') {
+                    $scope.getProjects();
+                } else {
+                    $scope.curUser = Object.assign({}, user.data);
+                    console.log($scope.curUser);
+                    $scope.getProjects();
+                }
             })
     }
 
