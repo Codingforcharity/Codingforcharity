@@ -1,12 +1,12 @@
 @import '_variables';
 @import 'bulma';
 @import '_overrides';
-@media screen and (min-width: 1452px) {
-  .container {
-    max-width: 1044px;
-    width: 1044px;
-  }
-}
+// @media screen and (min-width: 1452px) {
+//   .container {
+//     max-width: 1044px;
+//     width: 1044px;
+//   }
+// }
 
 .hero {
   background: url("./img/heart-in-hand.jpg") center 0 no-repeat;
@@ -32,8 +32,6 @@
 .home-logos img {
   max-height: 140px;
   min-height: 140px;
-  max-width: 140px;
-  min-width: 140px;
 }
 
 .home-pitch-main-container {
@@ -111,13 +109,24 @@
 
 .about-us-story {
   font-weight: 400;
-  margin-left: 18px;
-}
-
-.team-add-font-family {
-  font-family: "Raleway", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  margin-left: 28px;
 }
 
 .team-change-font-weight {
   font-weight: 400;
 }
+
+.home-pitch, .home-example, .home-team {
+  background-color: #d9dee2;
+}
+
+// working project view
+
+  .working-container {
+    max-width: 1044px;
+    width: 1044px;
+  }
+
+
+
+//

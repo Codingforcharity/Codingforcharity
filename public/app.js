@@ -43,13 +43,13 @@ const app = angular.module("charityApp", ['ui.router'])
             })
             .state('projectPublicDetails', {
                 url: '/projectfeed/project/:id',
-                templateUrl: './views/devProjectApplication/devProjectApplication.htmldevProjectApplication.html',
+                templateUrl: './views/devProjectApplication/devProjectApplication.html',
                 controller: 'devProjectApplicationCtrl',
             })
             .state('workingProject', {
                 url: '/active/project/:id',
                 templateUrl: './views/workingProject/workingProject.html',
-                controller: 'messengerCtrl',
+                controller: 'workingProjectCtrl',
             })
             .state('login', {
                 url: '/login',
