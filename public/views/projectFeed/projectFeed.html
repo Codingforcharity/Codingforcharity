@@ -45,10 +45,8 @@
                 </div>
                 <div class="spacer"></div>
                 <div class="box trending">
-                    <p class="trend-title"><span class="title is-5">Filters</span> · <a href="#">change</a></p>
-                    <p class="tag"><a href="#">JavaScript</a>&nbsp;&nbsp;&nbsp;4</p>
-                    <p class="tag"><a href="#">HTML</a>&nbsp;&nbsp;&nbsp;5</p>
-                    <p class="tag"><a href="#">React</a>&nbsp;&nbsp;&nbsp;8</p>
+                    <p class="trend-title"><span class="title is-5">Filters</span> <a href="" ng-if="filtered" ng-click="getProjects()">reset</a></p>
+                    <p class="tag" ng-repeat="skill in skills" style="margin: 0 1%;"><a href="" ng-click="filter(skill)">{{skill}}</a>&nbsp;&nbsp;&nbsp;</p>
                 </div>
             </div>
             <div class="column is-6">
