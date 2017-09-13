@@ -38,7 +38,7 @@ passport.use(new Auth0Strategy({
         .then(
             function(user) {
                 if (user.length < 1) {
-                    db.postUser(profile.id, profile.emails[0].value, profile.nickname, "I am a blank bio", "./DevGive-Blue-Logo.png", false).then(function(user) {
+                    db.postUser(profile.id, profile.emails[0].value, profile.nickname, "I am a blank bio", "https://openclipart.org/image/2400px/svg_to_png/177482/ProfilePlaceholderSuit.png", false).then(function(user) {
                         profile.user = user[0];
                         console.log(user);
                         return done(null, profile);

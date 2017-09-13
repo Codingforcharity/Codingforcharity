@@ -6,16 +6,16 @@
                     <header class="card-header">
                     </header>
                     <div class="card-content">
-                        <a class="card-avatar">
-                            <img src="https://content-static.upwork.com/uploads/2014/10/02123010/profile-photo_friendly.jpg" class="card-avatar-img">
+                        <a class="card-avatar" ng-href="/#!/account/dev/{{curUser.id}}">
+                            <img ng-src="{{curUser.profilepic}}" class="card-avatar-img">
                         </a>
 
                         <div class="card-user">
-                            <div class="card-user-name">
-                                <a ui-sref="userProfile">John Smith</a>
+                            <div class="card-user-name" ng-if="!curUser.username">
+                                <a ng-href="/#!/account/dev/{{curUser.id}}">{{curUser.username}}</a>
                             </div>
                             <span>
-                      <a href="#">@<span>DevMountain</span></a>
+                      <a ng-href="/#!/account/dev/{{curUser.id}}">@<span>{{curUser.username}}</span></a>
                             </span>
                         </div>
 
