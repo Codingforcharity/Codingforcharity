@@ -20,6 +20,7 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
                 })
         } else {
             $scope.ownPage = true;
+            console.log("On your own page!")
         }
     }
     $scope.getLoggedInUser();
