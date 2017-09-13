@@ -54,7 +54,7 @@ const app = angular.module("charityApp", ['ui.router'])
             .state('login', {
                 url: '/login',
                 templateUrl: './views/login/login.html',
-                controller: 'loginCtrl' 
-              })
+                controller: 'loginCtrl'
+            })
         $urlRouterProvider.otherwise('/')
     })
