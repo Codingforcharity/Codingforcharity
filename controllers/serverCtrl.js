@@ -53,7 +53,6 @@ module.exports = {
         const db = req.app.get('db');
         db.getProjectsById(req.params.id)
             .then((project) => {
-                console.log(project[0])
                 project[0].skills = project[0].skills.split(',');
                 res.status(200).send(project)
             })
