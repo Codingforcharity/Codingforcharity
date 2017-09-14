@@ -3,6 +3,7 @@
 @import '_overrides';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // @media screen and (min-width: 1452px) {
 //   .container {
 //     max-width: 1044px;
@@ -12,6 +13,8 @@
 =======
 =======
 >>>>>>> master
+=======
+>>>>>>> master
 @media screen and (min-width: 1452px) {
   .container {
     max-width: 1044px;
@@ -19,6 +22,9 @@
   }
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 =======
 >>>>>>> master
@@ -39,6 +45,7 @@
   text-align: center;
 }
 
+<<<<<<< HEAD
 .home-about-text h3 {
   font-size: 36px;
   text-align: center;
@@ -47,11 +54,21 @@
 .home-logos img {
   max-height: 140px;
   min-height: 140px;
+=======
+.home-logos img {
+  max-height: 140px;
+  min-height: 140px;
+  max-width: 140px;
+  min-width: 140px;
+>>>>>>> master
 }
 
 .home-pitch-main-container {
   display: flex;
+<<<<<<< HEAD
   justify-content: center;
+=======
+>>>>>>> master
 }
 
 .home-pitch-text {

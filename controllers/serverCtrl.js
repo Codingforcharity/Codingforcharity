@@ -39,7 +39,13 @@ module.exports = {
         console.log("GETTING ALL PROJECTS");
         const db = req.app.get('db');
         db.getProjects()
-            .then((projects) => res.status(200).send(projects))
+            .then((projects) => {
+                projects = projects.map(project => {
+                    project.skills = project.skills.split(',');
+                    return project;
+                });
+                res.status(200).send(projects);
+            })
             .catch((err) => res.status(200).send(err));
     },
     getProjectsById: function(req, res, next) {

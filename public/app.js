@@ -7,7 +7,8 @@ const app = angular.module("charityApp", ['ui.router'])
                 controller: 'homeCtrl',
             })
             .state('accountDev', {
-                url: '/account/dev/:id',
+                url: '/account',
+                // pass in later as a parameter//  /:id',
                 templateUrl: './views/accountDev/accountDev.html',
                 controller: 'accountDevCtrl',
             })
@@ -27,7 +28,8 @@ const app = angular.module("charityApp", ['ui.router'])
                 controller: 'createProjectCtrl',
             })
             .state('devProjectApplication', {
-                url: '/apply/:id',
+                url: '/apply',
+            // pass in later to add parameter to the url // :id',
                 templateUrl: './views/devProjectApplication/devProjectApplication.html',
                 controller: 'devProjectApplicationCtrl',
             })
@@ -42,12 +44,14 @@ const app = angular.module("charityApp", ['ui.router'])
                 controller: 'projectFeedCtrl',
             })
             .state('projectPublicDetails', {
-                url: '/projectfeed/project/:id',
-                templateUrl: './views/devProjectApplication/devProjectApplication.html',
-                controller: 'devProjectApplicationCtrl',
+                url: '/projectfeed/project',
+                // this is added at the end of the url for a parameter to pull data /:id',
+                templateUrl: './views/projectPublicDetails/projectPublicDetails.html',
+                controller: 'projectPublicDetailCtrl',
             })
             .state('workingProject', {
-                url: '/active/project/:id',
+                url: '/active/project',
+                // add later to pass id  # as parameter // :id',
                 templateUrl: './views/workingProject/workingProject.html',
                 controller: 'workingProjectCtrl',
             })
