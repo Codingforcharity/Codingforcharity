@@ -51,6 +51,7 @@
 
 .home-pitch-main-container {
   display: flex;
+  justify-content: center;
 }
 
 .home-pitch-text {
@@ -109,14 +110,6 @@
 .section-3 {
   width: 30%;
 }
-
-.row3 {
-   display: flex;
-   width: 100%;
-   height: 100%;
-   justify-content: center;
-   justify-content: space-around;
- }
 
  .bold-team-name {
    font-size: 21px;
