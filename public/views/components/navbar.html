@@ -1,40 +1,41 @@
 <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+ 
   <!-- <div class="navbar-brand"> -->
   <!-- <a class="navbar-item" href="#">
             <img src="/bundle/img/DevGive-Blue-Logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
           </a> -->
- <div class="navbar-brand">
-  <div class="navbar-item" href="#">
-    &nbsp;&nbsp;
-    <span class="icon">
+  <div class="navbar-brand navbar-link">
+    <div class="navbar-item" href="/">
+      &nbsp;&nbsp;
+      <span class="icon">
                                     <i class="fa fa-laptop"></i>
                                   </span> &nbsp;&nbsp; DevGive
-  </div>
+    </div>
 
-  <a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
+    <a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
             <span class="icon" style="color: #333;">
               <i class="fa fa-lg fa-github"></i>
             </span>
           </a>
 
-  <a class="navbar-item is-hidden-desktop" href="#" target="_blank">
+    <a class="navbar-item is-hidden-desktop" href="#" target="_blank">
             <span class="icon" style="color: #55acee;">
               <i class="fa fa-lg fa-twitter"></i>
             </span>
           </a>
 
-  <button class=" navbar-burger" data-target="navMenu">
+    <button class=" navbar-burger" data-target="navMenu">
     <span>Profile</span>
     <span>Project Feed</span>
     <span>Login</span>
   </button>
-</div>
-
+  </div>
+<!-- Left side Nav bar links/menus begin -->
   <div id="navMenu" class="navbar-menu">
     <div class="navbar-start">
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link  is-active" href="/documentation/overview/start/">
-                Docs
+                Bulma Links
               </a>
         <div class="navbar-dropdown is-boxed">
           <a class="navbar-item " href="/documentation/overview/start/">
@@ -70,32 +71,32 @@
               <small>
                         <a class="bd-view-all-versions" href="/versions">View all versions</a>
                       </small>
-
             </div>
           </div>
         </div>
       </div>
-      <div class="navbar-item is-hoverable">
-        <a class="navbar-link " href="#">
-                Why
-              </a>
-      </div>
-      <div class="navbar-item is-hoverable">
-        <div class="navbar-link" href="#">
-          How
-        </div>
-        <a class="navbar-item" ui-sref='projectFeed'>
+        <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link  is-active">
+             Interal Views
+            </a>
+            <div class="navbar-dropdown is-boxed">
+          <a class="navbar-item" ui-sref='projectFeed'>
                  Project Feed
                 </a>
-        <a class="navbar-item" ui-sref='accountDev'>
+          <a class="navbar-item" ui-sref='accountDev'>
                     Dev Profile
                    </a>
-        <a class="navbar-item" ui-sref='accountNonProfit'>
-                      Non-Profit Profile
+          <a class="navbar-item" ui-sref='workingProject'>
+                      Working Project View
                      </a>
-
+          <a class="navbar-item" ui-sref='projectPublicDetails'>
+                       Public project view
+                     </a>
+                    </div>
+        </div>
       </div>
     </div>
+<!-- RIght side Nav bar links login begin -->    
     <div class="navbar-end">
       <a class="navbar-item is-hidden-desktop-only" href="https://github.com/jgthms/bulma" target="_blank">
               <span class="icon" style="color: #333;">
