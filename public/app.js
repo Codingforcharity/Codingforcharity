@@ -29,7 +29,7 @@ const app = angular.module("charityApp", ['ui.router'])
             })
             .state('devProjectApplication', {
                 url: '/apply',
-            // pass in later to add parameter to the url // :id',
+                // pass in later to add parameter to the url // :id',
                 templateUrl: './views/devProjectApplication/devProjectApplication.html',
                 controller: 'devProjectApplicationCtrl',
             })
@@ -44,7 +44,7 @@ const app = angular.module("charityApp", ['ui.router'])
                 controller: 'projectFeedCtrl',
             })
             .state('projectPublicDetails', {
-                url: '/projectfeed/project',
+                url: '/projectfeed/project/:id',
                 // this is added at the end of the url for a parameter to pull data /:id',
                 templateUrl: './views/projectPublicDetails/projectPublicDetails.html',
                 controller: 'projectPublicDetailCtrl',
