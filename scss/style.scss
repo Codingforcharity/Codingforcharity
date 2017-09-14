@@ -1,4 +1,160 @@
 @import '_variables';
 @import 'bulma';
 @import '_overrides';
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+// @media screen and (min-width: 1452px) {
+//   .container {
+//     max-width: 1044px;
+//     width: 1044px;
+//   }
+// }
+=======
+=======
+>>>>>>> master
+=======
+>>>>>>> master
+@media screen and (min-width: 1452px) {
+  .container {
+    max-width: 1044px;
+    width: 1044px;
+  }
+}
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> master
+=======
+>>>>>>> master
+=======
+>>>>>>> master
 
+.hero {
+  background: url("./img/heart-in-hand.jpg") center 0 no-repeat;
+  background-size: cover;
+  height: 80vh;
+}
+
+.home-logos-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-pitch-text h3 {
+  font-size: 36px;
+  text-align: center;
+}
+
+<<<<<<< HEAD
+.home-about-text h3 {
+  font-size: 36px;
+  text-align: center;
+}
+
+.home-logos img {
+  max-height: 140px;
+  min-height: 140px;
+=======
+.home-logos img {
+  max-height: 140px;
+  min-height: 140px;
+  max-width: 140px;
+  min-width: 140px;
+>>>>>>> master
+}
+
+.home-pitch-main-container {
+  display: flex;
+<<<<<<< HEAD
+  justify-content: center;
+=======
+>>>>>>> master
+}
+
+.home-pitch-text {
+  width: 70%;
+}
+
+.home-resize-blockquote {
+  height: 26px;
+}
+
+.blockquote-margin {
+  margin-left: 40px;
+}
+
+.testimonial-pic-container {
+  float: right;
+  display: flex;
+}
+
+.display-testimonial-pic {
+  display: block;
+  text-align: center;
+}
+
+.testmonial-name h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.testmonial-name h3 {
+  background: #27ccc0;
+  color: white;
+  font-size: 18;
+<<<<<<< HEAD
+  font-weight: 600;
+}
+
+.home-testimonial-pic {
+   border-radius: 50%;
+   height: 150px;
+   width: 150px;
+ }
+
+ .home-testimonial-about-pic {
+   border-radius: 50%;
+   height: 150px;
+   width: 150px;
+   float: right;
+ }
+
+ .inscrease-about-font-size {
+   font-size: 20px;
+   font-weight: 700;
+ }
+
+.section-3 {
+  width: 30%;
+}
+
+ .bold-team-name {
+   font-size: 21px;
+   font-weight: 700;
+ }
+
+.about-us-story {
+  font-weight: 400;
+  margin-left: 28px;
+}
+
+.team-change-font-weight {
+  font-weight: 400;
+}
+
+.home-pitch, .home-example, .home-team {
+  background-color: #d9dee2;
+}
+
+  .working-style-checkbox {
+    display: flex;
+    width: 100%;
+  }
+
+  .message-body {
+    text-align: center;
+  }
+
+  .message-body a:hover {
+    border-bottom: 3px solid rgb(189,212,54);
+  }
