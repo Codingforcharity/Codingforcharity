@@ -106,5 +106,40 @@ module.exports = {
         db.getAllMessagesFromChat(req.params.id)
             .then((messages) => res.status(200).send(messages))
             .catch((err) => res.status(200).send(err));
+    },
+    getContributors: function(req, res, next) {
+        console.log("GETTING ALL CONTRIBUTORS FOR PROJECT:" + req.params.id);
+        const db = req.app.get('db');
+        db.getContributors(req.params.id)
+            .then((users) => {
+                res.status(200).send(users)
+            })
+            .catch((err) => res.status(200).send(err));
+    },
+    getTodos: function(req, res, next) {
+        console.log("GETTING TODOS FOR PROJECT: " + req.params.id);
+        const db = req.app.get('db');
+        db.getTodos(req.params.id)
+            .then((todos) => res.status(200).send(todos))
+            .catch((err) => res.status(200).send(err));
+    },
+    postTodos: function(req, res, next) {
+        console.log("POSTING TODOS FOR PROJECT: " + req.params.id);
+        const db = req.app.get('db');
+        db.postTodos(req.params.id, req.body.todo)
+            .then((todos) => {
+                console.log("NEW TODO LIST: ", todos)
+                res.status(200).send(todos)
+            })
+            .catch((err) => res.status(200).send(err));
+
+    },
+    deleteTodo: function(req, res, next) {
+        console.log("DETLETING TODO: " + req.params.todoid);
+        const db = req.app.get('db');
+        db.deleteTodo(req.params.todoid, req.params.id)
+            .then((todos) => res.status(200).send(todos))
+            .catch((err) => res.status(200).send(err));
     }
+
 }

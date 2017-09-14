@@ -1,228 +1,179 @@
 <br><br>
 
-<section>
-  <div class="container">
-    <div class="column is-mobile">
-      <div class="columns">
-
-        <div class="column is-one-third">
-          <article class="message is-medium">
-            <div class="message-header">
-              <p>To do: </p>
-            </div>
-            <div style="display: flex;" class="message-body">
-              <p style="width:50%">Setting up database</p>
-              <div style="width: 100%; text-align: center;">
-                <input type="checkbox">
-              </div>
-            </div>
-            <div style="display: flex;" class="message-body">
-              <p style="width:50%">Being badasses</p>
-              <div style="width: 100%; text-align: center;">
-                <input type="checkbox">
-              </div>
-            </div>
-            <div style="display: flex;" class="message-body">
-              <p style="width:50%">Host project on Heroku</p>
-              <div style="width: 100%; text-align: center;">
-                <input type="checkbox">
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="column">
-          <article class="message is-medium">
-            <div class="message-header">
-              <p>Summary: </p>
-            </div>
-            <div class="message-body">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla.Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>,
-              in mollis lectus.
-            </div>
-            <div class="message-body">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla.Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>,
-              in mollis lectus.
-            </div>
-            <div class="message-body">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla.Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>,
-              in mollis lectus.
-            </div>
-            <div class="message-body">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla.Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>,
-              in mollis lectus.
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="column is-mobile">
-      <div class="columns">
-
-        <div class="column is-one-third">
-          <article class="message is-medium">
-            <div class="message-header">
-              <p>Links: </p>
-            </div>
-            <div style="display: flex;" class="message-body">
-              <a style="text-decoration: none" href="https://devmountain.com/" target="_blank">
-                <p>Extra resources</p>
-              </a>
-            </div>
-            <div style="display: flex;" class="message-body">
-              <a style="text-decoration: none" href="https://developer.mozilla.org/en-US/docs/Web" target="_blank">
-                <p>MDN web docs</p>
-              </a>
-            </div>
-            <div style="display: flex;" class="message-body">
-              <a style="text-decoration: none" href="https://angular.io/docs" target="_blank">
-                <p>Angular web docs</p>
-              </a>
-            </div>
-            <div style="display: flex;" class="message-body">
-              <a style="text-decoration: none" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-                <p>JS web docs</p>
-              </a>
-            </div>
-          </article>
-        </div>
-
-
-        <div class="column">
-          <article class="message is-medium">
-            <div class="message-header">
-              <p>Contributors: </p>
-            </div>
-                <div class="box">
-                  <article class="media">
-                    <div class="media-left">
-                      <figure class="image is-128x128">
-                        <img src="./img/dylan.jpg">
-                      </figure>
-                    </div>
-                    <div class="media-content">
-                      <div class="content">
-                        <p>
-                          <strong>Dylan Brown</strong>
-                          <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                        </p>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div class="box">
-                  <article class="media">
-                    <div class="media-left">
-                      <figure class="image is-128x128">
-                        <img src="./img/dat.jpg">
-                      </figure>
-                    </div>
-                    <div class="media-content">
-                      <div class="content">
-                        <p>
-                          <strong>Dat Tran</strong>
-                          <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                        </p>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-                <div style="margin-bottom: 1.5rem;" class="box">
-                  <article class="media">
-                    <div class="media-left">
-                      <figure class="image is-128x128">
-                        <img src="./img/andy.jpg">
-                      </figure>
-                    </div>
-                    <div class="media-content">
-                      <div class="content">
-                        <p>
-                          <strong>Andy Parker</strong>
-                          <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                        </p>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-          </article>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="column is-mobile">
+<section ng-if="allowedAccess">
     <div class="container">
-      <div class="box">
-        <h3 style="text-align: center" class="title is-3">Message Board</h3>
-        <article class="media">
-          <figure class="media-left">
-            <p class="image is-64x64">
-              <img src="http://bulma.io/images/placeholders/128x128.png">
-            </p>
-          </figure>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <strong>Barbara Middleton</strong>
-                <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus, nec ultricies elit blandit non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum. Nunc in tempus turpis.
-                <br>
-                <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
-              </p>
+        <div class="column is-mobile">
+            <div class="columns">
+
+                <div class="column is-one-third">
+                    <article class="message is-medium">
+                        <div class="message-header">
+                            <p>To do: </p>
+                        </div>
+                        <div style="display: flex;" class="message-body" ng-repeat="todo in todos" ng-if="!todo.done">
+                            <p style="width:50%">{{todo.todo}}</p>
+                            <div style="width: 100%; text-align: center;">
+                                <input type="checkbox" value="todo.done" ng-click="deleteTodo(todo)">
+                            </div>
+                        </div>
+                    </article>
+                    <form ng-submit="submitTodo(newtodo); newtodo =''; ">
+                        <input type="text" ng-model="newtodo" placeholder="Enter todo here">
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+
+                <div class="column">
+                    <article class="message is-medium">
+                        <div class="message-header">
+                            <p>Summary: </p>
+                        </div>
+                        <div class="message-body">
+                            {{project.description}}
+                        </div>
+                    </article>
+                </div>
             </div>
+        </div>
+    </div>
+</section>
 
-            <article class="media">
-              <figure class="media-left">
-                <p class="image is-48x48">
-                  <img src="http://bulma.io/images/placeholders/96x96.png">
-                </p>
-              </figure>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <strong>Sean Brown</strong>
-                    <br> Donec sollicitudin urna eget eros malesuada sagittis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam blandit nisl a nulla sagittis, a lobortis leo feugiat.
-                    <br>
-                    <small><a>Like</a> · <a>Reply</a> · 2 hrs</small>
-                  </p>
+<section>
+    <div class="container">
+        <div class="column is-mobile">
+            <div class="columns">
+
+                <div class="column is-one-third">
+                    <article class="message is-medium">
+                        <div class="message-header">
+                            <p>Links: </p>
+                        </div>
+                        <div style="display: flex;" class="message-body">
+                            <a style="text-decoration: none" href="https://devmountain.com/" target="_blank">
+                                <p>Extra resources</p>
+                            </a>
+                        </div>
+                        <div style="display: flex;" class="message-body">
+                            <a style="text-decoration: none" href="https://developer.mozilla.org/en-US/docs/Web" target="_blank">
+                                <p>MDN web docs</p>
+                            </a>
+                        </div>
+                        <div style="display: flex;" class="message-body">
+                            <a style="text-decoration: none" href="https://angular.io/docs" target="_blank">
+                                <p>Angular web docs</p>
+                            </a>
+                        </div>
+                        <div style="display: flex;" class="message-body">
+                            <a style="text-decoration: none" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+                                <p>JS web docs</p>
+                            </a>
+                        </div>
+                        <form ng-submit="submitLink(newlinkname, newlink); newlinkname =''; newlink=''; ">
+                            <input type="text" ng-model="newlinkname" placeholder="Enter link name here">
+                            <input type="text" ng-model="newlink" placeholder="Enter link url here">
+                            <input type="submit" value="Submit">
+                        </form>
+                    </article>
                 </div>
 
+
+                <div class="column">
+                    <article class="message is-medium">
+                        <div class="message-header">
+                            <p>Contributors: </p>
+                        </div>
+                        <div class="box" ng-repeat="contributer in contributers">
+                            <article class="media">
+                                <div class="media-left">
+                                    <figure class="image is-128x128">
+                                        <img ng-src="{{contributer.profilepic}}">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p>
+                                            <strong ng-if="contributer.firstname">{{contributer.firstname}} {{contributer.lastname}}</strong>
+                                            <strong ng-if="!contributer.firstname">{{contributer.username}}</strong>
+                                            <br> {{contributer.bio}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="column is-mobile">
+        <div class="container">
+            <div class="box">
+                <h3 style="text-align: center" class="title is-3">Message Board</h3>
                 <article class="media">
-                  Vivamus quis semper metus, non tincidunt dolor. Vivamus in mi eu lorem cursus ullamcorper sit amet nec massa.
-                </article>
+                    <figure class="media-left">
+                        <p class="image is-64x64">
+                            <img src="http://bulma.io/images/placeholders/128x128.png">
+                        </p>
+                    </figure>
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <strong>Barbara Middleton</strong>
+                                <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus, nec ultricies elit blandit non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum. Nunc in tempus turpis.
+                                <br>
+                                <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
+                            </p>
+                        </div>
 
-                <article class="media">
-                  Morbi vitae diam et purus tincidunt porttitor vel vitae augue. Praesent malesuada metus sed pharetra euismod. Cras tellus odio, tincidunt iaculis diam non, porta aliquet tortor.
-                </article>
-              </div>
-            </article>
+                        <article class="media">
+                            <figure class="media-left">
+                                <p class="image is-48x48">
+                                    <img src="http://bulma.io/images/placeholders/96x96.png">
+                                </p>
+                            </figure>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <strong>Sean Brown</strong>
+                                        <br> Donec sollicitudin urna eget eros malesuada sagittis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam blandit nisl a nulla sagittis, a lobortis leo feugiat.
+                                        <br>
+                                        <small><a>Like</a> · <a>Reply</a> · 2 hrs</small>
+                                    </p>
+                                </div>
 
-            <article class="media">
-              <figure class="media-left">
-                <p class="image is-64x64">
-                  <img src="http://bulma.io/images/placeholders/128x128.png">
-                </p>
-              </figure>
-              <div class="media-content">
-                <div class="field">
-                  <p class="control">
-                    <textarea class="textarea" placeholder="Add a comment..."></textarea>
-                  </p>
-                </div>
-                <div class="field">
-                  <p class="control">
-                    <button class="button">Post comment</button>
-                  </p>
-                </div>
-              </div>
-          </div>
+                                <article class="media">
+                                    Vivamus quis semper metus, non tincidunt dolor. Vivamus in mi eu lorem cursus ullamcorper sit amet nec massa.
+                                </article>
+
+                                <article class="media">
+                                    Morbi vitae diam et purus tincidunt porttitor vel vitae augue. Praesent malesuada metus sed pharetra euismod. Cras tellus odio, tincidunt iaculis diam non, porta aliquet tortor.
+                                </article>
+                            </div>
+                        </article>
+
+                        <article class="media">
+                            <figure class="media-left">
+                                <p class="image is-64x64">
+                                    <img src="http://bulma.io/images/placeholders/128x128.png">
+                                </p>
+                            </figure>
+                            <div class="media-content">
+                                <div class="field">
+                                    <p class="control">
+                                        <textarea class="textarea" placeholder="Add a comment..."></textarea>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <p class="control">
+                                        <button class="button">Post comment</button>
+                                    </p>
+                                </div>
+                            </div>
+                    </div>
 </section>
 
 
