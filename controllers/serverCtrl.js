@@ -52,7 +52,11 @@ module.exports = {
         console.log("GETTING PROJECT BY ID: " + req.params.id);
         const db = req.app.get('db');
         db.getProjectsById(req.params.id)
-            .then((project) => res.status(200).send(project))
+            .then((project) => {
+                console.log(project[0])
+                project[0].skills = project[0].skills.split(',');
+                res.status(200).send(project)
+            })
             .catch((err) => res.status(200).send(err));
     },
     putProjectById: function(req, res, next) {

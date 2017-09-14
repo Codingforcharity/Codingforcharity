@@ -5,7 +5,8 @@ app.controller('projectPublicDetailCtrl', function($scope, $stateParams, project
         const param = $stateParams.id;
         projectPublicDetailsSrvc.getProjectById(param)
             .then((project) => {
-                console.log(project.data);
+                console.log(project)
+                $scope.project = Object.assign({}, project.data[0]);
             })
     }
 
@@ -17,6 +18,5 @@ app.controller('projectPublicDetailCtrl', function($scope, $stateParams, project
             })
     }
 
-    // $scope.getLoggedInUser();
-    $scope.getProjectById();
+    $scope.getLoggedInUser();
 })
