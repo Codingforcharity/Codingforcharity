@@ -3,9 +3,11 @@ app.controller('workingProjectCtrl', function($scope, $stateParams, workingProje
     $scope.curUser;
 
     $scope.getLinks = () => {
+        console.log("Getting links")
         workingProjectSrvc.getLinks($stateParams.id)
             .then((links) => {
                 $scope.links = links.data;
+                console.log($scope.links)
             })
     }
 
@@ -25,6 +27,7 @@ app.controller('workingProjectCtrl', function($scope, $stateParams, workingProje
                     if (user.id === $scope.curUser.id) {
                         $scope.allowedAccess = true;
                         $scope.getTodos();
+                        $scope.getLinks();
                     }
                 })
             })
@@ -71,7 +74,19 @@ app.controller('workingProjectCtrl', function($scope, $stateParams, workingProje
     }
 
     $scope.submitLink = (linkName, linkUrl) => {
-        if (linkName && linkUrl) {
+        $scope.ValidURL = (str) => {
+            var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+            if (!regex.test(str)) {
+                alert("Please enter valid URL.");
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+
+        $scope.isValid = $scope.ValidURL(linkUrl);
+        if (linkName && linkUrl && $scope.isValid) {
             workingProjectSrvc.postLink(linkName, linkUrl, $stateParams.id)
                 .then((links) => {
                     $scope.links = links.data;

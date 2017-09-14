@@ -44,4 +44,22 @@ app.service('workingProjectSrvc', function($http) {
             url: "/api/project/" + projectid + "/todos/" + todo,
         })
     }
+
+    this.getLinks = (param) => {
+        return $http({
+            method: "Get",
+            url: "/api/project/" + param + "/links"
+        })
+    }
+
+    this.postLink = (linkname, linkurl, param) => {
+        return $http({
+            method: "Post",
+            url: "/api/project/" + param + "/links",
+            data: {
+                linkname: linkname,
+                linkurl: linkurl
+            }
+        })
+    }
 })

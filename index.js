@@ -101,4 +101,6 @@ app.get("/api/project/:id/contributors", serverCtrl.getContributors);
 app.post("/api/project/:id/todos", serverCtrl.postTodos);
 app.get("/api/project/:id/todos", serverCtrl.getTodos);
 app.delete("/api/project/:id/todos/:todoid", serverCtrl.deleteTodo);
+app.get('/api/project/:id/links', serverCtrl.getLinks);
+app.post('/api/project/:id/links', serverCtrl.postLinks);
 app.listen(process.env.PORT, () => console.log('listening port 5001'));

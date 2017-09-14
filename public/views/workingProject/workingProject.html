@@ -48,24 +48,9 @@
                         <div class="message-header">
                             <p>Links: </p>
                         </div>
-                        <div style="display: flex;" class="message-body">
-                            <a style="text-decoration: none" href="https://devmountain.com/" target="_blank">
-                                <p>Extra resources</p>
-                            </a>
-                        </div>
-                        <div style="display: flex;" class="message-body">
-                            <a style="text-decoration: none" href="https://developer.mozilla.org/en-US/docs/Web" target="_blank">
-                                <p>MDN web docs</p>
-                            </a>
-                        </div>
-                        <div style="display: flex;" class="message-body">
-                            <a style="text-decoration: none" href="https://angular.io/docs" target="_blank">
-                                <p>Angular web docs</p>
-                            </a>
-                        </div>
-                        <div style="display: flex;" class="message-body">
-                            <a style="text-decoration: none" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-                                <p>JS web docs</p>
+                        <div style="display: flex;" class="message-body" ng-repeat="link in links">
+                            <a style="text-decoration: none" ng-href="{{link.link}}" target="_blank">
+                                <p>{{link.linkname}}</p>
                             </a>
                         </div>
                         <form ng-submit="submitLink(newlinkname, newlink); newlinkname =''; newlink=''; ">

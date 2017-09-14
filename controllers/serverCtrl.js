@@ -135,10 +135,24 @@ module.exports = {
 
     },
     deleteTodo: function(req, res, next) {
-        console.log("DETLETING TODO: " + req.params.todoid);
+        console.log("DELETING TODO: " + req.params.todoid);
         const db = req.app.get('db');
         db.deleteTodo(req.params.todoid, req.params.id)
             .then((todos) => res.status(200).send(todos))
+            .catch((err) => res.status(200).send(err));
+    },
+    getLinks: function(req, res, next) {
+        console.log("GETTING LINKS FROM PROJECT: " + req.params.id);
+        const db = req.app.get('db');
+        db.getLinks(req.params.id)
+            .then((links) => res.status(200).send(links))
+            .catch((err) => res.status(200).send(err));
+    },
+    postLinks: function(req, res, next) {
+        console.log("POST LINK FROM PROJECT: " + req.params.id);
+        const db = req.app.get('db');
+        db.postLinks(req.params.id, req.body.linkname, req.body.linkurl)
+            .then((links) => res.status(200).send(links))
             .catch((err) => res.status(200).send(err));
     }
 
