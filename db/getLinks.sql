@@ -1,0 +1,1 @@
+SELECT * FROM project_links WHERE projectid = $1;

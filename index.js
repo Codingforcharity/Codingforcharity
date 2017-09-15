@@ -33,19 +33,19 @@ passport.use(new Auth0Strategy({
     callbackURL: '/auth/callback'
 }, function(accessToken, refreshToken, extraParams, profile, done) {
     const db = app.get('db');
-    console.log(profile);
+    // console.log(profile);
     db.getUserByAuthId([profile.id])
         .then(
             function(user) {
                 if (user.length < 1) {
                     db.postUser(profile.id, profile.emails[0].value, profile.nickname, "I am a blank bio", "https://openclipart.org/image/2400px/svg_to_png/177482/ProfilePlaceholderSuit.png", false).then(function(user) {
                         profile.user = user[0];
-                        console.log(user);
+                        // console.log(user);
                         return done(null, profile);
                     });
                 } else {
                     profile.user = user[0];
-                    console.log(user[0]);
+                    // console.log(user[0]);
                     return done(null, profile);
                 }
             });
@@ -97,4 +97,10 @@ app.get('/api/chatrooms/:id', serverCtrl.getChatRoomsByUser);
 app.post("/api/message/:id", serverCtrl.postMessage);
 app.get('/api/messsages/:id/:userid', serverCtrl.getMessages);
 app.get('/api/messages/:id', serverCtrl.getAllMessagesFromChat);
+app.get("/api/project/:id/contributors", serverCtrl.getContributors);
+app.post("/api/project/:id/todos", serverCtrl.postTodos);
+app.get("/api/project/:id/todos", serverCtrl.getTodos);
+app.delete("/api/project/:id/todos/:todoid", serverCtrl.deleteTodo);
+app.get('/api/project/:id/links', serverCtrl.getLinks);
+app.post('/api/project/:id/links', serverCtrl.postLinks);
 app.listen(process.env.PORT, () => console.log('listening port 5001'));
