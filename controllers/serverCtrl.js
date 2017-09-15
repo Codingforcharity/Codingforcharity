@@ -168,10 +168,12 @@ module.exports = {
                     newComments.push(comments[i])
                     db.getReplies(newComments[i].messageid)
                         .then((replies) => {
-                            for (var j = 0; j < newComments.length; j++) {
-                                if (newComments[j].messageid == replies[0].messageid) {
-                                    newComments[j].replies = replies;
-                                    console.log(newComments[j])
+                            if (replies.length > 0) {
+                                for (var j = 0; j < newComments.length; j++) {
+                                    if (newComments[j].messageid == replies[0].messageid) {
+                                        newComments[j].replies = replies;
+                                        // console.log(newComments[j])
+                                    }
                                 }
                             }
                             counter++;
@@ -186,6 +188,82 @@ module.exports = {
                 }
             })
             .catch((err) => res.status(200).send(err))
+    },
+
+    postComment: function(req, res, next) {
+        console.log("POSTING COMMENT TO PROJECT: " + req.params.id);
+        const db = req.app.get('db');
+        let newComments = [];
+        let counter = 0;
+        db.postComment(req.params.id, req.body.comment, req.body.userid)
+            .then((comments) => {
+                // console.log("COMMENTS: ", comments)
+
+                for (var i = 0; i < comments.length; i++) {
+                    newComments.push(comments[i])
+                    db.getReplies(newComments[i].messageid)
+                        .then((replies) => {
+                            if (replies.length > 0) {
+                                for (var j = 0; j < newComments.length; j++) {
+                                    if (newComments[j].messageid == replies[0].messageid) {
+                                        newComments[j].replies = replies;
+                                        console.log(newComments[j])
+                                    }
+                                }
+                            }
+                            counter++;
+                            checkDone();
+                        })
+                }
+
+                function checkDone() {
+                    if (counter >= newComments.length) {
+                        res.status(200).send(newComments);
+                    }
+                }
+            })
+            .catch((err) => res.status(200).send(err))
+
+
+    },
+
+    postReply: function(req, res, next) {
+        console.log("POSTING REPLY TO PROJECTL " + req.params.id);
+        const db = req.app.get('db');
+        let newComments = [];
+        let counter = 0;
+        db.postReply(req.body.comment.messageid, req.body.reply, req.body.userid)
+            .then(() => {
+                db.getComments(req.params.id)
+                    .then((comments) => {
+                        // console.log("COMMENTS: ", comments)
+
+                        for (var i = 0; i < comments.length; i++) {
+                            newComments.push(comments[i])
+                            db.getReplies(newComments[i].messageid)
+                                .then((replies) => {
+                                    if (replies.length > 0) {
+                                        for (var j = 0; j < newComments.length; j++) {
+                                            if (newComments[j].messageid == replies[0].messageid) {
+                                                newComments[j].replies = replies;
+                                                // console.log(newComments[j])
+                                            }
+                                        }
+                                    }
+                                    counter++;
+                                    checkDone();
+                                })
+                        }
+
+                        function checkDone() {
+                            if (counter >= newComments.length) {
+                                res.status(200).send(newComments);
+                            }
+                        }
+                    })
+                    .catch((err) => res.status(200).send(err))
+            })
+
     }
 
 }

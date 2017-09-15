@@ -69,4 +69,27 @@ app.service('workingProjectSrvc', function($http) {
             url: "/api/project/" + param + "/comments",
         })
     }
+
+    this.postComment = (param, comment, userid) => {
+        console.log("posting comment")
+        return $http({
+            method: "Post",
+            url: "/api/project/" + param + "/comments",
+            data: {
+                comment: comment,
+                userid: userid,
+            }
+        })
+    }
+    this.postReply = (param, comment, reply, userid) => {
+        return $http({
+            method: "Post",
+            url: '/api/project/' + param + '/reply',
+            data: {
+                comment: comment,
+                reply: reply,
+                userid: userid,
+            }
+        })
+    }
 })
