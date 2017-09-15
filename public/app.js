@@ -7,7 +7,7 @@ const app = angular.module("charityApp", ['ui.router'])
                 controller: 'homeCtrl',
             })
             .state('accountDev', {
-                url: '/account',
+                url: '/account/:id',
                 // pass in later as a parameter//  /:id',
                 templateUrl: './views/accountDev/accountDev.html',
                 controller: 'accountDevCtrl',
