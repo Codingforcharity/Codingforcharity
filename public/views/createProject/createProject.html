@@ -1,1 +1,68 @@
+<section class="hero is-fullheight is-dark is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-6 is-offset-3">
+                    <h1 class="title">
+                        List a Project
+                    </h1>
+                    <div class="box">
+                        <label class="label">Project Name</label>
+                        <p class="control">
+                            <input class="input" type="text" placeholder="Enter Project Name">
+                        </p>
+                        <div class="spacer"></div>
+                        <label class="label">Non-Profit Organization</label>
+                        <p class="control">
+                            <input class="input" type="text" placeholder="Enter the organizations name">
+                        </p>
+                        <hr>
+                        <div class="field">
+                                <label class="label">Area of Development</label>
+                                <div class="control">
+                                  <div class="select">
+                                    <select>
+                                      <option>Select dropdown</option>
+                                      <option>Web Development</option>
+                                      <option>Logo Creation</option>
+                                      <option>Design Services</option>
+                                      <option>Database Assistance</option>
+                                      <option>Search Engine Optimization</option>
+                                      <option>Need help?</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
 
+                              <div class="field">
+                        <label class="label">Project Description</label>
+                        <textarea class="textarea input" type="text" placeholder="Enter Project Description" rows="5"></textarea>
+                    </div>
+
+                        <hr>
+
+                        <div class="field">
+                            <div class="control">
+                                <label class="checkbox">
+                                    <input type="checkbox">
+                                    I agree to the <a href="#">terms and conditions</a>
+                                  </label>
+                            </div>
+                        </div>
+                       
+<!-- Dylan, create new project button here -->                        
+                        <p class="control">
+                            <button class="button is-primary">List Project</button>
+                            <button class="button is-default" ui-sref='projectFeed'>Cancel</button>
+                        </p>
+                    </div>
+                    <p class="has-text-centered">
+                        <a href="/auth">Login</a> |
+                        <a ng-click="logout()">Need help?</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

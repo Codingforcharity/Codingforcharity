@@ -64,16 +64,6 @@ a
   }
 }
 
-// .content {
-//   font-size: 1.1rem;
-//   font-family: $family-serif;
-
-//   .button {
-//     font-family: $family-sans-serif;
-//   }
-// }
-
-
 blockquote {
   font-style: italic;
 }
@@ -104,7 +94,8 @@ blockquote {
 }
 
 .navbar {
-  border: 1px solid $border;
+  // border: 1px solid $border;
+  height: 5px;
 }
 
 .nav-toggle {
@@ -112,12 +103,12 @@ blockquote {
   height: 5rem;
 }
 
-.hero {
-  .nav {
-    border: none;
-    box-shadow: 0 1px 0 rgba($border, 0.5);
-  }
-}
+// .hero {
+//   .nav {
+//     border: none;
+//     box-shadow: 0 1px 0 rgba($border, 0.5);
+//   }
+// }
 
 /////////////////////
 // Project Feed /////
@@ -270,4 +261,15 @@ ul.card-stats-list {
 }
 .avatar img {
   // border-radius: 200px;
+}
+
+/////////////////////
+// Navbar       /////
+/////////////////////
+.navbar-brand {
+  padding-left: 100px;
+}
+
+.nav-buttons {
+  padding-right: 100px;
 }
