@@ -2,16 +2,15 @@
     <div class="container">
         <div class="columns">
             <div class="column is-3">
+            <div ng-if="curUser">
                 <div class="card is-fullwidth">
-                    <header class="card-header" ng-if="curUser">
-                    </header>
-                    <div class="card-content" ng-if="curUser">
+                    <div class="card-content">
                         <a class="card-avatar" ng-href="/#!/account/dev/{{curUser.id}}">
                             <img ng-src="{{curUser.profilepic}}" class="card-avatar-img">
                         </a>
 
                         <div class="card-user">
-                            <div class="card-user-name" ng-if="curUser.firstname">
+                            <div class="card-user-name">
                                 <a ng-href="/#!/account/dev/{{curUser.id}}">{{curUser.firstname}} {{curUser.lastname}}</a>
                             </div>
                             <span>
@@ -43,18 +42,46 @@
                         </div>
                     </div>
                 </div>
+                </div>
                 <div class="spacer"></div>
+                <div class="box">
+                    <div class="level-center">
+                        <p class="level-item"><a class="button is-info">List a Project</a></p>
+                    </div>
+                </div>
                 <div class="box trending">
-                    <p class="trend-title"><span class="title is-5">Filters</span> <a href="" ng-if="filtered" ng-click="getProjects()">reset</a></p>
-                    <p class="tag" ng-repeat="skill in skills" style="margin: 0 1%;"><a href="" ng-click="filter(skill)">{{skill}}</a>&nbsp;&nbsp;&nbsp;</p>
+                    <p class=""><span class="subtitle is-6">filters</span> <a href="" ng-if="filtered" ng-click="getProjects()">reset</a></p>
+                    <div class="spacer"></div>
+                    <div class="tags">
+                  <span class="tag is-rounded" ng-repeat="skill in skills" style="margin: 0 1%;"><a href="" ng-click="filter(skill)">{{skill}}</a>&nbsp;&nbsp;&nbsp;</span>
+                </div>
                 </div>
             </div>
-            <div class="column is-6">
-                <div class="notification is-danger">
-                    <button class="delete" onclick="((this).parentNode.remove())"></button> Dylan, ng repeat these project boxs
+            <div class="column is-9">
+                <!-- Main container -->
+                <div class="box">
+                    <nav class="level">
+                        <!-- Left side -->
+                        <!-- <p class="level-item"><a class="button is-info">List a Project</a></p> -->
+                        <div class="level-item">
+                            <div class="field has-addons">
+                                <p class="control">
+                                    <input class="input" type="text" placeholder="search projects">
+                                </p>
+                                <p class="control">
+                                    <button class="button">Search</button>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="level-item">
+                                <p class="subtitle is-5">
+                                    <strong>14</strong> projects
+                                </p>
+                            </div>
+                    </nav>
                 </div>
                 <div class="box">
-                    <article class="media" ng-repeat="project in projects">
+                    <article class="media project-box overflow: auto;" ng-repeat="project in projects">
                         <div class="media-left">
                             <figure class="image is-64x64">
                                 <img ng-src="{{project.profilepic}}" alt="Charity Logo">
@@ -63,100 +90,25 @@
                         <div class="media-content">
                             <div class="content">
                                 <p>
-                                    <strong ui-sref='projectDetail'>{{project.title}}</strong> <small><a ng-href="/#!/account/dev/{{project.posterid}}">@{{project.username}}</small></a> <small style="float:right;">31m</small>
+                                    <strong ui-sref='projectPublicDetails({id: {{project.id}}})'>{{project.title}}</strong>
+                                    <small><a ng-href="/#!/account/dev/{{project.posterid}}">@{{project.username}}</a></small>
+                                    <small style="float:right;">31m</small>
                                     <br>Project description: {{project.description}}
                                 </p>
                             </div>
-                            <nav class="level">
-                                <div class="level-left">
+                            
                                     <!-- Style the ng-repeated div to have a margin on left and right - items are in a flex and so are crunched together I put a temporary fix below, Dylan -->
-                                    <div ng-repeat="skill in project.skills" style="margin:0 1%;">
-                                        <a class="level-item">
+                                    <div class="tags">  
+                                    <div ng-repeat="skill in project.skills" style="margin:0 1%;">                                      
                                             <p class="tag"><a href="#">{{skill}}</a></p>
-                                        </a>
+                                        </div>
+                                       
                                     </div>
-                                </div>
-                            </nav>
+                           
                         </div>
                     </article>
 
                 </div>
-            </div>
-            <div class="column is-3">
-                <!-- <div class="box">
-                <p><span class="title is-5">Who to follow</span> · <a href="#">Refresh</a> · <a href="#">View All</a></p>
-                <hr>
-                <div class="columns">
-                  <div class="column is-3 is-marginless">
-                    <div class="image">
-                      <img src="https://placehold.it/200x200">
-                    </div>
-                  </div>
-                  <div class="column is-9">
-                    <p>
-                      <a href="#">
-                        <strong>John Smith</strong>
-                        &commat;jsmith
-                      </a>
-                      <a href="#">
-                        <i class="fa fa-times"></i>
-                      </a>
-                    </p>
-                    <a class="button is-primary is-small">
-                      <span>
-                        + Follow
-                      </span>
-                    </a>
-                  </div>
-                </div>
-                <div class="columns">
-                  <div class="column is-3 is-marginless">
-                    <div class="image">
-                      <img src="https://placehold.it/200x200">
-                    </div>
-                  </div>
-                  <div class="column is-9">
-                    <p>
-                      <a href="#">
-                        <strong>Jane Smith</strong>
-                        &commat;janesmith
-                      </a>
-                      <a href="#">
-                        <i class="fa fa-times"></i>
-                      </a>
-                    </p>
-                    <a class="button is-primary is-small">
-                      <span>
-                        + Follow
-                      </span>
-                    </a>
-                  </div>
-                </div>
-                <div class="columns">
-                  <div class="column is-3 is-marginless">
-                    <div class="image">
-                      <img src="https://placehold.it/200x200">
-                    </div>
-                  </div>
-                  <div class="column is-9">
-                    <p>
-                      <a href="#">
-                        <strong>Mike Scott</strong>
-                        &commat;mscott
-                      </a>
-                      <a href="#">
-                        <i class="fa fa-times"></i>
-                      </a>
-                    </p>
-                    <a class="button is-primary is-small">
-                      <span>
-                        + Follow
-                      </span>
-                    </a>
-                  </div>
-                </div>
-
-              </div> -->
             </div>
         </div>
     </div>
