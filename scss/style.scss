@@ -11,9 +11,6 @@
   .level, .adjust-joinus-img {
     display: flex;
   }
-  .reset-marginleft-moreinfo {
-    margin-right: 510px;
-  }
 }
 
 @media screen and (min-width: 1452px) {
@@ -26,10 +23,9 @@
   .resize-googlemap {
     max-height: 340px;
   }
-}
-
-.reset-marginleft-moreinfo {
-  margin-left: 510px
+  .reset-marginleft-moreinfo {
+    margin-left: 515px
+  }
 }
 
 .hero {
