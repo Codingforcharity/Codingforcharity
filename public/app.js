@@ -50,7 +50,7 @@ const app = angular.module("charityApp", ['ui.router'])
                 controller: 'projectPublicDetailCtrl',
             })
             .state('workingProject', {
-                url: '/active/project',
+                url: '/active/project/:id',
                 // add later to pass id  # as parameter // :id',
                 templateUrl: './views/workingProject/workingProject.html',
                 controller: 'workingProjectCtrl',
