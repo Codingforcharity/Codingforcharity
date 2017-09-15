@@ -62,4 +62,11 @@ app.service('workingProjectSrvc', function($http) {
             }
         })
     }
+
+    this.getComments = (param) => {
+        return $http({
+            method: "Get",
+            url: "/api/project/" + param + "/comments",
+        })
+    }
 })

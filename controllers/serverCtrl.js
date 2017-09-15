@@ -154,6 +154,20 @@ module.exports = {
         db.postLinks(req.params.id, req.body.linkname, req.body.linkurl)
             .then((links) => res.status(200).send(links))
             .catch((err) => res.status(200).send(err));
+    },
+    getComments: function(req, res, next) {
+        console.log("GETTING COMMENTS FROM PROJECT: " + req.params.id);
+        const db = req.app.get('db');
+        db.getComments(req.params.id)
+            .then((comments) => {
+                console.log("COMMENTS: ", comments)
+                db.getCommentPosters()
+                    .then((users) => {
+                        console.log("COMMENT POSTERS: ", users);
+                        res.status(200).send(users);
+                    })
+            })
+            .catch((err) => res.status(200).send(err))
     }
 
 }
