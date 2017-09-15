@@ -103,4 +103,7 @@ app.get("/api/project/:id/todos", serverCtrl.getTodos);
 app.delete("/api/project/:id/todos/:todoid", serverCtrl.deleteTodo);
 app.get('/api/project/:id/links', serverCtrl.getLinks);
 app.post('/api/project/:id/links', serverCtrl.postLinks);
+app.get('/api/project/:id/comments', serverCtrl.getComments);
+app.post('/api/project/:id/comments', serverCtrl.postComment);
+app.post('/api/project/:id/reply', serverCtrl.postReply)
 app.listen(process.env.PORT, () => console.log('listening port 5001'));

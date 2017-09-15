@@ -46,31 +46,31 @@
                             <img ng-src="{{curUser.profilepic}}" class="card-avatar-img">
                         </a>
 
-                        <div class="card-user">
-                            <div class="card-user-name">
-                                <a ng-href="/#!/account/dev/{{curUser.id}}">{{curUser.firstname}} {{curUser.lastname}}</a>
-                            </div>
-                            <span>
+              <div class="card-user">
+                <div class="card-user-name">
+                  <a ng-href="/#!/account/dev/{{curUser.id}}">{{curUser.firstname}} {{curUser.lastname}}</a>
+                </div>
+                <span>
                       <a ng-href="/#!/account/dev/{{curUser.id}}">@<span>{{curUser.username}}</span></a>
-                            </span>
-                        </div>
+                </span>
+              </div>
 
-                        <div class="card-stats">
-                            <ul class="card-stats-list">
-                                <li class="card-stats-item">
-                                    <a href="#" title="9.840 Tweet">
+              <div class="card-stats">
+                <ul class="card-stats-list">
+                  <li class="card-stats-item">
+                    <a href="#" title="9.840 Tweet">
                                         <span class="card-stats-key">Projects</span>
                                         <span class="card-stats-val">3</span>
                                     </a>
-                                </li>
-                                <li class="card-stats-item">
-                                    <a href="#/following" title="885 Following">
+                  </li>
+                  <li class="card-stats-item">
+                    <a href="#/following" title="885 Following">
                                         <span class="card-stats-key">Applications</span>
                                         <span class="card-stats-val">1</span>
                                     </a>
-                                </li>
-                                <li class="card-stats-item">
-                                    <a href="#">
+                  </li>
+                  <li class="card-stats-item">
+                    <a href="#">
                                         <span class="card-stats-key">Gives</span>
                                         <span class="card-stats-val">12</span>
                                     </a>
@@ -127,8 +127,19 @@
                         </div>
                     </article>
 
+              <!-- Style the ng-repeated div to have a margin on left and right - items are in a flex and so are crunched together I put a temporary fix below, Dylan -->
+              <div class="tags">
+                <div ng-repeat="skill in project.skills" style="margin:0 1%;">
+                  <p class="tag"><a href="#">{{skill}}</a></p>
                 </div>
+
+              </div>
+
             </div>
+          </article>
+
         </div>
+      </div>
     </div>
+  </div>
 </section>
