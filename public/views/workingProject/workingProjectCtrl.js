@@ -2,8 +2,33 @@ app.controller('workingProjectCtrl', function($scope, $stateParams, workingProje
 
     $scope.curUser;
 
+    $scope.submitReply = (comment, reply) => {
+        console.log('replying to: ', comment, reply);
+        workingProjectSrvc.postReply($stateParams.id, comment, reply, $scope.curUser.id)
+            .then((comments) => {
+                console.log('Reply Posted: ', comments)
+                $scope.comments = comments.data;
+            })
+    }
+
+    $scope.submitComment = (comment) => {
+        console.log("commenting");
+        workingProjectSrvc.postComment($stateParams.id, comment, $scope.curUser.id)
+            .then((comments) => {
+                $scope.comments = comments.data;
+            })
+    }
+
+    $scope.getComments = () => {
+        console.log("Getting Comments");
+        workingProjectSrvc.getComments($stateParams.id)
+            .then((comments) => {
+                $scope.comments = comments.data;
+            })
+    }
+
     $scope.getLinks = () => {
-        console.log("Getting links")
+        // console.log("Getting links")
         workingProjectSrvc.getLinks($stateParams.id)
             .then((links) => {
                 $scope.links = links.data;
@@ -28,6 +53,7 @@ app.controller('workingProjectCtrl', function($scope, $stateParams, workingProje
                         $scope.allowedAccess = true;
                         $scope.getTodos();
                         $scope.getLinks();
+                        $scope.getComments();
                     }
                 })
             })
