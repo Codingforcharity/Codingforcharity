@@ -1,96 +1,96 @@
 <br><br>
 
 <section ng-if="allowedAccess">
-    <div class="container">
-        <div class="column is-mobile">
-            <div class="columns">
+  <div class="container workingproject-resize-container">
+    <div class="column is-mobile">
+      <div class="columns">
 
-                <div class="column is-one-third">
-                    <article class="message is-medium">
-                        <div class="message-header">
-                            <p>To do: </p>
-                        </div>
-                        <div style="display: flex;" class="message-body" ng-repeat="todo in todos" ng-if="!todo.done">
-                            <p style="width:50%">{{todo.todo}}</p>
-                            <div style="width: 100%; text-align: center;">
-                                <input type="checkbox" value="todo.done" ng-click="deleteTodo(todo)">
-                            </div>
-                        </div>
-                    </article>
-                    <form ng-submit="submitTodo(newtodo); newtodo =''; ">
-                        <input type="text" ng-model="newtodo" placeholder="Enter todo here">
-                        <input type="submit" value="Submit">
-                    </form>
-                </div>
-
-                <div class="column">
-                    <article class="message is-medium">
-                        <div class="message-header">
-                            <p>Summary: </p>
-                        </div>
-                        <div class="message-body">
-                            {{project.description}}
-                        </div>
-                    </article>
-                </div>
+        <div class="column is-one-third">
+          <article class="message is-medium">
+            <div class="message-header">
+              <p>To do: </p>
             </div>
+            <div style="display: flex;" class="message-body" ng-repeat="todo in todos" ng-if="!todo.done">
+              <p style="width:50%">{{todo.todo}}</p>
+              <div style="width: 100%; text-align: center;">
+                <input type="checkbox" value="todo.done" ng-click="deleteTodo(todo)">
+              </div>
+            </div>
+          </article>
+          <form ng-submit="submitTodo(newtodo); newtodo =''; ">
+            <input type="text" ng-model="newtodo" placeholder="Enter todo here">
+            <input type="submit" value="Submit">
+          </form>
         </div>
+
+        <div class="column">
+          <article class="message is-medium">
+            <div class="message-header">
+              <p>Summary: </p>
+            </div>
+            <div class="message-body">
+              {{project.description}}
+            </div>
+          </article>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <section>
-    <div class="container">
-        <div class="column is-mobile">
-            <div class="columns">
+  <div class="container workingproject-resize-container">
+    <div class="column is-mobile">
+      <div class="columns">
 
-                <div class="column is-one-third">
-                    <article class="message is-medium">
-                        <div class="message-header">
-                            <p>Links: </p>
-                        </div>
-                        <div style="display: flex;" class="message-body" ng-repeat="link in links">
-                            <a style="text-decoration: none" ng-href="{{link.link}}" target="_blank">
-                                <p>{{link.linkname}}</p>
-                            </a>
-                        </div>
-                        <form ng-submit="submitLink(newlinkname, newlink); newlinkname =''; newlink=''; ">
-                            <input type="text" ng-model="newlinkname" placeholder="Enter link name here">
-                            <input type="text" ng-model="newlink" placeholder="Enter link url here">
-                            <input type="submit" value="Submit">
-                        </form>
-                    </article>
-                </div>
-
-
-                <div class="column">
-                    <article class="message is-medium">
-                        <div class="message-header">
-                            <p>Contributors: </p>
-                        </div>
-                        <div class="box" ng-repeat="contributer in contributers">
-                            <article class="media">
-                                <div class="media-left">
-                                    <figure class="image is-128x128">
-                                        <img ng-src="{{contributer.profilepic}}">
-                                    </figure>
-                                </div>
-                                <div class="media-content">
-                                    <div class="content">
-                                        <p>
-                                            <strong ng-if="contributer.firstname">{{contributer.firstname}} {{contributer.lastname}}</strong>
-                                            <strong ng-if="!contributer.firstname">{{contributer.username}}</strong>
-                                            <br> {{contributer.bio}}
-                                        </p>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    </article>
-                </div>
-
+        <div class="column is-one-third">
+          <article class="message is-medium">
+            <div class="message-header">
+              <p>Links: </p>
             </div>
+            <div style="display: flex;" class="message-body" ng-repeat="link in links">
+              <a style="text-decoration: none" ng-href="{{link.link}}" target="_blank">
+                <p>{{link.linkname}}</p>
+              </a>
+            </div>
+            <form ng-submit="submitLink(newlinkname, newlink); newlinkname =''; newlink=''; ">
+              <input type="text" ng-model="newlinkname" placeholder="Enter link name here">
+              <input type="text" ng-model="newlink" placeholder="Enter link url here">
+              <input type="submit" value="Submit">
+            </form>
+          </article>
         </div>
+
+
+        <div class="column">
+          <article class="message is-medium">
+            <div class="message-header">
+              <p>Contributors: </p>
+            </div>
+            <div class="box" ng-repeat="contributer in contributers">
+              <article class="media">
+                <div class="media-left">
+                  <figure class="image is-128x128">
+                    <img ng-src="{{contributer.profilepic}}">
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong ng-if="contributer.firstname">{{contributer.firstname}} {{contributer.lastname}}</strong>
+                      <strong ng-if="!contributer.firstname">{{contributer.username}}</strong>
+                      <br> {{contributer.bio}}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </article>
+        </div>
+
+      </div>
     </div>
+  </div>
 </section>
 
 <section>
@@ -174,6 +174,55 @@
     </div>
 </article>
 
+                <article class="media">
+                  Morbi vitae diam et purus tincidunt porttitor vel vitae augue. Praesent malesuada metus sed pharetra euismod. Cras tellus odio, tincidunt iaculis diam non, porta aliquet tortor.
+                </article>
+              </div>
+            </article>
+
+            <article class="media">
+              <figure class="media-left">
+                <p class="image is-48x48">
+                  <img src="http://bulma.io/images/placeholders/96x96.png">
+                </p>
+              </figure>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>Kayli Eunice </strong>
+                    <br> Sed convallis scelerisque mauris, non pulvinar nunc mattis vel. Maecenas varius felis sit amet magna vestibulum euismod malesuada cursus libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+                    Curae; Phasellus lacinia non nisl id feugiat.
+                    <br>
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </article>
+        <article class="media">
+          <figure class="media-left">
+            <p class="image is-64x64">
+              <img src="http://bulma.io/images/placeholders/128x128.png">
+            </p>
+          </figure>
+          <div class="media-content">
+            <div class="field">
+              <p class="control">
+                <textarea class="textarea" placeholder="Add a comment..."></textarea>
+              </p>
+            </div>
+            <div class="field">
+              <p class="control">
+                <button class="button">Post comment</button>
+              </p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <br><br>
