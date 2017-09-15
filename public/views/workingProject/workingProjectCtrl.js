@@ -6,7 +6,7 @@ app.controller('workingProjectCtrl', function($scope, $stateParams, workingProje
         console.log("Getting Comments");
         workingProjectSrvc.getComments($stateParams.id)
             .then((comments) => {
-                console.log(comments)
+                $scope.comments = comments.data;
             })
     }
 

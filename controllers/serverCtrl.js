@@ -158,14 +158,32 @@ module.exports = {
     getComments: function(req, res, next) {
         console.log("GETTING COMMENTS FROM PROJECT: " + req.params.id);
         const db = req.app.get('db');
+        let newComments = [];
+        let counter = 0;
         db.getComments(req.params.id)
             .then((comments) => {
-                console.log("COMMENTS: ", comments)
-                db.getCommentPosters()
-                    .then((users) => {
-                        console.log("COMMENT POSTERS: ", users);
-                        res.status(200).send(users);
-                    })
+                // console.log("COMMENTS: ", comments)
+
+                for (var i = 0; i < comments.length; i++) {
+                    newComments.push(comments[i])
+                    db.getReplies(newComments[i].messageid)
+                        .then((replies) => {
+                            for (var j = 0; j < newComments.length; j++) {
+                                if (newComments[j].messageid == replies[0].messageid) {
+                                    newComments[j].replies = replies;
+                                    console.log(newComments[j])
+                                }
+                            }
+                            counter++;
+                            checkDone();
+                        })
+                }
+
+                function checkDone() {
+                    if (counter >= newComments.length) {
+                        res.status(200).send(newComments);
+                    }
+                }
             })
             .catch((err) => res.status(200).send(err))
     }
