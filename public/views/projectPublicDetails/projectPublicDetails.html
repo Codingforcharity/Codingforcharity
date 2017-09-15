@@ -1,58 +1,47 @@
 <section class="section profile">
     <div class="container">
-    <div class="profile-heading">
-      <div class="columns">
-        <div class="column is-2 card">
-          <div class="image is-128x128 avatar">
-            <img src="https://placehold.it/256x256">
-          </div>
-          <div class="spacer"></div>
-          <span>
+        <div class="profile-heading">
+            <div class="columns">
+                <div class="column is-2 card">
+                    <div class="image is-128x128 avatar">
+                        <img ng-src="{{project.profilepic}}">
+                    </div>
+                    <div class="spacer"></div>
+                    <span>
                 <a class="button is-primary">Apply</a> 
                
                 <a class="button is-primary">Contact</a>
               </span>
-        </div>
-        <div class="column is-9 name">
-            <div class="media-content">
-          <div class="content">
-            <p>
-            <span class="title">Project tittle</span> 
-            <br>
-            <a ui-sref="userProfile">Non-Profit Name</a><small>31m</small>
-          </p>
-          <p class="tagline">Project summary: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium assumenda suscipit labore excepturi quae? Facilis quia doloremque, omnis dolorem temporibus reiciendis. Officiis animi praesentium quibusdam aspernatur amet neque dolores voluptates? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio cupiditate hic voluptates sequi, tempora consequatur obcaecati optio atque alias numquam fugit unde! Magnam sint quo atque. Dolore dolores ab at. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex rerum cupiditate voluptas accusantium perspiciatis neque, rem fuga quisquam quod dolorum perferendis, similique quia magni voluptatibus excepturi adipisci, asperiores consectetur laudantium.
-          </p>
-        </div>
-    </div>
-<div id="meta" class="field is-grouped is-grouped-multiline">
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-info is-medium">Web-design</span>
-            </div>
-          </div>
-          <div class="control">
-                <div class="tags has-addons">
-                  <span class="tag is-info is-medium">Logo</span>
                 </div>
-              </div>
-              <div class="control">
-                    <div class="tags has-addons">
-                      <span class="tag is-info is-medium">Databases</span>
+                <div class="column is-9 name">
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <span class="title">{{project.title}}</span>
+                                <br>
+                                <a ng-href="/#!/account/dev/{{project.posterid}}">{{project.username}}</a>
+                            </p>
+                            <p class="tagline">Project summary: {{project.description}}
+                            </p>
+                        </div>
                     </div>
-                  </div>
-        </div>      
+                    <div id="meta" class="field is-grouped is-grouped-multiline">
+                        <div class="control" ng-repeat="purple in project.skills track by $index">
+                            <div class="tags has-addons">
+                                <span class="tag is-info is-medium">{{purple}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        
-      </div>
+        <div class="spacer"></div>
+        <hr>
     </div>
-    <div class="spacer"></div>
-    <hr> 
-</div>
-    </section>
-    <section class='section'>
-        <div class="container">
-            
-        </div>
-    </section>
-  
+</section>
+<section class='section'>
+    <div class="container">
+
+    </div>
+</section>

@@ -52,7 +52,10 @@ module.exports = {
         console.log("GETTING PROJECT BY ID: " + req.params.id);
         const db = req.app.get('db');
         db.getProjectsById(req.params.id)
-            .then((project) => res.status(200).send(project))
+            .then((project) => {
+                project[0].skills = project[0].skills.split(',');
+                res.status(200).send(project)
+            })
             .catch((err) => res.status(200).send(err));
     },
     putProjectById: function(req, res, next) {
@@ -103,5 +106,54 @@ module.exports = {
         db.getAllMessagesFromChat(req.params.id)
             .then((messages) => res.status(200).send(messages))
             .catch((err) => res.status(200).send(err));
+    },
+    getContributors: function(req, res, next) {
+        console.log("GETTING ALL CONTRIBUTORS FOR PROJECT:" + req.params.id);
+        const db = req.app.get('db');
+        db.getContributors(req.params.id)
+            .then((users) => {
+                res.status(200).send(users)
+            })
+            .catch((err) => res.status(200).send(err));
+    },
+    getTodos: function(req, res, next) {
+        console.log("GETTING TODOS FOR PROJECT: " + req.params.id);
+        const db = req.app.get('db');
+        db.getTodos(req.params.id)
+            .then((todos) => res.status(200).send(todos))
+            .catch((err) => res.status(200).send(err));
+    },
+    postTodos: function(req, res, next) {
+        console.log("POSTING TODOS FOR PROJECT: " + req.params.id);
+        const db = req.app.get('db');
+        db.postTodos(req.params.id, req.body.todo)
+            .then((todos) => {
+                console.log("NEW TODO LIST: ", todos)
+                res.status(200).send(todos)
+            })
+            .catch((err) => res.status(200).send(err));
+
+    },
+    deleteTodo: function(req, res, next) {
+        console.log("DELETING TODO: " + req.params.todoid);
+        const db = req.app.get('db');
+        db.deleteTodo(req.params.todoid, req.params.id)
+            .then((todos) => res.status(200).send(todos))
+            .catch((err) => res.status(200).send(err));
+    },
+    getLinks: function(req, res, next) {
+        console.log("GETTING LINKS FROM PROJECT: " + req.params.id);
+        const db = req.app.get('db');
+        db.getLinks(req.params.id)
+            .then((links) => res.status(200).send(links))
+            .catch((err) => res.status(200).send(err));
+    },
+    postLinks: function(req, res, next) {
+        console.log("POST LINK FROM PROJECT: " + req.params.id);
+        const db = req.app.get('db');
+        db.postLinks(req.params.id, req.body.linkname, req.body.linkurl)
+            .then((links) => res.status(200).send(links))
+            .catch((err) => res.status(200).send(err));
     }
+
 }
