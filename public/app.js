@@ -45,13 +45,11 @@ const app = angular.module("charityApp", ['ui.router'])
             })
             .state('projectPublicDetails', {
                 url: '/projectfeed/project/:id',
-                // this is added at the end of the url for a parameter to pull data /:id',
                 templateUrl: './views/projectPublicDetails/projectPublicDetails.html',
                 controller: 'projectPublicDetailCtrl',
             })
             .state('workingProject', {
                 url: '/active/project/:id',
-                // add later to pass id  # as parameter // :id',
                 templateUrl: './views/workingProject/workingProject.html',
                 controller: 'workingProjectCtrl',
             })

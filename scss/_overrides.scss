@@ -64,14 +64,14 @@ a
   }
 }
 
-.content {
-  font-size: 1.1rem;
-  font-family: $family-serif;
+// .content {
+//   font-size: 1.1rem;
+//   font-family: $family-serif;
 
-  .button {
-    font-family: $family-sans-serif;
-  }
-}
+//   .button {
+//     font-family: $family-sans-serif;
+//   }
+// }
 
 
 blockquote {
@@ -124,7 +124,7 @@ blockquote {
 /////////////////////
 
 .content p {
- background-color: blue 
+ padding-right: 40px
 }
 
 .project-box {

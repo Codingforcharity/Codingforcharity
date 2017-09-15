@@ -94,7 +94,8 @@ gulp.task("serve", ["build-images", "build-js2", "sass2", "html2"], function() {
         .on("start", function() {
             browserSync.init({
                 proxy: "http://localhost:5001",
-                port: 4000
+                port: 4000,
+                online: true
             });
         })
         .on("restart", function() {
