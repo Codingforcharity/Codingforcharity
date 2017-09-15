@@ -8,9 +8,28 @@
   .testimonial-pic-container {
     text-align: center;
   }
-  .home-logos-container {
+  .level, .adjust-joinus-img {
     display: flex;
   }
+  .reset-marginleft-moreinfo {
+    margin-right: 510px;
+  }
+}
+
+@media screen and (min-width: 1452px) {
+  .adjust-joinus-img {
+    min-height: 300px;
+    max-height: 300px;
+    min-width: 470px;
+    max-width: 470px;
+  }
+  .resize-googlemap {
+    max-height: 340px;
+  }
+}
+
+.reset-marginleft-moreinfo {
+  margin-left: 510px
 }
 
 .hero {
@@ -19,25 +38,24 @@
   height: 90vh;
 }
 
-.column h3 {
-  font-size: 36px;
+.home-resize-container {
+  max-width: 1060px;
+}
+
+.home-pitch-text h3, .home-about-text h3 {
+  font-size: 30px;
   text-align: center;
   font-weight: 600;
 }
 
 .home-about-text h3 {
-  font-size: 36px;
+  font-size: 30px;
   text-align: center;
 }
 
 .home-logos img {
   max-height: 140px;
   min-height: 140px;
-}
-
-.adjust-joinus-img {
-  min-height: 385px;
-  max-height: 385px;
 }
 
 .home-resize-blockquote {
@@ -71,12 +89,7 @@
   font-weight: 700;
 }
 
-.about-us-story {
-  font-weight: 400;
-  margin-left: 28px;
-}
-
-.home-contact, .home-examples {
+.home-contact, .home-process {
   background-color: #F2F6F7;
 }
 
@@ -102,7 +115,11 @@
   justify-content: center;
 }
 
+.application-resize-container {
+  max-width: 640px;
+}
 
+//
 
 
 
