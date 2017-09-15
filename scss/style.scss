@@ -1,129 +1,126 @@
 @import '_variables';
 @import 'bulma';
 @import '_overrides';
+
+// home's css
+
+@media screen and (max-width: 1452px) {
+  .testimonial-pic-container {
+    text-align: center;
+  }
+  .level, .adjust-joinus-img {
+    display: flex;
+  }
+  .reset-marginleft-moreinfo {
+    margin-right: 510px;
+  }
+}
+
 @media screen and (min-width: 1452px) {
-    .container {
-        max-width: 1044px;
-        width: 1044px;
-    }
+  .adjust-joinus-img {
+    min-height: 300px;
+    max-height: 300px;
+    min-width: 470px;
+    max-width: 470px;
+  }
+  .resize-googlemap {
+    max-height: 340px;
+  }
+}
+
+.reset-marginleft-moreinfo {
+  margin-left: 510px
 }
 
 .hero {
-    background: url("./img/heart-in-hand.jpg") center 0 no-repeat;
-    background-size: cover;
-    height: 80vh;
+  background: url("./img/heart-in-hand.jpg") center 0 no-repeat;
+  background-size: cover;
+  height: 90vh;
 }
 
-.home-logos-container {
-    display: flex;
-    justify-content: space-between;
+.home-resize-container {
+  max-width: 1060px;
 }
 
-.home-pitch-text h3 {
-    font-size: 36px;
-    text-align: center;
+.home-pitch-text h3, .home-about-text h3 {
+  font-size: 30px;
+  text-align: center;
+  font-weight: 600;
 }
 
 .home-about-text h3 {
-    font-size: 36px;
-    text-align: center;
+  font-size: 30px;
+  text-align: center;
 }
 
 .home-logos img {
-    max-height: 140px;
-    min-height: 140px;
-}
-
-.home-pitch-main-container {
-    display: flex;
-    justify-content: center;
-}
-
-.home-pitch-text {
-    width: 70%;
+  max-height: 140px;
+  min-height: 140px;
 }
 
 .home-resize-blockquote {
-    height: 26px;
+  height: 26px;
 }
 
 .blockquote-margin {
-    margin-left: 40px;
+  margin-left: 40px;
 }
 
-.testimonial-pic-container {
-    float: right;
-    display: flex;
+.example-name {
+  font-size: 20px;
+  font-weight: 700;
 }
 
-.display-testimonial-pic {
-    display: block;
-    text-align: center;
-}
-
-.testmonial-name h2 {
-    font-size: 20px;
-    font-weight: 700;
-}
-
-.testmonial-name h3 {
-    background: #27ccc0;
-    color: white;
-    font-size: 18;
-    font-weight: 600;
+.example-title {
+  background: #27ccc0;
+  color: white;
+  font-size: 25;
+  font-weight: 500;
 }
 
 .home-testimonial-pic {
-    border-radius: 50%;
-    height: 150px;
-    width: 150px;
-}
-
-.home-testimonial-about-pic {
-    border-radius: 50%;
-    height: 150px;
-    width: 150px;
-    float: right;
+  border-radius: 50%;
+  height: 140px;
+  width: 140px;
 }
 
 .inscrease-about-font-size {
-    font-size: 20px;
-    font-weight: 700;
+  font-size: 20px;
+  font-weight: 700;
 }
 
-.section-3 {
-    width: 30%;
+.home-contact, .home-process {
+  background-color: #F2F6F7;
 }
 
-.bold-team-name {
-    font-size: 21px;
-    font-weight: 700;
-}
-
-.about-us-story {
-    font-weight: 400;
-    margin-left: 28px;
-}
-
-.team-change-font-weight {
-    font-weight: 400;
-}
-
-.home-pitch,
-.home-example,
-.home-team {
-    background-color: #d9dee2;
-}
+// workingproject's css
 
 .working-style-checkbox {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 
 .message-body {
-    text-align: center;
+  text-align: center;
 }
 
 .message-body a:hover {
-    border-bottom: 3px solid rgb(189, 212, 54);
+  border-bottom: 3px solid rgb(189, 212, 54);
 }
+
+// devprojectapplication's css
+
+.center-apply-upload-container {
+  display: flex;
+  justify-content: center;
+}
+
+.application-resize-container {
+  max-width: 640px;
+}
+
+//
+
+
+
+//
