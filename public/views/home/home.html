@@ -1,16 +1,13 @@
-<section class="hero is-primary is-medium">
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <h1 class="title">
-         We Specialize in Nonprofit Web Design
-       </h1>
-      <h2 class="subtitle">
-         High-quality, customized websites for nonprofits
-       </h2>
-    </div>
-  </div>
-  <img src="./img/cloud.png">
-</section>
+
+
+
+<video autoplay loop>
+  <source type="video/mp4" src="./img/Workaholic.mp4">
+  <source type="video/webm" src="http://blucube.net/stuff/codepen-assets/html5vid/beepl-pink-vynil.webm">
+  <source type="video/ogg" src="http://blucube.net/stuff/codepen-assets/html5vid/beepl-pink-vynil.ogv">
+</video>
+
+<hr>
 
 <section>
   <div class="container home-resize-container">
@@ -249,3 +246,31 @@
     </div>
   </section>
 <br>
+
+<script src="/js/jquery-2.1.4.min.js"></script>
+<script>
+$( document ).ready(function() {
+
+    scaleVideoContainer();
+
+    initBannerVideoSize('.video-container .poster img');
+    initBannerVideoSize('.video-container .filter');
+    initBannerVideoSize('.video-container video');
+
+    $(window).on('resize', function() {
+        scaleVideoContainer();
+        scaleBannerVideoSize('.video-container .poster img');
+        scaleBannerVideoSize('.video-container .filter');
+        scaleBannerVideoSize('.video-container video');
+    });
+
+});
+
+function scaleVideoContainer() {
+
+    var height = $(window).height() + 5;
+    var unitHeight = parseInt(height) + 'px';
+    $('.homepage-hero-module').css('height',unitHeight);
+
+}
+</script>

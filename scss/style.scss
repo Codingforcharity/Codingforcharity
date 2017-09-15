@@ -1,18 +1,17 @@
 @import '_variables';
 @import 'bulma';
 @import '_overrides';
-
 // home's css
-
 @media screen and (max-width: 1452px) {
   .testimonial-pic-container {
     text-align: center;
   }
-  .level, .adjust-joinus-img {
+
+  .adjust-joinus-img,
+  .level {
     display: flex;
   }
 }
-
 @media screen and (min-width: 1452px) {
   .adjust-joinus-img {
     min-height: 300px;
@@ -20,25 +19,66 @@
     min-width: 470px;
     max-width: 470px;
   }
+
   .resize-googlemap {
     max-height: 340px;
   }
+
   .reset-marginleft-moreinfo {
-    margin-left: 515px
+    margin-left: 515px;
   }
 }
 
-.hero {
-  background: url("./img/heart-in-hand.jpg") center 0 no-repeat;
-  background-size: cover;
-  height: 90vh;
+.homepage-hero-module {
+    border-right: none;
+    border-left: none;
+    position: relative;
+}
+.no-video .video-container video,
+.touch .video-container video {
+    display: none;
+}
+.no-video .video-container .poster,
+.touch .video-container .poster {
+    display: block !important;
+}
+.video-container {
+    position: relative;
+    bottom: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+}
+.video-container .poster img {
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+.video-container .filter {
+    z-index: 100;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+}
+.video-container video {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+}
+.video-container video.fillWidth {
+    width: 100%;
 }
 
-.home-resize-container, .accountdev-resize-container, .workingproject-resize-container {
+.accountdev-resize-container,
+.home-resize-container,
+.workingproject-resize-container {
   max-width: 1060px;
 }
 
-.home-pitch-text h3, .home-about-text h3 {
+.home-about-text h3,
+.home-pitch-text h3 {
   font-size: 30px;
   text-align: center;
   font-weight: 600;
@@ -85,12 +125,11 @@
   font-weight: 700;
 }
 
-.home-contact, .home-process {
+.home-contact,
+.home-process {
   background-color: #F2F6F7;
 }
-
 // workingproject's css
-
 .working-style-checkbox {
   display: flex;
   width: 100%;
@@ -103,9 +142,7 @@
 .message-body a:hover {
   border-bottom: 3px solid rgb(189, 212, 54);
 }
-
 // devprojectapplication's css
-
 .center-apply-upload-container {
   display: flex;
   justify-content: center;
@@ -114,9 +151,7 @@
 .application-resize-container {
   max-width: 640px;
 }
-
 // accountdev's css
-
 .center-projects-header {
   display: flex;
   justify-content: center;
@@ -127,4 +162,11 @@
   background-color: #F2F6F7;
 }
 
+.bold-description {
+  font-weight: 600;
+}
+
+.remove-card-content-set-height {
+  height: auto;
+}
 //
