@@ -273,3 +273,40 @@ ul.card-stats-list {
 .nav-buttons {
   padding-right: 100px;
 }
+
+
+/////////////////////
+// Home Page      /////
+/////////////////////
+
+.header-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.1)),url('./img/andysAdds/gathering.jpg');
+  // background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)),url('./img/andysAdds/twoDevelopers.jpg');
+  // background-image: linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.1)),url('./img/andysAdds/cityView.jpg');    
+  // background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)),url('./img/andysAdds/developersPlan.jpg');    
+  // background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)),url('./img/andysAdds/twoWomen.jpg');    
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+// .header-details {
+//   width: 100%;
+//   position: absolute;
+//   bottom: 0px;
+//   left: 0px;
+//   padding: 40px 0px 30px 0px;
+  
+// }
+
+// .header-container {
+//   position: relative;
+//   margin-right: auto;
+//   margin-left: auto;
+//   padding-left: 15px;
+//   padding-right: 15px;
+// }
+
+.header-copy {
+  position: relative;
+  margin-top: 50px;
+}

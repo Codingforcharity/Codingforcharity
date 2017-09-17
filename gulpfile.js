@@ -111,7 +111,7 @@ gulp.task("serve", ["build-images", "build-js2", "sass2", "html2", "build-videos
     gulp.watch(["scss/**/*"], ["sass2"]);
     gulp.watch(["./public/**/*.html"], ["html2"]);
     gulp.watch("./public/**/*.html").on("change", browserSync.reload);
-    gulp.watch(["./assets/img/**/*"], ["build-images"]);
+    gulp.watch(["./assets/img/**/*.jpg"], ["build-images"]);
     gulp.watch(["./assets/video/**/*.mp4"], ["build-video"]);
     return stream;
 });
