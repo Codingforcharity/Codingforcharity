@@ -84,13 +84,14 @@ gulp.task("compile", function() {
     return stream; // important for gulp-nodemon to wait for completion
 });
 
-gulp.task("serve", ["build-images", "build-js2", "sass2", "html2"], function() {
+gulp.task("serve", ["build-images", "build-js2", "sass2", "html2", "build-videos"], function() {
     var stream = nodemon({
             script: "./index.js", // run ES5 code
             watch: ["/index.js", "/controllers"], // watch ES2015 code
             ext: "js",
             tasks: ["build-js2", "sass2", "html2", "build-images"] // compile synchronously onChange
         })
+        stream
         .on("start", function() {
             browserSync.init({
                 proxy: "http://localhost:5001",
@@ -98,11 +99,11 @@ gulp.task("serve", ["build-images", "build-js2", "sass2", "html2"], function() {
                 online: true
             });
         })
-        .on("restart", function() {
-            setTimeout(function() {
-                reload({ stream: false });
-            }, 1000);
-        })
+        // .on("restart", function() {
+        //     setTimeout(function() {
+        //     reload({ stream: false });
+        //     }, 1000);
+        // })
         .on("crash", function() {
             console.error("Application has crashed!\n");
             stream.emit("restart", 10); // restart the server in 10 seconds
@@ -110,7 +111,8 @@ gulp.task("serve", ["build-images", "build-js2", "sass2", "html2"], function() {
     gulp.watch(["scss/**/*"], ["sass2"]);
     gulp.watch(["./public/**/*.html"], ["html2"]);
     gulp.watch("./public/**/*.html").on("change", browserSync.reload);
-    gulp.watch(["./img/**/*"], ["build-images"]);
+    gulp.watch(["./assets/img/**/*"], ["build-images"]);
+    gulp.watch(["./assets/video/**/*.mp4"], ["build-video"]);
     return stream;
 });
 
@@ -149,7 +151,13 @@ gulp.task("build-js2", function(cb) {
 
 gulp.task("build-images", function() {
     var stream = gulp
-        .src("./img/**/*.{gif,jpg,png,svg}")
+        .src("./assets/img/**/*.{gif,jpg,png,svg}")
         .pipe(gulp.dest("./bundle/img"));
+    return stream;
+});
+
+gulp.task("build-videos", function() {
+    var stream = gulp.src("./assets/video/**/*.mp4")
+    .pipe(gulp.dest("./bundle/videos"));
     return stream;
 });
