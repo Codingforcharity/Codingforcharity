@@ -94,134 +94,134 @@
 </section>
 
 <section>
-    <div class="column is-mobile">
-        <div class="container">
-            <div class="box">
-                <h3 style="text-align: center" class="title is-3">Message Board</h3>
-                <article class="media" ng-repeat="comment in comments">
-                    <figure class="media-left">
-                        <p class="image is-64x64">
-                            <img ng-src="{{comment.profilepic}}">
-                        </p>
-                    </figure>
-                    <div class="media-content">
-                        <div class="content">
-                            <p>
-                                <strong>{{comment.username}}</strong>
-                                <br> {{comment.message}}
-                                <br>
-                                <small><a>Reply</a></small>
-                            </p>
-                        </div>
-
-                        <article class="media" ng-repeat="reply in comment.replies">
-                            <figure class="media-left">
-                                <p class="image is-48x48">
-                                    <img ng-src="{{reply.profilepic}}">
-                                </p>
-                            </figure>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                        <strong>{{reply.username}}</strong>
-                                        <br> {{reply.reply}}
-                                        <br>
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="media">
-                            <figure class="media-left">
-                                <p class="image is-64x64">
-                                    <img ng-src="{{curUser.profilepic}}">
-                                </p>
-                            </figure>
-                            <div class="media-content">
-                                <div class="field">
-                                    <p class="control">
-                                        <textarea class="textarea" ng-model="newReply" placeholder="Add a reply..."></textarea>
-                                    </p>
-                                </div>
-                                <div class="field">
-                                    <p class="control">
-                                        <button class="button" ng-click="submitReply(comment, newReply); newReply=''; ">Post reply</button>
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-
-</section>
-<article class="media">
-    <figure class="media-left">
-        <p class="image is-64x64">
-            <img ng-src="{{curUser.profilepic}}">
-        </p>
-    </figure>
-    <div class="media-content">
-        <div class="field">
-            <p class="control">
-                <textarea class="textarea" ng-model="newComment" placeholder="Add a comment..."></textarea>
+  <div class="column is-mobile">
+    <div class="container">
+      <div class="box">
+        <h3 style="text-align: center" class="title is-3">Message Board</h3>
+        <article class="media" ng-repeat="comment in comments">
+          <figure class="media-left">
+            <p class="image is-64x64">
+              <img ng-src="{{comment.profilepic}}">
             </p>
-        </div>
-        <div class="field">
-            <p class="control">
-                <button class="button" ng-click="submitComment(newComment); newComment='';">Post comment</button>
-            </p>
-        </div>
-    </div>
-</article>
+          </figure>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong>{{comment.username}}</strong>
+                <br> {{comment.message}}
+                <br>
+                <small><a>Reply</a></small>
+              </p>
+            </div>
 
-                <article class="media">
-                  Morbi vitae diam et purus tincidunt porttitor vel vitae augue. Praesent malesuada metus sed pharetra euismod. Cras tellus odio, tincidunt iaculis diam non, porta aliquet tortor.
-                </article>
-              </div>
-            </article>
-
-            <article class="media">
+            <article class="media" ng-repeat="reply in comment.replies">
               <figure class="media-left">
                 <p class="image is-48x48">
-                  <img src="http://bulma.io/images/placeholders/96x96.png">
+                  <img ng-src="{{reply.profilepic}}">
                 </p>
               </figure>
               <div class="media-content">
                 <div class="content">
                   <p>
-                    <strong>Kayli Eunice </strong>
-                    <br> Sed convallis scelerisque mauris, non pulvinar nunc mattis vel. Maecenas varius felis sit amet magna vestibulum euismod malesuada cursus libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-                    Curae; Phasellus lacinia non nisl id feugiat.
+                    <strong>{{reply.username}}</strong>
+                    <br> {{reply.reply}}
                     <br>
                   </p>
                 </div>
               </div>
             </article>
-          </div>
-        </article>
-        <article class="media">
-          <figure class="media-left">
-            <p class="image is-64x64">
-              <img src="http://bulma.io/images/placeholders/128x128.png">
-            </p>
-          </figure>
-          <div class="media-content">
-            <div class="field">
-              <p class="control">
-                <textarea class="textarea" placeholder="Add a comment..."></textarea>
-              </p>
-            </div>
-            <div class="field">
-              <p class="control">
-                <button class="button">Post comment</button>
-              </p>
-            </div>
-          </div>
-        </article>
 
-      </div>
+            <article class="media">
+              <figure class="media-left">
+                <p class="image is-64x64">
+                  <img ng-src="{{curUser.profilepic}}">
+                </p>
+              </figure>
+              <div class="media-content">
+                <div class="field">
+                  <p class="control">
+                    <textarea class="textarea" ng-model="newReply" placeholder="Add a reply..."></textarea>
+                  </p>
+                </div>
+                <div class="field">
+                  <p class="control">
+                    <button class="button" ng-click="submitReply(comment, newReply); newReply=''; ">Post reply</button>
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+
+
+</section>
+<article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img ng-src="{{curUser.profilepic}}">
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="field">
+      <p class="control">
+        <textarea class="textarea" ng-model="newComment" placeholder="Add a comment..."></textarea>
+      </p>
+    </div>
+    <div class="field">
+      <p class="control">
+        <button class="button" ng-click="submitComment(newComment); newComment='';">Post comment</button>
+      </p>
     </div>
   </div>
+</article>
+
+<article class="media">
+  Morbi vitae diam et purus tincidunt porttitor vel vitae augue. Praesent malesuada metus sed pharetra euismod. Cras tellus odio, tincidunt iaculis diam non, porta aliquet tortor.
+</article>
+</div>
+</article>
+
+<article class="media">
+  <figure class="media-left">
+    <p class="image is-48x48">
+      <img src="http://bulma.io/images/placeholders/96x96.png">
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong>Kayli Eunice </strong>
+        <br> Sed convallis scelerisque mauris, non pulvinar nunc mattis vel. Maecenas varius felis sit amet magna vestibulum euismod malesuada cursus libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus
+        lacinia non nisl id feugiat.
+        <br>
+      </p>
+    </div>
+  </div>
+</article>
+</div>
+</article>
+<article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img src="http://bulma.io/images/placeholders/128x128.png">
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="field">
+      <p class="control">
+        <textarea class="textarea" placeholder="Add a comment..."></textarea>
+      </p>
+    </div>
+    <div class="field">
+      <p class="control">
+        <button class="button">Post comment</button>
+      </p>
+    </div>
+  </div>
+</article>
+
+</div>
+</div>
+</div>
 </section>
 
 
