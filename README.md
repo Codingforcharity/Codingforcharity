@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="#"><img src="https://raw.githubusercontent.com/Codingforcharity/Codingforcharity/master/DevGive-Blue-Logo.png" alt="DevGive" width="200"></a>
+  <a href="#"><img src="https://raw.githubusercontent.com/Codingforcharity/Codingforcharity/master/img/DevGive-Blue-Logo.png" alt="DevGive" width="200"></a>
   <br>
   DevGive
   <br>
