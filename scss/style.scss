@@ -147,12 +147,17 @@
   color: white;
   font-size: 25;
   font-weight: 500;
+  padding: 5px 10px;
 }
 
 .home-testimonial-pic {
   border-radius: 50%;
   height: 140px;
   width: 140px;
+}
+
+.testimonial-pic-container {
+    text-align: center;
 }
 
 .inscrease-about-font-size {
