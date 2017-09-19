@@ -1,166 +1,165 @@
 <section>
-  <div class="container accountdev-resize-container">
-    <div class="column is-mobile">
-      <div class="columns">
+    <div class="container accountdev-resize-container">
+        <div class="column is-mobile">
+            <div class="columns">
 
 
-        <div class="column is-half">
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-              </figure>
-            </div>
-            <div class="card-content remove-card-content-set-height">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4">John Smith</p>
+                <div class="column is-half">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img ng-if="!ownPage" ng-src="{{pageOwner.profilepic}}" alt="Profile pic for {{pageOwner.username}}">
+                                <img ng-if="ownPage" ng-src="{{curUser.profilepic}}" alt="Profile pic for {{curUser.username}}">
+                            </figure>
+                            <input ng-if="ownPage" type="text" ng-model="$parent.newProfilePic" placeholder="insert link to profile pic here">
+                        </div>
+                        <div class="card-content remove-card-content-set-height">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4" ng-if="!ownPage && pageOwner.firstname">
+                                        {{pageOwner.firstname}} {{pageOwner.lastname}}
+                                    </p>
+                                    <p class="title is-4" ng-if="ownPage">
+                                        <input type="text" ng-model="$parent.newFirstName" placeholder="First Name">
+                                    </p>
+                                    <p class="title is-4" ng-if="ownPage">
+                                        <input type="text" ng-model="$parent.newLastName" placeholder="Last Name">
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="content" ng-if="ownPage">
+                                <span class="bold-description">Description: </span>
+                                <textarea rows="10" cols="60" ng-model="$parent.newBio" placeholder="Describe yourself">
+                                  {{curUser.bio}}
+                                </textarea>
+                            </div>
+                            <div class="content" ng-if="!ownPage">
+                                <span class="bold-description">Description: </span> {{pageOwner.bio}}
+                            </div>
+                            <div class="content" ng-if="ownPage">
+                                <span class=" bold-description ">Skills: </span>
+                                <textarea ng-model="$parent.newSkills" placeholder="Skills Seperated by commas">
+                                </textarea> {{newSkills}}
+                                <br>
+                            </div>
+                            <div class="content" ng-if="!ownPage">
+                                <span class=" bold-description ">Skills: </span>
+                                <span ng-repeat="skill in pageOwner.skills"> {{skill.skill}}, </span>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" ng-if="ownPage" ng-click="subChanges($parent.newProfilePic, $parent.newFirstName, $parent.newLastName, $parent.newBio, $parent.newSkills);">Submit Changes</button>
                 </div>
-              </div>
-              <div class="content">
-                <span class="bold-description">Description: </span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-              </div>
-              <div class="content">
-                <span class="bold-description">Skills: </span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                <br>
-              </div>
+
+                <div class="column ">
+                    <div class="box change-box-background-color ">
+                        <article class="message ">
+                            <div class="message-header center-projects-header ">
+                                <p>Projects</p>
+                            </div>
+                            <div class="content " ng-repeat="project in userProjects">
+                                <p>
+                                    <strong>{{project.title}}</strong>
+                                    <br> {{project.description}}
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
             </div>
-          </div>
         </div>
-
-        <div class="column">
-          <div class="box change-box-background-color">
-            <article class="message">
-              <div class="message-header center-projects-header">
-                <p>Projects</p>
-              </div>
-              <div class="content">
-                <p>
-                  <strong>DevGive</strong>
-                  <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
-                </p>
-              </div>
-              <div class="content">
-                <p>
-                  <strong>Project 404</strong>
-                  <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
-                </p>
-              </div>
-              <div class="content">
-                <p>
-                  <strong>Apollo</strong>
-                  <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
-                </p>
-              </div>
-              <div class="content">
-                <p>
-                  <strong>Titan</strong>
-                  <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
-                </p>
-              </div>
-              <div class="content">
-                <p>
-                  <strong>Project X</strong>
-                  <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
-                </p>
-              </div>
-            </article>
-          </div>
-        </div>
-
-      </div>
     </div>
-  </div>
 </section>
 
 <br>
 
 <section>
-  <div class="column is-mobile">
-    <div class="container accountdev-resize-container">
-      <div class="box">
-        <h3 style="text-align: center" class="title is-3">Message Board</h3>
+    <div class="column is-mobile ">
+        <div class="container accountdev-resize-container ">
+            <div class="box ">
+                <h3 style="text-align: center " class="title is-3 ">Message Board</h3>
 
-        <article class="media">
-          <figure class="media-left">
-            <p class="image is-64x64">
-              <img src="http://bulma.io/images/placeholders/128x128.png">
-            </p>
-          </figure>
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <strong>Barbara Middleton</strong>
-                <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus, nec ultricies elit blandit non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum. Nunc in tempus turpis.
-                <br>
-              </p>
-            </div>
+                <article class="media " ng-repeat="comment in userComments">
+                    <figure class="media-left ">
+                        <p class="image is-64x64 ">
+                            <img ng-src="{{comment.profilepic}}">
+                        </p>
+                    </figure>
+                    <div class="media-content ">
+                        <div class="content ">
+                            <p>
+                                <strong ng-if="comment.firstname && comment.lastname">{{comment.firstname}} {{comment.lastname}}</strong>
+                                <strong ng-if="!comment.firstname || !comment.lastname">{{comment.username}}</strong>
+                                <br> {{comment.message}}
+                                <br>
+                            </p>
+                        </div>
 
-            <article class="media">
-              <figure class="media-left">
-                <p class="image is-48x48">
-                  <img src="http://bulma.io/images/placeholders/96x96.png">
-                </p>
-              </figure>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <strong>Sean Brown</strong>
-                    <br> Donec sollicitudin urna eget eros malesuada sagittis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam blandit nisl a nulla sagittis, a lobortis leo feugiat.
-                    <br>
-                  </p>
-                </div>
-
-                <article class="media">
-                  Vivamus quis semper metus, non tincidunt dolor. Vivamus in mi eu lorem cursus ullamcorper sit amet nec massa.
+                        <article class="media " ng-repeat="reply in comment.replies">
+                            <figure class="media-left ">
+                                <p class="image is-48x48 ">
+                                    <img ng-src="{{reply.profilepic}}">
+                                </p>
+                            </figure>
+                            <div class="media-content ">
+                                <div class="content ">
+                                    <p>
+                                        <strong ng-if="reply.firstname && reply.lastname">
+                                            {{reply.firstname}} {{reply.lastname}}
+                                        </strong>
+                                        <strong ng-if="!reply.firstname || !reply.lastname">
+                                            {{reply.username}}
+                                        </strong>
+                                        <br> {{reply.message}}
+                                        <br>
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="media" ng-if="curUser.username">
+                            <figure class="media-left">
+                                <p class="image is-64x64">
+                                    <img ng-src="{{curUser.profilepic}}">
+                                </p>
+                            </figure>
+                            <div class="media-content">
+                                <div class="field">
+                                    <p class="control">
+                                        <textarea class="textarea" ng-model="newReply" placeholder="Add a reply..."></textarea>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <p class="control">
+                                        <button class="button" ng-click="submitReply(comment, newReply); newReply=''; ">Post reply</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </article>
+                <article class="media " ng-if="curUser.username">
+                    <figure class="media-left ">
+                        <p class="image is-64x64 ">
+                            <img ng-src="{{curUser.profilepic}}">
+                        </p>
+                    </figure>
+                    <div class="media-content ">
+                        <div class="field ">
+                            <p class="control ">
+                                <textarea class="textarea " ng-model="newComment" placeholder="Add a comment... "></textarea>
+                            </p>
+                        </div>
+                        <div class="field ">
+                            <p class="control ">
+                                <button class="button " ng-click="submitComment(newComment);">Post comment</button>
+                            </p>
+                        </div>
+                    </div>
                 </article>
 
-                <article class="media">
-                  Morbi vitae diam et purus tincidunt porttitor vel vitae augue. Praesent malesuada metus sed pharetra euismod. Cras tellus odio, tincidunt iaculis diam non, porta aliquet tortor.
-                </article>
-              </div>
-            </article>
-
-            <article class="media">
-              <figure class="media-left">
-                <p class="image is-48x48">
-                  <img src="http://bulma.io/images/placeholders/96x96.png">
-                </p>
-              </figure>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <strong>Kayli Eunice </strong>
-                    <br> Sed convallis scelerisque mauris, non pulvinar nunc mattis vel. Maecenas varius felis sit amet magna vestibulum euismod malesuada cursus libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-                    Curae; Phasellus lacinia non nisl id feugiat.
-                    <br>
-                  </p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </article>
-        <article class="media">
-          <figure class="media-left">
-            <p class="image is-64x64">
-              <img src="http://bulma.io/images/placeholders/128x128.png">
-            </p>
-          </figure>
-          <div class="media-content">
-            <div class="field">
-              <p class="control">
-                <textarea class="textarea" placeholder="Add a comment..."></textarea>
-              </p>
             </div>
-            <div class="field">
-              <p class="control">
-                <button class="button">Post comment</button>
-              </p>
-            </div>
-          </div>
-        </article>
-
-      </div>
+        </div>
     </div>
-  </div>
 </section>
