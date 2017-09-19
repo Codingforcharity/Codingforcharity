@@ -1,12 +1,55 @@
 app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) {
-    console.log("accountDev link")
+    // console.log("accountDev link")
     $scope.curUser;
     $scope.ownPage = false;
     $scope.newSkills = "";
+
+    $scope.submitReply = (comment, reply) => {
+        if (comment) {
+            if (reply) {
+                accountDevSrvc.submitReply($stateParams.id, comment.commentid, reply, $scope.curUser.id)
+                    .then((comments) => {
+                        console.log(comments)
+                        $scope.userComments = comments.data;
+                    })
+            } else {
+                console.log("Didnt type anything")
+            }
+        }
+    }
+
+    $scope.submitComment = (comment) => {
+        if (comment) {
+            accountDevSrvc.submitComment($stateParams.id, comment, $scope.curUser.id)
+                .then((comments) => {
+                    $scope.userComments = comments.data;
+                })
+        } else {
+            console.log("Didnt type anything");
+        }
+    }
+
+    $scope.getCommentsById = () => {
+        accountDevSrvc.getCommentsById($stateParams.id)
+            .then((comments) => {
+                console.log(comments.data);
+                $scope.userComments = comments.data;
+            })
+    }
+
+    $scope.getProjectsById = () => {
+        accountDevSrvc.getProjectsById($stateParams.id)
+            .then((projects) => {
+                console.log("USERS PROJECTS: ", projects.data);
+                $scope.userProjects = projects.data;
+                $scope.getCommentsById();
+            })
+    }
+
     $scope.getUserSkills = (id) => {
         accountDevSrvc.getUserSkills(id)
             .then((skills) => {
-                console.log("User Skills: ", skills.data)
+                // console.log("User Skills: ", skills.data)
                 if ($scope.ownPage) {
                     $scope.curUser.skills = "";
                     for (let i = 0; i < skills.data.length; i++) {
@@ -29,6 +72,7 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
                 if (!user.data.ischarity) {
                     $scope.curUser = Object.assign({}, user.data);
                     $scope.getUserByParams();
+                    $scope.getProjectsById();
                 }
             })
     }
@@ -38,7 +82,7 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
             accountDevSrvc.getUserByParams(param)
                 .then((user) => {
                     $scope.pageOwner = Object.assign({}, user.data[0]);
-                    console.log($scope.pageOwner);
+                    // console.log($scope.pageOwner);
                     $scope.getUserSkills($stateParams.id)
                 })
         } else {
@@ -47,7 +91,7 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
             $scope.newLastName = $scope.curUser.lastname;
             $scope.newBio = $scope.curUser.bio;
             $scope.newProfilePic = $scope.curUser.profilepic;
-            console.log("On your own page!", $scope.curUser)
+            // console.log("On your own page!", $scope.curUser)
             $scope.getUserSkills($stateParams.id)
         }
     }
@@ -91,7 +135,7 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
         }
 
         if (newSkills) {
-            console.log(newSkills)
+            // console.log(newSkills)
             newSkills = newSkills.split(',');
             for (let i = 0; i < newSkills.length; i++) {
                 newSkills[i] = newSkills[i].trim();
@@ -112,9 +156,9 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
         newUser.ischarity = $scope.curUser.ischarity;
         accountDevSrvc.updateUser($stateParams.id, newUser)
             .then((updatedUser) => {
-                console.log("updated user", updatedUser)
+                // console.log("updated user", updatedUser)
                 $scope.curUser = updatedUser.data[0];
-                console.log($scope.curUser);
+                // console.log($scope.curUser);
                 $scope.getUserSkills($stateParams.id)
             });
     }
