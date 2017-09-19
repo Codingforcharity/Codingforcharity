@@ -3,9 +3,12 @@ app.controller('projectPublicDetailCtrl', function($scope, $stateParams, project
     $scope.curUser;
     $scope.getProjectById = () => {
         const param = $stateParams.id;
+        console.log("stateparams: " + param)
         projectPublicDetailsSrvc.getProjectById(param)
             .then((project) => {
+                console.log("Returned project: ", project)
                 $scope.project = Object.assign({}, project.data[0]);
+                console.log("scoped project: ", $scope.project);
             })
     }
 
