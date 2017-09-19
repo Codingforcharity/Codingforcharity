@@ -1,0 +1,1 @@
+SELECT * FROM skills WHERE userid = $1 AND skill = $2;

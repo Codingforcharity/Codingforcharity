@@ -106,4 +106,6 @@ app.post('/api/project/:id/links', serverCtrl.postLinks);
 app.get('/api/project/:id/comments', serverCtrl.getComments);
 app.post('/api/project/:id/comments', serverCtrl.postComment);
 app.post('/api/project/:id/reply', serverCtrl.postReply)
+app.get('/api/user/:id/skills', serverCtrl.getUserSkills);
+app.put("/api/user/:id/update", serverCtrl.updateUser);
 app.listen(process.env.PORT, () => console.log('listening port 5001'));

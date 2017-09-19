@@ -38,7 +38,7 @@
     </div>
 </section>
 
-<section>
+<section ng-if="allowedAccess">
     <div class="container workingproject-resize-container">
         <div class="column is-mobile">
             <div class="columns">
@@ -93,7 +93,7 @@
     </div>
 </section>
 
-<section>
+<section ng-if="allowedAccess">
     <div class="column is-mobile">
         <div class="container">
             <div class="box">
@@ -154,7 +154,7 @@
 
 
 </section>
-<article class="media">
+<article class="media" ng-if="allowedAccess">
     <figure class="media-left">
         <p class="image is-64x64">
             <img ng-src="{{curUser.profilepic}}">
@@ -181,3 +181,5 @@
 
 
 <br><br>
+
+<h1 ng-if="!allowedAccess">PLEASE LOG IN</h1>
