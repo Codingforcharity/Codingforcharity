@@ -3,6 +3,21 @@ app.controller('projectFeedCtrl', function($scope, projectFeedSrvc) {
     $scope.curUser;
     $scope.skills = [];
     $scope.filtered = false;
+    $scope.searchProjects = (str) => {
+        if (str) {
+            let newProjects = [];
+            for (let i = 0; i < $scope.projects.length; i++) {
+                if ($scope.projects[i].title.toLowerCase().includes(str.toLowerCase())) {
+                    newProjects.push($scope.projects[i]);
+                }
+            }
+            $scope.projects = newProjects;
+        } else {
+            $scope.getProjects();
+        }
+
+    }
+
     $scope.getProjects = () => {
         projectFeedSrvc.getProjects()
             .then((projects) => {
