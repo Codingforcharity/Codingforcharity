@@ -47,6 +47,7 @@
     "gulp-nodemon": "^2.2.1",
     "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",
+    "gulp-util": "^3.0.8",
     "imagemin-gifsicle": "^5.2.0",
     "imagemin-jpegoptim": "^5.1.0",
     "imagemin-mozjpeg": "^6.0.0",

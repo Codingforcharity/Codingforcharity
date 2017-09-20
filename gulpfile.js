@@ -6,6 +6,7 @@ var gulp = require("gulp"),
     newer = require('gulp-newer'),
     nodemon = require("gulp-nodemon"),
     notify = require('gulp-notify'),
+    gutil = require('gulp-util'),
     imageminPngquant = require('imagemin-pngquant'),
     imageminMozjpeg = require('imagemin-mozjpeg'),
     imagemin_zopfli = require('imagemin-zopfli'),
@@ -84,6 +85,7 @@ gulp.task("default", ["build", "watch"]);
 //////////////////////
 
 // var cache = new Cache();
+var error = new gutil.PluginError('test', 'something broke', {showStack: true});
 
 gulp.task("compile", function() {
     var stream = gulp
@@ -95,7 +97,7 @@ gulp.task("compile", function() {
     return stream; // important for gulp-nodemon to wait for completion
 });
 
-gulp.task("serve", ["optimize-image", "build-js2", "sass2", "html2", "videos"], function() {
+gulp.task("serve", ["optimize-image", "build-js2", "sass2", "html2", "videos", "fonts"], function() {
     var stream = nodemon({
             script: "./index.js", // run ES5 code
             watch: ["/index.js", "/controllers"], // watch ES2015 code
@@ -133,6 +135,11 @@ gulp.task("html2", function(cb) {
     return stream;
 });
 
+gulp.task("fonts", function(cb) {
+    var stream = gulp.src("./assets/fonts/*.woff").pipe(gulp.dest("./bundle/fonts"));
+    return stream;
+});
+
 gulp.task("videos", function(cb) {
     var stream = gulp.src("./assets/video/*.mp4").pipe(gulp.dest("./bundle/videos"));
     return stream;
@@ -144,6 +151,7 @@ gulp.task("sass2", function(cb) {
         .pipe(sass())
         .on("error", sass.logError)
         .pipe(gulp.dest("./bundle"))
+        .on('error', gutil.log)
         //  .pipe(cleanCss({
         //      keepSpecialComments: 0
         //  }))
@@ -175,7 +183,7 @@ gulp.task("build-images", function() {
 });
 
 gulp.task('optimize-image', function() {
-    return gulp.src(['assets/img/**/*.{gif,jpg,png}'])
+    return gulp.src(['assets/img/**/*.{gif,jpg,png,svg}'])
         .pipe(plumber())
         .pipe(newer('bundle/img'))
         .pipe(imagemin([

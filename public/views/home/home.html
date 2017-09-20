@@ -1,36 +1,138 @@
+<!-- ------------  NAVBAR --------- -->
+<nav class="navbar navbar-home is-transparent header-image" role="navigation" aria-label="main navigation">
+    <!-- <div class="navbar-brand"> -->
+    <!-- <a class="navbar-item" href="#">
+                    <img src="/bundle/img/DevGive-Blue-Logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+                  </a> -->
+    <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+              &nbsp;&nbsp;
+              <span class="icon">
+                                            <i class="fa fa-laptop"></i>
+                                          </span> &nbsp;&nbsp; DevGive
+            </a>
+
+        <a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
+                    <span class="icon" style="color: #333;">
+                      <i class="fa fa-lg fa-github"></i>
+                    </span>
+                  </a>
+
+        <button class=" navbar-burger" data-target="navMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+    </div>
+    <!-- Left side Nav bar links/menus begin -->
+    <div id="navMenu" class="navbar-menu">
+        <div class="navbar-start">
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link  is-active">
+                     Interal Views
+                    </a>
+                <div class="navbar-dropdown is-boxed">
+                    <a class="navbar-item" ui-sref='projectFeed'>
+                         Project Feed
+                        </a>
+                    <a class="navbar-item" ui-sref='accountDev'>
+                            Dev Profile
+                           </a>
+                    <a class="navbar-item" ui-sref='workingProject'>
+                              Working Project View
+                             </a>
+                    <a class="navbar-item" ui-sref='projectPublicDetails'>
+                               Public project view
+                             </a>
+                </div>
+            </div>
+        </div>
+        <!-- RIght side Nav bar links login begin -->
+        <div class="navbar-end">
+            <a class="navbar-item is-hidden-desktop-only" href="https://github.com/jgthms/bulma" target="_blank">
+                  <span class="icon" style="color: #333;">
+                    <i class="fa fa-lg fa-github"></i>
+                  </span>
+                </a>
+            <div class="navbar-item nav-buttons">
+                <div class="field is-grouped">
+                    <p class="control">
+                        <a class="bd-tw-button button" href="/auth">
+                <span class="icon">
+                  <i class="fa fa-sign-in"></i>
+                </span>
+                <span>
+                  Sign-In
+                </span>
+              </a>
+
+                    </p>
+                    <p class="control">
+                        <a class="button is-primary" ui-sref="createAccount">
+                            <span class="icon">
+                              <i class="fa fa-user-plus"></i>
+                            </span>
+                            <span>Sign-Up</span>
+                          </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</nav>
+
+
+
+
 <!-- --------------  Hero ----------------- -->
-<section class=" hero is-info is-fullheight header-image">
-  <div class="hero-body">
-    <div class="container header-content">
-      <h1 class="title">
-        We bring good developers & good causes together
-      </h1>
-      <h2 class="subtitle">
-        Find a cause that lights you up. Get in touch with a nonprofit that needs you.
-      </h2>
-      <a class="button is-light">See for yourself</a>
+
+<section class=" hero is-bold is-large header-image">
+    <div class="hero-body has-text-centered">
+        <div class="container">
+            <h1 class="hero-title title is-3">We bring good developers & causes together</h1>
+            <h2 class="hero-title title is-5 is-light" style="margin-bottom:2em">
+                Find a cause that lights you up. Get in touch with a nonprofit that needs you.
+            </h2>
+            <a class="button is-primary" ui-sref='projectFeed'>See for yourself</a>
+        </div>
     </div>
-  </div>
+    <section class="clients">
+        <div class="container">
+            <div class="columns is-gapless">
+                <div class="column has-text-centered"><img src="/img/clients/smithsonian.png" height="90px" alt class="logo"><img src="/img/clients/npr_logo.png"
+                        height="90px" class="logo"><img src="../_nuxt/img/logo4.b35b5e5.svg" height="90px" class="logo">
+                    <img
+                        src="../_nuxt/img/logo2.4cdad12.svg" height="90px" class="logo"><img src="../_nuxt/img/logo5.59685d7.svg" height="90px" class="logo"></div>
+            </div>
+        </div>
+        <!---->
+    </section>
 </section>
+
 <!-- --------------  Company Logos----------------- -->
-  <section class='section image-section'>
+
+<section class='section image-section is-alternative'>
     <div class="container">
-      <div class="image-list">
-          <div class="image"><a href="https://www.si.edu/"><img alt="Smithsonian" src="/img/andysAdds/smithsonian.png"></a></div>
-          <div class="image"><a href="https://www.npr.org/"><img alt="NPR" src="/img/andysAdds/npr_logo.png"></a></div>
-          <div class="image"><a href="https://www.NYPL.org/"><img alt="NYPL" src="/img/andysAdds/nypl.png"></a></div>
-          <div class="image"><a href="https://www.stjude.org/"><img alt="st jude" src="/img/andysAdds/st-jude.png"></a></div>
-          <div class="image"><a href="https://www.teachforamerica.org/"><img alt="Teach for America" src="/img/andysAdds/teachforamerica.png"></a></div>
-      </div>
+        <div class="image-list">
+            <div class="image"><a href="https://www.si.edu/"><img alt="Smithsonian" src="/img/clients/smithsonian.png"></a></div>
+            <div class="image"><a href="https://www.npr.org/"><img alt="NPR" src="/img/clients/npr_logo.png"></a></div>
+            <div class="image"><a href="https://www.NYPL.org/"><img alt="NYPL" src="/img/clients/nypl.png"></a></div>
+            <div class="image"><a href="https://www.stjude.org/"><img alt="st jude" src="/img/clients/st-jude.png"></a></div>
+            <div class="image"><a href="https://www.teachforamerica.org/"><img alt="Teach for America" src="/img/clients/teachforamerica.png"></a></div>
+        </div>
     </div>
-  </section>
+</section>
+
 <!-- --------------  Why  ----------------- -->
-  <section class=section>
+
+<section class="section is-alternative">
     <div class=container>
         <header class=section-header>
-            <h2 class="title is-spaced is-bold has-tint"> Gustav simplifies your recruitment process </h2>
+            <h2 class="title is-spaced is-bold has-tint"> Good developeres volunteer to help good causes. </h2>
             <div class=subtitle>
-                <p> Just tell us what you're looking for and let our network of recruiting partners do the work. </p>
+                <p> Just tell us what you're looking for and our community will help make it possible. </p>
             </div>
         </header>
         <div class=section-body>
@@ -38,46 +140,53 @@
                 <div class="column is-4">
                     <div class="box is-feature has-icon is-centered is-borderless">
                         <div class=box-header>
-                            <div class="box-icon is-large"> <img src="/assets/images/svg/bordered/temporary-staffing-cc9ed041.svg?1505342688" /> </div>
-                            <h3 class=box-title> Temporary / Contractor Staffing </h3> </div>
+                            <div class="box-icon is-large"> <img src="/img/svg/temporary-staffing.svg" /> </div>
+                            <h3 class=box-title> Why </h3>
+                        </div>
                         <div class=box-body>
-                            <p> Got a project? Short term increase? Temp staffing saves you time and money. It gives you added flexibility and raises productivity. </p>
+                            <p> We're a community: we connect people who want to change the world together. </p>
                         </div>
                     </div>
                 </div>
                 <div class="column is-4">
                     <div class="box is-feature has-icon is-centered is-borderless">
                         <div class=box-header>
-                            <div class="box-icon is-large"> <img src="/assets/images/svg/bordered/temp-to-perm-adb28bd4.svg?1505342688" /> </div>
-                            <h3 class=box-title> Temp-to-Hire </h3> </div>
+                            <div class="box-icon is-large"> <img src="/img/svg/temp-to-perm.svg" /> </div>
+                            <h3 class=box-title> How </h3>
+                        </div>
                         <div class=box-body>
-                            <p> Temp-to-Hire staffing gives you the unique option to evaluate an employee’s performance on-site before making a final hiring decision. </p>
+                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil nobis culpa animi soluta maxime
+                                iusto aliquid, reprehenderit voluptate, perspiciatis odit beatae saepe pariatur illo eos
+                                eligendi fugit aliquam facilis aperiam! </p>
                         </div>
                     </div>
                 </div>
                 <div class="column is-4">
                     <div class="box is-feature has-icon is-centered is-borderless">
                         <div class=box-header>
-                            <div class="box-icon is-large"> <img src="/assets/images/svg/bordered/permanent-staffing-47c33d30.svg?1505342688" /> </div>
-                            <h3 class=box-title> Direct Hire </h3> </div>
+                            <div class="box-icon is-large"> <img src="/img/svg/permanent-staffing.svg" /> </div>
+                            <h3 class=box-title> Who </h3>
+                        </div>
                         <div class=box-body>
-                            <p> Direct Hire gives you access to top-notch, fully-screened and ideally-qualified candidates in every industry. Hire the right people for the job and for your company’s culture. </p>
+                            <p> DevGive gives you access to top-notch and ideally-qualified candidates in every industry. Find
+                                the right people for the project and for your causes mission. </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <footer class=section-footer> <a href="/signup" class="button is-danger is-medium is-wide">Sign up now</a> </footer>
+        <footer class=section-footer> <a ui-sref='createAccount' class="button is-danger is-medium is-wide">Sign up now</a> </footer>
     </div>
 </section>
 <!-- --------------  Content  ----------------- -->
 
-<section class="section is-alternative">
+<section class="section">
     <div class=container>
         <header class=section-header>
             <h2 class="title is-spaced is-bold"> How it works </h2>
             <div class=subtitle>
-                <p> Our recruiting process is designed to find skilled individuals who can add business value in your organization from day one. </p>
+                <p> Our recruiting process is designed to find skilled developers who can add value in your organization from
+                    day one. </p>
             </div>
         </header>
         <div class=section-body>
@@ -85,308 +194,175 @@
                 <div class="column is-4">
                     <div class="box has-icon is-centered">
                         <div class=box-header>
-                            <div class="box-icon is-large"> <img src="/assets/images/svg/bordered/megaphone-325ae088.svg?1505342688" /> </div>
-                            <h3 class=box-title> 1. Tell us what you need </h3> </div>
+                            <div class="box-icon is-large"> <img src="/img/svg/megaphone.svg" /> </div>
+                            <h3 class=box-title> 1. Tell us what you need </h3>
+                        </div>
                         <div class=box-body>
-                            <p> Start by adding your basic job requirements like your ‘must haves’, skills required, location and the price you are willing to pay. And now relax. Our network of staffing agencies will take care of things from here. </p>
+                            <p> Start by adding your basic project requirements like your ‘must haves’, skills required, location
+                                and current status. </p>
                         </div>
                     </div>
                 </div>
                 <div class="column is-4">
                     <div class="box has-icon is-centered">
                         <div class=box-header>
-                            <div class="box-icon is-large"> <img src="/assets/images/svg/bordered/stage-51691701.svg?1505342688" /> </div>
-                            <h3 class=box-title> 2. Receive the best talent </h3> </div>
+                            <div class="box-icon is-large"> <img src="/img/svg/stage.svg" /> </div>
+                            <h3 class=box-title> 2. Find great talent </h3>
+                        </div>
                         <div class=box-body>
-                            <p> It won’t be long before we start sending you a selection of profiles of hand-picked candidates who meet your criteria. Track the progress of your search in real-time via the Applicant Tracking System. </p>
+                            <p> It won’t be long before developers start sending you a selection of candidates who meet your
+                                criteria. Track the progress of your project in real-time via the Project Tracking System.
+                                </p>
                         </div>
                     </div>
                 </div>
                 <div class="column is-4">
                     <div class="box has-icon is-centered">
                         <div class=box-header>
-                            <div class="box-icon is-large"> <img src="/assets/images/svg/bordered/handshake-8bb68029.svg?1505342688" /> </div>
-                            <h3 class=box-title> 3. Hire the right fit </h3> </div>
+                            <div class="box-icon is-large"> <img src="/img/svg/handshake.svg" /> </div>
+                            <h3 class=box-title> 3. Select the right Developer </h3>
+                        </div>
                         <div class=box-body>
-                            <p> After you’ve found your perfect candidate, send an offer to the agency. Once they have accepted your offer, you can welcome a new face to your organization. </p>
+                            <p> After you’ve found your developers, contact them to being the project. Once they have signed
+                                on to your project, you can welcome a new face to your team. </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <footer class=section-footer> <a class="button is-primary is-medium is-wide" href="/inquire-as-recruiter-or-staffing-agency">Sign up now</a> </footer>
+        <footer class=section-footer> <a class="button is-primary is-medium is-wide" ui-sref='createAccount'>Sign up now</a> </footer>
     </div>
-
-
-
-
-
-
-
-  <!-- <section>
-  <div class="video-column is-mobile">
-
-    <div class="video-container">
-      <video autoplay loop>
-        <source type="video/mp4" src="./videos/Workaholic.mp4">
-      </video>
-    <div class="home-overlay">
-      <h1 class="video-title">We Specialize in Nonprofit Web Design</h1>
-      <h2 class="video-subtitle">High-quality, customized <span class="bold-websites-for-nonprofits"> websites for nonprofits </span> </h2>
-      </div>
-    </div>
-
-  </div>
-</section> -->
-
-  <br>
-
-  <section class="re-position-container">
-    <div class="container home-resize-container">
-      <div class="column is-mobile">
-
-        <div class="level home-logos-container">
-          <span class="home-logos has-text-info">
-            <img src="./img/unicef-logo.jpg">
-          </span>
-          <span class="home-logos has-text-info">
-            <img src="./img/piedpiper.jpg">
-          </span>
-          <span class="home-logos has-text-info">
-            <img src="./img/Turnstone_logo.jpg">
-          </span>
-          <span class="home-logos has-text-info">
-            <img src="./img/hooli.jpg">
-          </span>
-          <span class="home-logos has-text-info">
-              <img src="./img/tyler-technology.jpg">
-            </span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <br><br>
-
-  <section class="home-process">
-    <div class="container home-resize-container">
-      <div class="column is-mobile">
-        <div class="columns">
-
-          <div class="column is-half">
-            <div class="box">
-              <img class="adjust-joinus-img" src="./img/joinus.jpeg">
-              <div class="home-pitch-main-container">
-                <div class="home-pitch-text">
-                  <h3>Come Join Us</h3>
-                  <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque varius accumsan metus, vestibulum
-                    mattis nisi hendrerit at. Quisque ultrices sem at venenatis molestie. Vestibulum sodales fringilla massa
-                    eu pellentesque. Phasellus fringilla sollicitudin quam, vitae rutrum felis venenatis vel. Ut sed diam
-                    ut magna tincidunt rhoncus. Aliquam ut neque a elit aliquam tempor ac sed lacus. Sed aliquet ex eget
-                    quam vehicula fermentum.</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="column">
-            <div class="box">
-              <img class="adjust-joinus-img" src="./img/process.png">
-              <div class="home-pitch-main-container">
-                <div class="home-pitch-text">
-                  <h3>How our Nonprofit Projects Work</h3>
-                  <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque varius accumsan metus, vestibulum
-                    mattis nisi hendrerit at. Quisque ultrices sem at venenatis molestie. Vestibulum sodales fringilla massa
-                    eu pellentesque. Phasellus fringilla sollicitudin quam, vitae rutrum felis venenatis vel. Ut sed diam
-                    ut magna tincidunt rhoncus. Aliquam ut neque a elit aliquam tempor ac sed lacus. Sed aliquet ex eget
-                    quam vehicula fermentum.</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <br>
-
-  <div class="home-pitch-text">
-    <h3>From a Nonprofit Partner</h3>
-  </div>
-  <section>
-    <div class="container home-resize-container">
-      <div class="column is-mobile">
-        <div class="columns">
-
-          <div class="column is-three-quarters">
-            <div class="box">
-              <img class="home-resize-blockquote" src="./img/blockquote.png">
-              <h4 class="blockquote-margin">The team at DevGive satisfied all of our requests on time and on budget, resulting in a site far superior in
-                every way to our previous one. Additionally, they provided helpful information on related issues, and advised
-                on the pros and cons of all of the decisions made along the way.</h4>
-            </div>
-          </div>
-
-          <div class="column">
-            <div class="testimonial-pic-container">
-              <img class="home-testimonial-pic" src="./img/steven.jpg">
-              <div class="testmonial-name">
-                <span class="example-name">Steven Isbell</span>
-                <br>
-                <span class="example-title">DevMountain CEO</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container home-resize-container">
-      <div class="column is-mobile">
-        <div class="home-pitch-main-container">
-          <div class="home-about-text">
-            <h3>About Us</h3>
-            <h4><span class="inscrease-about-font-size">Story: </span>
-              <br><br>
-              <div class="box">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque varius accumsan metus, vestibulum mattis nisi hendrerit
-                at. Quisque ultrices sem at venenatis molestie. Vestibulum sodales fringilla massa eu pellentesque. Phasellus
-                fringilla sollicitudin quam, vitae rutrum felis venenatis vel. Ut sed diam ut magna tincidunt rhoncus. Aliquam
-                ut neque a elit aliquam tempor ac sed lacus. Sed aliquet ex eget quam vehicula fermentum.</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <br>
-
-  <section class="home-contact">
-    <div class="container home-resize-container">
-      <div class="team-container">
-        <div class="column is-mobile">
-          <div class="home-about-text">
-            <h4><span class="inscrease-about-font-size">Team:<span>
-      </div>
-      <div class="column">
-        <article class="message is-medium">
-          <div class="message-header">
-            <p>Contributors: </p>
-          </div>
-              <div class="box">
-                <article class="media">
-                  <div class="media-left">
-                    <figure class="image is-128x128">
-                      <img src="./img/dylan.jpg">
-                    </figure>
-                  </div>
-                  <div class="media-content">
-                    <div class="content">
-                      <p>
-                        <strong>Dylan Brown</strong>
-                        <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                      </p>
-                    </div>
-                  </div>
-                </article>
-              </div>
-              <div class="box">
-                <article class="media">
-                  <div class="media-left">
-                    <figure class="image is-128x128">
-                      <img src="./img/dat.jpg">
-                    </figure>
-                  </div>
-                  <div class="media-content">
-                    <div class="content">
-                      <p>
-                        <strong>Dat Tran</strong>
-                        <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                      </p>
-                    </div>
-                  </div>
-                </article>
-              </div>
-              <div style="margin-bottom: 1.5rem;" class="box">
-                <article class="media">
-                  <div class="media-left">
-                    <figure class="image is-128x128">
-                      <img src="./img/andy.jpg">
-                    </figure>
-                  </div>
-                  <div class="media-content">
-                    <div class="content">
-                      <p>
-                        <strong>Andy Parker</strong>
-                        <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                      </p>
-                    </div>
-                  </div>
-                </article>
-              </div>
-        </article>
-      </div>
-    </div>
-  </div>
-</div>
 </section>
+<!-- -------------- Why Non-Profits Love DevGive  ----------------- -->
 
-<div class="home-pitch-text reset-marginleft-moreinfo">
-  <h3>Want More Info?</h3>
-</div>
-<section>
-  <div class="container home-resize-container">
-    <div class="column is-mobile">
-      <div class="columns">
-
-        <div class="column is-half">
-          <div class="box">
-            <img class="resize-googlemap" src="./img/googlemap.jpg">
-          </div>
-        </div>
-
-        <div class="column">
-            <div class="box">
-            <div class="field">
-              <label class="label">Name</label>
-              <div class="control">
-                <input class="input" type="text">
-              </div>
+<section class="section is-alternative">
+    <div class=container>
+        <header class=section-header>
+            <h2 class="title is-spaced is-bold has-tint"> Why non-profits love DevGive </h2>
+            <div class=subtitle>
+                <p> Instead of wasting time and effort on keeping track of everything involved with finding and managing developer
+                    talent, DevGive believes in streamlining your project in one place for a better experience. </p>
             </div>
-            <div class="field">
-              <label class="label">Email</label>
-              <div class="control has-icons-left has-icons-right">
-                <input class="input is-danger" type="email">
-                <span class="icon is-small is-left">
-                  <i class="fa fa-envelope"></i>
-                </span>
-              <span class="icon is-small is-right">
-                  <i class="fa fa-warning"></i>
-                </span>
-          </div>
+        </header>
+        <div class=section-body>
+            <div class="columns is-gapless owl-carousel">
+                <div class="column is-4">
+                    <div class="box is-feature has-icon is-centered is-borderless">
+                        <div class=box-header>
+                            <div class="box-icon is-large"> <img src="/img/svg/piggy-bank.svg" /> </div>
+                            <h3 class=box-title> Save time </h3>
+                        </div>
+                        <div class=box-body>
+                            <p> No more tracking spreadsheets and emails. Find developers quickly - in hours or days instead
+                                of weeks or months. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="box is-feature has-icon is-centered is-borderless">
+                        <div class=box-header>
+                            <div class="box-icon is-large"> <img src="/img/svg/people.svg" /> </div>
+                            <h3 class=box-title> Extend your reach </h3>
+                        </div>
+                        <div class=box-body>
+                            <p> Our community of developers provide talent across a broad range of industries. Cast a wide net
+                                to reach the right developers faster. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="box is-feature has-icon is-centered is-borderless">
+                        <div class=box-header>
+                            <div class="box-icon is-large"> <img src="/img/svg/macbook-gustav.svg" /> </div>
+                            <h3 class=box-title> One point of contact </h3>
+                        </div>
+                        <div class=box-body>
+                            <p> Communicate your project needs to all developers directly via DevGive under our predefined project
+                                standard terms and conditions. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="field">
-          <label class="label">Message</label>
-          <div class="control">
-            <textarea class="textarea"></textarea>
-          </div>
-        </div>
-        <div class="field is-grouped">
-          <div class="control">
-            <button class="button is-primary">Submit</button>
-          </div>
-        </div>
-      </div>
+        <footer class=section-footer> <a ui-sref='createAccount' class="button is-primary is-medium is-wide">Sign up now</a> </footer>
     </div>
+</section>
+<!-- --------------  Areas are developers can help in  ----------------- -->
 
+<section class=section>
+    <div class=container>
+        <header class=section-header>
+            <h2 class="title is-spaced is-bold has-tint"> The DevGive Success Stories </h2>
+            <div class=subtitle>
+                <p> Join the DevGive Community and share your success story with us. </p>
+            </div>
+        </header>
+        <div class=section-body>
+            <div class="columns has-equal-heights owl-carousel">
+                <div class="column is-4">
+                    <div class="box is-story">
+                        <div class=box-cover></div>
+                        <div class=box-body>
+                            <h3 class=box-title> United Way </h3> <span class=box-subtitle>Found in 12 days</span>
+                            <hr class="spacer is-line" />
+                            <div class=box-value> Sacramento, USA </div>
+                            <div class=box-label> Web Development </div>
+                            <div class=box-value> 12 weeks </div>
+                            <div class=box-label> Project Length <span>8 Weeks</span> </div>
+                            <div class=box-value> $ 30,580 </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="box is-story">
+                        <div class=box-cover></div>
+                        <div class=box-body>
+                            <h3 class=box-title> Goodwill </h3> <span class=box-subtitle>Found in 8 days</span>
+                            <hr class="spacer is-line" />
+                            <div class=box-value> Burlington, USA </div>
+                            <div class=box-label> Design - logo </div>
+                            <div class=box-value> 16 Weeks </div>
+                            <div class=box-label> Agreed Commission: <span>20 %</span> </div>
+                            <div class=box-value> $ 7,000 </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="box is-story">
+                        <div class=box-cover></div>
+                        <div class=box-body>
+                            <h3 class=box-title> Salvation Army </h3> <span class=box-subtitle>Found in 6 days</span>
+                            <hr class="spacer is-line" />
+                            <div class=box-value> London, UK </div>
+                            <div class=box-label> Databases </div>
+                            <div class=box-value> 8 Weeks </div>
+                            <div class=box-label> Agreed Commission: <span>17 %</span> </div>
+                            <div class=box-value> $ 9,520 </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</section>
+<section class="section is-alternative is-inquire-as-employer">
+    <div class=container>
+        <div class=section-body>
+            <div class="columns is-multiline is-mobile">
+                <div class="artwork column is-3-desktop is-6-mobile"> <img src="/img/svg/group/mailbox.svg" /> </div>
+                <div class="column is-6-desktop is-12-mobile">
+                    <div class="box is-signup is-centered">
+                        <div class=box-body>
+                            <h2 class=box-title> Get started today! </h2>
+                            <p> Join our community! Sign up now and start finding great developers and causes. </p>
+                        </div>
+                        <div class=box-footer> <a class="button is-primary is-medium is-wide" ui-sref='createAccount'>Get started now</a> </div>
+                    </div>
+                </div>
+                <div class="artwork column is-3-desktop is-6-mobile"> <img src="/img/svg/group/gustav-paperplane.svg" /> </div>
+            </div>
+        </div>
     </div>
-    </div>
-  </section>
-  <br>
+</section>
+</main>
+</div>

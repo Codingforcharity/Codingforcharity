@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="28px" viewBox="0 0 16 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow-left</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/arrow-left" transform="translate(-14.000000, -8.000000)" fill-rule="nonzero" fill="#FFFFFF">
+            <g id="Arrow-Left">
+                <g id="arrow-left" transform="translate(22.000000, 22.000000) scale(-1, 1) translate(-22.000000, -22.000000) translate(14.000000, 8.000000)">
+                    <path d="M14.6600847,12.6232636 L5.10145463,1.54079399 C4.19967464,0.495251968 2.62105824,0.378709818 1.57551621,1.28048981 C0.52997419,2.18226981 0.41343204,3.76088621 1.31521203,4.80642823 L9.4902406,14.2847222 L1.31521203,23.7630162 C0.41343204,24.8085582 0.52997419,26.3871746 1.57551621,27.2889546 C2.62105824,28.1907346 4.19967464,28.0741925 5.10145463,27.0286505 L14.6600847,15.9461808 C15.0806031,15.4744785 15.2942299,14.8748502 15.291686,14.2729838 C15.2865531,13.6732712 15.073112,13.086563 14.6600847,12.6232636 Z"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
