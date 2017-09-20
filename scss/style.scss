@@ -1,16 +1,29 @@
 @import '_variables';
 @import 'bulma';
-@import '_overrides'; // home's css
+@import '_overrides';
+.message-header p {
+  color: black;
+  font-weight: 600;
+  font-size: 1.42em;
+}
+
+.apply-bg-color {
+  background-image: linear-gradient(141deg, #1f1a1b 0%, #363636 71%, #46413f 100%);
+}
+
+.account-bg-color {
+  background-color: #818a91;
+}
+
+// home's css
 @media screen and (max-width: 1452px) {
   .testimonial-pic-container {
     text-align: center;
   }
-
   .adjust-joinus-img,
   .level {
     display: flex;
   }
-
   .home-overlay {
     position: absolute;
     bottom: 59%;
@@ -18,7 +31,6 @@
     line-height: 1.5;
     text-align: center;
   }
-
   .video-title {
     color: white;
     font-size: 35px;
@@ -29,7 +41,6 @@
     padding: 0;
     margin: 0;
   }
-
   .video-subtitle {
     color: white;
     text-transform: none;
@@ -39,11 +50,11 @@
     margin: 0 0 25px 0;
     font-weight: 300;
   }
-
   .bold-websites-for-nonprofits {
     font-weight: 700;
   }
 }
+
 @media screen and (min-width: 1452px) {
   .adjust-joinus-img {
     min-height: 300px;
@@ -51,15 +62,12 @@
     min-width: 470px;
     max-width: 470px;
   }
-
   .resize-googlemap {
     max-height: 340px;
   }
-
   .reset-marginleft-moreinfo {
     margin-left: 515px;
   }
-
   .home-overlay {
     position: absolute;
     bottom: 60%;
@@ -67,7 +75,6 @@
     line-height: 1.5;
     text-align: center;
   }
-
   .video-title {
     color: white;
     font-size: 43px;
@@ -78,7 +85,6 @@
     padding: 0;
     margin: 0;
   }
-
   .video-subtitle {
     color: white;
     text-transform: none;
@@ -88,17 +94,16 @@
     margin: 0 0 25px 0;
     font-weight: 300;
   }
-
   .bold-websites-for-nonprofits {
     font-weight: 700;
   }
 }
 
 .video-column {
-    display: block;
-    flex-basis: 0;
-    flex-grow: 1;
-    flex-shrink: 1;
+  display: block;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 .video-container {
@@ -157,7 +162,7 @@
 }
 
 .testimonial-pic-container {
-    text-align: center;
+  text-align: center;
 }
 
 .inscrease-about-font-size {
@@ -169,8 +174,8 @@
 .home-process {
   background-color: #F2F6F7;
 }
-// workingproject's css
 
+// workingproject's css
 .working-style-checkbox {
   display: flex;
   width: 100%;
@@ -183,8 +188,8 @@
 .message-body a:hover {
   border-bottom: 3px solid rgb(189, 212, 54);
 }
-// devprojectapplication's css
 
+// devprojectapplication's css
 .center-apply-upload-container {
   display: flex;
   justify-content: center;
@@ -193,23 +198,64 @@
 .application-resize-container {
   max-width: 640px;
 }
-// accountdev's css
 
+// .apply-bg-image {
+//   background: url("../img/apply-bg.jpg") center no-repeat;
+//   background-size: cover;
+// }
+// accountdev's css
+// .account-message-header {
+//   background-color: #d9dee2;
+// }
+// .account-change-box-bg {
+//   background-color: #d9dee2;
+// }
+// .account-change-content-bg-color {
+//   background-color: #d9dee2;
+// }
 .center-projects-header {
   display: flex;
   justify-content: center;
   font-size: 20px;
 }
 
-.change-box-background-color {
-  background-color: #F2F6F7;
-}
-
 .bold-description {
   font-weight: 600;
+}
+
+.account-main-box {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  padding: 1.25rem;
 }
 
 .remove-card-content-set-height {
   height: auto;
 }
+
+.card-border-radius {
+  border-radius: 5px;
+}
+
+.style-project-title {
+  color: black;
+  font-weight: 600;
+}
+
+.change-button-style {
+  text-align: right;
+}
+
+.change-button-style button {
+  border-radius: 3px;
+  background-color: #276cda;
+  border-color: transparent;
+  color: #fff;
+}
+
+.account-box-bg-color {
+  background-color: #d9dee2;
+}
+
 //
