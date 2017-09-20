@@ -1,2 +1,2 @@
-SELECT * FROM users
-JOIN projects ON projects.posterid = users.id AND projects.posterid = $1;
+SELECT * FROM projects
+JOIN users ON users.id = projects.posterid AND projects.projid = $1;
