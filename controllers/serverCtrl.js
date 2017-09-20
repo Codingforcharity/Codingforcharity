@@ -29,10 +29,16 @@ module.exports = {
             .catch((err) => res.status(200).send(err));
     },
     postProject: function(req, res, next) {
-        console.log("POSTING PROJECT");
+        console.log("POSTING PROJECT FOR USER: " + req.params.id);
         const db = req.app.get('db');
-        db.postProject(req.body.posterid, req.body.title, req.body.description)
-            .then((project) => res.status(200).send(project))
+        db.postProject(req.params.id, req.body.title, req.body.desc, req.body.skills)
+            .then((project) => {
+                console.log("THIS IS THE PROJECT: ", project[0])
+                db.postWorkingProject(project[0].id, req.params.id)
+                    .then(() => {
+                        res.status(200).send(project)
+                    })
+            })
             .catch((err) => res.status(200).send(err));
     },
     getProjects: function(req, res, next) {
