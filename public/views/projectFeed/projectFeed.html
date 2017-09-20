@@ -1,47 +1,47 @@
 <section class="hero is-medium is-primary is-bold">
-        <div class="hero-body">
-          <div class="container">
+    <div class="hero-body">
+        <div class="container">
             <h1 class="title">
-              Don't just imagine, do.
+                Don't just imagine, do.
             </h1>
             <h2 class="subtitle">
-              Freelance services for non-profits by volunteer developers
+                Freelance services for non-profits by volunteer developers
             </h2>
-          </div>
         </div>
-      </section>
+    </div>
+</section>
 
 
 <section class="section main">
     <div class="container">
-            <div class="">
-                <hr>
-                    <nav class="level">
-                        <!-- Left side -->
-                        <!-- <p class="level-item"><a class="button is-info">List a Project</a></p> -->
-                        <div class="level-item">
-                            <div class="field has-addons">
-                                <p class="control">
-                                    <input class="input" type="text" placeholder="search projects">
-                                </p>
-                                <p class="control">
-                                    <button class="button">Search</button>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="level-item">
-                                <p class="subtitle is-5">
-                                    <strong>14</strong> projects
-                                </p>
-                            </div>
-                    </nav>
-                    <hr>
+        <div class="">
+            <hr>
+            <nav class="level">
+                <!-- Left side -->
+                <!-- <p class="level-item"><a class="button is-info">List a Project</a></p> -->
+                <div class="level-item">
+                    <div class="field has-addons">
+                        <p class="control">
+                            <input class="input" type="text" ng-model="searchStr" placeholder="search projects">
+                        </p>
+                        <p class="control">
+                            <button class="button" ng-click="searchProjects(searchStr)">Search</button>
+                        </p>
+                    </div>
                 </div>
+                <div class="level-item">
+                    <p class="subtitle is-5">
+                        <strong>{{projectCount}}</strong> projects
+                    </p>
+                </div>
+            </nav>
+            <hr>
+        </div>
         <div class="columns">
             <div class="column is-3">
-            <!-- <div ng-if="curUser"> -->
+                <!-- <div ng-if="curUser"> -->
                 <!-- <div class="card is-fullwidth"> -->
-                    <!-- <div class="card-content">
+                <!-- <div class="card-content">
                         <a class="card-avatar" ng-href="/#!/account/dev/{{curUser.id}}">
                             <img ng-src="{{curUser.profilepic}}" class="card-avatar-img">
                         </a>
@@ -90,13 +90,13 @@
                     <hr>
                     <div class="spacer"></div>
                     <div class="tags">
-                  <span class="tag is-rounded" ng-repeat="skill in skills" style="margin: 0 1%;"><a href="" ng-click="filter(skill)">{{skill}}</a>&nbsp;&nbsp;&nbsp;</span>
-                </div>
+                        <span class="tag is-rounded" ng-repeat="skill in skills" style="margin: 0 1%;"><a href="" ng-click="filter(skill)">{{skill}}</a>&nbsp;&nbsp;&nbsp;</span>
+                    </div>
                 </div>
             </div>
             <div class="column is-9">
                 <!-- Main container -->
-               
+
                 <div class="box">
                     <article class="media project-box overflow: auto;" ng-repeat="project in projects">
                         <div class="media-left">
@@ -107,39 +107,39 @@
                         <div class="media-content">
                             <div class="content">
                                 <p>
-                                    <strong ui-sref='projectPublicDetails({id: {{project.id}}})'>{{project.title}}</strong>
+                                    <strong ui-sref='projectPublicDetails({id: {{project.projid}}})'>{{project.title}}</strong>
                                     <!-- <small><a ng-href="/#!/account/dev/{{project.posterid}}">@{{project.username}}</a></small> -->
-                                    <small style="float:right;">Listed 2 weeks ago</small>
+                                    <!-- <small style="float:right;">Listed 2 weeks ago</small> -->
                                     <br>
-                                    <small><a ng-href="/#!/account/dev/{{project.posterid}}">@{{project.username}}</a></small>
+                                    <small><a ng-href="/#!/account/{{project.posterid}}">@{{project.username}}</a></small>
                                     <br>Project description: {{project.description}}
                                 </p>
                             </div>
-                            
-                                    <!-- Style the ng-repeated div to have a margin on left and right - items are in a flex and so are crunched together I put a temporary fix below, Dylan -->
-                                    <div class="tags">  
-                                    <div ng-repeat="skill in project.skills" style="margin:0 1%;">                                      
-                                            <p class="tag"><a href="#">{{skill}}</a></p>
-                                        </div>
-                                       
-                                    </div>
-                           
+
+                            <!-- Style the ng-repeated div to have a margin on left and right - items are in a flex and so are crunched together I put a temporary fix below, Dylan -->
+                            <div class="tags">
+                                <div ng-repeat="skill in project.skills" style="margin:0 1%;">
+                                    <p class="tag"><a href="#">{{skill}}</a></p>
+                                </div>
+
+                            </div>
+
                         </div>
                     </article>
 
-              <!-- Style the ng-repeated div to have a margin on left and right - items are in a flex and so are crunched together I put a temporary fix below, Dylan -->
-              <div class="tags">
-                <div ng-repeat="skill in project.skills" style="margin:0 1%;">
-                  <p class="tag"><a href="#">{{skill}}</a></p>
-                </div>
+                    <!-- Style the ng-repeated div to have a margin on left and right - items are in a flex and so are crunched together I put a temporary fix below, Dylan -->
+                    <div class="tags">
+                        <div ng-repeat="skill in project.skills" style="margin:0 1%;">
+                            <p class="tag"><a href="#">{{skill}}</a></p>
+                        </div>
 
-              </div>
+                    </div>
+
+                </div>
+                </article>
 
             </div>
-          </article>
-
         </div>
-      </div>
     </div>
-  </div>
+    </div>
 </section>

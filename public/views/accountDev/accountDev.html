@@ -60,7 +60,8 @@
                             </div>
                             <div class="content " ng-repeat="project in userProjects">
                                 <p>
-                                    <strong>{{project.title}}</strong>
+                                    <a ng-href="/#!/projectfeed/project/{{project.projid}}" ng-if="!ownPage"><strong>{{project.title}}</strong></a>
+                                    <a ng-href="/#!/active/project/{{project.projid}}" ng-if="ownPage"><strong>{{project.title}}</strong></a>
                                     <br> {{project.description}}
                                 </p>
                             </div>
