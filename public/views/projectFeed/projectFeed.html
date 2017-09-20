@@ -31,7 +31,7 @@
                 </div>
                 <div class="level-item">
                     <p class="subtitle is-5">
-                        <strong>14</strong> projects
+                        <strong>{{projectCount}}</strong> projects
                     </p>
                 </div>
             </nav>
@@ -109,7 +109,7 @@
                                 <p>
                                     <strong ui-sref='projectPublicDetails({id: {{project.id}}})'>{{project.title}}</strong>
                                     <!-- <small><a ng-href="/#!/account/dev/{{project.posterid}}">@{{project.username}}</a></small> -->
-                                    <small style="float:right;">Listed 2 weeks ago</small>
+                                    <!-- <small style="float:right;">Listed 2 weeks ago</small> -->
                                     <br>
                                     <small><a ng-href="/#!/account/{{project.posterid}}">@{{project.username}}</a></small>
                                     <br>Project description: {{project.description}}
