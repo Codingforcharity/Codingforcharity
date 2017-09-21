@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="28px" viewBox="0 0 16 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow-right</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/arrow-right" transform="translate(-15.000000, -8.000000)" fill-rule="nonzero" fill="#FFFFFF">
+            <g id="Group-61" transform="translate(22.500000, 22.500000) scale(-1, 1) translate(-22.500000, -22.500000) ">
+                <g id="Group-11">
+                    <g id="arrow-right" transform="translate(22.000000, 22.000000) scale(-1, 1) translate(-22.000000, -22.000000) translate(14.000000, 8.000000)">
+                        <path d="M1.31521203,4.80642823 L10.8985454,15.9175393 C11.8003254,16.9630814 13.3789418,17.0796235 14.4244838,16.1778435 C15.4700258,15.2760635 15.586568,13.6974471 14.684788,12.6519051 L5.10145463,1.54079399 C4.19967464,0.495251968 2.62105824,0.378709818 1.57551621,1.28048981 C0.52997419,2.18226981 0.41343204,3.76088621 1.31521203,4.80642823 Z" id="Line"></path>
+                        <path d="M5.10145463,27.0286505 L14.684788,15.9175393 C15.586568,14.8719973 15.4700258,13.2933809 14.4244838,12.3916009 C13.3789418,11.4898209 11.8003254,11.6063631 10.8985454,12.6519051 L1.31521203,23.7630162 C0.41343204,24.8085582 0.52997419,26.3871746 1.57551621,27.2889546 C2.62105824,28.1907346 4.19967464,28.0741925 5.10145463,27.0286505 Z" id="Line"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
