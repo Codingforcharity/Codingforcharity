@@ -36,7 +36,7 @@
         <div class="navbar-end">
             <div class="navbar-item nav-buttons">
                 <div class="field is-grouped">
-                    <p class="control">
+                    <p class="control" ng-if="!curUser.id">
                         <a class="bd-tw-button button is-danger" href="/auth">
                 <span class="icon">
                   <i class="fa fa-sign-in"></i>
@@ -46,7 +46,7 @@
                 </span>
               </a>
                     </p>
-                    <p class="control">
+                    <p class="control" ng-if="!curUser.id">
                         <a class="button is-primary" href="/auth">
                             <span class="icon">
                               <i class="fa fa-user-plus"></i>
@@ -54,6 +54,14 @@
                             <span>Sign-Up</span>
                           </a>
                     </p>
+                    <p class="control" ng-if="curUser.id">
+                            <a class="button is-primary" ui-sref="accountDev({id: {{curUser.id}}})">
+                                <span class="icon">
+                                  <i class="fa fa-user-plus"></i>
+                                </span>
+                                <span>User Profile</span>
+                              </a>
+                        </p>
                 </div>
             </div>
         </div>
@@ -80,10 +88,10 @@
         <div class="columns">
             <!-- ------- User Avatar -------- -->
             <div class="column is-3">
-                <div ng-if="curUser">
+                <div ng-if="curUser.id">
                     <div class="box is-fullwidth">
                         <div class="card-content">
-                            <div class="polaroid-feed is-team"><a ng-href="/#!/account/dev/{{curUser.id}}">
+                            <div class="polaroid-feed is-team"><a ng-href="/#!/account/{{curUser.id}}">
                                     <div class=polaroid-image> <img alt="" src="/img/avatars/andy.svg" /> </div> 
                                     <span class=polaroid-label>{{curUser.username}}</span> 
                                 </a> </div>                                 
@@ -115,8 +123,7 @@
                     <p class="subtitle is-6 has-text-centered">12</p>
                 </div>
                  </div>
-    </div>
-                        
+    </div>         
                         </div>
                     </div>
                 <!-- ------- Filter box -------- -->
@@ -152,15 +159,15 @@
 <!------------- Project boxes ------------>
                 <div class="">
                     <article class="box media project-box overflow: auto;" ng-repeat="project in projects">
-                        <div class="media-left">
+                      <a ng-href="/#!/account/{{project.posterid}}"><div class="media-left">
                             <figure class="image is-64x64">
-                                <img ng-src="{{project.profilepic}}" alt="Charity Logo">
+                                <img ui-sref="accountDev({id: {{project.posterid}}})" ng-src="{{project.profilepic}}" alt="Charity Logo">
                             </figure>
                         </div>
                         <div class="media-content">
                             <div class="content">
                                 <p>
-                                        <a class="subtitle is-5" ui-sref="/#!/account/{{project.posterid}}">{{project.username}}-</a>                                      
+                                        <a class="subtitle is-5" ng-href="/#!/account/{{project.posterid}}">{{project.username}}-</a>                                      
                                     <a  class="subtitle is-5" ui-sref='projectPublicDetails({id: {{project.projid}}})'>{{project.title}}</a>
                                     <!-- <small><a ng-href="/#!/account/dev/{{project.posterid}}">@{{project.username}}</a></small> -->
                                     <!-- <small style="float:right;">Listed 2 weeks ago</small> -->
@@ -170,7 +177,6 @@
                                      {{project.description}}
                                 </p>
                             </div>
-
                             <!-- Style the ng-repeated div to have a margin on left and right - items are in a flex and so are crunched together I put a temporary fix below, Dylan -->
                             <div class="tags">
                                 <div ng-repeat="skill in project.skills" style="margin:0 1%;">
@@ -180,6 +186,7 @@
                             </div>
 
                         </div>
+                    </a>
                     </article>
 
             </div>
