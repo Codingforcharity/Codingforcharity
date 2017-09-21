@@ -10,7 +10,20 @@ const dotenv = require('dotenv');
 require('dotenv').config();
 const serverCtrl = require('./controllers/serverCtrl')
 const connectionString = process.env.DATABASE_URL;
+const nodemailer = require('nodemailer');
 const app = module.exports = express();
+const email = {
+    email: 'moc.liamg@eviGveDtobor',
+    password: 'efyL4eviGveD'
+}
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: email.email.split("").reverse().join(""),
+        pass: email.password.split("").reverse().join("")
+    }
+});
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -112,4 +125,52 @@ app.get("/api/user/:id/comments", serverCtrl.getCommentsById);
 app.post("/api/user/:id/comments", serverCtrl.postProfileComment);
 app.post("/api/user/:id/replies", serverCtrl.postProfileReply);
 app.post("/api/projects/create/:id", serverCtrl.postProject);
+app.post('/api/apply/:id', (req, res, next) => {
+    const db = req.app.get('db');
+    db.appliedForProject(req.body.user.id, req.params.id)
+        .then(() => {
+            let message = {
+                from: email.email,
+                to: req.body.email,
+                subject: "A user has applied to your project: " + req.body.project.title,
+                html: `<p>` + req.body.user.newName + `'s message to you: ` + req.body.message + `</p> </br> 
+                        <p> Click 
+                            <a href='http://localhost:5001/#!/account/'` + req.body.user.id + `>here</a> to view the users info.
+                        </p>
+                        <p>
+                            Contact them <a href="mailto:` + req.body.user.newEmail + `">here.</a>
+                        </p>
+                        <p>
+                        Click <a href="http://localhost:5001/api/acceptUser/` + req.body.project.projid + `/` + req.body.user.id + `"> here
+                        </a> to confirm their acceptance into the project.</p>`
+
+
+
+            };
+            transporter.sendMail(message, function(error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log("Email Sent: " + info.response);
+                    res.status(200).send();
+                }
+            })
+        })
+})
+app.get('/api/acceptUser/:projid/:id', (req, res, next) => {
+    const db = req.app.get('db');
+    db.getApplied(req.params.projid, req.params.id)
+        .then((applied) => {
+            if (applied.length > 0) {
+                console.log("APPLIED IS TRUE", applied)
+            }
+            db.postWorkingProject(req.params.projid, req.params.id)
+                .then(() => {
+                    db.deleteApplied(req.params.projid, req.params.id)
+                        .then(() => {
+                            res.redirect('/#!/active/project/' + req.params.projid);
+                        })
+                })
+        })
+})
 app.listen(process.env.PORT, () => console.log('listening port 5001'));
