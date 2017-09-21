@@ -7,13 +7,13 @@
   font-size: 1.42em;
 }
 
-.apply-bg-color {
+.apply-bg-color, .account-bg-color {
   background-image: linear-gradient(141deg, #1f1a1b 0%, #363636 71%, #46413f 100%);
 }
 
-.account-bg-color {
-  background-color: #818a91;
-}
+// .account-bg-color {
+//   background-color: #d9dee2;
+// }
 
 // home's css
 @media screen and (max-width: 1452px) {
@@ -110,7 +110,7 @@
   position: relative;
 }
 
-.accountdev-resize-container,
+// .accountdev-resize-container,
 .home-resize-container,
 .workingproject-resize-container {
   max-width: 1060px;
@@ -195,28 +195,34 @@
   justify-content: center;
 }
 
+.style-application-form-header {
+  color: white;
+}
+
+.style-login-need-help {
+  color: white;
+}
+
+.style-login-need-help a {
+  color: white;
+}
+
+.style-login-need-help a:hover {
+border-bottom: 3px solid rgb(189,212,54);
+}
+
 .application-resize-container {
   max-width: 640px;
 }
 
-// .apply-bg-image {
-//   background: url("../img/apply-bg.jpg") center no-repeat;
-//   background-size: cover;
-// }
-// accountdev's css
-// .account-message-header {
-//   background-color: #d9dee2;
-// }
-// .account-change-box-bg {
-//   background-color: #d9dee2;
-// }
-// .account-change-content-bg-color {
-//   background-color: #d9dee2;
-// }
 .center-projects-header {
   display: flex;
   justify-content: center;
   font-size: 20px;
+}
+
+.center-projects-header p{
+  color: white;
 }
 
 .bold-description {
@@ -227,7 +233,7 @@
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-  padding: 1.25rem;
+  padding: 0px;
 }
 
 .remove-card-content-set-height {
@@ -247,15 +253,80 @@
   text-align: right;
 }
 
+.add-padding-to-column {
+  padding: 2em;
+}
+
 .change-button-style button {
   border-radius: 3px;
   background-color: #276cda;
   border-color: transparent;
   color: #fff;
+  font-weight: 500;
 }
 
 .account-box-bg-color {
   background-color: #d9dee2;
+  border-radius: 5px;
+  padding: 0rem;
 }
 
-//
+.image img {
+  display: block;
+  height: auto;
+  width: auto;
+}
+
+// accountDev's css
+
+.add-opacity {
+  opacity: 0.6;
+}
+
+.account-add-padding {
+  padding: 2.5em;
+  background-color: #d9dee2;
+  border-radius: 5px;
+}
+
+.account-change-content-bg-color {
+  background-color: #d9dee2;
+}
+
+// .account-change-content-bg-color:not(:last-child) {
+//   margin-bottom: 5px;
+// }
+
+.verify-and-login {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  width: 100%;
+}
+
+.account-resize-img {
+  height: 25px;
+  width: 25px;
+  margin-right: 3px;
+}
+
+.account-float-right {
+  width: 100%;
+  display: flex;
+  margin-left: 38px;
+  align-items: center;
+}
+
+.account-level {
+  text-align: center;
+  display: flex;
+  background-color: #2D383A;
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.account-change-message-bg-color {
+  background-color: #d9dee2;
+  padding: 1em;
+}
