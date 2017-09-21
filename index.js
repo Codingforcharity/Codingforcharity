@@ -135,7 +135,7 @@ app.post('/api/apply/:id', (req, res, next) => {
                 subject: "A user has applied to your project: " + req.body.project.title,
                 html: `<p>` + req.body.user.newName + `'s message to you: ` + req.body.message + `</p> </br> 
                         <p> Click 
-                            <a href='http://localhost:5001/#!/account/'` + req.body.user.id + `>here</a> to view the users info.
+                            <a href="http://localhost:5001/#!/account/` + req.body.user.id + `">here</a> to view the users info.
                         </p>
                         <p>
                             Contact them <a href="mailto:` + req.body.user.newEmail + `">here.</a>
