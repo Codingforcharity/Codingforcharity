@@ -1,6 +1,6 @@
 // Overrides
 @font-face {
-  font-family: "";
+  font-family: "Bariol";
   src: url("fonts/bariol_regular-webfont.woff2") format("woff2"), url("fonts/bariol_regular-webfont.woff") format("woff"), url("fonts/bariol_regular-webfont.ttf") format("truetype");
   font-weight: normal;
   font-style: normal
@@ -42,16 +42,16 @@
 //   box-shadow: 0 0 1px $grey-light;
 // }
 
-// .button {
-//   padding-left: 1em;
-//   padding-right: 1em;
-//   border-radius: 50px;
+.button {
+  // padding-left: 1em;
+  // padding-right: 1em;
+  border-radius: 10px;
 
-//   &.is-small {
-//     border-radius: 40px;
-//     font-size: 0.85rem;
-//   }
-// }
+  &.is-small {
+    border-radius: 40px;
+    font-size: 0.85rem;
+  }
+}
 
 // .button {
 //   transition: all 200ms ease;
@@ -315,9 +315,9 @@ ul.card-stats-list {
 /////////////////////
 
 
-// .navbar-brand {
-//   padding-left: 100px;
-// }
+.navbar-brand {
+  padding-left: 50px;
+}
 
 // .nav-buttons {
 //   padding-right: 100px;
@@ -327,73 +327,10 @@ ul.card-stats-list {
 //     Home        //
 /////////////////////
 
-// .title {
-//   color:#0DB0C5;
-// }
-// .header-image {
-//   background-image: linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.89)),url('img/andysAdds/concertLove.jpg');
-//   background-size: cover;
-//   background-position: 50%;
-//   position: relative;
-//   background-attachment: fixed;
-// }
+.process {
+  color:#0DB0C5;
+}
 
-
-// .header-content{
-//   padding-top: 350px;
-// }
-
-// .image-list {
-//   display: -ms-flexbox;
-//   display: flex;
-//   -ms-flex-pack: center;
-//   justify-content: center;
-//   -ms-flex-align: center;
-//   align-items: center;
-//   -ms-flex-wrap: wrap;
-//   flex-wrap: wrap;
-//   margin: 0 -0.5rem
-// }
-
-// @media screen and (min-width: 769px) {
-//   .image-list {
-//       -ms-flex-pack: justify;
-//       justify-content: space-between
-//   }
-// }
-
-// .image-list .image {
-//   display: inline-block;
-//   padding: 0.5rem;
-//   line-height: 1;
-//   transition: opacity 100ms ease-in-out
-// }
-
-// .image-list .image:hover {
-//   opacity: 0.75
-// }
-
-// .image-list.is-small img {
-//   max-height: 40px;
-//   max-width: 100px
-// }
-
-// @media screen and (min-width: 769px) {
-//   .image-list.is-small img {
-//       max-height: 60px;
-//       max-width: 140px
-//   }
-// }
-
-// .image-list img {
-//   max-width: 200px;
-//   max-height: 120px;
-//   width: auto
-// }
-
-//  .image-section {
-//   background-color: #F7F7F7
-//  }
 
 /////////////////////////
 ////  Home Additions  ///
@@ -975,22 +912,6 @@ ul.card-stats-list {
   }
 }
 
-.image-list.owl-carousel {
-  display: -ms-flexbox;
-  display: flex
-}
-
-.image-list.owl-carousel .owl-item {
-  -ms-flex-pack: center;
-  justify-content: center;
-  -ms-flex-align: center;
-  align-items: center
-}
-
-.image-list.owl-carousel .owl-item img {
-  width: auto
-}
-
 .image-list .image {
   display: inline-block;
   padding: 0.5rem;
@@ -1016,7 +937,7 @@ ul.card-stats-list {
 
 .image-list img {
   max-width: 140px;
-  max-height: 60px
+  max-height: 70px
 }
 
 .app-header {
@@ -2012,7 +1933,7 @@ html[lang='en_US'] [data-i18n-button="de_AT"] {
 }
 
 .column:nth-child(1) .box.is-story .box-cover {
-  background-image: url("/img/svg/stories/people.jpg")
+  background-image: url("/img/stories/people.jpg")
 }
 
 .column:nth-child(1) .box.is-story .box-title,
@@ -2027,7 +1948,7 @@ html[lang='en_US'] [data-i18n-button="de_AT"] {
 }
 
 .column:nth-child(2) .box.is-story .box-cover {
-  background-image: url("/img/svg/stories/notes.jpg")
+  background-image: url("/img/stories/notes.jpg")
 }
 
 .column:nth-child(2) .box.is-story .box-title,
@@ -2042,7 +1963,7 @@ html[lang='en_US'] [data-i18n-button="de_AT"] {
 }
 
 .column:nth-child(3) .box.is-story .box-cover {
-  background-image: url("/img/svg/stories/meeting.jpg")
+  background-image: url("/img/stories/meeting.jpg")
 }
 
 .column:nth-child(3) .box.is-story .box-title,

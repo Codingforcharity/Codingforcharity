@@ -124,6 +124,7 @@ gulp.task("serve", ["optimize-image", "build-js2", "sass2", "html2", "videos", "
     gulp.watch(["./public/**/*.html"], ["html2"]);
     gulp.watch("./public/**/*.html").on("change", browserSync.reload);
     gulp.watch(["./assets/img/**/*"], ["optimize-image"]);
+    gulp.watch(["./assets/img/**/*"]).on("change", browserSync.reload);
     return stream;
 });
 
@@ -136,7 +137,7 @@ gulp.task("html2", function(cb) {
 });
 
 gulp.task("fonts", function(cb) {
-    var stream = gulp.src("./assets/fonts/*.woff").pipe(gulp.dest("./bundle/fonts"));
+    var stream = gulp.src("./assets/fonts/*.**").pipe(gulp.dest("./bundle/fonts"));
     return stream;
 });
 

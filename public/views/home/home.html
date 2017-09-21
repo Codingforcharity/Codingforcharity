@@ -1,24 +1,10 @@
 <!-- ------------  NAVBAR --------- -->
 <nav class="navbar navbar-home is-transparent header-image" role="navigation" aria-label="main navigation">
-    <!-- <div class="navbar-brand"> -->
-    <!-- <a class="navbar-item" href="#">
-                    <img src="/bundle/img/DevGive-Blue-Logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
-                  </a> -->
     <div class="navbar-brand">
         <a class="navbar-item" href="#">
-              &nbsp;&nbsp;
-              <span class="icon">
-                                            <i class="fa fa-laptop"></i>
-                                          </span> &nbsp;&nbsp; DevGive
-            </a>
-
-        <a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
-                    <span class="icon" style="color: #333;">
-                      <i class="fa fa-lg fa-github"></i>
-                    </span>
+                    <img src="/img/devlogoV5.svg" alt="DevGive" width="112" height="auto">
                   </a>
-
-        <button class=" navbar-burger" data-target="navMenu">
+        <button class="button is-danger navbar-burger">
             <span></span>
             <span></span>
             <span></span>
@@ -27,7 +13,6 @@
     <!-- Left side Nav bar links/menus begin -->
     <div id="navMenu" class="navbar-menu">
         <div class="navbar-start">
-
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link  is-active">
                      Interal Views
@@ -50,15 +35,10 @@
         </div>
         <!-- RIght side Nav bar links login begin -->
         <div class="navbar-end">
-            <a class="navbar-item is-hidden-desktop-only" href="https://github.com/jgthms/bulma" target="_blank">
-                  <span class="icon" style="color: #333;">
-                    <i class="fa fa-lg fa-github"></i>
-                  </span>
-                </a>
             <div class="navbar-item nav-buttons">
                 <div class="field is-grouped">
                     <p class="control">
-                        <a class="bd-tw-button button" href="/auth">
+                        <a class="bd-tw-button button is-danger" href="/auth">
                 <span class="icon">
                   <i class="fa fa-sign-in"></i>
                 </span>
@@ -66,10 +46,9 @@
                   Sign-In
                 </span>
               </a>
-
                     </p>
                     <p class="control">
-                        <a class="button is-primary" ui-sref="createAccount">
+                        <a class="button is-primary" href="/auth">
                             <span class="icon">
                               <i class="fa fa-user-plus"></i>
                             </span>
@@ -82,13 +61,8 @@
     </div>
 
 </nav>
-
-
-
-
 <!-- --------------  Hero ----------------- -->
-
-<section class=" hero is-bold is-large header-image">
+<section class=" hero is-bold is-large header-image is-intro">
     <div class="hero-body has-text-centered">
         <div class="container">
             <h1 class="hero-title title is-3">We bring good developers & causes together</h1>
@@ -98,36 +72,80 @@
             <a class="button is-primary" ui-sref='projectFeed'>See for yourself</a>
         </div>
     </div>
-    <section class="clients">
-        <div class="container">
-            <div class="columns is-gapless">
-                <div class="column has-text-centered"><img src="/img/clients/smithsonian.png" height="90px" alt class="logo"><img src="/img/clients/npr_logo.png"
-                        height="90px" class="logo"><img src="../_nuxt/img/logo4.b35b5e5.svg" height="90px" class="logo">
-                    <img
-                        src="../_nuxt/img/logo2.4cdad12.svg" height="90px" class="logo"><img src="../_nuxt/img/logo5.59685d7.svg" height="90px" class="logo"></div>
+    <!-- <footer class=section-footer>
+            <div class=polaroids>
+                <div class="polaroid is-persona">
+                    <div class=polaroid-image> <img alt="" src="assets/images/svg/polaroids/jule-b43865ad-1505342688.svg" /> </div> <span class=polaroid-label>Jule, Consultant</span> </div>
+                <div class="polaroid is-persona">
+                    <div class=polaroid-image> <img alt="" src="assets/images/svg/polaroids/frank-c34846f0-1505342688.svg" /> </div> <span class=polaroid-label>Frank, Designer</span> </div>
+                <div class="polaroid is-persona">
+                    <div class=polaroid-image> <img alt="" src="assets/images/svg/polaroids/tanja-78e0d3d7-1505342688.svg" /> </div> <span class=polaroid-label>Tanja, Backend Developer</span> </div>
+                <div class="polaroid is-persona">
+                    <div class=polaroid-image> <img alt="" src="assets/images/svg/polaroids/tom-cc1a8fb6-1505342688.svg" /> </div> <span class=polaroid-label>Tom, Content Writer</span> </div>
             </div>
+        </footer> -->
+    
+</section>
+
+    
+<!-- --------------  How it Works  ----------------- -->
+
+<section class="section">
+        <div class=container>
+            <header class=section-header>
+                <h2 class="title process is-spaced is-bold">Good developeres volunteer to help great causes. </h2>
+                <div class=subtitle>
+                    <p> Just tell us what you're looking for and our community can help make it possible. </p>
+                </div>
+            </header>
+            <div class=section-body>
+                <div class="columns has-equal-heights">
+                    <div class="column is-4">
+                        <div class="box has-icon is-centered">
+                            <div class=box-header>
+                                <div class="box-icon is-large"> <img src="/img/svg/megaphone.svg" /> </div>
+                                <h3 class=box-title> 1. Tell us what you need </h3>
+                            </div>
+                            <div class=box-body>
+                                <p> Start by adding your basic project requirements like your ‘must haves’, skills required, location
+                                    and current status. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-4">
+                        <div class="box has-icon is-centered">
+                            <div class=box-header>
+                                <div class="box-icon is-large"> <img src="/img/svg/stage.svg" /> </div>
+                                <h3 class=box-title> 2. Find great talent </h3>
+                            </div>
+                            <div class=box-body>
+                                <p> It won’t be long before developers start sending you a selection of candidates who meet your
+                                    criteria. Track the progress of your project in real-time via the Project Tracking System.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-4">
+                        <div class="box has-icon is-centered">
+                            <div class=box-header>
+                                <div class="box-icon is-large"> <img src="/img/svg/handshake.svg" /> </div>
+                                <h3 class=box-title> 3. Select the right Developer </h3>
+                            </div>
+                            <div class=box-body>
+                                <p> After you’ve found your developers, contact them to being the project. Once they have signed
+                                    on to your project, you can welcome a new face to your team. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class=section-footer> <a class="button is-primary is-medium is-wide" ui-sref='createAccount'>Sign up now</a> </footer>
         </div>
-        <!---->
     </section>
-</section>
 
-<!-- --------------  Company Logos----------------- -->
-
-<section class='section image-section is-alternative'>
-    <div class="container">
-        <div class="image-list">
-            <div class="image"><a href="https://www.si.edu/"><img alt="Smithsonian" src="/img/clients/smithsonian.png"></a></div>
-            <div class="image"><a href="https://www.npr.org/"><img alt="NPR" src="/img/clients/npr_logo.png"></a></div>
-            <div class="image"><a href="https://www.NYPL.org/"><img alt="NYPL" src="/img/clients/nypl.png"></a></div>
-            <div class="image"><a href="https://www.stjude.org/"><img alt="st jude" src="/img/clients/st-jude.png"></a></div>
-            <div class="image"><a href="https://www.teachforamerica.org/"><img alt="Teach for America" src="/img/clients/teachforamerica.png"></a></div>
-        </div>
-    </div>
-</section>
 
 <!-- --------------  Why  ----------------- -->
-
-<section class="section is-alternative">
+<!-- <section class="section">
     <div class=container>
         <header class=section-header>
             <h2 class="title is-spaced is-bold has-tint"> Good developeres volunteer to help good causes. </h2>
@@ -177,64 +195,10 @@
         </div>
         <footer class=section-footer> <a ui-sref='createAccount' class="button is-danger is-medium is-wide">Sign up now</a> </footer>
     </div>
-</section>
-<!-- --------------  Content  ----------------- -->
+</section> -->
 
-<section class="section">
-    <div class=container>
-        <header class=section-header>
-            <h2 class="title is-spaced is-bold"> How it works </h2>
-            <div class=subtitle>
-                <p> Our recruiting process is designed to find skilled developers who can add value in your organization from
-                    day one. </p>
-            </div>
-        </header>
-        <div class=section-body>
-            <div class="columns has-equal-heights">
-                <div class="column is-4">
-                    <div class="box has-icon is-centered">
-                        <div class=box-header>
-                            <div class="box-icon is-large"> <img src="/img/svg/megaphone.svg" /> </div>
-                            <h3 class=box-title> 1. Tell us what you need </h3>
-                        </div>
-                        <div class=box-body>
-                            <p> Start by adding your basic project requirements like your ‘must haves’, skills required, location
-                                and current status. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-4">
-                    <div class="box has-icon is-centered">
-                        <div class=box-header>
-                            <div class="box-icon is-large"> <img src="/img/svg/stage.svg" /> </div>
-                            <h3 class=box-title> 2. Find great talent </h3>
-                        </div>
-                        <div class=box-body>
-                            <p> It won’t be long before developers start sending you a selection of candidates who meet your
-                                criteria. Track the progress of your project in real-time via the Project Tracking System.
-                                </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-4">
-                    <div class="box has-icon is-centered">
-                        <div class=box-header>
-                            <div class="box-icon is-large"> <img src="/img/svg/handshake.svg" /> </div>
-                            <h3 class=box-title> 3. Select the right Developer </h3>
-                        </div>
-                        <div class=box-body>
-                            <p> After you’ve found your developers, contact them to being the project. Once they have signed
-                                on to your project, you can welcome a new face to your team. </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <footer class=section-footer> <a class="button is-primary is-medium is-wide" ui-sref='createAccount'>Sign up now</a> </footer>
-    </div>
-</section>
 <!-- -------------- Why Non-Profits Love DevGive  ----------------- -->
-
+<!-- 
 <section class="section is-alternative">
     <div class=container>
         <header class=section-header>
@@ -286,10 +250,10 @@
         </div>
         <footer class=section-footer> <a ui-sref='createAccount' class="button is-primary is-medium is-wide">Sign up now</a> </footer>
     </div>
-</section>
-<!-- --------------  Areas are developers can help in  ----------------- -->
+</section> -->
+<!-- --------------  The DevGive Success Stories  ----------------- -->
 
-<section class=section>
+<section class="section is-alternative">
     <div class=container>
         <header class=section-header>
             <h2 class="title is-spaced is-bold has-tint"> The DevGive Success Stories </h2>
@@ -298,18 +262,16 @@
             </div>
         </header>
         <div class=section-body>
-            <div class="columns has-equal-heights owl-carousel">
+            <div class="columns has-equal-heights">
                 <div class="column is-4">
                     <div class="box is-story">
                         <div class=box-cover></div>
                         <div class=box-body>
-                            <h3 class=box-title> United Way </h3> <span class=box-subtitle>Found in 12 days</span>
+                            <h3 class=box-title> United Way </h3> <span class=box-subtitle>Began in 12 days</span>
                             <hr class="spacer is-line" />
                             <div class=box-value> Sacramento, USA </div>
                             <div class=box-label> Web Development </div>
-                            <div class=box-value> 12 weeks </div>
-                            <div class=box-label> Project Length <span>8 Weeks</span> </div>
-                            <div class=box-value> $ 30,580 </div>
+                            <div class=box-label> Project Length <span>12 Weeks</span> </div>
                         </div>
                     </div>
                 </div>
@@ -317,13 +279,11 @@
                     <div class="box is-story">
                         <div class=box-cover></div>
                         <div class=box-body>
-                            <h3 class=box-title> Goodwill </h3> <span class=box-subtitle>Found in 8 days</span>
+                            <h3 class=box-title> Goodwill </h3> <span class=box-subtitle>Began in 8 days</span>
                             <hr class="spacer is-line" />
                             <div class=box-value> Burlington, USA </div>
                             <div class=box-label> Design - logo </div>
-                            <div class=box-value> 16 Weeks </div>
-                            <div class=box-label> Agreed Commission: <span>20 %</span> </div>
-                            <div class=box-value> $ 7,000 </div>
+                            <div class=box-label> Project Length: <span>16 Weeks</span> </div>
                         </div>
                     </div>
                 </div>
@@ -331,13 +291,11 @@
                     <div class="box is-story">
                         <div class=box-cover></div>
                         <div class=box-body>
-                            <h3 class=box-title> Salvation Army </h3> <span class=box-subtitle>Found in 6 days</span>
+                            <h3 class=box-title> Salvation Army </h3> <span class=box-subtitle>Began in 6 days</span>
                             <hr class="spacer is-line" />
                             <div class=box-value> London, UK </div>
                             <div class=box-label> Databases </div>
-                            <div class=box-value> 8 Weeks </div>
-                            <div class=box-label> Agreed Commission: <span>17 %</span> </div>
-                            <div class=box-value> $ 9,520 </div>
+                            <div class=box-label> Project Length: <span>8 Weeks</span> </div>                         
                         </div>
                     </div>
                 </div>
@@ -345,7 +303,22 @@
         </div>
     </div>
 </section>
-<section class="section is-alternative is-inquire-as-employer">
+
+<!-- --------------  Company Logos----------------- -->
+
+<section class='section is-clients is-ultra-tight'>
+        <div class="container">
+            <div class="image-list">
+                <div class="image"><a href="https://www.si.edu/"><img alt="Smithsonian" src="/img/clients/smithsonian.png"></a></div>
+                <div class="image"><a href="https://www.npr.org/"><img alt="NPR" src="/img/clients/npr_logo.png"></a></div>
+                <div class="image"><a href="https://www.NYPL.org/"><img alt="NYPL" src="/img/clients/nypl.png"></a></div>
+                <div class="image"><a href="https://www.stjude.org/"><img alt="st jude" src="/img/clients/st-jude.png"></a></div>
+                <div class="image"><a href="https://www.teachforamerica.org/"><img alt="Teach for America" src="/img/clients/teachforamerica.png"></a></div>
+            </div>
+        </div>
+    </section>
+<!-- ----------- Paper airplane section -------- -->
+<section class="section is-inquire-as-employer is-alternative">
     <div class=container>
         <div class=section-body>
             <div class="columns is-multiline is-mobile">
