@@ -3,9 +3,20 @@ var paths = {
 };
 
 var gulp = require("gulp"),
+    newer = require('gulp-newer'),
     nodemon = require("gulp-nodemon"),
+    notify = require('gulp-notify'),
+    gutil = require('gulp-util'),
+    imageminPngquant = require('imagemin-pngquant'),
+    imageminMozjpeg = require('imagemin-mozjpeg'),
+    imagemin_zopfli = require('imagemin-zopfli'),
+    imagemin_gifsicle = require('imagemin-gifsicle'),
+    imagemin_svgo = require('imagemin-svgo'),
+    imageminZopfli = require('imagemin-zopfli'),
+    imageminWebp = require('imagemin-webp'),
     browserSync = require("browser-sync").create(),
     Cache = require("gulp-file-cache"),
+    plumber = require('gulp-plumber'),
     del = require("del"),
     sass = require("gulp-sass"),
     cleanCss = require("gulp-clean-css"),
@@ -14,7 +25,8 @@ var gulp = require("gulp"),
     // uglify = require('gulp-uglify'),
     concat = require("gulp-concat"),
     print = require("gulp-print"),
-    babel = require("gulp-babel");
+    babel = require("gulp-babel"),
+    imagemin = require('gulp-imagemin');
 //babel-preset-es2015
 
 var CacheBuster = require("gulp-cachebust");
@@ -66,13 +78,14 @@ gulp.task("watch", function() {
     );
 });
 
-gulp.task("default", ["build-images", "build", "watch"]);
+gulp.task("default", ["build-images", "build", "watch", "fonts", "files"]);
 
 //////////////////////
 // Andy's additions //
 //////////////////////
 
 // var cache = new Cache();
+var error = new gutil.PluginError('test', 'something broke', {showStack: true});
 
 gulp.task("compile", function() {
     var stream = gulp
@@ -84,7 +97,7 @@ gulp.task("compile", function() {
     return stream; // important for gulp-nodemon to wait for completion
 });
 
-gulp.task("serve", ["build-images", "build-js2", "sass2", "html2"], function() {
+gulp.task("serve", ["optimize-image", "build-js2", "sass2", "html2", "videos", "fonts", "files"], function() {
     var stream = nodemon({
             script: "./index.js", // run ES5 code
             watch: ["/index.js", "/controllers"], // watch ES2015 code
@@ -110,12 +123,31 @@ gulp.task("serve", ["build-images", "build-js2", "sass2", "html2"], function() {
     gulp.watch(["scss/**/*"], ["sass2"]);
     gulp.watch(["./public/**/*.html"], ["html2"]);
     gulp.watch("./public/**/*.html").on("change", browserSync.reload);
-    gulp.watch(["./img/**/*"], ["build-images"]);
+    gulp.watch(["./assets/img/**/*"], ["optimize-image"]);
+    gulp.watch(["./assets/img/**/*"]).on("change", browserSync.reload);
     return stream;
 });
 
 gulp.task("html2", function(cb) {
-    var stream = gulp.src("./public/**/*.html").pipe(gulp.dest("./bundle"));
+    var stream = gulp.src("./public/**/*.html")
+    .pipe(plumber())
+    .pipe(newer('bundle/views'))
+    .pipe(gulp.dest("./bundle"));
+    return stream;
+});
+
+gulp.task("fonts", function(cb) {
+    var stream = gulp.src("./assets/fonts/*.**").pipe(gulp.dest("./bundle/fonts"));
+    return stream;
+});
+
+gulp.task("files", function(cb) {
+    var stream = gulp.src("./public/*.{png,ico}").pipe(gulp.dest("./bundle"));
+    return stream;
+});
+
+gulp.task("videos", function(cb) {
+    var stream = gulp.src("./assets/video/*.mp4").pipe(gulp.dest("./bundle/videos"));
     return stream;
 });
 
@@ -125,6 +157,7 @@ gulp.task("sass2", function(cb) {
         .pipe(sass())
         .on("error", sass.logError)
         .pipe(gulp.dest("./bundle"))
+        .on('error', gutil.log)
         //  .pipe(cleanCss({
         //      keepSpecialComments: 0
         //  }))
@@ -149,7 +182,54 @@ gulp.task("build-js2", function(cb) {
 
 gulp.task("build-images", function() {
     var stream = gulp
-        .src("./img/**/*.{gif,jpg,png,svg}")
+        .src("./assets/img/**/*.{gif,jpg,png,svg}")
+        .pipe(imagemin({ progressive: true }))
         .pipe(gulp.dest("./bundle/img"));
     return stream;
+});
+
+gulp.task('optimize-image', function() {
+    return gulp.src(['assets/img/**/*.{gif,jpg,png,svg}'])
+        .pipe(plumber())
+        .pipe(newer('bundle/img'))
+        .pipe(imagemin([
+            //png
+            imageminPngquant({
+                speed: 1,
+                quality: 98 //lossy settings
+            }),
+            imageminZopfli({
+                more: true
+            }),
+            // gif
+            imagemin.gifsicle({
+                interlaced: true,
+                optimizationLevel: 3
+            }),
+            // gif very light lossy, use only one of gifsicle or Giflossy
+            // imageminGiflossy({
+            //     optimizationLevel: 3,
+            //     optimize: 3, //keep-empty: Preserve empty transparent frames
+            //     lossy: 2
+            // }),
+            //svg
+            imagemin.svgo({
+                plugins: [{
+                    removeViewBox: false
+                }]
+            }),
+            //jpg lossless
+            imagemin.jpegtran({
+                progressive: true
+            }),
+            //jpg very light lossy, use vs jpegtran
+            imageminMozjpeg({
+                quality: 60
+            })
+        ]))
+        .pipe(gulp.dest('bundle/img'))
+        .pipe(notify({
+            'message': 'Successfully optimized images',
+            'onLast': true
+        }));
 });
