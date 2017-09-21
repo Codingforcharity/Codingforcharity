@@ -1,16 +1,29 @@
 @import '_variables';
 @import 'bulma';
-@import '_overrides'; // home's css
+@import '_overrides';
+.message-header p {
+  color: black;
+  font-weight: 600;
+  font-size: 1.42em;
+}
+
+.apply-bg-color,
+.account-bg-color {
+  background-image: linear-gradient(141deg, #1f1a1b 0%, #363636 71%, #46413f 100%);
+}
+
+// .account-bg-color {
+//   background-color: #d9dee2;
+// }
+// home's css
 @media screen and (max-width: 1452px) {
   .testimonial-pic-container {
     text-align: center;
   }
-
   .adjust-joinus-img,
   .level {
     display: flex;
   }
-
   .home-overlay {
     position: absolute;
     bottom: 59%;
@@ -18,7 +31,6 @@
     line-height: 1.5;
     text-align: center;
   }
-
   .video-title {
     color: white;
     font-size: 35px;
@@ -29,7 +41,6 @@
     padding: 0;
     margin: 0;
   }
-
   .video-subtitle {
     color: white;
     text-transform: none;
@@ -39,11 +50,14 @@
     margin: 0 0 25px 0;
     font-weight: 300;
   }
-
   .bold-websites-for-nonprofits {
     font-weight: 700;
   }
+  .display-block {
+    margin-left: 30px;
+  }
 }
+
 @media screen and (min-width: 1452px) {
   .adjust-joinus-img {
     min-height: 300px;
@@ -51,15 +65,12 @@
     min-width: 470px;
     max-width: 470px;
   }
-
   .resize-googlemap {
     max-height: 340px;
   }
-
   .reset-marginleft-moreinfo {
     margin-left: 515px;
   }
-
   .home-overlay {
     position: absolute;
     bottom: 60%;
@@ -67,7 +78,6 @@
     line-height: 1.5;
     text-align: center;
   }
-
   .video-title {
     color: white;
     font-size: 43px;
@@ -78,7 +88,6 @@
     padding: 0;
     margin: 0;
   }
-
   .video-subtitle {
     color: white;
     text-transform: none;
@@ -88,24 +97,23 @@
     margin: 0 0 25px 0;
     font-weight: 300;
   }
-
   .bold-websites-for-nonprofits {
     font-weight: 700;
   }
 }
 
 .video-column {
-    display: block;
-    flex-basis: 0;
-    flex-grow: 1;
-    flex-shrink: 1;
+  display: block;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 .video-container {
   position: relative;
 }
 
-.accountdev-resize-container,
+// .accountdev-resize-container,
 .home-resize-container,
 .workingproject-resize-container {
   max-width: 1060px;
@@ -147,12 +155,17 @@
   color: white;
   font-size: 25;
   font-weight: 500;
+  padding: 5px 10px;
 }
 
 .home-testimonial-pic {
   border-radius: 50%;
   height: 140px;
   width: 140px;
+}
+
+.testimonial-pic-container {
+  text-align: center;
 }
 
 .inscrease-about-font-size {
@@ -164,8 +177,8 @@
 .home-process {
   background-color: #F2F6F7;
 }
-// workingproject's css
 
+// workingproject's css
 .working-style-checkbox {
   display: flex;
   width: 100%;
@@ -178,17 +191,32 @@
 .message-body a:hover {
   border-bottom: 3px solid rgb(189, 212, 54);
 }
-// devprojectapplication's css
 
+// devprojectapplication's css
 .center-apply-upload-container {
   display: flex;
   justify-content: center;
 }
 
+.style-application-form-header {
+  color: white;
+}
+
+.style-login-need-help {
+  color: white;
+}
+
+.style-login-need-help a {
+  color: white;
+}
+
+.style-login-need-help a:hover {
+  border-bottom: 3px solid rgb(189, 212, 54);
+}
+
 .application-resize-container {
   max-width: 640px;
 }
-// accountdev's css
 
 .center-projects-header {
   display: flex;
@@ -196,15 +224,109 @@
   font-size: 20px;
 }
 
-.change-box-background-color {
-  background-color: #F2F6F7;
+.center-projects-header p {
+  color: white;
 }
 
 .bold-description {
   font-weight: 600;
 }
 
+.account-main-box {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  padding: 0px;
+}
+
 .remove-card-content-set-height {
   height: auto;
 }
-//
+
+.card-border-radius {
+  border-radius: 5px;
+}
+
+.style-project-title {
+  color: black;
+  font-weight: 600;
+}
+
+.change-button-style {
+  text-align: right;
+}
+
+.add-padding-to-column {
+  padding: 2em;
+  background-color: whitesmoke;
+}
+
+.change-button-style button {
+  border-radius: 3px;
+  background-color: #276cda;
+  border-color: transparent;
+  color: #fff;
+  font-weight: 500;
+}
+
+.change-column-color {
+  background-color: #d9dee2;
+}
+
+.image img {
+  display: block;
+  height: auto;
+  width: auto;
+}
+
+// accountDev's css
+.add-opacity {
+  opacity: 0.6;
+}
+
+.account-add-padding {
+  background-color: #d9dee2;
+  border-radius: 5px;
+  padding: 2em;
+}
+
+.account-change-content-bg-color {
+  background-color: #d9dee2;
+}
+
+// .account-change-content-bg-color:not(:last-child) {
+//   margin-bottom: 5px;
+// }
+.verify-and-login {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  width: 100%;
+}
+
+.account-resize-img {
+  height: 25px;
+  width: 25px;
+  margin-right: 3px;
+}
+
+.account-float-right {
+  width: 100%;
+  display: flex;
+  margin-left: 37px;
+  align-items: center;
+}
+
+.account-level {
+  text-align: center;
+  display: flex;
+  background-color: #2D383A;
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.account-change-message-bg-color {
+  background-color: #d9dee2;
+  padding: 1em;
+}
