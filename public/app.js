@@ -28,7 +28,7 @@ const app = angular.module("charityApp", ['ui.router'])
                 controller: 'createProjectCtrl',
             })
             .state('devProjectApplication', {
-                url: '/apply',
+                url: '/apply/:id',
                 // pass in later to add parameter to the url // :id',
                 templateUrl: './views/devProjectApplication/devProjectApplication.html',
                 controller: 'devProjectApplicationCtrl',

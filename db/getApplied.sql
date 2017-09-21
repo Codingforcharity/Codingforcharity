@@ -1,0 +1,1 @@
+SELECT * FROM applied WHERE projectid = $1 AND userid = $2;
