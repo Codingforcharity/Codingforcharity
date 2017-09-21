@@ -1,4 +1,4 @@
-// @import "/scss/sass/utilities/initial-variables.sass";
+@import "./sass/utilities/initial-variables.sass";
 
 //////////////////////////////////////////////
 // Color Varaible change settings/////
@@ -13,15 +13,15 @@
 // $green:        #02B875;
 // $blue:         #5bc0de;
 // $red:          #d9534f;
-
+   $black:        #000000;
 $primary: #0AAFC4 !default;
 $danger:  #F3969B;
 
 
-// $family-primary: "Bariol", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$family-primary: $family-sans-serif;
 $family-sans-serif: "Bariol", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
-
+$tag-color: $black;
 
 // $family-serif: Inconsolata, Consolas, Monaco, monospace
 

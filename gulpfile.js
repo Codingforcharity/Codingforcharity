@@ -78,7 +78,7 @@ gulp.task("watch", function() {
     );
 });
 
-gulp.task("default", ["build-images", "build", "watch"]);
+gulp.task("default", ["build-images", "build", "watch", "fonts", "files"]);
 
 //////////////////////
 // Andy's additions //
@@ -97,7 +97,7 @@ gulp.task("compile", function() {
     return stream; // important for gulp-nodemon to wait for completion
 });
 
-gulp.task("serve", ["optimize-image", "build-js2", "sass2", "html2", "videos", "fonts"], function() {
+gulp.task("serve", ["optimize-image", "build-js2", "sass2", "html2", "videos", "fonts", "files"], function() {
     var stream = nodemon({
             script: "./index.js", // run ES5 code
             watch: ["/index.js", "/controllers"], // watch ES2015 code
@@ -138,6 +138,11 @@ gulp.task("html2", function(cb) {
 
 gulp.task("fonts", function(cb) {
     var stream = gulp.src("./assets/fonts/*.**").pipe(gulp.dest("./bundle/fonts"));
+    return stream;
+});
+
+gulp.task("files", function(cb) {
+    var stream = gulp.src("./public/*.{png,ico}").pipe(gulp.dest("./bundle"));
     return stream;
 });
 

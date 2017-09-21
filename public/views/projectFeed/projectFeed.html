@@ -1,104 +1,157 @@
-<section class="hero is-medium is-primary is-bold">
+<nav class="navbar navbar-home is-transparent header-image" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+                    <img src="/img/artboard1.png" alt="DevGive" width="112" height="auto">
+                  </a>
+        <button class="button is-danger navbar-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+    </div>
+    <!-- Left side Nav bar links/menus begin -->
+    <div id="navMenu" class="navbar-menu">
+        <div class="navbar-start">
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link  is-active">
+                     Interal Views
+                    </a>
+                <div class="navbar-dropdown is-boxed">
+                    <a class="navbar-item" ui-sref='projectFeed'>
+                         Project Feed
+                        </a>
+                    <a class="navbar-item" ui-sref='accountDev'>
+                            Dev Profile
+                           </a>
+                    <a class="navbar-item" ui-sref='workingProject'>
+                              Working Project View
+                             </a>
+                    <a class="navbar-item" ui-sref='projectPublicDetails'>
+                               Public project view
+                             </a>
+                </div>
+            </div>
+        </div>
+        <!-- RIght side Nav bar links login begin -->
+        <div class="navbar-end">
+            <div class="navbar-item nav-buttons">
+                <div class="field is-grouped">
+                    <p class="control">
+                        <a class="bd-tw-button button is-danger" href="/auth">
+                <span class="icon">
+                  <i class="fa fa-sign-in"></i>
+                </span>
+                <span>
+                  Sign-In
+                </span>
+              </a>
+                    </p>
+                    <p class="control">
+                        <a class="button is-primary" href="/auth">
+                            <span class="icon">
+                              <i class="fa fa-user-plus"></i>
+                            </span>
+                            <span>Sign-Up</span>
+                          </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</nav>
+<!-- ---------- Hero - Project Feed -------- -->
+
+<section class="hero header-image hero-project-feed has-text-centered is-bold">
     <div class="hero-body">
         <div class="container">
-            <h1 class="title">
+            <h1 class="hero-title title">
                 Don't just imagine, do.
             </h1>
-            <h2 class="subtitle">
+            <h2 class="hero-title subtitle">
                 Freelance services for non-profits by volunteer developers
             </h2>
         </div>
     </div>
 </section>
-
-
-<section class="section main">
+<!-- ---------- Project Feed -------- -->
+<section class="project-feed is-alternative">
     <div class="container">
-        <div class="">
-            <hr>
-            <nav class="level">
-                <!-- Left side -->
-                <!-- <p class="level-item"><a class="button is-info">List a Project</a></p> -->
-                <div class="level-item">
-                    <div class="field has-addons">
-                        <p class="control">
-                            <input class="input" type="text" ng-model="searchStr" placeholder="search projects">
-                        </p>
-                        <p class="control">
-                            <button class="button" ng-click="searchProjects(searchStr)">Search</button>
-                        </p>
-                    </div>
+        <div class="columns">
+            <!-- ------- User Avatar -------- -->
+            <div class="column is-3">
+                <div ng-if="curUser">
+                    <div class="box is-fullwidth">
+                        <div class="card-content">
+                            <div class="polaroid-feed is-team"><a ng-href="/#!/account/dev/{{curUser.id}}">
+                                    <div class=polaroid-image> <img alt="" src="/img/avatars/andy.svg" /> </div> 
+                                    <span class=polaroid-label>{{curUser.username}}</span> 
+                                </a> </div>                                 
+                            </div>
+                            <!-- <a class="card-avatar" ng-href="/#!/account/dev/{{curUser.id}}">
+                            <img ng-src="{{curUser.profilepic}}" class="card-avatar-img">
+                        </a>
+                            <div class="">
+                                <div class="card-user-name">
+                                    <a ng-href="/#!/account/dev/{{curUser.id}}">{{curUser.firstname}} {{curUser.lastname}}</a>
+                                </div>                              
+                            </div> -->
+<div class="level">
+        <div class="level-item">
+            <div>               
+            <p class="subtitle is-6 has-text-centered">Projects</p>
+            <p class="subtitle is-6 has-text-centered">3</p>
+        </div>
+         </div>
+         <div class="level-item">
+                <div>               
+                <p class="subtitle is-6 has-text-centered">Messages</p>
+                <p class="subtitle is-6 has-text-centered">7</p>
+            </div>
+             </div>
+             <div class="level-item">
+                    <div>               
+                    <p class="subtitle is-6 has-text-centered">Thanks</p>
+                    <p class="subtitle is-6 has-text-centered">12</p>
                 </div>
-                <div class="level-item">
+                 </div>
+    </div>
+                        
+                        </div>
+                    </div>
+                <!-- ------- Filter box -------- -->
+                <div class="box trending">
                     <p class="subtitle is-5">
                         <strong>{{projectCount}}</strong> projects
                     </p>
-                </div>
-            </nav>
-            <hr>
-        </div>
-        <div class="columns">
-            <div class="column is-3">
-                <!-- <div ng-if="curUser"> -->
-                <!-- <div class="card is-fullwidth"> -->
-                <!-- <div class="card-content">
-                        <a class="card-avatar" ng-href="/#!/account/dev/{{curUser.id}}">
-                            <img ng-src="{{curUser.profilepic}}" class="card-avatar-img">
-                        </a>
-
-              <div class="card-user">
-                <div class="card-user-name">
-                  <a ng-href="/#!/account/dev/{{curUser.id}}">{{curUser.firstname}} {{curUser.lastname}}</a>
-                </div>
-                <span>
-                      <a ng-href="/#!/account/dev/{{curUser.id}}">@<span>{{curUser.username}}</span></a>
-                </span>
-              </div>
-
-              <div class="card-stats">
-                <ul class="card-stats-list">
-                  <li class="card-stats-item">
-                    <a href="#" title="9.840 Tweet">
-                                        <span class="card-stats-key">Projects</span>
-                                        <span class="card-stats-val">3</span>
-                                    </a>
-                  </li>
-                  <li class="card-stats-item">
-                    <a href="#/following" title="885 Following">
-                                        <span class="card-stats-key">Applications</span>
-                                        <span class="card-stats-val">1</span>
-                                    </a>
-                  </li>
-                  <li class="card-stats-item">
-                    <a href="#">
-                                        <span class="card-stats-key">Gives</span>
-                                        <span class="card-stats-val">12</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> -->
-                <!-- </div> -->
-                <!-- </div> -->
-                <div class="box">
-                    <div class="level-center">
-                        <p class="level-item"><a class="button is-info" ui-sref='createProject'>List a Project</a></p>
-                    </div>
-                </div>
-                <div class="box trending">
-                    <p class=""><span class="subtitle is-6">filters</span> <a href="" ng-if="filtered" ng-click="getProjects()">reset</a></p>
+                    <p class=""><span class="subtitle is-5">filters</span> <a href="" ng-if="filtered" ng-click="getProjects()">reset</a></p>
                     <hr>
                     <div class="spacer"></div>
                     <div class="tags">
-                        <span class="tag is-rounded" ng-repeat="skill in skills" style="margin: 0 1%;"><a href="" ng-click="filter(skill)">{{skill}}</a>&nbsp;&nbsp;&nbsp;</span>
+                        <span class="tag is-rounded " ng-repeat="skill in skills" style="margin: 0 1%;"><a href="" ng-click="filter(skill)">{{skill}}</a>&nbsp;&nbsp;&nbsp;</span>
                     </div>
                 </div>
             </div>
             <div class="column is-9">
-                <!-- Main container -->
-
+                <!----------- Project search bar---------->
                 <div class="box">
-                    <article class="media project-box overflow: auto;" ng-repeat="project in projects">
+                    <nav class="level">
+                        <div class="level-item"><a class="button is-primary" ui-sref='createProject'>List a Project</a></div>
+                        <div class="level-item">
+                            <div class="field has-addons">
+                                <p class="control">
+                                    <input class="project-search input" type="text" ng-model="searchStr" placeholder="search projects">
+                                </p>
+                                <p class="control">
+                                    <button class="button is-danger" ng-click="searchProjects(searchStr)">Search</button>
+                                </p>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+<!------------- Project boxes ------------>
+                <div class="">
+                    <article class="box media project-box overflow: auto;" ng-repeat="project in projects">
                         <div class="media-left">
                             <figure class="image is-64x64">
                                 <img ng-src="{{project.profilepic}}" alt="Charity Logo">
@@ -107,36 +160,27 @@
                         <div class="media-content">
                             <div class="content">
                                 <p>
-                                    <strong ui-sref='projectPublicDetails({id: {{project.projid}}})'>{{project.title}}</strong>
+                                        <a class="subtitle is-5" ui-sref="/#!/account/{{project.posterid}}">{{project.username}}-</a>                                      
+                                    <a  class="subtitle is-5" ui-sref='projectPublicDetails({id: {{project.projid}}})'>{{project.title}}</a>
                                     <!-- <small><a ng-href="/#!/account/dev/{{project.posterid}}">@{{project.username}}</a></small> -->
                                     <!-- <small style="float:right;">Listed 2 weeks ago</small> -->
                                     <br>
-                                    <small><a ng-href="/#!/account/{{project.posterid}}">@{{project.username}}</a></small>
-                                    <br>Project description: {{project.description}}
+                                    <hr>
+                                    Project description
+                                     {{project.description}}
                                 </p>
                             </div>
 
                             <!-- Style the ng-repeated div to have a margin on left and right - items are in a flex and so are crunched together I put a temporary fix below, Dylan -->
                             <div class="tags">
                                 <div ng-repeat="skill in project.skills" style="margin:0 1%;">
-                                    <p class="tag"><a href="#">{{skill}}</a></p>
+                                    <p class="tag is-rounded "><a href="" ng-click="filter(skill)">{{skill}}</a></p>
                                 </div>
 
                             </div>
 
                         </div>
                     </article>
-
-                    <!-- Style the ng-repeated div to have a margin on left and right - items are in a flex and so are crunched together I put a temporary fix below, Dylan -->
-                    <div class="tags">
-                        <div ng-repeat="skill in project.skills" style="margin:0 1%;">
-                            <p class="tag"><a href="#">{{skill}}</a></p>
-                        </div>
-
-                    </div>
-
-                </div>
-                </article>
 
             </div>
         </div>
