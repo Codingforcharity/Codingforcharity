@@ -37,7 +37,7 @@ app.controller('projectFeedCtrl', function($scope, projectFeedSrvc) {
                 })
                 console.log("ALL SKILLS: ", $scope.skills)
                 $scope.skills = $scope.skills.filter(function(item, pos) {
-                    return $scope.skills.indexOf(item) == pos;
+                    return $scope.skills.indexOf(item.toLowerCase().trim()) == pos;
                 })
                 $scope.originalProjects = $scope.projects;
                 $scope.projectCount = $scope.projects.length;
@@ -66,7 +66,7 @@ app.controller('projectFeedCtrl', function($scope, projectFeedSrvc) {
         $scope.projects.map((project) => {
             let skillFound = false;
             project.skills.map((singleskill) => {
-                if (singleskill == skill) {
+                if (singleskill.toLowerCase().trim() == skill.toLowerCase().trim()) {
                     skillFound = true;
                 }
             })
