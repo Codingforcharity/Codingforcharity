@@ -1,3 +1,79 @@
+<nav class="navbar navbar-home is-transparent header-image" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+                        <img src="/img/artboard1.png" alt="DevGive" width="112" height="auto">
+                      </a>
+            <button class="button is-danger navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+        </div>
+        <!-- Left side Nav bar links/menus begin -->
+        <div id="navMenu" class="navbar-menu">
+            <div class="navbar-start">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link  is-active">
+                         Interal Views
+                        </a>
+                    <div class="navbar-dropdown is-boxed">
+                        <a class="navbar-item" ui-sref='projectFeed'>
+                             Project Feed
+                            </a>
+                        <a class="navbar-item" ui-sref='accountDev'>
+                                Dev Profile
+                               </a>
+                        <a class="navbar-item" ui-sref='workingProject'>
+                                  Working Project View
+                                 </a>
+                        <a class="navbar-item" ui-sref='projectPublicDetails'>
+                                   Public project view
+                                 </a>
+                    </div>
+                </div>
+            </div>
+            <!-- RIght side Nav bar links login begin -->
+            <div class="navbar-end">
+                <div class="navbar-item nav-buttons">
+                    <div class="field is-grouped">
+                        <p class="control">
+                            <a class="bd-tw-button button is-danger" href="/auth">
+                    <span class="icon">
+                      <i class="fa fa-sign-in"></i>
+                    </span>
+                    <span>
+                      Sign-In
+                    </span>
+                  </a>
+                        </p>
+                        <p class="control">
+                            <a class="button is-primary" href="/auth">
+                                <span class="icon">
+                                  <i class="fa fa-user-plus"></i>
+                                </span>
+                                <span>Sign-Up</span>
+                              </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </nav>
+    <!-- ---------- Hero - Project Feed -------- -->
+    
+    <section class="hero header-image hero-project-feed has-text-centered is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="hero-title title">
+                    Don't just imagine, do.
+                </h1>
+                <h2 class="hero-title subtitle">
+                    Freelance services for non-profits by volunteer developers
+                </h2>
+            </div>
+        </div>
+    </section>
 <section class="section profile">
     <div class="container">
         <div class="profile-heading">
@@ -8,7 +84,7 @@
                     </div>
                     <div class="spacer"></div>
                     <span>
-                <a class="button is-primary" ng-href='/#!/apply/{{project.projid}}'>Apply</a>
+                <a class="button is-primary" ng-href='/#!/apply/{{project.projid}}' ng-if="curUser.id">Apply</a>
 
                 <a class="button is-primary" ng-href="/#!/account/{{project.posterid}}">Contact</a>
               </span>

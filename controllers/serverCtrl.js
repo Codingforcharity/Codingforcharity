@@ -34,7 +34,7 @@ module.exports = {
         db.postProject(req.params.id, req.body.title, req.body.desc, req.body.skills)
             .then((project) => {
                 console.log("THIS IS THE PROJECT: ", project[0])
-                db.postWorkingProject(project[0].id, req.params.id)
+                db.postWorkingProject(project[0].projid, req.params.id)
                     .then(() => {
                         res.status(200).send(project)
                     })
@@ -300,6 +300,7 @@ module.exports = {
                                         //     console.log("Finished", skills);
                                         //     res.status(200).send(skills)
                                         // }
+                                        console.log("THESE ARE SKILLS: ", skills)
                                         res.status(200).send(updatedUser);
                                     })
                             }
