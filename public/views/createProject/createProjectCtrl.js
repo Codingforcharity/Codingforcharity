@@ -8,7 +8,7 @@ app.controller('createProjectCtrl', function($scope, createProjectSrvc, $locatio
                 if (type) {
                     if (desc) {
                         if (terms) {
-                            createProjectSrvc.createProject(title, desc, skills, $scope.curUser.id)
+                            createProjectSrvc.createProject(title, desc, type, $scope.curUser.id)
                                 .then((project) => {
                                     console.log(project)
                                     $location.path('/projectfeed');

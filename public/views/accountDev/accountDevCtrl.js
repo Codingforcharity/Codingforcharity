@@ -60,8 +60,10 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
                         }
                     }
                     $scope.newSkills = $scope.curUser.skills;
+                    console.log($scope.curUser.skills)
                 } else {
                     $scope.pageOwner.skills = skills.data;
+                    console.log($scope.pageOwner.skills)
                 }
             })
     }
@@ -110,7 +112,7 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
             if ($scope.curUser.firstname) {
                 newUser.firstname = $scope.curUser.firstname;
             } else {
-                newUser.firstname = NULL;
+                newUser.firstname = undefined;
             }
         }
 
@@ -120,7 +122,7 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
             if ($scope.curUser.lastname) {
                 newUser.lastname = $scope.curUser.lastname;
             } else {
-                newUSer.lastname = NULL;
+                newUser.lastname = undefined;
             }
         }
 
@@ -130,7 +132,7 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
             if ($scope.curUser.bio) {
                 newUser.bio = $scope.curUser.bio;
             } else {
-                newUser.bio = NULL;
+                newUser.bio = undefined;
             }
         }
 
@@ -141,11 +143,12 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
                 newSkills[i] = newSkills[i].trim();
             }
             newUser.skills = newSkills;
+            console.log(newSkills)
         } else {
             if ($scope.curUser.skills) {
                 newUser.skills = $scope.curUser.skills;
             } else {
-                newUser.skills = NULL;
+                newUser.skills = undefined;
             }
         }
 

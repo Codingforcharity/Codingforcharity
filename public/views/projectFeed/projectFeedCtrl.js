@@ -25,6 +25,7 @@ app.controller('projectFeedCtrl', function($scope, projectFeedSrvc) {
     }
 
     $scope.getProjects = () => {
+        $scope.skills = [];
         projectFeedSrvc.getProjects()
             .then((projects) => {
                 console.log(projects.data);
@@ -37,11 +38,12 @@ app.controller('projectFeedCtrl', function($scope, projectFeedSrvc) {
                 })
                 console.log("ALL SKILLS: ", $scope.skills)
                 $scope.skills = $scope.skills.filter(function(item, pos) {
-                    return $scope.skills.indexOf(item.toLowerCase().trim()) == pos;
+                    return $scope.skills.indexOf(item) == pos;
                 })
+                console.log($scope.skills)
                 $scope.originalProjects = $scope.projects;
                 $scope.projectCount = $scope.projects.length;
-                console.log("SORTED SKILLS: ", $scope.skills);
+                // console.log("SORTED SKILLS: ", $scope.skills);
                 console.log($scope.projects);
             })
     };

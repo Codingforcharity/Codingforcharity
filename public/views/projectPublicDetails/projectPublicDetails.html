@@ -8,7 +8,7 @@
                     </div>
                     <div class="spacer"></div>
                     <span>
-                <a class="button is-primary" ng-href='/#!/apply/{{project.projid}}'>Apply</a>
+                <a class="button is-primary" ng-href='/#!/apply/{{project.projid}}' ng-if="curUser.id">Apply</a>
 
                 <a class="button is-primary" ng-href="/#!/account/{{project.posterid}}">Contact</a>
               </span>
