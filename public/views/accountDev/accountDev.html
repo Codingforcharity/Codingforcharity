@@ -122,22 +122,18 @@
                                     </div>
                                 </div>
 
-                                <div class="content" ng-if="!ownPage">
-                                    <span class="bold-description">Description: </span> {{pageOwner.bio}}
-                                </div>
-                                <div class="content" ng-if="ownPage">
-                                    <span class=" bold-description ">Skills: </span>
-                                    <textarea ng-model="$parent.newSkills" placeholder="Skills Seperated by commas">
-                                            </textarea> {{newSkills}}
-                                    <br>
-                                </div>
-                                <div class="content" ng-if="!ownPage">
-                                    <span class=" bold-description ">Skills: </span>
-                                    <span ng-repeat="skill in pageOwner.skills"> {{skill.skill}}, </span>
-                                    <br>
-                                </div>
-
-                                <button type="submit" ng-if="ownPage" ng-click="subChanges($parent.newProfilePic, $parent.newFirstName, $parent.newLastName, $parent.newBio, $parent.newSkills);">Submit Changes</button>
+                <div class="column ">
+                    <div class="box change-box-background-color ">
+                        <article class="message ">
+                            <div class="message-header center-projects-header ">
+                                <p>Projects</p>
+                            </div>
+                            <div class="content " ng-repeat="project in userProjects">
+                                <p>
+                                    <a ng-href="/#!/projectfeed/project/{{project.projid}}" ng-if="!ownPage"><strong>{{project.title}}</strong></a>
+                                    <a ng-href="/#!/active/project/{{project.projid}}" ng-if="ownPage"><strong>{{project.title}}</strong></a>
+                                    <br> {{project.description}}
+                                </p>
                             </div>
 
                             <br><br>
