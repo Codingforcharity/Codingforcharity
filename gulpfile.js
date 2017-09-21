@@ -78,7 +78,7 @@ gulp.task("watch", function() {
     );
 });
 
-gulp.task("default", ["build", "watch"]);
+gulp.task("default", ["build-images", "build", "watch"]);
 
 //////////////////////
 // Andy's additions //

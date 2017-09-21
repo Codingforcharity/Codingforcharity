@@ -29,10 +29,16 @@ module.exports = {
             .catch((err) => res.status(200).send(err));
     },
     postProject: function(req, res, next) {
-        console.log("POSTING PROJECT");
+        console.log("POSTING PROJECT FOR USER: " + req.params.id);
         const db = req.app.get('db');
-        db.postProject(req.body.posterid, req.body.title, req.body.description)
-            .then((project) => res.status(200).send(project))
+        db.postProject(req.params.id, req.body.title, req.body.desc, req.body.skills)
+            .then((project) => {
+                console.log("THIS IS THE PROJECT: ", project[0])
+                db.postWorkingProject(project[0].id, req.params.id)
+                    .then(() => {
+                        res.status(200).send(project)
+                    })
+            })
             .catch((err) => res.status(200).send(err));
     },
     getProjects: function(req, res, next) {
@@ -53,6 +59,7 @@ module.exports = {
         const db = req.app.get('db');
         db.getProjectsById(req.params.id)
             .then((project) => {
+                console.log(project);
                 project[0].skills = project[0].skills.split(',');
                 res.status(200).send(project)
             })
@@ -264,6 +271,99 @@ module.exports = {
                     .catch((err) => res.status(200).send(err))
             })
 
+    },
+    getUserSkills: function(req, res, next) {
+        console.log("GETTING SKILLS FOR USER: " + req.params.id);
+        const db = req.app.get('db');
+        db.getUserSkills(req.params.id)
+            .then((skills) => res.status(200).send(skills))
+            .catch((err) => res.status(200).send(err));
+    },
+    updateUser: function(req, res, next) {
+        console.log("UPDATING THE USER: " + req.params.id);
+        const db = req.app.get('db');
+        db.putUserById(req.params.id, req.body.user.bio, req.body.user.profilepic, req.body.user.ischarity, req.body.user.firstname, req.body.user.lastname)
+            .then((updatedUser) => {
+                console.log(updatedUser);
+                console.log("SKILLS: ", req.body.user.skills);
+                for (let i = 0; i < req.body.user.skills.length; i++) {
+                    db.getUserSkillsByName(req.params.id, req.body.user.skills[i])
+                        .then((skill) => {
+                            if (skill.length > 0) {
+
+                            } else {
+                                db.postSkills(req.params.id, req.body.user.skills[i])
+                                    .then((skills) => {
+                                        // if (i < req.body.user.skills.length - 1) {
+                                        //     console.log("Still runnning")
+                                        // } else {
+                                        //     console.log("Finished", skills);
+                                        //     res.status(200).send(skills)
+                                        // }
+                                        res.status(200).send(updatedUser);
+                                    })
+                            }
+                        })
+                }
+            })
+
+    },
+    getUserProjects: function(req, res, next) {
+        console.log("GETTING USER PROJECTS: " + req.params.id);
+        const db = req.app.get('db');
+        db.getUserProjects(req.params.id)
+            .then((projects) => {
+                res.status(200).send(projects);
+            })
+    },
+    getCommentsById: function(req, res, next) {
+        console.log("GETTING PROJECTS BY USER: " + req.params.id);
+        const db = req.app.get('db');
+        db.getCommentsById(req.params.id)
+            .then((commentInfo) => {
+                for (let i = 0; i < commentInfo.length; i++) {
+                    db.getProfileReplies(commentInfo[i].commentid)
+                        .then((replies) => {
+                            commentInfo[i].replies = replies
+                            if (i == commentInfo.length - 1) {
+                                res.status(200).send(commentInfo);
+                            }
+                        })
+                }
+            })
+    },
+    postProfileComment: function(req, res, next) {
+        console.log("POSTING COMMENT ON USER PAGE: " + req.params.id);
+        const db = req.app.get('db');
+        db.postProfileComment(req.params.id, req.body.comment, req.body.userid)
+            .then((commentInfo) => {
+                for (let i = 0; i < commentInfo.length; i++) {
+                    db.getProfileReplies(commentInfo[i].commentid)
+                        .then((replies) => {
+                            commentInfo[i].replies = replies
+                            if (i == commentInfo.length - 1) {
+                                res.status(200).send(commentInfo);
+                            }
+                        })
+                }
+            })
+    },
+    postProfileReply: function(req, res, next) {
+        console.log("POSTING REPLY ON USER PAGE: " + req.params.id);
+        const db = req.app.get('db');
+        db.postProfileReply(req.body.commentid, req.body.reply, req.body.userid, req.params.id)
+            .then((commentInfo) => {
+                console.log(commentInfo)
+                for (let i = 0; i < commentInfo.length; i++) {
+                    db.getProfileReplies(commentInfo[i].commentid)
+                        .then((replies) => {
+                            commentInfo[i].replies = replies
+                            if (i == commentInfo.length - 1) {
+                                res.status(200).send(commentInfo);
+                            }
+                        })
+                }
+            })
     }
 
 }

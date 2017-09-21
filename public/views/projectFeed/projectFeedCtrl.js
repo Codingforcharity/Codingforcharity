@@ -3,6 +3,27 @@ app.controller('projectFeedCtrl', function($scope, projectFeedSrvc) {
     $scope.curUser;
     $scope.skills = [];
     $scope.filtered = false;
+    $scope.originalProjects;
+    $scope.projectCount = 0;
+    $scope.searchProjects = (str) => {
+        $scope.projects = $scope.originalProjects;
+        $scope.projectCount = $scope.projects.length;
+        console.log($scope.projects)
+        if (str) {
+            let newProjects = [];
+            for (let i = 0; i < $scope.projects.length; i++) {
+                if ($scope.projects[i].title.toLowerCase().includes(str.toLowerCase())) {
+                    newProjects.push($scope.projects[i]);
+                }
+            }
+            $scope.projects = newProjects;
+            $scope.projectCount = $scope.projects.length;
+        } else {
+            $scope.getProjects();
+        }
+
+    }
+
     $scope.getProjects = () => {
         projectFeedSrvc.getProjects()
             .then((projects) => {
@@ -18,6 +39,8 @@ app.controller('projectFeedCtrl', function($scope, projectFeedSrvc) {
                 $scope.skills = $scope.skills.filter(function(item, pos) {
                     return $scope.skills.indexOf(item) == pos;
                 })
+                $scope.originalProjects = $scope.projects;
+                $scope.projectCount = $scope.projects.length;
                 console.log("SORTED SKILLS: ", $scope.skills);
                 console.log($scope.projects);
             })
@@ -53,6 +76,7 @@ app.controller('projectFeedCtrl', function($scope, projectFeedSrvc) {
             }
         })
         $scope.projects = newProjects;
+        $scope.projectCount = $scope.projects.length;
         console.log($scope.projects);
     }
 
