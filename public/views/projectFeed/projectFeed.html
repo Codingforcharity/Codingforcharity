@@ -36,13 +36,13 @@
                 <div class="field is-grouped">
                     <p class="control" ng-if="!curUser.id">
                         <a class="bd-tw-button button is-danger" href="/auth">
-                <span class="icon">
+                            <span class="icon">
                   <i class="fa fa-sign-in"></i>
                 </span>
-                <span>
+                            <span>
                   Sign-In
                 </span>
-              </a>
+                        </a>
                     </p>
                     <p class="control" ng-if="!curUser.id">
                         <a class="button is-primary" href="/auth">
@@ -50,15 +50,15 @@
                               <i class="fa fa-user-plus"></i>
                             </span>
                             <span>Sign-Up</span>
-                          </a>
+                        </a>
                     </p>
                     <p class="control" ng-if="curUser.id">
                         <a class="button is-primary" ui-sref="accountDev({id: {{curUser.id}}})">
-                                <span class="icon">
+                            <span class="icon">
                                   <i class="fa fa-user-plus"></i>
                                 </span>
-                                <span>User Profile</span>
-                              </a>
+                            <span>User Profile</span>
+                        </a>
                     </p>
                 </div>
             </div>
@@ -157,64 +157,57 @@
                     </nav>
                 </div>
                 <!------------- Project boxes ------------>
-                <div class="">
-                    <article class="box media project-box overflow: auto;" ng-click='project.showModal = true' ng-repeat="project in projects track by $index">
-                        <a ng-href="/#!/account/{{project.posterid}}">
-                            <div class="media-left">
-                                <figure class="image is-64x64">
-                                    <img ui-sref="accountDev({id: {{project.posterid}}})" ng-src="{{project.profilepic}}" alt="Charity Logo">
-                                </figure>
-                            </div>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                        <a class="title is-5" ng-href="/#!/account/{{project.posterid}}">{{project.username}}-</a>
-                                        <a class="subtitle is-5" ui-sref='projectPublicDetails({id: {{project.projid}}})'>{{project.title}}</a>
-                                        <!-- <small><a ng-href="/#!/account/dev/{{project.posterid}}">@{{project.username}}</a></small> -->
-                                        <!-- <small style="float:right;">Listed 2 weeks ago</small> -->
-                                        <br>
-                                        <hr style='margin: -.5rem auto 1rem 0;'>
-                                        <div class='feed-description'>Project description {{project.description}}</div>
-                                    </p>
-                                </div>
-                                <!-- Style the ng-repeated div to have a margin on left and right - items are in a flex and so are crunched together I put a temporary fix below, Dylan -->
-                                <div class="tags">
-                                    <div ng-repeat="skill in project.skills" style="margin:0 1%;">
-                                        <p class="tag is-rounded "><a href="" ng-click="filter(skill)">{{skill}}</a></p>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </a>
-
-
-                        <!------------ Project modal button -------->
-                        <a ng-click='project.showModal = !project.showModal' class="button is-primary is-large modal-button" data-target="modal-ter">Launch modal card</a>
-
-                        <!------------ Project modal  -------->
-                        <div ng-if='project.showModal' id="modal-ter" class="modal project-modal is-active">
-                            <div class="modal-background"></div>
-                            <div class="modal-card">
-                                <header class="modal-card-head">
-                                    <p class="modal-card-title">{{project.title}}</p>
-                                    <button ng-click='project.showModal = false' class="delete"></button>
-                                </header>
-                                <section class="modal-card-body">
-                                    <div class="content">
-                                        <h1>{{project.title}}</h1>
-                                        <p>Project description {{project.description}}</p>
-
-                                    </div>
-                                </section>
-                                <footer class="modal-card-foot">
-                                    <a class="button is-success">Save changes</a>
-                                    <a ng-click='$parent.showModal = false' class="button">Cancel</a>
-                                </footer>
-                            </div>
+                <article class="box media project-box overflow: auto;" ng-click='showModal(project)' ng-repeat="project in projects track by $index">
+                    <a ng-href="/#!/account/{{project.posterid}}">
+                        <div class="media-left">
+                            <figure class="image is-64x64">
+                                <img ui-sref="accountDev({id: {{project.posterid}}})" ng-src="{{project.profilepic}}" alt="Charity Logo">
+                            </figure>
                         </div>
-                    </article>
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <a class="title is-5" ng-href="/#!/account/{{project.posterid}}">{{project.username}}-</a>
+                                    <a class="subtitle is-5" ui-sref='projectPublicDetails({id: {{project.projid}}})'>{{project.title}}</a>
+                                    <!-- <small><a ng-href="/#!/account/dev/{{project.posterid}}">@{{project.username}}</a></small> -->
+                                    <!-- <small style="float:right;">Listed 2 weeks ago</small> -->
+                                    <br>
+                                    <hr style='margin: -.5rem auto 1rem 0;'>
+                                    <div class='feed-description'>Project description {{project.description}}</div>
+                                </p>
+                            </div>
+                            <!-- Style the ng-repeated div to have a margin on left and right - items are in a flex and so are crunched together I put a temporary fix below, Dylan -->
+                            <div class="tags">
+                                <div ng-repeat="skill in project.skills" style="margin:0 1%;">
+                                    <p class="tag is-rounded "><a href="" ng-click="filter(skill)">{{skill}}</a></p>
+                                </div>
 
+                            </div>
+
+                        </div>
+                    </a>
+                </article>
+
+                <!------------ Project modal  -------->
+                <div ng-if='modalSet' id="modal-ter" class="modal project-modal is-active">
+                    <div class="modal-background"></div>
+                    <div class="modal-card">
+                        <header class="modal-card-head">
+                            <p class="modal-card-title">{{modal.title}}</p>
+                            <button ng-click='$parent.modalSet = false' class="delete"></button>
+                        </header>
+                        <section class="modal-card-body">
+                            <div class="content">
+                                <h1>{{project.title}}</h1>
+                                <p>Project description {{modal.desc}}</p>
+
+                            </div>
+                        </section>
+                        <footer class="modal-card-foot">
+                            <a class="button is-success">Save changes</a>
+                            <a ng-click='$parent.modalSet = false' class="button">Cancel</a>
+                        </footer>
+                    </div>
                 </div>
             </div>
         </div>
