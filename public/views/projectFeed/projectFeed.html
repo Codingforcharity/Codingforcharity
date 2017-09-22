@@ -35,24 +35,24 @@
                             <div class="">
                                 <div class="card-user-name">
                                     <a ng-href="/#!/account/dev/{{curUser.id}}">{{curUser.firstname}} {{curUser.lastname}}</a>
-                                </div>                              
+                                </div>
                             </div> -->
                         <div class="level">
                             <div class="level-item">
                                 <div>
-                                    <p class="subtitle is-6 has-text-centered">projects</p>
+                                    <p class="subtitle is-6 has-text-centered">Projects</p>
                                     <p class="subtitle is-6 has-text-centered">3</p>
                                 </div>
                             </div>
                             <div class="level-item">
                                 <div>
-                                    <p class="subtitle is-6 has-text-centered">messages</p>
+                                    <p class="subtitle is-6 has-text-centered">Messages</p>
                                     <p class="subtitle is-6 has-text-centered">7</p>
                                 </div>
                             </div>
                             <div class="level-item">
                                 <div>
-                                    <p class="subtitle is-6 has-text-centered">thanks</p>
+                                    <p class="subtitle is-6 has-text-centered">Thanks</p>
                                     <p class="subtitle is-6 has-text-centered">12</p>
                                 </div>
                             </div>
@@ -109,15 +109,22 @@
                                     <div class='feed-description'>Project description {{project.description}}</div>
                                 </p>
                             </div>
-                            <!-- Style the ng-repeated div to have a margin on left and right - items are in a flex and so are crunched together I put a temporary fix below, Dylan -->
-                            <div class="tags">
-                                <div ng-repeat="skill in project.skills" style="margin:0 1%;">
-                                    <p class="tag is-rounded "><a href="" ng-click="filter(skill)">{{skill}}</a></p>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <a class="subtitle is-5" ng-href="/#!/account/{{project.posterid}}">{{project.username}}-</a>
+                                        <a class="subtitle is-5" ui-sref='projectPublicDetails({id: {{project.projid}}})'>{{project.title}}</a>
+                                        <br>
+                                        <hr> Project description {{project.description}}
+                                    </p>
                                 </div>
 
-                            </div>
+                                <div class="tags">
+                                    <div ng-repeat="skill in project.skills" style="margin:0 1%;">
+                                        <p class="tag is-rounded "><a href="" ng-click="filter(skill)">{{skill}}</a></p>
+                                    </div>
 
-                        </div>
+                                </div>
                     </a>
                 </article>
 
@@ -142,7 +149,7 @@
                         </footer>
                     </div>
                 </div>
+                </div>
+                </div>
             </div>
-        </div>
-    </div>
 </section>
