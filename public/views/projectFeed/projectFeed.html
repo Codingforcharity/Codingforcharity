@@ -1,12 +1,10 @@
 <nav class="navbar navbar-home is-transparent header-image" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <a class="navbar-item" href="#">
-                    <img src="/img/artboard1.png" alt="DevGive" width="112" height="auto">
-                  </a>
-        <button class="button is-danger navbar-burger">
-            <span></span>
-            <span></span>
-            <span></span>
+        <a class="navbar-item" href="#"><img src="/img/artboard1.png" alt="DevGive" width="112" height="auto"></a>
+
+        <button class="button is-danger navbar-burger" data-target="navMenu">
+            <span>About</span>
+            <span>Team</span>
           </button>
     </div>
     <!-- Left side Nav bar links/menus begin -->
@@ -55,13 +53,13 @@
                           </a>
                     </p>
                     <p class="control" ng-if="curUser.id">
-                            <a class="button is-primary" ui-sref="accountDev({id: {{curUser.id}}})">
+                        <a class="button is-primary" ui-sref="accountDev({id: {{curUser.id}}})">
                                 <span class="icon">
                                   <i class="fa fa-user-plus"></i>
                                 </span>
                                 <span>User Profile</span>
                               </a>
-                        </p>
+                    </p>
                 </div>
             </div>
         </div>
@@ -73,10 +71,10 @@
 <section class="hero header-image hero-project-feed has-text-centered is-bold">
     <div class="hero-body">
         <div class="container">
-            <h1 class="hero-title title">
+            <h1 class="hero-title title is-3">
                 Don't just imagine, do.
             </h1>
-            <h2 class="hero-title subtitle">
+            <h2 class="hero-title subtitle is-4">
                 Freelance services for non-profits by volunteer developers
             </h2>
         </div>
@@ -91,12 +89,14 @@
                 <div ng-if="curUser.id">
                     <div class="box is-fullwidth">
                         <div class="card-content">
-                            <div class="polaroid-feed is-team"><a ng-href="/#!/account/{{curUser.id}}">
-                                    <div class=polaroid-image> <img alt="" src="/img/avatars/andy.svg" /> </div> 
-                                    <span class=polaroid-label>{{curUser.username}}</span> 
-                                </a> </div>                                 
+                            <div class="polaroid-feed is-team">
+                                <a ng-href="/#!/account/{{curUser.id}}">
+                                    <div class=polaroid-image> <img alt="" src="/img/avatars/andy.svg" /> </div>
+                                    <span class=polaroid-label>{{curUser.username}}</span>
+                                </a>
                             </div>
-                            <!-- <a class="card-avatar" ng-href="/#!/account/dev/{{curUser.id}}">
+                        </div>
+                        <!-- <a class="card-avatar" ng-href="/#!/account/dev/{{curUser.id}}">
                             <img ng-src="{{curUser.profilepic}}" class="card-avatar-img">
                         </a>
                             <div class="">
@@ -104,36 +104,36 @@
                                     <a ng-href="/#!/account/dev/{{curUser.id}}">{{curUser.firstname}} {{curUser.lastname}}</a>
                                 </div>                              
                             </div> -->
-<div class="level">
-        <div class="level-item">
-            <div>               
-            <p class="subtitle is-6 has-text-centered">Projects</p>
-            <p class="subtitle is-6 has-text-centered">3</p>
-        </div>
-         </div>
-         <div class="level-item">
-                <div>               
-                <p class="subtitle is-6 has-text-centered">Messages</p>
-                <p class="subtitle is-6 has-text-centered">7</p>
-            </div>
-             </div>
-             <div class="level-item">
-                    <div>               
-                    <p class="subtitle is-6 has-text-centered">Thanks</p>
-                    <p class="subtitle is-6 has-text-centered">12</p>
-                </div>
-                 </div>
-    </div>         
+                        <div class="level">
+                            <div class="level-item">
+                                <div>
+                                    <p class="subtitle is-6 has-text-centered">projects</p>
+                                    <p class="subtitle is-6 has-text-centered">3</p>
+                                </div>
+                            </div>
+                            <div class="level-item">
+                                <div>
+                                    <p class="subtitle is-6 has-text-centered">messages</p>
+                                    <p class="subtitle is-6 has-text-centered">7</p>
+                                </div>
+                            </div>
+                            <div class="level-item">
+                                <div>
+                                    <p class="subtitle is-6 has-text-centered">thanks</p>
+                                    <p class="subtitle is-6 has-text-centered">12</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
                 <!-- ------- Filter box -------- -->
                 <div class="box trending">
                     <p class="subtitle is-5">
                         <strong>{{projectCount}}</strong> projects
                     </p>
-                    <p class=""><span class="subtitle is-5">filters</span> <a href="" ng-if="filtered" ng-click="getProjects()">reset</a></p>
                     <hr>
-                    <div class="spacer"></div>
+                    <p class=""><span class="subtitle is-5">filters:</span> <a href="" ng-if="filtered" ng-click="getProjects()">clear all filters</a></p>
+                    <div class="spacer"> </div>
                     <div class="tags">
                         <span class="tag is-rounded " ng-repeat="skill in skills" style="margin: 0 1%;"><a href="" ng-click="filter(skill)">{{skill}}</a>&nbsp;&nbsp;&nbsp;</span>
                     </div>
@@ -156,41 +156,67 @@
                         </div>
                     </nav>
                 </div>
-<!------------- Project boxes ------------>
+                <!------------- Project boxes ------------>
                 <div class="">
-                    <article class="box media project-box overflow: auto;" ng-repeat="project in projects">
-                      <a ng-href="/#!/account/{{project.posterid}}"><div class="media-left">
-                            <figure class="image is-64x64">
-                                <img ui-sref="accountDev({id: {{project.posterid}}})" ng-src="{{project.profilepic}}" alt="Charity Logo">
-                            </figure>
-                        </div>
-                        <div class="media-content">
-                            <div class="content">
-                                <p>
-                                        <a class="subtitle is-5" ng-href="/#!/account/{{project.posterid}}">{{project.username}}-</a>                                      
-                                    <a  class="subtitle is-5" ui-sref='projectPublicDetails({id: {{project.projid}}})'>{{project.title}}</a>
-                                    <!-- <small><a ng-href="/#!/account/dev/{{project.posterid}}">@{{project.username}}</a></small> -->
-                                    <!-- <small style="float:right;">Listed 2 weeks ago</small> -->
-                                    <br>
-                                    <hr>
-                                    Project description
-                                     {{project.description}}
-                                </p>
+                    <article class="box media project-box overflow: auto;" ng-click='project.showModal = true' ng-repeat="project in projects track by $index">
+                        <a ng-href="/#!/account/{{project.posterid}}">
+                            <div class="media-left">
+                                <figure class="image is-64x64">
+                                    <img ui-sref="accountDev({id: {{project.posterid}}})" ng-src="{{project.profilepic}}" alt="Charity Logo">
+                                </figure>
                             </div>
-                            <!-- Style the ng-repeated div to have a margin on left and right - items are in a flex and so are crunched together I put a temporary fix below, Dylan -->
-                            <div class="tags">
-                                <div ng-repeat="skill in project.skills" style="margin:0 1%;">
-                                    <p class="tag is-rounded "><a href="" ng-click="filter(skill)">{{skill}}</a></p>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <a class="title is-5" ng-href="/#!/account/{{project.posterid}}">{{project.username}}-</a>
+                                        <a class="subtitle is-5" ui-sref='projectPublicDetails({id: {{project.projid}}})'>{{project.title}}</a>
+                                        <!-- <small><a ng-href="/#!/account/dev/{{project.posterid}}">@{{project.username}}</a></small> -->
+                                        <!-- <small style="float:right;">Listed 2 weeks ago</small> -->
+                                        <br>
+                                        <hr style='margin: -.5rem auto 1rem 0;'>
+                                        <div class='feed-description'>Project description {{project.description}}</div>
+                                    </p>
+                                </div>
+                                <!-- Style the ng-repeated div to have a margin on left and right - items are in a flex and so are crunched together I put a temporary fix below, Dylan -->
+                                <div class="tags">
+                                    <div ng-repeat="skill in project.skills" style="margin:0 1%;">
+                                        <p class="tag is-rounded "><a href="" ng-click="filter(skill)">{{skill}}</a></p>
+                                    </div>
+
                                 </div>
 
                             </div>
+                        </a>
 
+
+                        <!------------ Project modal button -------->
+                        <a ng-click='project.showModal = !project.showModal' class="button is-primary is-large modal-button" data-target="modal-ter">Launch modal card</a>
+
+                        <!------------ Project modal  -------->
+                        <div ng-if='project.showModal' id="modal-ter" class="modal project-modal is-active">
+                            <div class="modal-background"></div>
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <p class="modal-card-title">{{project.title}}</p>
+                                    <button ng-click='project.showModal = false' class="delete"></button>
+                                </header>
+                                <section class="modal-card-body">
+                                    <div class="content">
+                                        <h1>{{project.title}}</h1>
+                                        <p>Project description {{project.description}}</p>
+
+                                    </div>
+                                </section>
+                                <footer class="modal-card-foot">
+                                    <a class="button is-success">Save changes</a>
+                                    <a ng-click='$parent.showModal = false' class="button">Cancel</a>
+                                </footer>
+                            </div>
                         </div>
-                    </a>
                     </article>
 
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
