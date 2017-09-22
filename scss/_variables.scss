@@ -1,5 +1,4 @@
 @import "./sass/utilities/initial-variables.sass";
-
 //////////////////////////////////////////////
 // Color Varaible change settings/////
 //////////////////////////////////////////////
@@ -13,25 +12,33 @@
 // $green:        #02B875;
 // $blue:         #5bc0de;
 // $red:          #d9534f;
-   $black:        #000000;
+$black: #000000;
 $primary: #0AAFC4 !default;
-$danger:  #F3969B;
-
-
+$danger: #F3969B;
 $family-primary: $family-sans-serif;
-$family-sans-serif: "Bariol", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-
+$family-sans-serif: "Bariol",
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+"Roboto",
+"Oxygen",
+"Ubuntu",
+"Cantarell",
+"Fira Sans",
+"Droid Sans",
+"Helvetica Neue",
+"Helvetica",
+"Arial",
+sans-serif;
 $tag-color: $black;
-
 // $family-serif: Inconsolata, Consolas, Monaco, monospace
-
 // $navbar-height: 3rem;
-$navbar-item-hover-color: $primary;
+$navbar-item-color: white;
+$navbar-item-hover-color: $danger;
 $navbar-item-hover-background-color: transparent;
+;
 $navbar-item-active-color: white;
 $navbar-item-active-background-color: white;
-
 $navbar-dropdown-item-hover-color: $primary;
 $navbar-dropdown-item-hover-background-color: transparent;
 $navbar-dropdown-item-active-background-color: transparent;
-
