@@ -1,4 +1,4 @@
-app.controller('projectPublicDetailCtrl', function($scope, $stateParams, projectPublicDetailsSrvc) {
+app.controller('projectPublicDetailCtrl', function ($scope, $stateParams, projectPublicDetailsSrvc) {
     console.log("projectPublicDetailsCtrl")
     $scope.curUser;
     $scope.getProjectById = () => {
@@ -19,6 +19,10 @@ app.controller('projectPublicDetailCtrl', function($scope, $stateParams, project
                 $scope.getProjectById();
             })
     }
+
+    $scope.toggle = function () {
+        $scope.state = !$scope.state;
+    };
 
     $scope.getLoggedInUser();
 })
