@@ -1,4 +1,4 @@
-app.controller("projectFeedCtrl", function($scope, projectFeedSrvc) {
+app.controller("projectFeedCtrl", function ($scope, projectFeedSrvc) {
     console.log("projectFeedCtrl");
     $scope.curUser;
     $scope.skills = [];
@@ -39,7 +39,7 @@ app.controller("projectFeedCtrl", function($scope, projectFeedSrvc) {
                 // $scope.projects.showModal = false;
             });
             console.log("ALL SKILLS: ", $scope.skills);
-            $scope.skills = $scope.skills.filter(function(item, pos) {
+            $scope.skills = $scope.skills.filter(function (item, pos) {
                 return $scope.skills.indexOf(item) == pos;
             });
             console.log($scope.skills);
@@ -87,7 +87,7 @@ app.controller("projectFeedCtrl", function($scope, projectFeedSrvc) {
         $scope.modal = {
             title: project.title,
             desc: project.description,
-            creator: project.name,
+            creator: project.username,
             pic: project.profilepic,
             name: project.firstname + " " + project.lastname,
 

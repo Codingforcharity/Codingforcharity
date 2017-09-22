@@ -24,7 +24,7 @@
                         <div class="card-content">
                             <div class="polaroid-feed is-team">
                                 <a ng-href="/#!/account/{{curUser.id}}">
-                                    <div class=polaroid-image> <img alt="" src="/img/avatars/andy.svg" /> </div>
+                                    <div class=polaroid-image> <img alt="" ng-src="{{curUser.profilepic}}" /> </div>
                                     <span class=polaroid-label>{{curUser.username}}</span>
                                 </a>
                             </div>
@@ -102,29 +102,17 @@
                                 <p>
                                     <a class="title is-5" ng-href="/#!/account/{{project.posterid}}">{{project.username}}-</a>
                                     <a class="subtitle is-5" ui-sref='projectPublicDetails({id: {{project.projid}}})'>{{project.title}}</a>
-                                    <!-- <small><a ng-href="/#!/account/dev/{{project.posterid}}">@{{project.username}}</a></small> -->
-                                    <!-- <small style="float:right;">Listed 2 weeks ago</small> -->
                                     <br>
                                     <hr style='margin: -.5rem auto 1rem 0;'>
                                     <div class='feed-description'>Project description {{project.description}}</div>
                                 </p>
                             </div>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                        <a class="subtitle is-5" ng-href="/#!/account/{{project.posterid}}">{{project.username}}-</a>
-                                        <a class="subtitle is-5" ui-sref='projectPublicDetails({id: {{project.projid}}})'>{{project.title}}</a>
-                                        <br>
-                                        <hr> Project description {{project.description}}
-                                    </p>
+                            <div class="tags">
+                                <div ng-repeat="skill in project.skills" style="margin:0 1%;">
+                                    <p class="tag is-rounded "><a href="" ng-click="filter(skill)">{{skill}}</a></p>
                                 </div>
 
-                                <div class="tags">
-                                    <div ng-repeat="skill in project.skills" style="margin:0 1%;">
-                                        <p class="tag is-rounded "><a href="" ng-click="filter(skill)">{{skill}}</a></p>
-                                    </div>
-
-                                </div>
+                            </div>
                     </a>
                 </article>
 
@@ -133,23 +121,38 @@
                     <div class="modal-background"></div>
                     <div class="modal-card">
                         <header class="modal-card-head">
-                            <p class="modal-card-title">{{modal.title}}</p>
+                            <p class="modal-card-title">{{modal.creator}} - Project description</p>
                             <button ng-click='$parent.modalSet = false' class="delete"></button>
                         </header>
                         <section class="modal-card-body">
                             <div class="content">
-                                <h1>{{project.title}}</h1>
-                                <p>Project description {{modal.desc}}</p>
-
+                                <div class="">
+                                    <!-- Heart you -->
+                                    <figure class="image is-128x128">
+                                        <img ui-sref="accountDev({id: {{modal.posterid}}})" ng-src="{{modal.pic}}" alt="Charity Logo">
+                                    </figure>
+                                </div>
+                                <br>
+                                <div class="content">
+                                    <h3 class="">{{modal.title}}</h3>
+                                    <hr>
+                                    <p>{{modal.desc}}</p>
+                                </div>
+                                <h4 class="subtitle is-5">Tell us about yourself</h4>
                             </div>
+
+                            <div class="control">
+                                <textarea class="textarea" type="text" placeholder="Enter details here"></textarea>
+                            </div>
+
                         </section>
                         <footer class="modal-card-foot">
-                            <a class="button is-success" ng-href='/#!/apply/{{project.projid}}' ng-if="curUser.id">Apply</a>
-                            <a ng-click='$parent.modalSet = false' class="button">Cancel</a>
+                            <a class="button is-danger" ng-href='/#!/apply/{{project.projid}}' ng-if="curUser.id">Apply</a>
+                            <a ng-click='$parent.modalSet = false' class="button is-primary is-outlined">Cancel</a>
                         </footer>
                     </div>
                 </div>
                 </div>
-                </div>
             </div>
+        </div>
 </section>
