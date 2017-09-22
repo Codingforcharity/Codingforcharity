@@ -1,71 +1,4 @@
-<nav class="navbar navbar-home is-transparent header-image" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <a class="navbar-item" href="#"><img src="/img/artboard1.png" alt="DevGive" width="112" height="auto"></a>
-
-        <button class="button is-danger navbar-burger" data-target="navMenu">
-            <span>About</span>
-            <span>Team</span>
-          </button>
-    </div>
-    <!-- Left side Nav bar links/menus begin -->
-    <div id="navMenu" class="navbar-menu">
-        <div class="navbar-start">
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link  is-active">
-                     Interal Views
-                    </a>
-                <div class="navbar-dropdown is-boxed">
-                    <a class="navbar-item" ui-sref='projectFeed'>
-                         Project Feed
-                        </a>
-                    <a class="navbar-item" ui-sref='accountDev'>
-                            Dev Profile
-                           </a>
-                    <a class="navbar-item" ui-sref='workingProject'>
-                              Working Project View
-                             </a>
-                    <a class="navbar-item" ui-sref='projectPublicDetails'>
-                               Public project view
-                             </a>
-                </div>
-            </div>
-        </div>
-        <!-- RIght side Nav bar links login begin -->
-        <div class="navbar-end">
-            <div class="navbar-item nav-buttons">
-                <div class="field is-grouped">
-                    <p class="control" ng-if="!curUser.id">
-                        <a class="bd-tw-button button is-danger" href="/auth">
-                            <span class="icon">
-                  <i class="fa fa-sign-in"></i>
-                </span>
-                            <span>
-                  Sign-In
-                </span>
-                        </a>
-                    </p>
-                    <p class="control" ng-if="!curUser.id">
-                        <a class="button is-primary" href="/auth">
-                            <span class="icon">
-                              <i class="fa fa-user-plus"></i>
-                            </span>
-                            <span>Sign-Up</span>
-                        </a>
-                    </p>
-                    <p class="control" ng-if="curUser.id">
-                        <a class="button is-primary" ui-sref="accountDev({id: {{curUser.id}}})">
-                            <span class="icon">
-                                  <i class="fa fa-user-plus"></i>
-                                </span>
-                            <span>User Profile</span>
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</nav>
+<topnav></topnav>
 <!-- ---------- Hero - Project Feed -------- -->
 
 <section class="hero header-image hero-project-feed has-text-centered is-bold">
@@ -204,7 +137,7 @@
                             </div>
                         </section>
                         <footer class="modal-card-foot">
-                            <a class="button is-success">Save changes</a>
+                            <a class="button is-success" ng-href='/#!/apply/{{project.projid}}' ng-if="curUser.id">Apply</a>
                             <a ng-click='$parent.modalSet = false' class="button">Cancel</a>
                         </footer>
                     </div>
