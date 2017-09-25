@@ -1,5 +1,23 @@
 <!-- ------------  NAVBAR --------- -->
-<topnav></topnav>
+<topnav>
+        <p class="control" ng-if="curUser.id">
+                <a class="button is-danger" ui-sref="accountDev({id: {{curUser.id}}})">
+                    <span class="icon">
+                              <i class="fa fa-user-plus"></i>
+                            </span>
+                    <span>User Profile</span>
+                </a>
+            </p>
+            <p class="control" ng-if="curUser.id">
+                <a class="button is-primary" href="/#">
+                    <span class="icon">
+                          <i class="fa fa-sign-out"></i>
+                        </span>
+                    <span>Sign-Out</span>
+                </a>
+            </p>
+
+</topnav>
 <!-- --------------  Hero ----------------- -->
 <section class=" hero is-bold is-large header-image is-intro">
     <div class="hero-body has-text-centered">

@@ -3,9 +3,7 @@
         <a class="navbar-item" href="#"><img src="/img/artboard1.png" alt="DevGive" width="112" height="auto"></a>
 
         <button class="button is-danger navbar-burger burger" id="burger" data-target="navMenu" ng-click="toggleBurger()">
-                <span></span>
-                <span></span>
-                <span></span>
+
         </button>
     </div>
     <!-- Left side Nav bar links/menus begin -->
@@ -61,6 +59,14 @@
                                       <i class="fa fa-user-plus"></i>
                                     </span>
                             <span>User Profile</span>
+                        </a>
+                    </p>
+                    <p class="control" ng-if="curUser.id">
+                        <a class="button is-primary" href="/auth/logout">
+                            <span class="icon">
+                                  <i class="fa fa-sign-out"></i>
+                                </span>
+                            <span>Sign-Out</span>
                         </a>
                     </p>
                 </div>

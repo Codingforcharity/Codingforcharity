@@ -24,8 +24,8 @@
                         <div class="card-content">
                             <div class="polaroid-feed is-team">
                                 <a ng-href="/#!/account/{{curUser.id}}">
-                                    <div class=polaroid-image> <img alt="" ng-src="{{curUser.profilepic}}" /> </div>
-                                    <span class=polaroid-label>{{curUser.username}}</span>
+                                    <div class="polaroid-image change-polaroid-bg-color"> <img alt="" ng-src="{{curUser.profilepic}}" /> </div>
+                                    <span class="polaroid-label">{{curUser.username}}</span>
                                 </a>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                     </nav>
                 </div>
                 <!------------- Project boxes ------------>
-                <article class="box media project-box overflow: auto;" ng-click='showModal(project)' ng-repeat="project in projects track by $index">
+                <article class="box media project-box is-last-child overflow: auto;" ng-click='showModal(project)' ng-repeat="project in projects track by $index">
                     <a ng-href="/#!/account/{{project.posterid}}">
                         <div class="media-left">
                             <figure class="image is-64x64">
@@ -104,7 +104,7 @@
                                     <a class="subtitle is-5" ui-sref='projectPublicDetails({id: {{project.projid}}})'>{{project.title}}</a>
                                     <br>
                                     <hr style='margin: -.5rem auto 1rem 0;'>
-                                    <div class='feed-description'>Project description {{project.description}}</div>
+                                    <div class='feed-description'>Project description: {{project.description}}</div>
                                 </p>
                             </div>
                             <div class="tags">

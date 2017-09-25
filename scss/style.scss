@@ -12,6 +12,10 @@
   background-image: linear-gradient(141deg, #1f1a1b 0%, #363636 71%, #46413f 100%);
 }
 
+.box {
+box-shadow: 0 0px 0px 0;
+}
+
 // home's css
 @media screen and (max-width: 1452px) {
   .testimonial-pic-container {
@@ -51,7 +55,6 @@
     font-weight: 700;
   }
 }
-
 
 @media screen and (min-width: 769px) {
   .box {
@@ -102,7 +105,6 @@
   .bold-websites-for-nonprofits {
     font-weight: 700;
   }
-
   .verify-and-login {
     display: flex;
   }
@@ -320,12 +322,14 @@
   display: block;
   align-items: center;
 }
+
 .account-level {
   text-align: center;
   background-color: #363636;
   color: white;
   font-weight: 600;
-  font-size: 20px;;
+  font-size: 20px;
+  ;
   padding: 1rem;
   display: flex;
   justify-content: space-around;
@@ -343,3 +347,18 @@
 .add-margin-left {
   margin-left: 3px;
 }
+
+.align-button-center {
+  text-align: center;
+}
+
+// projectFeed's css 
+.is-last-child {
+  margin-bottom: 1.5rem;
+}
+
+.polaroid-feed.is-team .polaroid-image {
+  background-color: white;
+}
+
+//
