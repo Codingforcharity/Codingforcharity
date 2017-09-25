@@ -1579,22 +1579,22 @@ section.is-alternative,
   transition: 300ms;
 }
 
-@media screen and (min-width: 769px) {
-  .box {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-  .box:not(.is-borderless):hover,
-  .box:not(.is-borderless).is-hovered,
-  .box:not(.is-borderless):focus,
-  .box:not(.is-borderless).is-focused,
-  .box:not(.is-borderless):active,
-  .box:not(.is-borderless).is-active,
-  .box:not(.is-borderless) .is-touched {
-    box-shadow: 0 22px 43px rgba(219, 219, 219, 0.5);
-    transform: translateY(-4px);
-  }
-}
+// @media screen and (min-width: 769px) {
+//     .box {
+//         margin-top: 2rem;
+//         margin-bottom: 2rem;
+//     }
+//     .box:not(.is-borderless):hover,
+//     .box:not(.is-borderless).is-hovered,
+//     .box:not(.is-borderless):focus,
+//     .box:not(.is-borderless).is-focused,
+//     .box:not(.is-borderless):active,
+//     .box:not(.is-borderless).is-active,
+//     .box:not(.is-borderless) .is-touched {
+//         box-shadow: 0 22px 43px rgba(219, 219, 219, 0.5);
+//         transform: translateY(-4px);
+//     }
+// }
 
 .box.has-icon,
 .box.is-department {
