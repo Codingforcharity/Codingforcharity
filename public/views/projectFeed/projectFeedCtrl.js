@@ -87,7 +87,7 @@ app.controller("projectFeedCtrl", function($scope, projectFeedSrvc) {
         $scope.modal = {
             title: project.title,
             desc: project.description,
-            creator: project.name,
+            creator: project.username,
             pic: project.profilepic,
             name: project.firstname + " " + project.lastname,
 
