@@ -1,173 +1,189 @@
 <topnav></topnav>
-<section class="section account-bg-color">
-    <div class="container accountdev-resize-container">
-        <div class="column is-mobile">
 
-
+<!-- ---------- Account Profile -------- -->
+<section class="section account-profile">
+    <div class="container profile">
+        <div class="section box account-profile">
             <div class="columns">
-
-
-                <div class="column add-padding-to-column">
-
-
-                    <div class="column">
-                        <article class="message account-change-message-bg-color">
-                            <div class="message-header center-projects-header ">
-                                <p>Projects</p>
+                <!------------------ Profile Picture - left column ---------------->
+                <div class="column is-3">
+                    <div class="is-fullwidth ">
+                        <div class="card-content">
+                            <div class="polaroid-feed is-team">
+                                <div class=polaroid-image>
+                                    <img ng-if="!ownPage" ng-src="{{pageOwner.profilepic}}" alt="Profile pic for {{pageOwner.username}}">
+                                    <img ng-if="ownPage" ng-src="{{curUser.profilepic}}" alt="Profile pic for {{curUser.username}}">
+                                </div>
+                                <span class=polaroid-label>{{pageOwner.firstname}}</span>
                             </div>
-                            <div class="content account-change-content-bg-color" ng-repeat="project in userProjects">
-                                <p>
-                                    <a ng-href="/#!/projectfeed/project/{{project.projid}}" ng-if="!ownPage"><strong>{{project.title}}</strong></a>
-                                    <a ng-href="/#!/active/project/{{project.projid}}" ng-if="ownPage"><strong>{{project.title}}</strong></a>
-                                    <br> {{project.description}}
-                                </p>
+                        </div>
+                        <div class="level">
+                            <div class="level-item">
+                                <div class="button  is-danger">Change Profile Picture</div>
                             </div>
-                        </article>
+                        </div>
                     </div>
-
-
-                    <h3 style="text-align: left" class="title is-3 ">Message Board</h3>
-
-                    <article class="media " ng-repeat="comment in userComments">
-                        <figure class="media-left ">
-                            <p class="image is-64x64 ">
-                                <img ng-src="{{comment.profilepic}}">
-                            </p>
-                        </figure>
-                        <div class="media-content ">
-                            <div class="content ">
-                                <p>
-                                    <strong ng-if="comment.firstname && comment.lastname">{{comment.firstname}} {{comment.lastname}}</strong>
-                                    <strong ng-if="!comment.firstname || !comment.lastname">{{comment.username}}</strong>
-                                    <br> {{comment.message}}
-                                    <br>
-                                </p>
-                            </div>
-
-                            <article class="media " ng-repeat="reply in comment.replies">
-                                <figure class="media-left ">
-                                    <p class="image is-48x48 ">
-                                        <img ng-src="{{reply.profilepic}}">
-                                    </p>
-                                </figure>
-                                <div class="media-content ">
-                                    <div class="content ">
-                                        <p>
-                                            <strong ng-if="reply.firstname && reply.lastname">
-                                                        {{reply.firstname}} {{reply.lastname}}
-                                                    </strong>
-                                            <strong ng-if="!reply.firstname || !reply.lastname">
-                                                        {{reply.username}}
-                                                    </strong>
-                                            <br> {{reply.message}}
-                                            <br>
-                                        </p>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="media" ng-if="curUser.username">
-                                <figure class="media-left">
-                                    <p class="image is-64x64">
-                                        <img ng-src="{{curUser.profilepic}}">
-                                    </p>
-                                </figure>
-                                <div class="media-content">
-                                    <div class="field">
-                                        <p class="control">
-                                            <textarea class="textarea" ng-model="newReply" placeholder="Add a reply..."></textarea>
-                                        </p>
-                                    </div>
-                                    <div class="field">
-                                        <p class="control change-button-style">
-                                            <button class="button" ng-click="submitReply(comment, newReply); newReply=''; ">Post reply</button>
-                                        </p>
-                                    </div>
-                                </div>
-                            </article>
-                            <hr style="border-top: dotted 1px;" />
-                        </div>
-                    </article>
-
-                    <article class="media " ng-if="curUser.username">
-                        <div class="media-content ">
-                            <div class="field ">
-                                <p class="control ">
-                                    <textarea class="textarea " ng-model="newComment" placeholder="Add a comment... "></textarea>
-                                </p>
-                            </div>
-                            <div class="field ">
-                                <p class="control change-button-style">
-                                    <button class="button " ng-click="submitComment(newComment);">Post comment</button>
-                                </p>
-                            </div>
-                        </div>
-                    </article>
-
                 </div>
+                <!------------------ Profile - right column ---------------->
+                <div class="column is-9">
+                    <div class="spacer"></div>
+                    <div class="columns">
+                        <div class="column is-6">
+                            <p class="title is-4" ng-if="!ownPage && pageOwner.firstname">
+                                <span class="title is-bold">{{pageOwner.firstname}} {{pageOwner.lastname}}</span>
+                            </p>
+                            <p class="title is-4" ng-if="ownPage">
+                                <input type="text" ng-model="$parent.newFirstName" placeholder="First Name">
+                            </p>
+                            <p class="title is-4" ng-if="ownPage">
+                                <input type="text" ng-model="$parent.newLastName" placeholder="Last Name">
+                            </p>
+                        </div>
+                        <div class="column is-6">
+                            <div>
+                                <div class="project-counter title is-6">Thanks: 3</div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="content profile is-medium">
+                        <div class="content" ng-if="!ownPage">
+                            <strong>bio:</strong> {{pageOwner.bio}}
+                        </div>
+                        <div class="content" ng-if="ownPage">
+                            <span class="bold-description">Description: </span>
+                            <textarea style="width: 100%" rows="10" cols="60" ng-model="$parent.newBio" placeholder="Describe yourself">
+                                        {{curUser.bio}}
+                                    </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="align-button-center">
+                <button class="button is-danger" type="submit" ng-if="ownPage" ng-click="subChanges($parent.newProfilePic, $parent.newFirstName, $parent.newLastName, $parent.newBio, $parent.newSkills);">Submit Changes</button>
+            </div>
 
-                <div class="column is-one-quarter change-column-color">
-                    <div class="account-add-padding">
-                        <figure class="image is-256x256">
+            <br>
+
+            <footer>
+                <div class="tabs profile is-medium is-centered is-boxed">
+                    <ul>
+                        <li class="is-active"><a><span class="icon is-small"><i class="fa fa-envelope-o"></i></span><span>Messages</span></a></li>
+                        <li class="is-active"><a><span class="icon is-small"><i class="fa fa-folder"></i></span><span>Projects</span></a></li>
+                        <li>
+                            <a>
+                                  <span class="icon is-small"><i class="fa fa-heart"></i></span>
+                                  <span>Thanks</span>
+                                </a>
+                        </li>
+                        <li>
+                            <a>
+                                  <span class="icon is-small"><i class="fa fa-sliders"></i></span>
+                                  <span>Settings</span>
+                                </a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+
+            <!------------ Projects ------------>
+            <!-- <h3 class="title is-3 style-message-board">Project</h3> -->
+            <article class="box media project-box overflow: auto;" ng-repeat="project in userProjects">
+                <a ng-href="/#!/account/{{project.posterid}}">
+                    <div class="media-left">
+                        <figure class="image is-64x64">
                             <img ng-if="!ownPage" ng-src="{{pageOwner.profilepic}}" alt="Profile pic for {{pageOwner.username}}">
                             <img ng-if="ownPage" ng-src="{{curUser.profilepic}}" alt="Profile pic for {{curUser.username}}">
                         </figure>
-                        <br>
-                        <input ng-if="ownPage" type="text" ng-model="$parent.newProfilePic" placeholder="insert link to profile pic here">
-
-                        <div class="card-content remove-card-content-set-height">
-                            <div class="media">
-                                <div class="media-content">
-                                    <p class="title is-4" ng-if="!ownPage && pageOwner.firstname">
-                                        {{pageOwner.firstname}} {{pageOwner.lastname}}
-                                    </p>
-                                    <p class="title is-4" ng-if="ownPage">
-                                        <input type="text" ng-model="$parent.newFirstName" placeholder="First Name">
-                                    </p>
-                                    <p class="title is-4" ng-if="ownPage">
-                                        <input type="text" ng-model="$parent.newLastName" placeholder="Last Name">
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="content" ng-if="!ownPage">
-                                <p class="add-opacity">{{pageOwner.bio}}</p>
-                            </div>
-                            <div class="content" ng-if="ownPage">
-                                <span class="bold-description">Description: </span>
-                                <textarea style="width: 100%" rows="10" cols="60" ng-model="$parent.newBio" placeholder="Describe yourself">
-                                        {{curUser.bio}}
-                                    </textarea>
-                            </div>
-                            <div class="verify-and-login" ng-if="!ownPage">
-                                <img class="account-resize-img" src="./img/check.png">
-                                <p>Verified</p>
-                                <div class="account-float-right">
-                                    <img class="account-resize-img" src="./img/useravatar.png">
-                                    <p>Currently Offline</p>
-                                </div>
-                            </div>
-
-                            <br>
-
-                            <div class="box account-level">
-                                <div class="display-block">
-                                    <p>1</p>
-                                    <p>Current Projects</p>
-                                </div>
-                                <div class="display-block">
-                                    <p>0</p>
-                                    <p>Finished Projects</p>
-                                </div>
-
-                            </div>
-
+                    </div>
+                    <div class="media-content">
+                        <div class="content">
+                            <p>
+                                <a class="subtitle is-5" ng-href="/#!/account/{{project.posterid}}">{{project.username}}</a>
+                                <a class="subtitle is-5" ui-sref='projectPublicDetails({id: {{project.projid}}})'>{{project.title}}</a>
+                                <br>
+                                <hr>
+                                <div class="feed-description">{{project.description}}</div>
+                            </p>
                         </div>
                     </div>
-                    <button type="submit" ng-if="ownPage" ng-click="subChanges($parent.newProfilePic, $parent.newFirstName, $parent.newLastName, $parent.newBio, $parent.newSkills);">Submit Changes</button>
-                </div>
+                </a>
+            </article>
 
+            <!-- ------------Messages ----------------- -->
+            <!-- <h3 class="title is-3 style-message-board">Message Board</h3> -->
+            <div class="box message-board-container">
+                <article class="media " ng-repeat="comment in userComments">
+                    <figure class="media-left ">
+                        <p class="image is-64x64 ">
+                            <a ng-href="/#!/account/{{comment.posterid}}"> <img ng-src="{{comment.profilepic}}"> </a>
+                        </p>
+                    </figure>
+                    <div class="media-content ">
+                        <div class="content ">
+                            <p>
+                                <a ng-href="/#!/account/{{comment.posterid}}"><strong ng-if="comment.firstname && comment.lastname">{{comment.firstname}} {{comment.lastname}}</strong>
+                                <strong ng-if="!comment.firstname || !comment.lastname">{{comment.username}}</strong></a>
+                                <br> {{comment.message}}
+                                <br>
+                            </p>
+                        </div>
+
+                        <article class="media " ng-repeat="reply in comment.replies">
+                            <figure class="media-left ">
+                                <p class="image is-48x48 ">
+                                    <a ng-href="/#!/account/{{reply.posterid}}"><img ng-src="{{reply.profilepic}}"></a>
+                                </p>
+                            </figure>
+                            <div class="media-content ">
+                                <div class="content ">
+                                    <p>
+                                        <a ng-href="/#!/account/{{reply.posterid}}"><strong ng-if="reply.firstname && reply.lastname">{{reply.firstname}} {{reply.lastname}}</strong>
+                                        <strong ng-if="!reply.firstname || !reply.lastname">{{reply.username}}</strong></a>
+                                        <br> {{reply.message}}
+                                        <br>
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="media" ng-if="curUser.username">
+                            <figure class="media-left">
+                                <p class="image is-64x64">
+                                    <img ng-src="{{curUser.profilepic}}">
+                                </p>
+                            </figure>
+                            <div class="media-content">
+                                <div class="field">
+
+                                    <textarea class="textarea" rows="4" ng-model="newReply" placeholder="Add a reply..."></textarea>
+
+                                </div>
+                                <div class="field">
+                                    <p class="control change-button-style">
+                                        <button class="button is-danger" ng-click="submitReply(comment, newReply); newReply=''; ">Post reply</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <hr style="border-top: dotted 1px;" />
+                    </div>
+                </article>
+
+                <article class="media " ng-if="curUser.username">
+                    <div class="media-content ">
+                        <div class="field ">
+                            <p class="control ">
+                                <textarea class="textarea " ng-model="newComment" placeholder="Add a comment... "></textarea>
+                            </p>
+                        </div>
+                        <div class="field ">
+                            <p class="control change-button-style">
+                                <button class="button is-danger" ng-click="submitComment(newComment);">Post comment</button>
+                            </p>
+                        </div>
+                    </div>
+                </article>
             </div>
-
-
         </div>
     </div>
 </section>

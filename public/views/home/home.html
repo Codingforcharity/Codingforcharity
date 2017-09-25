@@ -1,66 +1,23 @@
 <!-- ------------  NAVBAR --------- -->
-<nav class="navbar navbar-home is-transparent header-image" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <a class="navbar-item" href="#">
-            <img src="/img/artboard1.png" alt="DevGive" width="112" height="auto">
-        </a>
-        <button class="button is-danger navbar-burger">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-    </div>
-    <!-- Left side Nav bar links/menus begin -->
-    <div id="navMenu" class="navbar-menu">
-        <div class="navbar-start">
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link  is-active">
-                     Interal Views
-                    </a>
-                <div class="navbar-dropdown is-boxed">
-                    <a class="navbar-item" ui-sref='projectFeed'>
-                         Project Feed
-                        </a>
-                    <a class="navbar-item" ui-sref='accountDev'>
-                            Dev Profile
-                           </a>
-                    <a class="navbar-item" ui-sref='workingProject'>
-                              Working Project View
-                             </a>
-                    <a class="navbar-item" ui-sref='projectPublicDetails'>
-                               Public project view
-                             </a>
-                </div>
-            </div>
-        </div>
-        <!-- RIght side Nav bar links login begin -->
-        <div class="navbar-end">
-            <div class="navbar-item nav-buttons">
-                <div class="field is-grouped">
-                    <p class="control">
-                        <a class="bd-tw-button button is-danger" href="/auth">
-                            <span class="icon">
-                  <i class="fa fa-sign-in"></i>
-                </span>
-                            <span>
-                  Sign-In
-                </span>
-                        </a>
-                    </p>
-                    <p class="control">
-                        <a class="button is-primary" href="/auth">
-                            <span class="icon">
+<topnav>
+        <p class="control" ng-if="curUser.id">
+                <a class="button is-danger" ui-sref="accountDev({id: {{curUser.id}}})">
+                    <span class="icon">
                               <i class="fa fa-user-plus"></i>
                             </span>
-                            <span>Sign-Up</span>
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+                    <span>User Profile</span>
+                </a>
+            </p>
+            <p class="control" ng-if="curUser.id">
+                <a class="button is-primary" href="/#">
+                    <span class="icon">
+                          <i class="fa fa-sign-out"></i>
+                        </span>
+                    <span>Sign-Out</span>
+                </a>
+            </p>
 
-</nav>
+</topnav>
 <!-- --------------  Hero ----------------- -->
 <section class=" hero is-bold is-large header-image is-intro">
     <div class="hero-body has-text-centered">
@@ -107,7 +64,8 @@
                             <h3 class=box-title> 1. Tell us what you need </h3>
                         </div>
                         <div class=box-body>
-                            <p> Start by adding your basic project requirements like your ‘must haves’, skills required, location and current status. </p>
+                            <p> Start by adding your basic project requirements like your ‘must haves’, skills required, location
+                                and current status. </p>
                         </div>
                     </div>
                 </div>
@@ -118,7 +76,8 @@
                             <h3 class=box-title> 2. Find great talent </h3>
                         </div>
                         <div class=box-body>
-                            <p> It won’t be long before developers start sending you a selection of candidates who meet your criteria. Track the progress of your project in real-time via the Project Tracking System.
+                            <p> It won’t be long before developers start sending you a selection of candidates who meet your
+                                criteria. Track the progress of your project in real-time via the Project Tracking System.
                             </p>
                         </div>
                     </div>
@@ -130,7 +89,8 @@
                             <h3 class=box-title> 3. Select the right Developer </h3>
                         </div>
                         <div class=box-body>
-                            <p> After you’ve found your developers, contact them to being the project. Once they have signed on to your project, you can welcome a new face to your team. </p>
+                            <p> After you’ve found your developers, contact them to being the project. Once they have signed
+                                on to your project, you can welcome a new face to your team. </p>
                         </div>
                     </div>
                 </div>
