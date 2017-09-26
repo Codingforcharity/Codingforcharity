@@ -121,12 +121,6 @@
     position: relative;
 }
 
-// .accountdev-resize-container,
-.home-resize-container,
-.workingproject-resize-container {
-    max-width: 1060px;
-}
-
 .home-about-text h3,
 .home-pitch-text h3 {
     font-size: 30px;
@@ -198,6 +192,10 @@
 
 .message-body a:hover {
     border-bottom: 3px solid rgb(189, 212, 54);
+}
+
+.working-resize-submit {
+    width: 25%;
 }
 
 // devprojectapplication's css
