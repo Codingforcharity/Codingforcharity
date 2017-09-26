@@ -2,7 +2,24 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
     // console.log("accountDev link")
     $scope.curUser;
     $scope.ownPage = false;
+    $scope.isActive = true;
     $scope.newSkills = "";
+    $scope.modalSet = false;
+    $scope.showPictures = false;
+    $scope.avatarArr = [];
+
+    $scope.changeModal = (project) => {
+        console.log("open modal")
+        $scope.modal = {
+            title: project.title,
+            desc: project.description,
+            creator: project.username,
+            pic: project.profilepic,
+            name: project.firstname + " " + project.lastname,
+
+        }
+        $scope.modalSet = true;
+    }
 
     $scope.submitReply = (comment, reply) => {
         if (comment) {
@@ -68,14 +85,20 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
             })
     }
 
+    $scope.getUpdatedUser = (userid) => {
+        accountDevSrvc.getUserById(userid)
+            .then((user) => {
+                $scope.curUser = Object.assign({}, user.data[0]);
+                $scope.getUserByParams();
+                $scope.getProjectsById();
+            })
+    }
+
     $scope.getLoggedInUser = () => {
         accountDevSrvc.getLoggedInUser()
             .then((user) => {
-                if (!user.data.ischarity) {
-                    $scope.curUser = Object.assign({}, user.data);
-                    $scope.getUserByParams();
-                    $scope.getProjectsById();
-                }
+                $scope.curUser = Object.assign({}, user.data);
+                $scope.getUpdatedUser($scope.curUser.id)
             })
     }
     $scope.getUserByParams = () => {
@@ -98,14 +121,8 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
         }
     }
 
-    $scope.subChanges = (newProfilePic, newFirstName, newLastName, newBio, newSkills) => {
+    $scope.subChanges = (newFirstName, newLastName, newBio, newSkills) => {
         let newUser = {};
-        if (newProfilePic) {
-            newUser.profilepic = newProfilePic;
-        } else {
-            newUser.profilepic = $scope.curUser.profilepic;
-        }
-
         if (newFirstName) {
             newUser.firstname = newFirstName;
         } else {
@@ -157,6 +174,7 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
         newUser.email = $scope.curUser.email;
         newUser.username = $scope.curUser.username;
         newUser.ischarity = $scope.curUser.ischarity;
+        newUser.profilepic = $scope.curUser.profilepic;
         accountDevSrvc.updateUser($stateParams.id, newUser)
             .then((updatedUser) => {
                 // console.log("updated user", updatedUser)
@@ -165,5 +183,43 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
                 $scope.getUserSkills($stateParams.id)
             });
     }
+
+    $scope.changeTab = (str) => {
+        let messages = document.getElementById('messages');
+        let projects = document.getElementById('projects');
+        if (str === 'messages') {
+            messages.className = "is-active";
+            projects.className = "";
+            $scope.isActive = true;
+        } else {
+            projects.className = "is-active";
+            messages.className = "";
+            $scope.isActive = false;
+        }
+    }
+
+    $scope.changePicture = () => {
+        console.log('changing picture')
+        $scope.showPictures = true;
+    }
+
+    $scope.updatePicture = (avatar) => {
+        // console.log(avatar);
+
+        for (let i = 0; i < 17; i++) {
+            if (avatar === "avatar" + i) {
+                let imgUrl = "./img/avatars/" + i + ".svg";
+                // console.log(imgUrl)
+                accountDevSrvc.updateImg($scope.curUser.id, imgUrl)
+                    .then((user) => {
+                        $scope.curUser = Object.assign({}, user.data[0]);
+                        $scope.showPictures = false;
+                    })
+            }
+        }
+    }
+
+
     $scope.getLoggedInUser();
+
 })

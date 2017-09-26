@@ -365,6 +365,15 @@ module.exports = {
                         })
                 }
             })
-    }
+    },
+    updateImg: function(req, res, next) {
+        console.log("UPDATING USER IMG: " + req.params.id);
+        const db = req.app.get('db');
+        console.log(req.body.imgUrl)
+        db.updateImg(req.params.id, req.body.imgUrl)
+            .then((user) => {
+                res.status(200).send(user)
+            })
+    },
 
 }

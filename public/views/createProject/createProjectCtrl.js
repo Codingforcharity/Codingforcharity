@@ -4,16 +4,14 @@ app.controller('createProjectCtrl', function($scope, createProjectSrvc, $locatio
     $scope.submitProject = (title, org, type, desc, terms, skills) => {
         console.log(title, org, type, desc, terms, skills)
         if (title) {
-            if (org) {
-                if (type) {
-                    if (desc) {
-                        if (terms) {
-                            createProjectSrvc.createProject(title, desc, type, $scope.curUser.id)
-                                .then((project) => {
-                                    console.log(project)
-                                    $location.path('/projectfeed');
-                                })
-                        }
+            if (type) {
+                if (desc) {
+                    if (terms) {
+                        createProjectSrvc.createProject(title, desc, type, $scope.curUser.id)
+                            .then((project) => {
+                                console.log(project)
+                                $location.path('/projectfeed');
+                            })
                     }
                 }
             }

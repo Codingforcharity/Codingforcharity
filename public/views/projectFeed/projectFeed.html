@@ -37,7 +37,7 @@
                                     <a ng-href="/#!/account/dev/{{curUser.id}}">{{curUser.firstname}} {{curUser.lastname}}</a>
                                 </div>
                             </div> -->
-                        <div class="level">
+                        <!-- <div class="level">
                             <div class="level-item">
                                 <div>
                                     <p class="subtitle is-6 has-text-centered">Projects</p>
@@ -56,7 +56,7 @@
                                     <p class="subtitle is-6 has-text-centered">12</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <!-- ------- Filter box -------- -->
@@ -100,8 +100,7 @@
                         <div class="media-content">
                             <div class="content">
                                 <p>
-                                    <a class="title is-5" ng-href="/#!/account/{{project.posterid}}">{{project.username}}-</a>
-                                    <a class="subtitle is-5" ui-sref='projectPublicDetails({id: {{project.projid}}})'>{{project.title}}</a>
+                                    <a class="title is-5" ng-href="/#!/account/{{project.posterid}}">{{project.username}}-</a> {{project.title}}
                                     <br>
                                     <hr style='margin: -.5rem auto 1rem 0;'>
                                     <div class='feed-description'>Project description: {{project.description}}</div>

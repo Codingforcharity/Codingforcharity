@@ -13,4 +13,11 @@ app.service('projectFeedSrvc', function($http) {
         })
     }
 
+    this.getUserById = (param) => {
+        return $http({
+            method: 'Get',
+            url: "/api/user/" + param
+        })
+    }
+
 })

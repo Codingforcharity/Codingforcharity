@@ -13,11 +13,10 @@
                             <input class="input" type="text" ng-model="newProjectName" placeholder="Enter Project Name">
                         </p>
                         <div class="spacer"></div>
-                        <label class="label">Non-Profit Organization</label>
+                        <!-- <label class="label">Non-Profit Organization</label>
                         <p class="control">
                             <input class="input" type="text" ng-model="newProjectOrg" placeholder="Enter the organizations name">
-                        </p>
-                        <hr>
+                        </p> -->
                         <div class="field">
                             <label class="label">Area of Development</label>
                             <div class="control">
@@ -60,16 +59,16 @@
 
                         <!-- Dylan, create new project button here -->
                         <p class="control">
-                            <button class="button is-primary" ng-click="submitProject(newProjectName, newProjectOrg, newProjectType, newProjectDesc, newProjectTerms, newProjectSkills)">
+                            <button class="button is-primary" ng-click="submitProject(newProjectName, newProjectType, newProjectDesc, newProjectTerms, newProjectSkills)">
                                 List Project
                             </button>
                             <button class="button is-default" ui-sref='projectFeed'>Cancel</button>
                         </p>
                     </div>
-                    <p class="has-text-centered">
+                    <!-- <p class="has-text-centered">
                         <a href="/auth">Login</a> |
                         <a ng-click="logout()">Need help?</a>
-                    </p>
+                    </p> -->
                 </div>
             </div>
         </div>

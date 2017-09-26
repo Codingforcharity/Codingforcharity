@@ -69,11 +69,20 @@ app.controller('workingProjectCtrl', function($scope, $stateParams, workingProje
 
     }
 
+    $scope.getUpdatedUser = (userid) => {
+        workingProjectSrvc.getUserById(userid)
+            .then((user) => {
+                $scope.curUser = Object.assign({}, user.data[0]);
+                $scope.getProjectById();
+            })
+    }
+
     $scope.getLoggedUser = () => {
         workingProjectSrvc.getLoggedInUser()
             .then((user) => {
                 $scope.curUser = Object.assign({}, user.data);
-                $scope.getProjectById();
+                $scope.getUpdatedUser($scope.curUser.id);
+                // $scope.getProjectById();
             })
     }
 
