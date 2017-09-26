@@ -20,4 +20,18 @@ app.service('projectFeedSrvc', function($http) {
         })
     }
 
+    this.submitApplication = (project, user, email, message) => {
+        console.log("EMAIL: ", email)
+        return $http({
+            method: "Post",
+            url: '/api/apply/' + project.projid,
+            data: {
+                project: project,
+                user: user,
+                message: message,
+                email: email
+            }
+        })
+    }
+
 })

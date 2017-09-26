@@ -1211,103 +1211,6 @@ app.service('createProjectSrvc', function ($http) {
         });
     };
 });
-"use strict";
-
-app.controller('homeCtrl', function ($scope, $location, homeSrvc) {
-    console.log($location.$$absUrl);
-    // console.log("HE'LLO WORLD AND ALL WHO INHABIT IT")
-    // $scope.hello = 'hello';
-    $scope.getLoggedUser = function () {
-        homeSrvc.getLoggedUser().then(function (user) {
-            if (user.data == "not logged in!") {
-                $scope.getProjects();
-            } else {
-                $scope.curUser = Object.assign({}, user.data);
-                console.log($scope.curUser);
-                $scope.getProjects();
-            }
-        });
-    };
-
-    $scope.getLoggedUser();
-});
-'use strict';
-
-app.service('homeSrvc', function ($http) {
-    this.getLoggedUser = function () {
-        return $http({
-            method: 'Get',
-            url: '/me'
-        });
-    };
-});
-'use strict';
-
-app.controller('devProjectApplicationCtrl', function ($scope, devProjectApplicationSrvc, $location, $stateParams) {
-    $scope.getProject = function () {
-        devProjectApplicationSrvc.getProject($stateParams.id).then(function (project) {
-            console.log(project);
-            $scope.project = project.data[0];
-            console.log("project:", $scope.project);
-        });
-    };
-
-    $scope.getLoggedUser = function () {
-        devProjectApplicationSrvc.getLoggedUser().then(function (user) {
-            if (user.data == 'not logged in!') {} else {
-                $scope.curUser = Object.assign({}, user.data);
-                $scope.newEmail = $scope.curUser.email;
-                $scope.newName = $scope.curUser.firstname.trim() + " " + $scope.curUser.lastname.trim();
-                console.log($scope.curUser);
-                $scope.getProject();
-            }
-        });
-    };
-
-    $scope.submitApplication = function (email, message) {
-        if ($scope.curUser.id) {
-            $scope.curUser.newName = $scope.newName;
-            $scope.curUser.newEmail = email;
-            devProjectApplicationSrvc.submitApplication($scope.project, $scope.curUser, $scope.project.email, message).then(function () {
-                $location.path('/projectfeed');
-            });
-        } else {
-            alert("Please Log in first");
-        }
-    };
-    $scope.getLoggedUser();
-});
-'use strict';
-
-app.service('devProjectApplicationSrvc', function ($http) {
-    this.getLoggedUser = function () {
-        return $http({
-            method: "Get",
-            url: '/me'
-        });
-    };
-
-    this.getProject = function (param) {
-        return $http({
-            method: "Get",
-            url: '/api/project/' + param
-        });
-    };
-
-    this.submitApplication = function (project, user, email, message) {
-        console.log("EMAIL: ", email);
-        return $http({
-            method: "Post",
-            url: '/api/apply/' + project.projid,
-            data: {
-                project: project,
-                user: user,
-                message: message,
-                email: email
-            }
-        });
-    };
-});
 'use strict';
 
 app.controller('loginCtrl', function ($scope) {});
@@ -1414,10 +1317,24 @@ app.controller("projectFeedCtrl", function ($scope, projectFeedSrvc) {
             desc: project.description,
             creator: project.username,
             pic: project.profilepic,
-            name: project.firstname + " " + project.lastname
+            name: project.firstname + " " + project.lastname,
+            email: project.email,
+            id: project.id,
+            projid: project.projid
 
         };
         $scope.modalSet = true;
+    };
+
+    $scope.submitApplication = function (message, project) {
+        $scope.modalSet = false;
+        if ($scope.curUser.id) {
+            projectFeedSrvc.submitApplication(project, $scope.curUser, project.email, message).then(function () {
+                $location.path('/projectfeed');
+            });
+        } else {
+            alert("Please Log in first");
+        }
     };
 
     $scope.getLoggedUser();
@@ -1443,6 +1360,113 @@ app.service('projectFeedSrvc', function ($http) {
         return $http({
             method: 'Get',
             url: "/api/user/" + param
+        });
+    };
+
+    this.submitApplication = function (project, user, email, message) {
+        console.log("EMAIL: ", email);
+        return $http({
+            method: "Post",
+            url: '/api/apply/' + project.projid,
+            data: {
+                project: project,
+                user: user,
+                message: message,
+                email: email
+            }
+        });
+    };
+});
+'use strict';
+
+app.controller('devProjectApplicationCtrl', function ($scope, devProjectApplicationSrvc, $location, $stateParams) {
+    $scope.getProject = function () {
+        devProjectApplicationSrvc.getProject($stateParams.id).then(function (project) {
+            console.log(project);
+            $scope.project = project.data[0];
+            console.log("project:", $scope.project);
+        });
+    };
+
+    $scope.getLoggedUser = function () {
+        devProjectApplicationSrvc.getLoggedUser().then(function (user) {
+            if (user.data == 'not logged in!') {} else {
+                $scope.curUser = Object.assign({}, user.data);
+                $scope.newEmail = $scope.curUser.email;
+                $scope.newName = $scope.curUser.firstname.trim() + " " + $scope.curUser.lastname.trim();
+                console.log($scope.curUser);
+                $scope.getProject();
+            }
+        });
+    };
+
+    $scope.submitApplication = function (email, message) {
+        if ($scope.curUser.id) {
+            $scope.curUser.newName = $scope.newName;
+            $scope.curUser.newEmail = email;
+            devProjectApplicationSrvc.submitApplication($scope.project, $scope.curUser, $scope.project.email, message).then(function () {
+                $location.path('/projectfeed');
+            });
+        } else {
+            alert("Please Log in first");
+        }
+    };
+    $scope.getLoggedUser();
+});
+'use strict';
+
+app.service('devProjectApplicationSrvc', function ($http) {
+    this.getLoggedUser = function () {
+        return $http({
+            method: "Get",
+            url: '/me'
+        });
+    };
+
+    this.getProject = function (param) {
+        return $http({
+            method: "Get",
+            url: '/api/project/' + param
+        });
+    };
+
+    this.submitApplication = function (project, user, email, message) {
+        console.log("EMAIL: ", email);
+        return $http({
+            method: "Post",
+            url: '/api/apply/' + project.projid,
+            data: {
+                project: project,
+                user: user,
+                message: message,
+                email: email
+            }
+        });
+    };
+});
+'use strict';
+
+app.controller('homeCtrl', function ($scope, $location, homeSrvc) {
+    console.log($location.$$absUrl);
+    // console.log("HE'LLO WORLD AND ALL WHO INHABIT IT")
+    // $scope.hello = 'hello';
+    $scope.getLoggedUser = function () {
+        homeSrvc.getLoggedUser().then(function (user) {
+            $scope.curUser = Object.assign({}, user.data);
+            console.log($scope.curUser);
+            // $scope.getProjects();
+        });
+    };
+
+    $scope.getLoggedUser();
+});
+'use strict';
+
+app.service('homeSrvc', function ($http) {
+    this.getLoggedUser = function () {
+        return $http({
+            method: 'Get',
+            url: '/me'
         });
     };
 });

@@ -141,12 +141,12 @@
                             </div>
 
                             <div class="control">
-                                <textarea class="textarea" type="text" placeholder="Enter details here"></textarea>
+                                <textarea class="textarea" type="text" ng-model="newMessage" placeholder="Enter details here"></textarea>
                             </div>
 
                         </section>
                         <footer class="modal-card-foot">
-                            <a class="button is-danger" ng-href='/#!/apply/{{project.projid}}' ng-if="curUser.id">Apply</a>
+                            <a class="button is-danger" ng-click='submitApplication(newMessage, modal)' ng-if="curUser.id">Apply</a>
                             <a ng-click='$parent.modalSet = false' class="button is-primary is-outlined">Cancel</a>
                         </footer>
                     </div>
