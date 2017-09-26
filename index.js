@@ -93,7 +93,8 @@ app.get('/me', function(req, res) {
 
 app.get('/auth/logout', function(req, res) {
     req.logout();
-    res.redirect('https://dylandoesprogramming.auth0.com/v2/logout?returnTo=' + req.query.fullUrl);
+    // res.redirect('https://dylandoesprogramming.auth0.com/v2/logout?returnTo=' + req.query.fullUrl);
+    res.redirect('https://dylandoesprogramming.auth0.com/v2/logout?returnTo=' + 'http://www.devgive.net/#!/');
 })
 
 app.get("/api/charities", serverCtrl.getCharities);
@@ -128,18 +129,18 @@ app.post("/api/projects/create/:id", serverCtrl.postProject);
 app.put("/api/user/:id/updateImg", serverCtrl.updateImg);
 app.post('/api/apply/:id', (req, res, next) => {
     const db = req.app.get('db');
-    db.appliedForProject(req.body.user.id, req.params.id)
+    db.appliedForProject(req.body.user.id, req.body.project.projid)
         .then(() => {
             let message = {
                 from: email.email,
                 to: req.body.email,
                 subject: "A user has applied to your project: " + req.body.project.title,
-                html: `<p>` + req.body.user.newName + `'s message to you: ` + req.body.message + `</p> </br> 
+                html: `<p>` + req.body.user.firstname + " " + req.body.user.lastname + `'s message to you: ` + req.body.message + `</p> </br> 
                         <p> Click 
                             <a href="http://localhost:5001/#!/account/` + req.body.user.id + `">here</a> to view the users info.
                         </p>
                         <p>
-                            Contact them <a href="mailto:` + req.body.user.newEmail + `">here.</a>
+                            Contact them <a href="mailto:` + req.body.user.email + `">here.</a>
                         </p>
                         <p>
                         Click <a href="http://localhost:5001/api/acceptUser/` + req.body.project.projid + `/` + req.body.user.id + `"> here
