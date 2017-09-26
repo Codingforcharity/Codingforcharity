@@ -4,13 +4,9 @@ app.controller('homeCtrl', function($scope, $location, homeSrvc) {
     // $scope.hello = 'hello';
     $scope.getLoggedUser = () => {
         homeSrvc.getLoggedUser().then(user => {
-            if (user.data == "not logged in!") {
-                $scope.getProjects();
-            } else {
-                $scope.curUser = Object.assign({}, user.data);
-                console.log($scope.curUser);
-                $scope.getProjects();
-            }
+            $scope.curUser = Object.assign({}, user.data);
+            console.log($scope.curUser);
+            // $scope.getProjects();
         });
     };
 
