@@ -125,6 +125,7 @@ app.get("/api/user/:id/comments", serverCtrl.getCommentsById);
 app.post("/api/user/:id/comments", serverCtrl.postProfileComment);
 app.post("/api/user/:id/replies", serverCtrl.postProfileReply);
 app.post("/api/projects/create/:id", serverCtrl.postProject);
+app.put("/api/user/:id/updateImg", serverCtrl.updateImg);
 app.post('/api/apply/:id', (req, res, next) => {
     const db = req.app.get('db');
     db.appliedForProject(req.body.user.id, req.params.id)

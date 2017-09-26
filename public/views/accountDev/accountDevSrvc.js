@@ -64,4 +64,20 @@ app.service('accountDevSrvc', function($http) {
             }
         })
     }
+    this.updateImg = (param, imgUrl) => {
+        return $http({
+            method: "Put",
+            url: "/api/user/" + param + "/updateImg",
+            data: {
+                imgUrl: imgUrl
+            }
+        })
+    }
+
+    this.getUserById = (param) => {
+        return $http({
+            method: "Get",
+            url: "/api/user/" + param,
+        })
+    }
 })

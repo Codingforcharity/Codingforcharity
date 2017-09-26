@@ -19,7 +19,7 @@
                         </div>
                         <div class="level">
                             <div class="level-item">
-                                <div class="button  is-danger">Change Profile Picture</div>
+                                <div class="button  is-danger" ng-click="changePicture();">Change Profile Picture</div>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                         </div>
                         <div class="column is-6">
                             <div>
-                                <div class="project-counter title is-6">Thanks: 3</div>
+                                <!-- <div class="project-counter title is-6">Thanks: 3</div> -->
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="align-button-center">
-                <button class="button is-danger" type="submit" ng-if="ownPage" ng-click="subChanges($parent.newProfilePic, $parent.newFirstName, $parent.newLastName, $parent.newBio, $parent.newSkills);">Submit Changes</button>
+                <button class="button is-danger" type="submit" ng-if="ownPage" ng-click="subChanges($parent.newFirstName, $parent.newLastName, $parent.newBio, $parent.newSkills);">Submit Changes</button>
             </div>
 
             <br>
@@ -68,27 +68,37 @@
             <footer>
                 <div class="tabs profile is-medium is-centered is-boxed">
                     <ul>
-                        <li class="is-active"><a><span class="icon is-small"><i class="fa fa-envelope-o"></i></span><span>Messages</span></a></li>
-                        <li class="is-active"><a><span class="icon is-small"><i class="fa fa-folder"></i></span><span>Projects</span></a></li>
-                        <li>
+                        <li class="is-active" id="messages" ng-click="changeTab('messages');">
                             <a>
-                                  <span class="icon is-small"><i class="fa fa-heart"></i></span>
-                                  <span>Thanks</span>
-                                </a>
+                                <span class="icon is-small"><i class="fa fa-envelope-o"></i></span>
+                                <span>Messages</span>
+                            </a>
                         </li>
-                        <li>
+                        <li class="" id="projects" ng-click="changeTab('projects');">
                             <a>
-                                  <span class="icon is-small"><i class="fa fa-sliders"></i></span>
-                                  <span>Settings</span>
-                                </a>
+                                <span class="icon is-small"><i class="fa fa-folder"></i></span>
+                                <span>Projects</span>
+                            </a>
                         </li>
+                        <!-- <li ng-click="changeTab('messages');">
+                            <a>
+                                <span class="icon is-small"><i class="fa fa-heart"></i></span>
+                                <span>Thanks</span>
+                            </a>
+                        </li> -->
+                        <!-- <li ng-click="changeTab('messages');">
+                            <a>
+                                <span class="icon is-small"><i class="fa fa-sliders"></i></span>
+                                <span>Settings</span>
+                            </a>
+                        </li> -->
                     </ul>
                 </div>
             </footer>
 
             <!------------ Projects ------------>
             <!-- <h3 class="title is-3 style-message-board">Project</h3> -->
-            <article class="box media project-box overflow: auto;" ng-repeat="project in userProjects">
+            <article class="box media project-box overflow: auto;" ng-repeat="project in userProjects" ng-if="!isActive">
                 <a ng-href="/#!/account/{{project.posterid}}">
                     <div class="media-left">
                         <figure class="image is-64x64">
@@ -99,8 +109,9 @@
                     <div class="media-content">
                         <div class="content">
                             <p>
-                                <a class="subtitle is-5" ng-href="/#!/account/{{project.posterid}}">{{project.username}}</a>
-                                <a class="subtitle is-5" ui-sref='projectPublicDetails({id: {{project.projid}}})'>{{project.title}}</a>
+                                <!-- <a class="subtitle is-5" ng-href="/#!/account/{{project.posterid}}">{{project.username}}</a> -->
+                                <a class="subtitle is-5" ng-if="!ownPage" ng-click="changeModal(project);">{{project.title}}</a>
+                                <a class="subtitle is-5" ng-if="ownPage" ui-sref="workingProject({id: {{project.projid}} })">{{project.title}}</a>
                                 <br>
                                 <hr>
                                 <div class="feed-description">{{project.description}}</div>
@@ -112,7 +123,7 @@
 
             <!-- ------------Messages ----------------- -->
             <!-- <h3 class="title is-3 style-message-board">Message Board</h3> -->
-            <div class="box message-board-container">
+            <div class="box message-board-container" ng-if="isActive">
                 <article class="media " ng-repeat="comment in userComments">
                     <figure class="media-left ">
                         <p class="image is-64x64 ">
@@ -186,4 +197,116 @@
             </div>
         </div>
     </div>
+    <!------------ Project modal  -------->
+    <div ng-if='modalSet' id="modal-ter" class="modal project-modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">{{modal.creator}} - Project description</p>
+                <button ng-click='$parent.modalSet = false' class="delete"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="content">
+                    <div class="">
+                        <!-- Heart you -->
+                        <figure class="image is-128x128">
+                            <img ui-sref="accountDev({id: {{modal.posterid}} })" ng-src="{{modal.pic}}" alt="Charity Logo">
+                        </figure>
+                    </div>
+                    <br>
+                    <div class="content">
+                        <h3 class="">{{modal.title}}</h3>
+                        <hr>
+                        <p>{{modal.desc}}</p>
+                    </div>
+                    <h4 class="subtitle is-5">Tell us about yourself</h4>
+                </div>
+
+                <div class="control">
+                    <textarea class="textarea" type="text" placeholder="Enter details here"></textarea>
+                </div>
+
+            </section>
+            <footer class="modal-card-foot">
+                <a class="button is-danger" ng-href='/#!/apply/{{project.projid}}' ng-if="curUser.id">Apply</a>
+                <a ng-click='$parent.modalSet = false' class="button is-primary is-outlined">Cancel</a>
+            </footer>
+        </div>
+    </div>
+
+    <!------------ Picture modal  -------->
+    <div ng-if='showPictures' id="modal-ter" class="modal project-modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">{{modal.creator}} - Project description</p>
+                <button ng-click='$parent.showPictures = false' class="delete"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="content">
+                    <ul id="avatarul">
+                        <li ng-click='updatePicture("avatar1")'>
+                            <img class="avatar" id="avatar1" ng-model="avatar1" src="/img/avatars/1.svg">
+                        </li>
+                        <li ng-click='updatePicture("avatar2")'>
+                            <img class="avatar" id="avatar2" src="/img/avatars/2.svg">
+                        </li>
+                        <li ng-click='updatePicture("avatar3")'>
+                            <img class="avatar" id="avatar3" src="/img/avatars/3.svg">
+                        </li>
+                        <li ng-click='updatePicture("avatar4")'>
+                            <img class="avatar" id="avatar4" src="/img/avatars/4.svg">
+                        </li>
+                        <li ng-click='updatePicture("avatar5")'>
+                            <img class="avatar" id="avatar5" src="/img/avatars/5.svg">
+                        </li>
+                        <li ng-click='updatePicture("avatar6")'>
+                            <img class="avatar" id="avatar6" src="/img/avatars/6.svg">
+                        </li>
+                        <li ng-click='updatePicture("avatar7")'>
+                            <img class="avatar" id="avatar7" src="/img/avatars/7.svg">
+                        </li>
+                        <li ng-click='updatePicture("avatar8")'>
+                            <img class="avatar" id="avatar8" src="/img/avatars/8.svg">
+                        </li>
+                        <li ng-click='updatePicture("avatar9")'>
+                            <img class="avatar" id="avatar9" src="/img/avatars/9.svg">
+                        </li>
+                        <li ng-click='updatePicture("avatar10")'>
+                            <img class="avatar" id="avatar10" src="/img/avatars/10.svg">
+                        </li>
+                        <li ng-click='updatePicture("avatar11")'>
+                            <img class="avatar" id="avatar11" src="/img/avatars/11.svg">
+                        </li>
+                        <li ng-click='updatePicture("avatar12")'>
+                            <img class="avatar" id="avatar12" src="/img/avatars/12.svg">
+                        </li>
+
+                        <li ng-click='updatePicture("avatar13")'>
+                            <img class="avatar" id="avatar13" src="/img/avatars/13.svg">
+                        </li>
+                        <li ng-click='updatePicture("avatar14")'>
+                            <img class="avatar" id="avatar14" src="/img/avatars/14.svg">
+                        </li>
+                        <li ng-click='updatePicture("avatar15")'>
+                            <img class="avatar" id="avatar15" src="/img/avatars/15.svg">
+                        </li>
+                        <li ng-click='updatePicture("avatar16")'>
+                            <img class="avatar" id="avatar16" src="/img/avatars/16.svg">
+                        </li>
+                        <li ng-click='updatePicture("avatar17")'>
+                            <img class="avatar" id="avatar17" src="/img/avatars/17.svg">
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+            <footer class="modal-card-foot">
+                <!-- <a class="button is-danger" ng-href='/#!/apply/{{project.projid}}' ng-if="curUser.id">Apply</a> -->
+                <a ng-click='$parent.showPictures = false' class="button is-primary is-outlined">Cancel</a>
+            </footer>
+        </div>
+    </div>
 </section>
+
+</div>

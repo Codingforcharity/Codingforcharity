@@ -1,4 +1,4 @@
-app.controller("projectFeedCtrl", function ($scope, projectFeedSrvc) {
+app.controller("projectFeedCtrl", function($scope, projectFeedSrvc) {
     console.log("projectFeedCtrl");
     $scope.curUser;
     $scope.skills = [];
@@ -39,7 +39,7 @@ app.controller("projectFeedCtrl", function ($scope, projectFeedSrvc) {
                 // $scope.projects.showModal = false;
             });
             console.log("ALL SKILLS: ", $scope.skills);
-            $scope.skills = $scope.skills.filter(function (item, pos) {
+            $scope.skills = $scope.skills.filter(function(item, pos) {
                 return $scope.skills.indexOf(item) == pos;
             });
             console.log($scope.skills);
@@ -50,6 +50,14 @@ app.controller("projectFeedCtrl", function ($scope, projectFeedSrvc) {
         });
     };
 
+    $scope.getUpdatedUser = (userid) => {
+        projectFeedSrvc.getUserById(userid)
+            .then((user) => {
+                $scope.curUser = Object.assign({}, user.data[0]);
+                $scope.getProjects();
+            })
+    }
+
     $scope.getLoggedUser = () => {
         projectFeedSrvc.getLoggedUser().then(user => {
             if (user.data == "not logged in!") {
@@ -57,7 +65,7 @@ app.controller("projectFeedCtrl", function ($scope, projectFeedSrvc) {
             } else {
                 $scope.curUser = Object.assign({}, user.data);
                 console.log($scope.curUser);
-                $scope.getProjects();
+                $scope.getUpdatedUser($scope.curUser.id)
             }
         });
     };
@@ -97,10 +105,5 @@ app.controller("projectFeedCtrl", function ($scope, projectFeedSrvc) {
 
 
     $scope.getLoggedUser();
-
-    ////////////////////////
-    // Andy's modal menu //
-    ////////////////////////
-    // $scope.showModal = false
 
 });
