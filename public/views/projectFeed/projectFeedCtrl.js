@@ -98,9 +98,24 @@ app.controller("projectFeedCtrl", function($scope, projectFeedSrvc) {
             creator: project.username,
             pic: project.profilepic,
             name: project.firstname + " " + project.lastname,
+            email: project.email,
+            id: project.id,
+            projid: project.projid
 
         }
         $scope.modalSet = true;
+    }
+
+    $scope.submitApplication = (message, project) => {
+        $scope.modalSet = false;
+        if ($scope.curUser.id) {
+            projectFeedSrvc.submitApplication(project, $scope.curUser, project.email, message)
+                .then(() => {
+                    $location.path('/projectfeed');
+                })
+        } else {
+            alert("Please Log in first")
+        }
     }
 
 
