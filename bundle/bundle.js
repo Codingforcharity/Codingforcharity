@@ -833,23 +833,6 @@ var app = angular.module("charityApp", ['ui.router']).config(function ($statePro
         $templateCache.put('src/toast/toast.html', "<div class=\"notification {{vm.style}}\" ng-class=\"vm.classes\"><button class=\"delete\" ng-if=\"vm.showClose\" ng-click=\"vm.close()\"></button><div ng-bind-html=\"vm.contents\"></div></div>");
     }
 })();
-'use strict';
-
-app.directive('topnav', function () {
-    return {
-        Restrict: 'E',
-        templateUrl: './views/components/topnav.html',
-        link: function link(scope, elem, attrs) {
-            scope.toggleBurger = function () {
-                console.log("Toggling!");
-                var burgerIcon = document.getElementById('burger');
-                burgerIcon.classList.toggle('is-active');
-                var navMenu = document.getElementById('navMenu');
-                navMenu.classList.toggle('is-active');
-            };
-        }
-    };
-});
 "use strict";
 
 app.controller('accountDevCtrl', function ($scope, $stateParams, accountDevSrvc) {
@@ -1152,6 +1135,23 @@ app.service('accountDevSrvc', function ($http) {
 });
 'use strict';
 
+app.directive('topnav', function () {
+    return {
+        Restrict: 'E',
+        templateUrl: './views/components/topnav.html',
+        link: function link(scope, elem, attrs) {
+            scope.toggleBurger = function () {
+                console.log("Toggling!");
+                var burgerIcon = document.getElementById('burger');
+                burgerIcon.classList.toggle('is-active');
+                var navMenu = document.getElementById('navMenu');
+                navMenu.classList.toggle('is-active');
+            };
+        }
+    };
+});
+'use strict';
+
 app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
     console.log("createAccountCtrl");
     $scope.logout = function () {
@@ -1208,6 +1208,36 @@ app.service('createProjectSrvc', function ($http) {
                 desc: desc,
                 skills: skills
             }
+        });
+    };
+});
+"use strict";
+
+app.controller('homeCtrl', function ($scope, $location, homeSrvc) {
+    console.log($location.$$absUrl);
+    // console.log("HE'LLO WORLD AND ALL WHO INHABIT IT")
+    // $scope.hello = 'hello';
+    $scope.getLoggedUser = function () {
+        homeSrvc.getLoggedUser().then(function (user) {
+            if (user.data == "not logged in!") {
+                $scope.getProjects();
+            } else {
+                $scope.curUser = Object.assign({}, user.data);
+                console.log($scope.curUser);
+                $scope.getProjects();
+            }
+        });
+    };
+
+    $scope.getLoggedUser();
+});
+'use strict';
+
+app.service('homeSrvc', function ($http) {
+    this.getLoggedUser = function () {
+        return $http({
+            method: 'Get',
+            url: '/me'
         });
     };
 });
@@ -1275,36 +1305,6 @@ app.service('devProjectApplicationSrvc', function ($http) {
                 message: message,
                 email: email
             }
-        });
-    };
-});
-"use strict";
-
-app.controller('homeCtrl', function ($scope, $location, homeSrvc) {
-    console.log($location.$$absUrl);
-    // console.log("HE'LLO WORLD AND ALL WHO INHABIT IT")
-    // $scope.hello = 'hello';
-    $scope.getLoggedUser = function () {
-        homeSrvc.getLoggedUser().then(function (user) {
-            if (user.data == "not logged in!") {
-                $scope.getProjects();
-            } else {
-                $scope.curUser = Object.assign({}, user.data);
-                console.log($scope.curUser);
-                $scope.getProjects();
-            }
-        });
-    };
-
-    $scope.getLoggedUser();
-});
-'use strict';
-
-app.service('homeSrvc', function ($http) {
-    this.getLoggedUser = function () {
-        return $http({
-            method: 'Get',
-            url: '/me'
         });
     };
 });
