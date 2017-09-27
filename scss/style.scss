@@ -56,6 +56,12 @@
     }
 }
 
+@media screen and (max-width: 769px) {
+    .resize-to-do-box {
+       width: 40%;
+    }
+}
+
 @media screen and (min-width: 769px) {
     .box {
         margin-top: 0rem;
@@ -119,12 +125,6 @@
 
 .video-container {
     position: relative;
-}
-
-// .accountdev-resize-container,
-.home-resize-container,
-.workingproject-resize-container {
-    max-width: 1060px;
 }
 
 .home-about-text h3,
@@ -192,12 +192,48 @@
     width: 100%;
 }
 
-.message-body {
-    text-align: center;
-}
-
 .message-body a:hover {
     border-bottom: 3px solid rgb(189, 212, 54);
+}
+
+.resize-to-do-box {
+    background-color: white;
+}
+
+.to-do-body {
+    display: flex;
+    background-color: white;
+    padding: 0em;
+    border: 0px
+}
+
+.working-add-margin-right {
+    margin-right: 20px;
+}
+
+.working-message-change-bg-color {
+    background-color: white;
+}
+
+.working-message-change-bg-color2 {
+    background-color: white;
+    display: flex;
+}
+
+.working-resize-img img {
+    min-height: 127px;
+}
+
+.panel-block {
+    width: 100%;
+}
+
+.working-add-panel-heading-bg-color {
+    background-color: #d9dee2;
+}
+
+.working-resize-input {
+    width: 40%;
 }
 
 // devprojectapplication's css

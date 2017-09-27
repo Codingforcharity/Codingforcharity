@@ -28,15 +28,15 @@
                 <div class="column is-9">
                     <div class="spacer"></div>
                     <div class="columns">
-                        <div class="column is-6">
+                        <div class="column is-3">
                             <p class="title is-4" ng-if="!ownPage && pageOwner.firstname">
                                 <span class="title is-bold">{{pageOwner.firstname}} {{pageOwner.lastname}}</span>
                             </p>
                             <p class="title is-4" ng-if="ownPage">
-                                <input type="text" ng-model="$parent.newFirstName" placeholder="First Name">
+                                <input class="input" type="text" ng-model="$parent.newFirstName" placeholder="First Name">
                             </p>
                             <p class="title is-4" ng-if="ownPage">
-                                <input type="text" ng-model="$parent.newLastName" placeholder="Last Name">
+                                <input class="input" type="text" ng-model="$parent.newLastName" placeholder="Last Name">
                             </p>
                         </div>
                         <div class="column is-6">
@@ -52,9 +52,9 @@
                         </div>
                         <div class="content" ng-if="ownPage">
                             <span class="bold-description">Description: </span>
-                            <textarea style="width: 100%" rows="10" cols="60" ng-model="$parent.newBio" placeholder="Describe yourself">
-                                        {{curUser.bio}}
-                                    </textarea>
+                            <textarea style="width: 100%; font-size: 1rem;" rows="10" cols="60" ng-model="$parent.newBio" placeholder="Describe yourself">
+                                {{curUser.bio}}
+                            </textarea>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
 
             <!------------ Projects ------------>
             <!-- <h3 class="title is-3 style-message-board">Project</h3> -->
-            <article class="box media project-box overflow: auto;" ng-repeat="project in userProjects" ng-if="!isActive">
+            <article class="box media project-box overflow: auto;" ng-repeat="project in userProjects" ng-if="projectsActive">
                 <a ng-href="/#!/account/{{project.posterid}}">
                     <div class="media-left">
                         <figure class="image is-64x64">
@@ -123,7 +123,7 @@
 
             <!-- ------------Messages ----------------- -->
             <!-- <h3 class="title is-3 style-message-board">Message Board</h3> -->
-            <div class="box message-board-container" ng-if="isActive">
+            <div class="box message-board-container" ng-if="msgActive">
                 <article class="media " ng-repeat="comment in userComments">
                     <figure class="media-left ">
                         <p class="image is-64x64 ">
