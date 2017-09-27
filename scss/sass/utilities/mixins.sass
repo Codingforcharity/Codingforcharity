@@ -110,7 +110,7 @@
   position: relative
   width: $dimensions
   span
-    background-color: $text
+    background-color: $danger
     display: block
     height: 1px
     left: 50%
@@ -131,7 +131,8 @@
   // Modifers
   &.is-active
     span
-      background-color: $link
+      border-color: transparent;
+      background-color: $primary
       &:nth-child(1)
         margin-left: -5px
         transform: rotate(45deg)
