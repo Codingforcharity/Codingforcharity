@@ -833,6 +833,84 @@ var app = angular.module("charityApp", ['ui.router']).config(function ($statePro
         $templateCache.put('src/toast/toast.html', "<div class=\"notification {{vm.style}}\" ng-class=\"vm.classes\"><button class=\"delete\" ng-if=\"vm.showClose\" ng-click=\"vm.close()\"></button><div ng-bind-html=\"vm.contents\"></div></div>");
     }
 })();
+'use strict';
+
+app.directive('topnav', function () {
+    return {
+        Restrict: 'E',
+        templateUrl: './views/components/topnav.html',
+        link: function link(scope, elem, attrs) {
+            scope.toggleBurger = function () {
+                console.log("Toggling!");
+                var burgerIcon = document.getElementById('burger');
+                burgerIcon.classList.toggle('is-active');
+                var navMenu = document.getElementById('navMenu');
+                navMenu.classList.toggle('is-active');
+            };
+        }
+    };
+});
+'use strict';
+
+app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
+    console.log("createAccountCtrl");
+    $scope.logout = function () {
+        window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
+    };
+});
+'use strict';
+
+app.service('createAccountSrvc', function ($http) {});
+'use strict';
+
+app.controller('createProjectCtrl', function ($scope, createProjectSrvc, $location) {
+    console.log("createProjectCtrl");
+
+    $scope.submitProject = function (title, org, type, desc, terms, skills) {
+        console.log(title, org, type, desc, terms, skills);
+        if (title) {
+            if (type) {
+                if (desc) {
+                    if (terms) {
+                        createProjectSrvc.createProject(title, desc, type, $scope.curUser.id).then(function (project) {
+                            console.log(project);
+                            $location.path('/projectfeed');
+                        });
+                    }
+                }
+            }
+        }
+    };
+
+    $scope.getLoggedInUser = function () {
+        createProjectSrvc.getLoggedInUser().then(function (user) {
+            $scope.curUser = Object.assign({}, user.data);
+        });
+    };
+
+    $scope.getLoggedInUser();
+});
+"use strict";
+
+app.service('createProjectSrvc', function ($http) {
+    this.getLoggedInUser = function () {
+        return $http({
+            method: "Get",
+            url: "/me"
+        });
+    };
+    this.createProject = function (title, desc, skills, userid) {
+        return $http({
+            method: "Post",
+            url: "/api/projects/create/" + userid,
+            data: {
+                title: title,
+                desc: desc,
+                skills: skills
+            }
+        });
+    };
+});
 "use strict";
 
 app.controller('accountDevCtrl', function ($scope, $stateParams, accountDevSrvc) {
@@ -1016,8 +1094,7 @@ app.controller('accountDevCtrl', function ($scope, $stateParams, accountDevSrvc)
         var messages = document.getElementById('messages');
         var projects = document.getElementById('projects');
         if (str === 'messages') {
-            messages.className = "is-active";
-            projects.className = "";
+
             $scope.isActive = true;
         } else {
             projects.className = "is-active";
@@ -1135,79 +1212,27 @@ app.service('accountDevSrvc', function ($http) {
 });
 'use strict';
 
-app.directive('topnav', function () {
-    return {
-        Restrict: 'E',
-        templateUrl: './views/components/topnav.html',
-        link: function link(scope, elem, attrs) {
-            scope.toggleBurger = function () {
-                console.log("Toggling!");
-                var burgerIcon = document.getElementById('burger');
-                burgerIcon.classList.toggle('is-active');
-                var navMenu = document.getElementById('navMenu');
-                navMenu.classList.toggle('is-active');
-            };
-        }
-    };
-});
-'use strict';
-
-app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
-    console.log("createAccountCtrl");
-    $scope.logout = function () {
-        window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
-    };
-});
-'use strict';
-
-app.service('createAccountSrvc', function ($http) {});
-'use strict';
-
-app.controller('createProjectCtrl', function ($scope, createProjectSrvc, $location) {
-    console.log("createProjectCtrl");
-
-    $scope.submitProject = function (title, org, type, desc, terms, skills) {
-        console.log(title, org, type, desc, terms, skills);
-        if (title) {
-            if (type) {
-                if (desc) {
-                    if (terms) {
-                        createProjectSrvc.createProject(title, desc, type, $scope.curUser.id).then(function (project) {
-                            console.log(project);
-                            $location.path('/projectfeed');
-                        });
-                    }
-                }
-            }
-        }
-    };
-
-    $scope.getLoggedInUser = function () {
-        createProjectSrvc.getLoggedInUser().then(function (user) {
+app.controller('homeCtrl', function ($scope, $location, homeSrvc) {
+    console.log($location.$$absUrl);
+    // console.log("HE'LLO WORLD AND ALL WHO INHABIT IT")
+    // $scope.hello = 'hello';
+    $scope.getLoggedUser = function () {
+        homeSrvc.getLoggedUser().then(function (user) {
             $scope.curUser = Object.assign({}, user.data);
+            console.log($scope.curUser);
+            // $scope.getProjects();
         });
     };
 
-    $scope.getLoggedInUser();
+    $scope.getLoggedUser();
 });
-"use strict";
+'use strict';
 
-app.service('createProjectSrvc', function ($http) {
-    this.getLoggedInUser = function () {
+app.service('homeSrvc', function ($http) {
+    this.getLoggedUser = function () {
         return $http({
-            method: "Get",
-            url: "/me"
-        });
-    };
-    this.createProject = function (title, desc, skills, userid) {
-        return $http({
-            method: "Post",
-            url: "/api/projects/create/" + userid,
-            data: {
-                title: title,
-                desc: desc,
-                skills: skills
-            }
+            method: 'Get',
+            url: '/me'
         });
     };
 });
@@ -1377,99 +1402,6 @@ app.service('projectFeedSrvc', function ($http) {
         });
     };
 });
-'use strict';
-
-app.controller('devProjectApplicationCtrl', function ($scope, devProjectApplicationSrvc, $location, $stateParams) {
-    $scope.getProject = function () {
-        devProjectApplicationSrvc.getProject($stateParams.id).then(function (project) {
-            console.log(project);
-            $scope.project = project.data[0];
-            console.log("project:", $scope.project);
-        });
-    };
-
-    $scope.getLoggedUser = function () {
-        devProjectApplicationSrvc.getLoggedUser().then(function (user) {
-            if (user.data == 'not logged in!') {} else {
-                $scope.curUser = Object.assign({}, user.data);
-                $scope.newEmail = $scope.curUser.email;
-                $scope.newName = $scope.curUser.firstname.trim() + " " + $scope.curUser.lastname.trim();
-                console.log($scope.curUser);
-                $scope.getProject();
-            }
-        });
-    };
-
-    $scope.submitApplication = function (email, message) {
-        if ($scope.curUser.id) {
-            $scope.curUser.newName = $scope.newName;
-            $scope.curUser.newEmail = email;
-            devProjectApplicationSrvc.submitApplication($scope.project, $scope.curUser, $scope.project.email, message).then(function () {
-                $location.path('/projectfeed');
-            });
-        } else {
-            alert("Please Log in first");
-        }
-    };
-    $scope.getLoggedUser();
-});
-'use strict';
-
-app.service('devProjectApplicationSrvc', function ($http) {
-    this.getLoggedUser = function () {
-        return $http({
-            method: "Get",
-            url: '/me'
-        });
-    };
-
-    this.getProject = function (param) {
-        return $http({
-            method: "Get",
-            url: '/api/project/' + param
-        });
-    };
-
-    this.submitApplication = function (project, user, email, message) {
-        console.log("EMAIL: ", email);
-        return $http({
-            method: "Post",
-            url: '/api/apply/' + project.projid,
-            data: {
-                project: project,
-                user: user,
-                message: message,
-                email: email
-            }
-        });
-    };
-});
-'use strict';
-
-app.controller('homeCtrl', function ($scope, $location, homeSrvc) {
-    console.log($location.$$absUrl);
-    // console.log("HE'LLO WORLD AND ALL WHO INHABIT IT")
-    // $scope.hello = 'hello';
-    $scope.getLoggedUser = function () {
-        homeSrvc.getLoggedUser().then(function (user) {
-            $scope.curUser = Object.assign({}, user.data);
-            console.log($scope.curUser);
-            // $scope.getProjects();
-        });
-    };
-
-    $scope.getLoggedUser();
-});
-'use strict';
-
-app.service('homeSrvc', function ($http) {
-    this.getLoggedUser = function () {
-        return $http({
-            method: 'Get',
-            url: '/me'
-        });
-    };
-});
 "use strict";
 
 app.controller('projectPublicDetailCtrl', function ($scope, $stateParams, projectPublicDetailsSrvc) {
@@ -1521,6 +1453,35 @@ app.service('projectPublicDetailsSrvc', function ($http) {
 app.controller('workingProjectCtrl', function ($scope, $stateParams, workingProjectSrvc) {
 
     $scope.curUser;
+    $scope.msgActive = true;
+    $scope.changeTab = function (str) {
+        var messages = document.getElementById('messages');
+        var projects = document.getElementById('projects');
+        var resources = document.getElementById('resources');
+
+        if (str === 'messages') {
+            messages.className = "is-active";
+            contributors.className = "";
+            resources.className = "";
+            $scope.msgActive = true;
+            $scope.contributorActive = false;
+            $scope.linksActive = false;
+        } else if (str === 'contributors') {
+            messages.className = "";
+            contributors.className = "is-active";
+            resources.className = "";
+            $scope.msgActive = false;
+            $scope.contributorActive = true;
+            $scope.linksActive = false;
+        } else if (str === 'resources') {
+            messages.className = "";
+            contributors.className = "";
+            resources.className = "is-active";
+            $scope.msgActive = false;
+            $scope.contributorActive = false;
+            $scope.linksActive = true;
+        }
+    };
 
     $scope.submitReply = function (comment, reply) {
         console.log('replying to: ', comment, reply);
@@ -1737,6 +1698,73 @@ app.service('workingProjectSrvc', function ($http) {
         return $http({
             method: "Get",
             url: '/api/user/' + param
+        });
+    };
+});
+'use strict';
+
+app.controller('devProjectApplicationCtrl', function ($scope, devProjectApplicationSrvc, $location, $stateParams) {
+    $scope.getProject = function () {
+        devProjectApplicationSrvc.getProject($stateParams.id).then(function (project) {
+            console.log(project);
+            $scope.project = project.data[0];
+            console.log("project:", $scope.project);
+        });
+    };
+
+    $scope.getLoggedUser = function () {
+        devProjectApplicationSrvc.getLoggedUser().then(function (user) {
+            if (user.data == 'not logged in!') {} else {
+                $scope.curUser = Object.assign({}, user.data);
+                $scope.newEmail = $scope.curUser.email;
+                $scope.newName = $scope.curUser.firstname.trim() + " " + $scope.curUser.lastname.trim();
+                console.log($scope.curUser);
+                $scope.getProject();
+            }
+        });
+    };
+
+    $scope.submitApplication = function (email, message) {
+        if ($scope.curUser.id) {
+            $scope.curUser.newName = $scope.newName;
+            $scope.curUser.newEmail = email;
+            devProjectApplicationSrvc.submitApplication($scope.project, $scope.curUser, $scope.project.email, message).then(function () {
+                $location.path('/projectfeed');
+            });
+        } else {
+            alert("Please Log in first");
+        }
+    };
+    $scope.getLoggedUser();
+});
+'use strict';
+
+app.service('devProjectApplicationSrvc', function ($http) {
+    this.getLoggedUser = function () {
+        return $http({
+            method: "Get",
+            url: '/me'
+        });
+    };
+
+    this.getProject = function (param) {
+        return $http({
+            method: "Get",
+            url: '/api/project/' + param
+        });
+    };
+
+    this.submitApplication = function (project, user, email, message) {
+        console.log("EMAIL: ", email);
+        return $http({
+            method: "Post",
+            url: '/api/apply/' + project.projid,
+            data: {
+                project: project,
+                user: user,
+                message: message,
+                email: email
+            }
         });
     };
 });

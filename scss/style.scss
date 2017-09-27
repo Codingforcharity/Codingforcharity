@@ -56,6 +56,12 @@
     }
 }
 
+@media screen and (max-width: 769px) {
+    .resize-to-do-box {
+       width: 40%;
+    }
+}
+
 @media screen and (min-width: 769px) {
     .box {
         margin-top: 0rem;
@@ -194,8 +200,26 @@
     border-bottom: 3px solid rgb(189, 212, 54);
 }
 
-.working-resize-submit {
-    width: 25%;
+.resize-to-do-box {
+    background-color: white;
+}
+
+.to-do-body {
+    display: flex;
+    background-color: whitesmoke;
+}
+
+.working-message-change-bg-color {
+    background-color: white;
+}
+
+.working-message-change-bg-color2 {
+    background-color: white;
+    display: flex;
+}
+
+.working-resize-img img {
+    min-height: 127px;
 }
 
 // devprojectapplication's css

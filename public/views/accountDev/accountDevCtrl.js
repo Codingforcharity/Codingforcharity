@@ -188,8 +188,7 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
         let messages = document.getElementById('messages');
         let projects = document.getElementById('projects');
         if (str === 'messages') {
-            messages.className = "is-active";
-            projects.className = "";
+
             $scope.isActive = true;
         } else {
             projects.className = "is-active";

@@ -7434,6 +7434,10 @@ iframe.is-typeform {
   .bold-websites-for-nonprofits {
     font-weight: 700; } }
 
+@media screen and (max-width: 769px) {
+  .resize-to-do-box {
+    width: 40%; } }
+
 @media screen and (min-width: 769px) {
   .box {
     margin-top: 0rem;
@@ -7485,10 +7489,6 @@ iframe.is-typeform {
 
 .video-container {
   position: relative; }
-
-.home-resize-container,
-.workingproject-resize-container {
-  max-width: 1060px; }
 
 .home-about-text h3,
 .home-pitch-text h3 {
@@ -7547,6 +7547,23 @@ iframe.is-typeform {
 
 .message-body a:hover {
   border-bottom: 3px solid #bdd436; }
+
+.resize-to-do-box {
+  background-color: white; }
+
+.to-do-body {
+  display: flex;
+  background-color: whitesmoke; }
+
+.working-message-change-bg-color {
+  background-color: white; }
+
+.working-message-change-bg-color2 {
+  background-color: white;
+  display: flex; }
+
+.working-resize-img img {
+  min-height: 127px; }
 
 .center-apply-upload-container {
   display: flex;

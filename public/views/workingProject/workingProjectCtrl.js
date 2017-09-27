@@ -1,6 +1,35 @@
-app.controller('workingProjectCtrl', function($scope, $stateParams, workingProjectSrvc) {
+app.controller('workingProjectCtrl', function ($scope, $stateParams, workingProjectSrvc) {
 
     $scope.curUser;
+    $scope.msgActive = true;
+    $scope.changeTab = (str) => {
+        let messages = document.getElementById('messages');
+        let projects = document.getElementById('projects');
+        let resources = document.getElementById('resources');
+
+        if (str === 'messages') {
+            messages.className = "is-active";
+            contributors.className = "";
+            resources.className = "";
+            $scope.msgActive = true;
+            $scope.contributorActive = false;
+            $scope.linksActive = false;
+        } else if (str === 'contributors') {
+            messages.className = "";
+            contributors.className = "is-active";
+            resources.className = "";
+            $scope.msgActive = false;
+            $scope.contributorActive = true;
+            $scope.linksActive = false;
+        } else if (str === 'resources') {
+            messages.className = "";
+            contributors.className = "";
+            resources.className = "is-active";
+            $scope.msgActive = false;
+            $scope.contributorActive = false;
+            $scope.linksActive = true;
+        }
+    }
 
     $scope.submitReply = (comment, reply) => {
         console.log('replying to: ', comment, reply);
