@@ -28,15 +28,15 @@
                 <div class="column is-9">
                     <div class="spacer"></div>
                     <div class="columns">
-                        <div class="column is-6">
+                        <div class="column is-3">
                             <p class="title is-4" ng-if="!ownPage && pageOwner.firstname">
                                 <span class="title is-bold">{{pageOwner.firstname}} {{pageOwner.lastname}}</span>
                             </p>
                             <p class="title is-4" ng-if="ownPage">
-                                <input type="text" ng-model="$parent.newFirstName" placeholder="First Name">
+                                <input class="input" type="text" ng-model="$parent.newFirstName" placeholder="First Name">
                             </p>
                             <p class="title is-4" ng-if="ownPage">
-                                <input type="text" ng-model="$parent.newLastName" placeholder="Last Name">
+                                <input class="input" type="text" ng-model="$parent.newLastName" placeholder="Last Name">
                             </p>
                         </div>
                         <div class="column is-6">
@@ -52,9 +52,9 @@
                         </div>
                         <div class="content" ng-if="ownPage">
                             <span class="bold-description">Description: </span>
-                            <textarea style="width: 100%" rows="10" cols="60" ng-model="$parent.newBio" placeholder="Describe yourself">
-                                        {{curUser.bio}}
-                                    </textarea>
+                            <textarea style="width: 100%; font-size: 1rem;" rows="10" cols="60" ng-model="$parent.newBio" placeholder="Describe yourself">
+                                {{curUser.bio}}
+                            </textarea>
                         </div>
                     </div>
                 </div>

@@ -192,10 +192,6 @@
     width: 100%;
 }
 
-.message-body {
-    text-align: center;
-}
-
 .message-body a:hover {
     border-bottom: 3px solid rgb(189, 212, 54);
 }
@@ -206,7 +202,13 @@
 
 .to-do-body {
     display: flex;
-    background-color: whitesmoke;
+    background-color: white;
+    padding: 0em;
+    border: 0px
+}
+
+.working-add-margin-right {
+    margin-right: 20px;
 }
 
 .working-message-change-bg-color {
@@ -220,6 +222,18 @@
 
 .working-resize-img img {
     min-height: 127px;
+}
+
+.panel-block {
+    width: 100%;
+}
+
+.working-add-panel-heading-bg-color {
+    background-color: #d9dee2;
+}
+
+.working-resize-input {
+    width: 40%;
 }
 
 // devprojectapplication's css

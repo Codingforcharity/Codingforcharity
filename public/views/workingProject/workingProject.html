@@ -10,17 +10,25 @@
 
                     <!------------------ Profile Picture - left column ---------------->
                     <div class="column is-3">
+
                         <article class="message is-medium resize-to-do-box">
-                            <strong>To do:</strong>
-                            <div class="message-body to-do-body" ng-repeat="todo in todos" ng-if="!todo.done">
-                                <p style="width:80%">{{todo.todo}}</p>
-                                <div>
+                            <nav class="panel">
+                                <p class="panel-heading working-add-panel-heading-bg-color">
+                                    <strong>To Do:</strong>
+                                </p>
+                                <div class="message-body to-do-body" ng-repeat="todo in todos" ng-if="!todo.done">
+                                    <label class="panel-block">
+                                <div class="working-add-margin-right">
                                     <input type="checkbox" value="todo.done" ng-click="deleteTodo(todo)">
                                 </div>
-                            </div>
+                                <p>{{todo.todo}}</p>
+                                    </label>
+                                </div>
+                            </nav>
                         </article>
+
                         <form ng-submit="submitTodo(newtodo); newtodo =''; ">
-                            <input type="text" ng-model="newtodo" placeholder="Enter todo here">
+                            <input class="input" type="text" ng-model="newtodo" placeholder="Enter todo here">
                             <br><br>
                             <input class="button is-danger" type="submit" value="Submit">
                         </form>
@@ -194,8 +202,10 @@
                         </div>
                         <br>
                         <form ng-submit="submitLink(newlinkname, newlink); newlinkname =''; newlink=''; ">
-                            <input type="text" ng-model="newlinkname" placeholder="Enter link name here">
-                            <input type="text" ng-model="newlink" placeholder="Enter link url here">
+                            <div class="working-resize-input">
+                                <input class="input" type="text" ng-model="newlinkname" placeholder="Enter link name here">
+                                <br><br>
+                                <input class="input" type="text" ng-model="newlink" placeholder="Enter link url here">
                             <br><br>
                             <input class="button is-danger" type="submit" value="Submit">
                         </form>
