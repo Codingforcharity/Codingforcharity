@@ -184,16 +184,21 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
             });
     }
 
+    $scope.msgActive = true;
     $scope.changeTab = (str) => {
         let messages = document.getElementById('messages');
         let projects = document.getElementById('projects');
-        if (str === 'messages') {
 
-            $scope.isActive = true;
-        } else {
-            projects.className = "is-active";
+        if (str === 'messages') {
+            messages.className = "is-active";
+            projects.className = "";
+            $scope.msgActive = true;
+            $scope.projectsActive = false;
+        } else if (str === 'projects') {
             messages.className = "";
-            $scope.isActive = false;
+            projects.className = "is-active";
+            $scope.msgActive = false;
+            $scope.projectsActive = true;
         }
     }
 

@@ -98,7 +98,7 @@
 
             <!------------ Projects ------------>
             <!-- <h3 class="title is-3 style-message-board">Project</h3> -->
-            <article class="box media project-box overflow: auto;" ng-repeat="project in userProjects" ng-if="!isActive">
+            <article class="box media project-box overflow: auto;" ng-repeat="project in userProjects" ng-if="projectsActive">
                 <a ng-href="/#!/account/{{project.posterid}}">
                     <div class="media-left">
                         <figure class="image is-64x64">
@@ -123,7 +123,7 @@
 
             <!-- ------------Messages ----------------- -->
             <!-- <h3 class="title is-3 style-message-board">Message Board</h3> -->
-            <div class="box message-board-container" ng-if="isActive">
+            <div class="box message-board-container" ng-if="msgActive">
                 <article class="media " ng-repeat="comment in userComments">
                     <figure class="media-left ">
                         <p class="image is-64x64 ">
