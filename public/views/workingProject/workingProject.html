@@ -136,6 +136,7 @@
                                     </div>
                                 </div>
                             </article>
+                            <hr style="border-top: dotted 1px;" />
                         </div>
                     </article>
                     <article class="media" ng-if="allowedAccess">
@@ -151,8 +152,8 @@
                                 </p>
                             </div>
                             <div class="field">
-                                <p class="control">
-                                    <button class="button" ng-click="submitComment(newComment); newComment='';">Post comment</button>
+                                <p class="control change-button-style">
+                                    <button class="button is-danger" ng-click="submitComment(newComment); newComment='';">Post comment</button>
                                 </p>
                             </div>
                         </div>
