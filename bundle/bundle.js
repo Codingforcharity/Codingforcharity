@@ -833,23 +833,6 @@ var app = angular.module("charityApp", ["ui.router"]).config(function ($statePro
         $templateCache.put('src/toast/toast.html', "<div class=\"notification {{vm.style}}\" ng-class=\"vm.classes\"><button class=\"delete\" ng-if=\"vm.showClose\" ng-click=\"vm.close()\"></button><div ng-bind-html=\"vm.contents\"></div></div>");
     }
 })();
-'use strict';
-
-app.directive('topnav', function () {
-    return {
-        Restrict: 'E',
-        templateUrl: './views/components/topnav.html',
-        link: function link(scope, elem, attrs) {
-            scope.toggleBurger = function () {
-                console.log("Toggling!");
-                var burgerIcon = document.getElementById('burger');
-                burgerIcon.classList.toggle('is-active');
-                var navMenu = document.getElementById('navMenu');
-                navMenu.classList.toggle('is-active');
-            };
-        }
-    };
-});
 "use strict";
 
 app.controller("accountDevCtrl", function ($scope, $stateParams, accountDevSrvc) {
@@ -976,6 +959,7 @@ app.controller("accountDevCtrl", function ($scope, $stateParams, accountDevSrvc)
     };
 
     $scope.subChanges = function (newFirstName, newLastName, newBio, newSkills) {
+        $scope.showInput = false;
         var newUser = {};
         if (newFirstName) {
             newUser.firstname = newFirstName;
@@ -1303,11 +1287,39 @@ app.service('accountDevSrvc', function ($http) {
 });
 'use strict';
 
+app.directive('topnav', function () {
+    return {
+        Restrict: 'E',
+        templateUrl: './views/components/topnav.html',
+        link: function link(scope, elem, attrs) {
+            scope.toggleBurger = function () {
+                console.log("Toggling!");
+                var burgerIcon = document.getElementById('burger');
+                burgerIcon.classList.toggle('is-active');
+                var navMenu = document.getElementById('navMenu');
+                navMenu.classList.toggle('is-active');
+            };
+        }
+    };
+});
+'use strict';
+
+app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
+    console.log("createAccountCtrl");
+    $scope.logout = function () {
+        window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
+    };
+});
+'use strict';
+
+app.service('createAccountSrvc', function ($http) {});
+'use strict';
+
 app.controller('createProjectCtrl', function ($scope, createProjectSrvc, $location) {
     console.log("createProjectCtrl");
 
-    $scope.submitProject = function (title, org, type, desc, terms, skills) {
-        console.log(title, org, type, desc, terms, skills);
+    $scope.submitProject = function (title, type, desc, terms) {
+        console.log(title, type, desc, terms);
         if (title) {
             if (type) {
                 if (desc) {
@@ -1351,17 +1363,6 @@ app.service('createProjectSrvc', function ($http) {
         });
     };
 });
-'use strict';
-
-app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
-    console.log("createAccountCtrl");
-    $scope.logout = function () {
-        window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
-    };
-});
-'use strict';
-
-app.service('createAccountSrvc', function ($http) {});
 'use strict';
 
 app.controller('devProjectApplicationCtrl', function ($scope, devProjectApplicationSrvc, $location, $stateParams) {
