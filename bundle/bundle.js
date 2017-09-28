@@ -1,54 +1,54 @@
-'use strict';
+"use strict";
 
-var app = angular.module("charityApp", ['ui.router']).config(function ($stateProvider, $urlRouterProvider) {
-    $stateProvider.state('home', {
-        url: '/',
-        templateUrl: './views/home/home.html',
-        controller: 'homeCtrl'
-    }).state('accountDev', {
-        url: '/account/:id',
-        // pass in later as a parameter//  /:id',
-        templateUrl: './views/accountDev/accountDev.html',
-        controller: 'accountDevCtrl'
-    }).state('accountNonProfit', {
-        url: '/account/org/:id',
-        templateUrl: './views/accountNonProfit/accountNonProfit.html',
-        controller: 'accountNonProfitCtrl'
-    }).state('createAccount', {
-        url: '/sign-up',
-        templateUrl: './views/createAccount/createAccount.html',
-        controller: 'createAccountCtrl'
-    }).state('createProject', {
-        url: '/new-project',
-        templateUrl: './views/createProject/createProject.html',
-        controller: 'createProjectCtrl'
-    }).state('devProjectApplication', {
-        url: '/apply/:id',
-        // pass in later to add parameter to the url // :id',
-        templateUrl: './views/devProjectApplication/devProjectApplication.html',
-        controller: 'devProjectApplicationCtrl'
-    }).state('messenger', {
-        url: '/messenger',
-        templateUrl: './views/messenger/messenger.html',
-        controller: 'messengerCtrl'
-    }).state('projectFeed', {
-        url: '/projectfeed',
-        templateUrl: './views/projectFeed/projectFeed.html',
-        controller: 'projectFeedCtrl'
-    }).state('projectPublicDetails', {
-        url: '/projectfeed/project/:id',
-        templateUrl: './views/projectPublicDetails/projectPublicDetails.html',
-        controller: 'projectPublicDetailCtrl'
-    }).state('workingProject', {
-        url: '/active/project/:id',
-        templateUrl: './views/workingProject/workingProject.html',
-        controller: 'workingProjectCtrl'
-    }).state('login', {
-        url: '/login',
-        templateUrl: './views/login/login.html',
-        controller: 'loginCtrl'
-    });
-    $urlRouterProvider.otherwise('/');
+var app = angular.module("charityApp", ["ui.router"]).config(function ($stateProvider, $urlRouterProvider) {
+  $stateProvider.state("home", {
+    url: "/",
+    templateUrl: "./views/home/home.html",
+    controller: "homeCtrl"
+  }).state("accountDev", {
+    url: "/account/:id",
+    // pass in later as a parameter//  /:id',
+    templateUrl: "./views/accountDev/accountDev.html",
+    controller: "accountDevCtrl"
+  }).state("accountNonProfit", {
+    url: "/account/org/:id",
+    templateUrl: "./views/accountNonProfit/accountNonProfit.html",
+    controller: "accountNonProfitCtrl"
+  }).state("createAccount", {
+    url: "/sign-up",
+    templateUrl: "./views/createAccount/createAccount.html",
+    controller: "createAccountCtrl"
+  }).state("createProject", {
+    url: "/new-project",
+    templateUrl: "./views/createProject/createProject.html",
+    controller: "createProjectCtrl"
+  }).state("devProjectApplication", {
+    url: "/apply/:id",
+    // pass in later to add parameter to the url // :id',
+    templateUrl: "./views/devProjectApplication/devProjectApplication.html",
+    controller: "devProjectApplicationCtrl"
+  }).state("messenger", {
+    url: "/messenger",
+    templateUrl: "./views/messenger/messenger.html",
+    controller: "messengerCtrl"
+  }).state("projectFeed", {
+    url: "/projectfeed",
+    templateUrl: "./views/projectFeed/projectFeed.html",
+    controller: "projectFeedCtrl"
+  }).state("projectPublicDetails", {
+    url: "/projectfeed/project/:id",
+    templateUrl: "./views/projectPublicDetails/projectPublicDetails.html",
+    controller: "projectPublicDetailCtrl"
+  }).state("workingProject", {
+    url: "/active/project/:id",
+    templateUrl: "./views/workingProject/workingProject.html",
+    controller: "workingProjectCtrl"
+  }).state("login", {
+    url: "/login",
+    templateUrl: "./views/login/login.html",
+    controller: "loginCtrl"
+  });
+  $urlRouterProvider.otherwise("/");
 });
 // "use strict";
 
@@ -835,7 +835,7 @@ var app = angular.module("charityApp", ['ui.router']).config(function ($statePro
 })();
 "use strict";
 
-app.controller('accountDevCtrl', function ($scope, $stateParams, accountDevSrvc) {
+app.controller("accountDevCtrl", function ($scope, $stateParams, accountDevSrvc) {
     // console.log("accountDev link")
     $scope.curUser;
     $scope.ownPage = false;
@@ -843,7 +843,10 @@ app.controller('accountDevCtrl', function ($scope, $stateParams, accountDevSrvc)
     $scope.newSkills = "";
     $scope.modalSet = false;
     $scope.showPictures = false;
+    $scope.showInfo = false;
     $scope.avatarArr = [];
+    $scope.picture = false;
+    $scope.showUserInfo = false;
 
     $scope.changeModal = function (project) {
         console.log("open modal");
@@ -853,7 +856,6 @@ app.controller('accountDevCtrl', function ($scope, $stateParams, accountDevSrvc)
             creator: project.username,
             pic: project.profilepic,
             name: project.firstname + " " + project.lastname
-
         };
         $scope.modalSet = true;
     };
@@ -938,15 +940,129 @@ app.controller('accountDevCtrl', function ($scope, $stateParams, accountDevSrvc)
                 $scope.pageOwner = Object.assign({}, user.data[0]);
                 // console.log($scope.pageOwner);
                 $scope.getUserSkills($stateParams.id);
+                $scope.picture = true;
             });
         } else {
             $scope.ownPage = true;
+            $scope.picture = true;
             $scope.newFirstName = $scope.curUser.firstname;
             $scope.newLastName = $scope.curUser.lastname;
             $scope.newBio = $scope.curUser.bio;
             $scope.newProfilePic = $scope.curUser.profilepic;
             // console.log("On your own page!", $scope.curUser)
             $scope.getUserSkills($stateParams.id);
+        }
+    };
+
+    $scope.subChanges = function (newFirstName, newLastName, newBio, newSkills) {
+        var newUser = {};
+        if (newFirstName) {
+            newUser.firstname = newFirstName;
+        } else {
+            if ($scope.curUser.firstname) {
+                newUser.firstname = $scope.curUser.firstname;
+            } else {
+                newUser.firstname = undefined;
+            }
+        }
+
+        if (newLastName) {
+            newUser.lastname = newLastName;
+        } else {
+            if ($scope.curUser.lastname) {
+                newUser.lastname = $scope.curUser.lastname;
+            } else {
+                newUser.lastname = undefined;
+            }
+        }
+
+        if (newBio) {
+            newUser.bio = newBio;
+        } else {
+            if ($scope.curUser.bio) {
+                newUser.bio = $scope.curUser.bio;
+            } else {
+                newUser.bio = undefined;
+            }
+        }
+
+        if (newSkills) {
+            // console.log(newSkills)
+            newSkills = newSkills.split(",");
+            for (var i = 0; i < newSkills.length; i++) {
+                newSkills[i] = newSkills[i].trim();
+            }
+            newUser.skills = newSkills;
+            console.log(newSkills);
+        } else {
+            if ($scope.curUser.skills) {
+                newUser.skills = $scope.curUser.skills;
+            } else {
+                newUser.skills = undefined;
+            }
+        }
+
+        newUser.id = $scope.curUser.id;
+        newUser.authid = $scope.curUser.authid;
+        newUser.email = $scope.curUser.email;
+        newUser.username = $scope.curUser.username;
+        newUser.ischarity = $scope.curUser.ischarity;
+        newUser.profilepic = $scope.curUser.profilepic;
+        accountDevSrvc.updateUser($stateParams.id, newUser).then(function (updatedUser) {
+            // console.log("updated user", updatedUser)
+            $scope.curUser = updatedUser.data[0];
+            // console.log($scope.curUser);
+            $scope.getUserSkills($stateParams.id);
+        });
+    };
+
+    $scope.msgActive = true;
+    $scope.changeTab = function (str) {
+        var messages = document.getElementById("messages");
+        var projects = document.getElementById("projects");
+
+        if (str === "messages") {
+            messages.className = "is-active";
+            projects.className = "";
+            $scope.msgActive = true;
+            $scope.projectsActive = false;
+        } else if (str === "projects") {
+            messages.className = "";
+            projects.className = "is-active";
+            $scope.msgActive = false;
+            $scope.projectsActive = true;
+        }
+    };
+
+    $scope.changePicture = function () {
+        console.log("changing picture");
+        $scope.showPictures = true;
+    };
+
+    $scope.updateInfo = function () {
+        console.log("updating info");
+        $scope.showInput = true;
+        $scope.showUserInfo = false;
+    };
+
+    $scope.cancelInfo = function () {
+        console.log("canceling info");
+        $scope.showInput = false;
+        $scope.showUserInfo = true;
+    };
+
+    $scope.updatePicture = function (avatar) {
+        // console.log(avatar);
+
+        for (var i = 0; i < 17; i++) {
+            if (avatar === "avatar" + i) {
+                var imgUrl = "./img/avatars/" + i + ".svg";
+                // console.log(imgUrl)
+                accountDevSrvc.updateImg($scope.curUser.id, imgUrl).then(function (user) {
+                    $scope.curUser = Object.assign({}, user.data[0]);
+                    $scope.showPictures = false;
+                });
+            }
         }
     };
 
@@ -1164,34 +1280,6 @@ app.service('accountDevSrvc', function ($http) {
 });
 'use strict';
 
-app.directive('topnav', function () {
-    return {
-        Restrict: 'E',
-        templateUrl: './views/components/topnav.html',
-        link: function link(scope, elem, attrs) {
-            scope.toggleBurger = function () {
-                console.log("Toggling!");
-                var burgerIcon = document.getElementById('burger');
-                burgerIcon.classList.toggle('is-active');
-                var navMenu = document.getElementById('navMenu');
-                navMenu.classList.toggle('is-active');
-            };
-        }
-    };
-});
-'use strict';
-
-app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
-    console.log("createAccountCtrl");
-    $scope.logout = function () {
-        window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
-    };
-});
-'use strict';
-
-app.service('createAccountSrvc', function ($http) {});
-'use strict';
-
 app.controller('createProjectCtrl', function ($scope, createProjectSrvc, $location) {
     console.log("createProjectCtrl");
 
@@ -1240,6 +1328,34 @@ app.service('createProjectSrvc', function ($http) {
         });
     };
 });
+'use strict';
+
+app.directive('topnav', function () {
+    return {
+        Restrict: 'E',
+        templateUrl: './views/components/topnav.html',
+        link: function link(scope, elem, attrs) {
+            scope.toggleBurger = function () {
+                console.log("Toggling!");
+                var burgerIcon = document.getElementById('burger');
+                burgerIcon.classList.toggle('is-active');
+                var navMenu = document.getElementById('navMenu');
+                navMenu.classList.toggle('is-active');
+            };
+        }
+    };
+});
+'use strict';
+
+app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
+    console.log("createAccountCtrl");
+    $scope.logout = function () {
+        window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
+    };
+});
+'use strict';
+
+app.service('createAccountSrvc', function ($http) {});
 'use strict';
 
 app.controller('devProjectApplicationCtrl', function ($scope, devProjectApplicationSrvc, $location, $stateParams) {
