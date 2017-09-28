@@ -10,13 +10,16 @@
 
                     <!------------------ Profile Picture - left column ---------------->
                     <div class="column is-3">
-
+                            <figure class="image is-128x128">
+                                    <a ng-href="/#!/account/{{project.posterid}}">
+                                    <img ng-src="{{project.profilepic}}" alt="Charity Logo"></a>
+                                </figure>
                         <article class="message is-medium resize-to-do-box">
                             <nav class="panel">
                                 <p class="panel-heading working-add-panel-heading-bg-color">
                                     <strong>To Do:</strong>
                                 </p>
-                                <div class="message-body to-do-body" ng-repeat="todo in todos" ng-if="!todo.done">
+                                <div class="message-body to-do-body" ng-repeat="todo in todos">
                                     <label class="panel-block">
                                         <div class="working-add-margin-right">
                                             <input type="checkbox" value="todo.done" ng-click="deleteTodo(todo)">
@@ -58,21 +61,21 @@
                         <ul>
                             <li class="is-active" id="messages" ng-click="changeTab('messages');">
                                 <a>
-                                        <span class="icon is-small"><i class="fa fa-envelope-o"></i></span>
-                                        <span>Messages</span>
-                                    </a>
+                                    <span class="icon is-small"><i class="fa fa-envelope-o"></i></span>
+                                    <span>Messages</span>
+                                </a>
                             </li>
                             <li class="" id="contributors" ng-click="changeTab('contributors');">
                                 <a>
-                                        <span class="icon is-small"><i class="fa fa-user-o"></i></span>
-                                        <span>Contributors</span>
-                                    </a>
+                                    <span class="icon is-small"><i class="fa fa-user-o"></i></span>
+                                    <span>Contributors</span>
+                                </a>
                             </li>
                             <li class="" id="resources" ng-click="changeTab('resources');">
                                 <a>
-                                        <span class="icon is-small"><i class="fa fa-file-o"></i></span>
-                                        <span>Resources</span>
-                                        </a>
+                                    <span class="icon is-small"><i class="fa fa-file-o"></i></span>
+                                    <span>Resources</span>
+                                </a>
                             </li>
                             <!-- <li ng-click="changeTab('messages');">
                                     <a>
@@ -176,8 +179,8 @@
                             <div class="media-left">
                                 <figure class="image is-128x128 working-resize-img">
                                     <a ng-href="/#!/account/{{contributer.id}}">
-                                    <img ng-src="{{contributer.profilepic}}">
-                                        </a>
+                                        <img ng-src="{{contributer.profilepic}}">
+                                    </a>
                                 </figure>
                             </div>
                             <!-- <div class="media-content">

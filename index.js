@@ -137,13 +137,13 @@ app.post('/api/apply/:id', (req, res, next) => {
                 subject: "A user has applied to your project: " + req.body.project.title,
                 html: `<p>` + req.body.user.firstname + " " + req.body.user.lastname + `'s message to you: ` + req.body.message + `</p> </br> 
                         <p> Click 
-                            <a href="http://localhost:5001/#!/account/` + req.body.user.id + `">here</a> to view the users info.
+                            <a href="http://devgive.net/#!/account/` + req.body.user.id + `">here</a> to view the users info.
                         </p>
                         <p>
                             Contact them <a href="mailto:` + req.body.user.email + `">here.</a>
                         </p>
                         <p>
-                        Click <a href="http://localhost:5001/api/acceptUser/` + req.body.project.projid + `/` + req.body.user.id + `"> here
+                        Click <a href="http://devgive.net/api/acceptUser/` + req.body.project.projid + `/` + req.body.user.id + `"> here
                         </a> to confirm their acceptance into the project.</p>`
 
 
