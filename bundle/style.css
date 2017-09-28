@@ -7546,6 +7546,9 @@ iframe.is-typeform {
 .home-process {
   background-color: #f2f6f7; }
 
+.hero-add-vh {
+  height: 85vh; }
+
 .working-style-checkbox {
   display: flex;
   width: 100%; }
@@ -7710,6 +7713,9 @@ iframe.is-typeform {
 
 .account-add-max-width-to-input {
   max-width: 30%; }
+
+strong p {
+  text-align: center; }
 
 .is-last-child {
   margin-bottom: 1.5rem; }
