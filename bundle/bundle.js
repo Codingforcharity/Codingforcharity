@@ -855,7 +855,11 @@ app.controller("accountDevCtrl", function ($scope, $stateParams, accountDevSrvc)
             desc: project.description,
             creator: project.username,
             pic: project.profilepic,
-            name: project.firstname + " " + project.lastname
+            name: project.firstname + " " + project.lastname,
+            email: project.email,
+            id: project.id,
+            projid: project.projid
+
         };
         $scope.modalSet = true;
     };
@@ -1016,7 +1020,8 @@ app.controller("accountDevCtrl", function ($scope, $stateParams, accountDevSrvc)
         });
     };
 
-    $scope.msgActive = true;
+    $scope.msgActive = false;
+    $scope.projectsActive = true;
     $scope.changeTab = function (str) {
         var messages = document.getElementById("messages");
         var projects = document.getElementById("projects");
@@ -1128,7 +1133,8 @@ app.controller("accountDevCtrl", function ($scope, $stateParams, accountDevSrvc)
         });
     };
 
-    $scope.msgActive = true;
+    $scope.msgActive = false;
+    $scope.projectsActive = true;
     $scope.changeTab = function (str) {
         var messages = document.getElementById('messages');
         var projects = document.getElementById('projects');
