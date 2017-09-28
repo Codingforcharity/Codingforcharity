@@ -1,4 +1,4 @@
-<h1 align="center">
+<h1>
   <br>
   <a href="https://devgive.net"><img src="https://raw.githubusercontent.com/Codingforcharity/Codingforcharity/master/assets/img/DevGiveLogoColored.png" alt="DevGive" width="200"></a>
   <br>
@@ -16,7 +16,7 @@ The [github issue tracker](https://github.com/codingforcharity/codingforcharity/
 
 ## Built With
 
-AngularJS - Javascript framework
+AngularJS - Javascript framework <br>
 Bulma - CSS framework <br>
 SASS - To extend CSS functionally <br>
 GULP - PostProcessing CSS, build task, es6 to es5 transpiler, and development tasks <br>
@@ -37,7 +37,7 @@ We use SemVer for versioning. For the versions available, see the tags on this r
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details 
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/Codingforcharity/Codingforcharity/blob/master/LICENSE) file for details 
 
 ## Acknowledgments
 
