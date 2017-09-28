@@ -1155,6 +1155,17 @@ app.service('accountDevSrvc', function ($http) {
 });
 'use strict';
 
+app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
+    console.log("createAccountCtrl");
+    $scope.logout = function () {
+        window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
+    };
+});
+'use strict';
+
+app.service('createAccountSrvc', function ($http) {});
+'use strict';
+
 app.directive('topnav', function () {
     return {
         Restrict: 'E',
@@ -1170,17 +1181,6 @@ app.directive('topnav', function () {
         }
     };
 });
-'use strict';
-
-app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
-    console.log("createAccountCtrl");
-    $scope.logout = function () {
-        window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
-    };
-});
-'use strict';
-
-app.service('createAccountSrvc', function ($http) {});
 'use strict';
 
 app.controller('createProjectCtrl', function ($scope, createProjectSrvc, $location) {
