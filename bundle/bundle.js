@@ -855,7 +855,11 @@ app.controller("accountDevCtrl", function ($scope, $stateParams, accountDevSrvc)
             desc: project.description,
             creator: project.username,
             pic: project.profilepic,
-            name: project.firstname + " " + project.lastname
+            name: project.firstname + " " + project.lastname,
+            email: project.email,
+            id: project.id,
+            projid: project.projid
+
         };
         $scope.modalSet = true;
     };
@@ -1016,7 +1020,8 @@ app.controller("accountDevCtrl", function ($scope, $stateParams, accountDevSrvc)
         });
     };
 
-    $scope.msgActive = true;
+    $scope.msgActive = false;
+    $scope.projectsActive = true;
     $scope.changeTab = function (str) {
         var messages = document.getElementById("messages");
         var projects = document.getElementById("projects");
@@ -1128,7 +1133,8 @@ app.controller("accountDevCtrl", function ($scope, $stateParams, accountDevSrvc)
         });
     };
 
-    $scope.msgActive = true;
+    $scope.msgActive = false;
+    $scope.projectsActive = true;
     $scope.changeTab = function (str) {
         var messages = document.getElementById('messages');
         var projects = document.getElementById('projects');
@@ -1457,6 +1463,52 @@ app.controller('loginCtrl', function ($scope) {});
 app.service('loginSrvc', function ($http) {});
 "use strict";
 
+app.controller('projectPublicDetailCtrl', function ($scope, $stateParams, projectPublicDetailsSrvc) {
+    console.log("projectPublicDetailsCtrl");
+    $scope.curUser;
+    $scope.getProjectById = function () {
+        var param = $stateParams.id;
+        console.log("stateparams: " + param);
+        projectPublicDetailsSrvc.getProjectById(param).then(function (project) {
+            console.log("Returned project: ", project);
+            $scope.project = Object.assign({}, project.data[0]);
+            console.log("scoped project: ", $scope.project);
+        });
+    };
+
+    $scope.getLoggedInUser = function () {
+        projectPublicDetailsSrvc.getLoggedInUser().then(function (user) {
+            $scope.curUser = Object.assign({}, user.data);
+            $scope.getProjectById();
+        });
+    };
+
+    $scope.toggle = function () {
+        $scope.state = !$scope.state;
+    };
+
+    $scope.getLoggedInUser();
+});
+"use strict";
+
+app.service('projectPublicDetailsSrvc', function ($http) {
+
+    this.getProjectById = function (param) {
+        return $http({
+            method: "Get",
+            url: "/api/project/" + param
+        });
+    };
+
+    this.getLoggedInUser = function () {
+        return $http({
+            method: "Get",
+            url: "/me"
+        });
+    };
+});
+"use strict";
+
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 app.controller("projectFeedCtrl", function ($scope, projectFeedSrvc) {
@@ -1612,52 +1664,6 @@ app.service('projectFeedSrvc', function ($http) {
                 message: message,
                 email: email
             }
-        });
-    };
-});
-"use strict";
-
-app.controller('projectPublicDetailCtrl', function ($scope, $stateParams, projectPublicDetailsSrvc) {
-    console.log("projectPublicDetailsCtrl");
-    $scope.curUser;
-    $scope.getProjectById = function () {
-        var param = $stateParams.id;
-        console.log("stateparams: " + param);
-        projectPublicDetailsSrvc.getProjectById(param).then(function (project) {
-            console.log("Returned project: ", project);
-            $scope.project = Object.assign({}, project.data[0]);
-            console.log("scoped project: ", $scope.project);
-        });
-    };
-
-    $scope.getLoggedInUser = function () {
-        projectPublicDetailsSrvc.getLoggedInUser().then(function (user) {
-            $scope.curUser = Object.assign({}, user.data);
-            $scope.getProjectById();
-        });
-    };
-
-    $scope.toggle = function () {
-        $scope.state = !$scope.state;
-    };
-
-    $scope.getLoggedInUser();
-});
-"use strict";
-
-app.service('projectPublicDetailsSrvc', function ($http) {
-
-    this.getProjectById = function (param) {
-        return $http({
-            method: "Get",
-            url: "/api/project/" + param
-        });
-    };
-
-    this.getLoggedInUser = function () {
-        return $http({
-            method: "Get",
-            url: "/me"
         });
     };
 });
