@@ -833,6 +833,23 @@ var app = angular.module("charityApp", ["ui.router"]).config(function ($statePro
         $templateCache.put('src/toast/toast.html', "<div class=\"notification {{vm.style}}\" ng-class=\"vm.classes\"><button class=\"delete\" ng-if=\"vm.showClose\" ng-click=\"vm.close()\"></button><div ng-bind-html=\"vm.contents\"></div></div>");
     }
 })();
+'use strict';
+
+app.directive('topnav', function () {
+    return {
+        Restrict: 'E',
+        templateUrl: './views/components/topnav.html',
+        link: function link(scope, elem, attrs) {
+            scope.toggleBurger = function () {
+                console.log("Toggling!");
+                var burgerIcon = document.getElementById('burger');
+                burgerIcon.classList.toggle('is-active');
+                var navMenu = document.getElementById('navMenu');
+                navMenu.classList.toggle('is-active');
+            };
+        }
+    };
+});
 "use strict";
 
 app.controller("accountDevCtrl", function ($scope, $stateParams, accountDevSrvc) {
@@ -855,7 +872,11 @@ app.controller("accountDevCtrl", function ($scope, $stateParams, accountDevSrvc)
             desc: project.description,
             creator: project.username,
             pic: project.profilepic,
-            name: project.firstname + " " + project.lastname
+            name: project.firstname + " " + project.lastname,
+            email: project.email,
+            id: project.id,
+            projid: project.projid
+
         };
         $scope.modalSet = true;
     };
@@ -1016,7 +1037,8 @@ app.controller("accountDevCtrl", function ($scope, $stateParams, accountDevSrvc)
         });
     };
 
-    $scope.msgActive = true;
+    $scope.msgActive = false;
+    $scope.projectsActive = true;
     $scope.changeTab = function (str) {
         var messages = document.getElementById("messages");
         var projects = document.getElementById("projects");
@@ -1128,7 +1150,8 @@ app.controller("accountDevCtrl", function ($scope, $stateParams, accountDevSrvc)
         });
     };
 
-    $scope.msgActive = true;
+    $scope.msgActive = false;
+    $scope.projectsActive = true;
     $scope.changeTab = function (str) {
         var messages = document.getElementById('messages');
         var projects = document.getElementById('projects');
@@ -1280,6 +1303,7 @@ app.service('accountDevSrvc', function ($http) {
 });
 'use strict';
 
+<<<<<<< HEAD
 app.directive('topnav', function () {
     return {
         Restrict: 'E',
@@ -1297,6 +1321,8 @@ app.directive('topnav', function () {
 });
 'use strict';
 
+=======
+>>>>>>> 53c3d8f1d10aed6b1ba126fffe21143c62e402fc
 app.controller('createProjectCtrl', function ($scope, createProjectSrvc, $location) {
     console.log("createProjectCtrl");
 

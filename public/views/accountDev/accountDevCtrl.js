@@ -22,8 +22,12 @@ app.controller("accountDevCtrl", function(
             desc: project.description,
             creator: project.username,
             pic: project.profilepic,
-            name: project.firstname + " " + project.lastname
-        };
+            name: project.firstname + " " + project.lastname,
+            email: project.email,
+            id: project.id,
+            projid: project.projid
+
+        }
         $scope.modalSet = true;
     };
 
@@ -192,7 +196,8 @@ app.controller("accountDevCtrl", function(
         });
     };
 
-    $scope.msgActive = true;
+    $scope.msgActive = false;
+    $scope.projectsActive = true;
     $scope.changeTab = str => {
         let messages = document.getElementById("messages");
         let projects = document.getElementById("projects");
@@ -305,7 +310,8 @@ app.controller("accountDevCtrl", function(
             });
     }
 
-    $scope.msgActive = true;
+    $scope.msgActive = false;
+    $scope.projectsActive = true;
     $scope.changeTab = (str) => {
         let messages = document.getElementById('messages');
         let projects = document.getElementById('projects');

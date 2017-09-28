@@ -47,10 +47,10 @@
                                 <span class="title is-bold">{{pageOwner.username}}</span>
                             </p>
                             <p class="title is-4" ng-if='showInput'>
-                                <input class="input" type="text" ng-model="$parent.newFirstName" placeholder="First Name">
+                                <input class="input account-add-max-width-to-input" type="text" ng-model="$parent.newFirstName" placeholder="First Name">
                             </p>
                             <p class="title is-4" ng-if='showInput'>
-                                <input class="input" type="text" ng-model="$parent.newLastName" placeholder="Last Name">
+                                <input class="input account-add-max-width-to-input" type="text" ng-model="$parent.newLastName" placeholder="Last Name">
                             </p>
                         </div>
                         <!-- <div class="column is-2">
@@ -77,24 +77,22 @@
                 </div>
             </div>
             <div class="align-button-center">
+                <button class="button is-danger account-add-margin-right" type="submit" ng-if='ownPage && showInput' ng-click="subChanges($parent.newFirstName, $parent.newLastName, $parent.newBio, $parent.newSkills);">Submit Changes</button>
                 <div class="level-item" ng-if='ownPage && showInput'>
                     <div class="button  is-danger" ng-click="cancelInfo();">Cancel</div>
                 </div>
-                <button class="button is-danger" type="submit" ng-if='ownPage && showInput' ng-click="subChanges($parent.newFirstName, $parent.newLastName, $parent.newBio, $parent.newSkills);">Submit Changes</button>
             </div>
-
-            <br>
-
+            <br><br>
             <footer>
                 <div class="tabs profile is-medium is-centered is-boxed">
                     <ul>
-                        <li class="is-active" id="messages" ng-click="changeTab('messages');">
+                        <li class="" id="messages" ng-click="changeTab('messages');">
                             <a>
                                 <span class="icon is-small"><i class="fa fa-envelope-o"></i></span>
                                 <span>Messages</span>
                             </a>
                         </li>
-                        <li class="" id="projects" ng-click="changeTab('projects');">
+                        <li class="is-active" id="projects" ng-click="changeTab('projects');">
                             <a>
                                 <span class="icon is-small"><i class="fa fa-folder"></i></span>
                                 <span>Projects</span>
@@ -123,7 +121,7 @@
                     <div class="media-left">
                         <figure class="image is-128x128">
                             <a ng-href="/#!/account/{{project.posterid}}">
-                                    <img ng-src="{{project.profilepic}}" alt="Charity Logo"></a>
+                                <img ng-src="{{project.profilepic}}" alt="Charity Logo"></a>
                         </figure>
                         <!-- <figure class="image is-64x64">
                             <img ng-if="!ownPage" ng-src="{{pageOwner.profilepic}}" alt="Profile pic for {{pageOwner.username}}">
@@ -246,11 +244,11 @@
                     <h4 class="subtitle is-5">Tell us about yourself</h4>
                 </div>
                 <div class="control">
-                    <textarea class="textarea" type="text" ng-model="newMessage" placeholder="Enter details here"></textarea>
+                    <textarea class="textarea" type="text" ng-model="modal.newMessage" placeholder="Enter details here"></textarea>
                 </div>
             </section>
             <footer class="modal-card-foot">
-                <a class="button is-danger" ng-click='submitApplication(newMessage, modal)' ng-if="curUser.id">Apply</a>
+                <a class="button is-danger" ng-click='submitApplication(modal.newMessage, modal)' ng-if="curUser.id">Apply</a>
                 <a ng-if="!curUser.id" href="/auth" class="button is-danger">Sign up to apply</a>
                 <a ng-click='$parent.modalSet = false' class="button is-primary is-outlined">Close</a>
             </footer>

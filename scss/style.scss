@@ -390,6 +390,16 @@
 
 .align-button-center {
   text-align: center;
+  display: flex;
+  justify-content: center
+}
+
+.account-add-margin-right {
+  margin-right: 60px;
+}
+
+.account-add-max-width-to-input {
+  max-width: 30%;
 }
 
 // projectFeed's css
