@@ -223,6 +223,19 @@ app.controller('accountDevCtrl', function($scope, $stateParams, accountDevSrvc) 
         }
     }
 
+    $scope.submitApplication = (message, project) => {
+        $scope.modalSet = false;
+        if ($scope.curUser.id) {
+            accountDevSrvc.submitApplication(project, $scope.curUser, project.email, message)
+                .then(() => {
+                    $location.path('/projectfeed');
+                })
+        } else {
+            alert("Please Log in first")
+        }
+    }
+
+
 
     $scope.getLoggedInUser();
 

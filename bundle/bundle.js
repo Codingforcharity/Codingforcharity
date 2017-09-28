@@ -833,23 +833,6 @@ var app = angular.module("charityApp", ['ui.router']).config(function ($statePro
         $templateCache.put('src/toast/toast.html', "<div class=\"notification {{vm.style}}\" ng-class=\"vm.classes\"><button class=\"delete\" ng-if=\"vm.showClose\" ng-click=\"vm.close()\"></button><div ng-bind-html=\"vm.contents\"></div></div>");
     }
 })();
-'use strict';
-
-app.directive('topnav', function () {
-    return {
-        Restrict: 'E',
-        templateUrl: './views/components/topnav.html',
-        link: function link(scope, elem, attrs) {
-            scope.toggleBurger = function () {
-                console.log("Toggling!");
-                var burgerIcon = document.getElementById('burger');
-                burgerIcon.classList.toggle('is-active');
-                var navMenu = document.getElementById('navMenu');
-                navMenu.classList.toggle('is-active');
-            };
-        }
-    };
-});
 "use strict";
 
 app.controller('accountDevCtrl', function ($scope, $stateParams, accountDevSrvc) {
@@ -1067,6 +1050,17 @@ app.controller('accountDevCtrl', function ($scope, $stateParams, accountDevSrvc)
         }
     };
 
+    $scope.submitApplication = function (message, project) {
+        $scope.modalSet = false;
+        if ($scope.curUser.id) {
+            accountDevSrvc.submitApplication(project, $scope.curUser, project.email, message).then(function () {
+                $location.path('/projectfeed');
+            });
+        } else {
+            alert("Please Log in first");
+        }
+    };
+
     $scope.getLoggedInUser();
 });
 'use strict';
@@ -1152,6 +1146,37 @@ app.service('accountDevSrvc', function ($http) {
             method: "Get",
             url: "/api/user/" + param
         });
+    };
+
+    this.submitApplication = function (project, user, email, message) {
+        console.log("EMAIL: ", email);
+        return $http({
+            method: "Post",
+            url: '/api/apply/' + project.projid,
+            data: {
+                project: project,
+                user: user,
+                message: message,
+                email: email
+            }
+        });
+    };
+});
+'use strict';
+
+app.directive('topnav', function () {
+    return {
+        Restrict: 'E',
+        templateUrl: './views/components/topnav.html',
+        link: function link(scope, elem, attrs) {
+            scope.toggleBurger = function () {
+                console.log("Toggling!");
+                var burgerIcon = document.getElementById('burger');
+                burgerIcon.classList.toggle('is-active');
+                var navMenu = document.getElementById('navMenu');
+                navMenu.classList.toggle('is-active');
+            };
+        }
     };
 });
 'use strict';
