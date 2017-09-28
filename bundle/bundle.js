@@ -1139,6 +1139,17 @@ app.service('accountDevSrvc', function ($http) {
 });
 'use strict';
 
+app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
+    console.log("createAccountCtrl");
+    $scope.logout = function () {
+        window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
+    };
+});
+'use strict';
+
+app.service('createAccountSrvc', function ($http) {});
+'use strict';
+
 app.directive('topnav', function () {
     return {
         Restrict: 'E',
@@ -1154,17 +1165,6 @@ app.directive('topnav', function () {
         }
     };
 });
-'use strict';
-
-app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
-    console.log("createAccountCtrl");
-    $scope.logout = function () {
-        window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
-    };
-});
-'use strict';
-
-app.service('createAccountSrvc', function ($http) {});
 'use strict';
 
 app.controller('createProjectCtrl', function ($scope, createProjectSrvc, $location) {
@@ -1474,6 +1474,52 @@ app.service('projectFeedSrvc', function ($http) {
         });
     };
 });
+"use strict";
+
+app.controller('projectPublicDetailCtrl', function ($scope, $stateParams, projectPublicDetailsSrvc) {
+    console.log("projectPublicDetailsCtrl");
+    $scope.curUser;
+    $scope.getProjectById = function () {
+        var param = $stateParams.id;
+        console.log("stateparams: " + param);
+        projectPublicDetailsSrvc.getProjectById(param).then(function (project) {
+            console.log("Returned project: ", project);
+            $scope.project = Object.assign({}, project.data[0]);
+            console.log("scoped project: ", $scope.project);
+        });
+    };
+
+    $scope.getLoggedInUser = function () {
+        projectPublicDetailsSrvc.getLoggedInUser().then(function (user) {
+            $scope.curUser = Object.assign({}, user.data);
+            $scope.getProjectById();
+        });
+    };
+
+    $scope.toggle = function () {
+        $scope.state = !$scope.state;
+    };
+
+    $scope.getLoggedInUser();
+});
+"use strict";
+
+app.service('projectPublicDetailsSrvc', function ($http) {
+
+    this.getProjectById = function (param) {
+        return $http({
+            method: "Get",
+            url: "/api/project/" + param
+        });
+    };
+
+    this.getLoggedInUser = function () {
+        return $http({
+            method: "Get",
+            url: "/me"
+        });
+    };
+});
 'use strict';
 
 app.controller('workingProjectCtrl', function ($scope, $stateParams, workingProjectSrvc) {
@@ -1724,52 +1770,6 @@ app.service('workingProjectSrvc', function ($http) {
         return $http({
             method: "Get",
             url: '/api/user/' + param
-        });
-    };
-});
-"use strict";
-
-app.controller('projectPublicDetailCtrl', function ($scope, $stateParams, projectPublicDetailsSrvc) {
-    console.log("projectPublicDetailsCtrl");
-    $scope.curUser;
-    $scope.getProjectById = function () {
-        var param = $stateParams.id;
-        console.log("stateparams: " + param);
-        projectPublicDetailsSrvc.getProjectById(param).then(function (project) {
-            console.log("Returned project: ", project);
-            $scope.project = Object.assign({}, project.data[0]);
-            console.log("scoped project: ", $scope.project);
-        });
-    };
-
-    $scope.getLoggedInUser = function () {
-        projectPublicDetailsSrvc.getLoggedInUser().then(function (user) {
-            $scope.curUser = Object.assign({}, user.data);
-            $scope.getProjectById();
-        });
-    };
-
-    $scope.toggle = function () {
-        $scope.state = !$scope.state;
-    };
-
-    $scope.getLoggedInUser();
-});
-"use strict";
-
-app.service('projectPublicDetailsSrvc', function ($http) {
-
-    this.getProjectById = function (param) {
-        return $http({
-            method: "Get",
-            url: "/api/project/" + param
-        });
-    };
-
-    this.getLoggedInUser = function () {
-        return $http({
-            method: "Get",
-            url: "/me"
         });
     };
 });
