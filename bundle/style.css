@@ -6325,7 +6325,7 @@ ul.card-stats-list {
   color: #666;
   font-size: 1rem;
   font-weight: bold;
-  transition: max-width 200ms ease-out, color 50ms ease-out, background 50ms ease-out; }
+  transition: max-width 200ms ease-out, color 50ms ease-out, background 50ms ease-out; }
 
 .navigator a:hover,
 .navigator a.is-hovered,

@@ -71,14 +71,14 @@
                             <div class="">
                                 <figure class="image is-128x128">
                                     <a ng-href="/#!/account/{{project.posterid}}">
-                                    <img ng-src="{{project.profilepic}}" alt="Charity Logo"></a>
+                                        <img ng-src="{{project.profilepic}}" alt="Charity Logo"></a>
                                 </figure>
                             </div>
                         </div>
                         <div class="media-content">
                             <div class="content">
                                 <p>
-                                    <a class="title is-5" ng-href="/#!/account/{{project.posterid}}">{{project.username}}-</a>                                    {{project.title}}
+                                    <a class="title is-5" ng-href="/#!/account/{{project.posterid}}">{{project.username}}-</a> {{project.title}}
                                     <br>
                                     <hr style='margin: -.5rem auto 1rem 0;'>
                                     <div class='feed-description'>Project description: {{project.description}}</div>
@@ -121,13 +121,13 @@
                 <div ng-if="curUser.id">
                     <h4 class="subtitle is-5">Tell us about yourself</h4>
                     <div class="control">
-                        <textarea class="textarea" type="text" ng-model="newMessage" placeholder="Enter details here"></textarea>
+                        <textarea class="textarea" type="text" ng-model="modal.newMessage" placeholder="Enter details here"></textarea>
                     </div>
                 </div>
             </div>
         </section>
         <footer class="modal-card-foot">
-            <a class="button is-danger" ng-click='submitApplication(newMessage, modal)' ng-if="curUser.id">Apply</a>
+            <a class="button is-danger" ng-click='submitApplication(modal.newMessage, modal)' ng-if="curUser.id">Apply</a>
             <a ng-if="!curUser.id" href="/auth" class="button is-danger">Sign up to apply</a>
             <a ng-click='$parent.modalSet = false' class="button is-primary is-outlined">Close</a>
         </footer>
