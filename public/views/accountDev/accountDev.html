@@ -119,10 +119,14 @@
             <article class="box media project-box overflow: auto;" ng-repeat="project in userProjects" ng-if="projectsActive">
                 <a ng-href="/#!/account/{{project.posterid}}">
                     <div class="media-left">
-                        <figure class="image is-64x64">
+                        <figure class="image is-128x128">
+                            <a ng-href="/#!/account/{{project.posterid}}">
+                                    <img ng-src="{{project.profilepic}}" alt="Charity Logo"></a>
+                        </figure>
+                        <!-- <figure class="image is-64x64">
                             <img ng-if="!ownPage" ng-src="{{pageOwner.profilepic}}" alt="Profile pic for {{pageOwner.username}}">
                             <img ng-if="ownPage" ng-src="{{curUser.profilepic}}" alt="Profile pic for {{curUser.username}}">
-                        </figure>
+                        </figure> -->
                     </div>
                     <div class="media-content">
                         <div class="content">
@@ -239,19 +243,17 @@
                     </div>
                     <h4 class="subtitle is-5">Tell us about yourself</h4>
                 </div>
-
                 <div class="control">
-                    <textarea class="textarea" type="text" placeholder="Enter details here"></textarea>
+                    <textarea class="textarea" type="text" ng-model="newMessage" placeholder="Enter details here"></textarea>
                 </div>
-
             </section>
             <footer class="modal-card-foot">
-                <a class="button is-danger" ng-href='/#!/apply/{{project.projid}}' ng-if="curUser.id">Apply</a>
-                <a ng-click='$parent.modalSet = false' class="button is-primary is-outlined">Cancel</a>
+                <a class="button is-danger" ng-click='submitApplication(newMessage, modal)' ng-if="curUser.id">Apply</a>
+                <a ng-if="!curUser.id" href="/auth" class="button is-danger">Sign up to apply</a>
+                <a ng-click='$parent.modalSet = false' class="button is-primary is-outlined">Close</a>
             </footer>
         </div>
     </div>
-
     <!------------ Picture modal  -------->
     <div ng-if='showPictures' id="modal-ter" class="modal project-modal is-active">
         <div class="modal-background"></div>
@@ -299,7 +301,6 @@
                         <li ng-click='updatePicture("avatar12")'>
                             <img class="avatar" id="avatar12" src="/img/avatars/12.svg">
                         </li>
-
                         <li ng-click='updatePicture("avatar13")'>
                             <img class="avatar" id="avatar13" src="/img/avatars/13.svg">
                         </li>
@@ -314,15 +315,12 @@
                         </li>
                     </ul>
                 </div>
-
             </section>
             <footer class="modal-card-foot">
-                <a class="button is-danger" ng-click='submitApplication(newMessage, modal)' ng-if="curUser.id">Apply</a>
-                <a ng-if="!curUser.id" href="/auth" class="button is-danger">Sign up to apply</a>
-                <a ng-click='$parent.modalSet = false' class="button is-primary is-outlined">Close</a>
+                <!-- <a class="button is-danger" ng-href='/#!/apply/{{project.projid}}' ng-if="curUser.id">Apply</a> -->
+                <a ng-click='$parent.showPictures = false' class="button is-primary is-outlined">Cancel</a>
             </footer>
         </div>
     </div>
 </section>
-
 </div>
