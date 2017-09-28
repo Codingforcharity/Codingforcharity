@@ -1156,67 +1156,6 @@ app.directive('topnav', function () {
 });
 'use strict';
 
-app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
-    console.log("createAccountCtrl");
-    $scope.logout = function () {
-        window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
-    };
-});
-'use strict';
-
-app.service('createAccountSrvc', function ($http) {});
-'use strict';
-
-app.controller('createProjectCtrl', function ($scope, createProjectSrvc, $location) {
-    console.log("createProjectCtrl");
-
-    $scope.submitProject = function (title, org, type, desc, terms, skills) {
-        console.log(title, org, type, desc, terms, skills);
-        if (title) {
-            if (type) {
-                if (desc) {
-                    if (terms) {
-                        createProjectSrvc.createProject(title, desc, type, $scope.curUser.id).then(function (project) {
-                            console.log(project);
-                            $location.path('/projectfeed');
-                        });
-                    }
-                }
-            }
-        }
-    };
-
-    $scope.getLoggedInUser = function () {
-        createProjectSrvc.getLoggedInUser().then(function (user) {
-            $scope.curUser = Object.assign({}, user.data);
-        });
-    };
-
-    $scope.getLoggedInUser();
-});
-"use strict";
-
-app.service('createProjectSrvc', function ($http) {
-    this.getLoggedInUser = function () {
-        return $http({
-            method: "Get",
-            url: "/me"
-        });
-    };
-    this.createProject = function (title, desc, skills, userid) {
-        return $http({
-            method: "Post",
-            url: "/api/projects/create/" + userid,
-            data: {
-                title: title,
-                desc: desc,
-                skills: skills
-            }
-        });
-    };
-});
-'use strict';
-
 app.controller('devProjectApplicationCtrl', function ($scope, devProjectApplicationSrvc, $location, $stateParams) {
     $scope.getProject = function () {
         devProjectApplicationSrvc.getProject($stateParams.id).then(function (project) {
@@ -1282,6 +1221,17 @@ app.service('devProjectApplicationSrvc', function ($http) {
         });
     };
 });
+'use strict';
+
+app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
+    console.log("createAccountCtrl");
+    $scope.logout = function () {
+        window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
+    };
+});
+'use strict';
+
+app.service('createAccountSrvc', function ($http) {});
 'use strict';
 
 app.controller('homeCtrl', function ($scope, $location, homeSrvc) {
@@ -1471,6 +1421,52 @@ app.service('projectFeedSrvc', function ($http) {
                 message: message,
                 email: email
             }
+        });
+    };
+});
+"use strict";
+
+app.controller('projectPublicDetailCtrl', function ($scope, $stateParams, projectPublicDetailsSrvc) {
+    console.log("projectPublicDetailsCtrl");
+    $scope.curUser;
+    $scope.getProjectById = function () {
+        var param = $stateParams.id;
+        console.log("stateparams: " + param);
+        projectPublicDetailsSrvc.getProjectById(param).then(function (project) {
+            console.log("Returned project: ", project);
+            $scope.project = Object.assign({}, project.data[0]);
+            console.log("scoped project: ", $scope.project);
+        });
+    };
+
+    $scope.getLoggedInUser = function () {
+        projectPublicDetailsSrvc.getLoggedInUser().then(function (user) {
+            $scope.curUser = Object.assign({}, user.data);
+            $scope.getProjectById();
+        });
+    };
+
+    $scope.toggle = function () {
+        $scope.state = !$scope.state;
+    };
+
+    $scope.getLoggedInUser();
+});
+"use strict";
+
+app.service('projectPublicDetailsSrvc', function ($http) {
+
+    this.getProjectById = function (param) {
+        return $http({
+            method: "Get",
+            url: "/api/project/" + param
+        });
+    };
+
+    this.getLoggedInUser = function () {
+        return $http({
+            method: "Get",
+            url: "/me"
         });
     };
 });
@@ -1727,49 +1723,53 @@ app.service('workingProjectSrvc', function ($http) {
         });
     };
 });
-"use strict";
+'use strict';
 
-app.controller('projectPublicDetailCtrl', function ($scope, $stateParams, projectPublicDetailsSrvc) {
-    console.log("projectPublicDetailsCtrl");
-    $scope.curUser;
-    $scope.getProjectById = function () {
-        var param = $stateParams.id;
-        console.log("stateparams: " + param);
-        projectPublicDetailsSrvc.getProjectById(param).then(function (project) {
-            console.log("Returned project: ", project);
-            $scope.project = Object.assign({}, project.data[0]);
-            console.log("scoped project: ", $scope.project);
-        });
+app.controller('createProjectCtrl', function ($scope, createProjectSrvc, $location) {
+    console.log("createProjectCtrl");
+
+    $scope.submitProject = function (title, org, type, desc, terms, skills) {
+        console.log(title, org, type, desc, terms, skills);
+        if (title) {
+            if (type) {
+                if (desc) {
+                    if (terms) {
+                        createProjectSrvc.createProject(title, desc, type, $scope.curUser.id).then(function (project) {
+                            console.log(project);
+                            $location.path('/projectfeed');
+                        });
+                    }
+                }
+            }
+        }
     };
 
     $scope.getLoggedInUser = function () {
-        projectPublicDetailsSrvc.getLoggedInUser().then(function (user) {
+        createProjectSrvc.getLoggedInUser().then(function (user) {
             $scope.curUser = Object.assign({}, user.data);
-            $scope.getProjectById();
         });
-    };
-
-    $scope.toggle = function () {
-        $scope.state = !$scope.state;
     };
 
     $scope.getLoggedInUser();
 });
 "use strict";
 
-app.service('projectPublicDetailsSrvc', function ($http) {
-
-    this.getProjectById = function (param) {
-        return $http({
-            method: "Get",
-            url: "/api/project/" + param
-        });
-    };
-
+app.service('createProjectSrvc', function ($http) {
     this.getLoggedInUser = function () {
         return $http({
             method: "Get",
             url: "/me"
+        });
+    };
+    this.createProject = function (title, desc, skills, userid) {
+        return $http({
+            method: "Post",
+            url: "/api/projects/create/" + userid,
+            data: {
+                title: title,
+                desc: desc,
+                skills: skills
+            }
         });
     };
 });

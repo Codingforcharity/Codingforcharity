@@ -18,10 +18,10 @@
                                 </p>
                                 <div class="message-body to-do-body" ng-repeat="todo in todos" ng-if="!todo.done">
                                     <label class="panel-block">
-                                <div class="working-add-margin-right">
-                                    <input type="checkbox" value="todo.done" ng-click="deleteTodo(todo)">
-                                </div>
-                                <p>{{todo.todo}}</p>
+                                        <div class="working-add-margin-right">
+                                            <input type="checkbox" value="todo.done" ng-click="deleteTodo(todo)">
+                                        </div>
+                                            <p>{{todo.todo}}</p>
                                     </label>
                                 </div>
                             </nav>
@@ -206,14 +206,14 @@
                                 <input class="input" type="text" ng-model="newlinkname" placeholder="Enter link name here">
                                 <br><br>
                                 <input class="input" type="text" ng-model="newlink" placeholder="Enter link url here">
-                            <br><br>
-                            <input class="button is-danger" type="submit" value="Submit">
+                                <br><br>
+                                <input class="button is-danger" type="submit" value="Submit">
                         </form>
                     </article>
-                </div>
+                    </div>
 
+                </div>
             </div>
-        </div>
     </section>
 </section>
 

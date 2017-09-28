@@ -6320,7 +6320,7 @@ ul.card-stats-list {
   color: #666;
   font-size: 1rem;
   font-weight: bold;
-  transition: max-width 200ms ease-out, color 50ms ease-out, background 50ms ease-out; }
+  transition: max-width 200ms ease-out, color 50ms ease-out, background 50ms ease-out; }
 
 .navigator a:hover,
 .navigator a.is-hovered,
@@ -7700,9 +7700,6 @@ iframe.is-typeform {
 
 .is-last-child {
   margin-bottom: 1.5rem; }
-
-.polaroid-feed.is-team .polaroid-image {
-  background-color: white; }
 
 #avatarul {
   display: flex;
