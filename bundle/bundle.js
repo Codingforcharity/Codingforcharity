@@ -1366,6 +1366,7 @@ app.service('createProjectSrvc', function ($http) {
 'use strict';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.controller('devProjectApplicationCtrl', function ($scope, devProjectApplicationSrvc, $location, $stateParams) {
     $scope.getProject = function () {
         devProjectApplicationSrvc.getProject($stateParams.id).then(function (project) {
@@ -1430,6 +1431,8 @@ app.service('devProjectApplicationSrvc', function ($http) {
             }
         });
 =======
+=======
+>>>>>>> 005f194ffb7853160e774765d4a7ad4a18874cc2
 app.directive('topnav', function () {
     return {
         Restrict: 'E',
@@ -1451,12 +1454,21 @@ app.controller('createAccountCtrl', function ($scope, $location, createAccountSr
     console.log("createAccountCtrl");
     $scope.logout = function () {
         window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
+<<<<<<< HEAD
+>>>>>>> 005f194ffb7853160e774765d4a7ad4a18874cc2
+=======
 >>>>>>> 005f194ffb7853160e774765d4a7ad4a18874cc2
     };
 });
 'use strict';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+app.service('createAccountSrvc', function ($http) {});
+'use strict';
+
+>>>>>>> 005f194ffb7853160e774765d4a7ad4a18874cc2
 =======
 app.service('createAccountSrvc', function ($http) {});
 'use strict';
