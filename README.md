@@ -1,8 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="#"><img src="https://raw.githubusercontent.com/Codingforcharity/Codingforcharity/master/assets/img/DevGiveLogoColored.png" alt="DevGive" width="200"></a>
-  <br>
-  DevGive
+  <a href="https://devgive.net"><img src="https://raw.githubusercontent.com/Codingforcharity/Codingforcharity/master/assets/img/DevGiveLogoColored.png" alt="DevGive" width="200"></a>
   <br>
 </h1>
 
@@ -39,7 +37,7 @@ We use SemVer for versioning. For the versions available, see the tags on this r
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details
+This project is licensed under the MIT License - see the LICENSE.md file for details 
 
 ## Acknowledgments
 
