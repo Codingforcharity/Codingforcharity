@@ -1280,6 +1280,34 @@ app.service('accountDevSrvc', function ($http) {
 });
 'use strict';
 
+app.directive('topnav', function () {
+    return {
+        Restrict: 'E',
+        templateUrl: './views/components/topnav.html',
+        link: function link(scope, elem, attrs) {
+            scope.toggleBurger = function () {
+                console.log("Toggling!");
+                var burgerIcon = document.getElementById('burger');
+                burgerIcon.classList.toggle('is-active');
+                var navMenu = document.getElementById('navMenu');
+                navMenu.classList.toggle('is-active');
+            };
+        }
+    };
+});
+'use strict';
+
+app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
+    console.log("createAccountCtrl");
+    $scope.logout = function () {
+        window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
+    };
+});
+'use strict';
+
+app.service('createAccountSrvc', function ($http) {});
+'use strict';
+
 app.controller('createProjectCtrl', function ($scope, createProjectSrvc, $location) {
     console.log("createProjectCtrl");
 
@@ -1328,34 +1356,6 @@ app.service('createProjectSrvc', function ($http) {
         });
     };
 });
-'use strict';
-
-app.directive('topnav', function () {
-    return {
-        Restrict: 'E',
-        templateUrl: './views/components/topnav.html',
-        link: function link(scope, elem, attrs) {
-            scope.toggleBurger = function () {
-                console.log("Toggling!");
-                var burgerIcon = document.getElementById('burger');
-                burgerIcon.classList.toggle('is-active');
-                var navMenu = document.getElementById('navMenu');
-                navMenu.classList.toggle('is-active');
-            };
-        }
-    };
-});
-'use strict';
-
-app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
-    console.log("createAccountCtrl");
-    $scope.logout = function () {
-        window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
-    };
-});
-'use strict';
-
-app.service('createAccountSrvc', function ($http) {});
 'use strict';
 
 app.controller('devProjectApplicationCtrl', function ($scope, devProjectApplicationSrvc, $location, $stateParams) {
@@ -1661,155 +1661,154 @@ app.service('projectPublicDetailsSrvc', function ($http) {
         });
     };
 });
-'use strict';
+"use strict";
 
-app.controller('workingProjectCtrl', function ($scope, $stateParams, workingProjectSrvc) {
+app.controller("workingProjectCtrl", function ($scope, $stateParams, workingProjectSrvc) {
+  $scope.curUser;
+  $scope.msgActive = true;
+  $scope.changeTab = function (str) {
+    var messages = document.getElementById("messages");
+    var projects = document.getElementById("projects");
+    var resources = document.getElementById("resources");
 
-    $scope.curUser;
-    $scope.msgActive = true;
-    $scope.changeTab = function (str) {
-        var messages = document.getElementById('messages');
-        var projects = document.getElementById('projects');
-        var resources = document.getElementById('resources');
+    if (str === "messages") {
+      messages.className = "is-active";
+      contributors.className = "";
+      resources.className = "";
+      $scope.msgActive = true;
+      $scope.contributorActive = false;
+      $scope.linksActive = false;
+    } else if (str === "contributors") {
+      messages.className = "";
+      contributors.className = "is-active";
+      resources.className = "";
+      $scope.msgActive = false;
+      $scope.contributorActive = true;
+      $scope.linksActive = false;
+    } else if (str === "resources") {
+      messages.className = "";
+      contributors.className = "";
+      resources.className = "is-active";
+      $scope.msgActive = false;
+      $scope.contributorActive = false;
+      $scope.linksActive = true;
+    }
+  };
 
-        if (str === 'messages') {
-            messages.className = "is-active";
-            contributors.className = "";
-            resources.className = "";
-            $scope.msgActive = true;
-            $scope.contributorActive = false;
-            $scope.linksActive = false;
-        } else if (str === 'contributors') {
-            messages.className = "";
-            contributors.className = "is-active";
-            resources.className = "";
-            $scope.msgActive = false;
-            $scope.contributorActive = true;
-            $scope.linksActive = false;
-        } else if (str === 'resources') {
-            messages.className = "";
-            contributors.className = "";
-            resources.className = "is-active";
-            $scope.msgActive = false;
-            $scope.contributorActive = false;
-            $scope.linksActive = true;
+  $scope.submitReply = function (comment, reply) {
+    console.log("replying to: ", comment, reply);
+    workingProjectSrvc.postReply($stateParams.id, comment, reply, $scope.curUser.id).then(function (comments) {
+      console.log("Reply Posted: ", comments);
+      $scope.comments = comments.data;
+    });
+  };
+
+  $scope.submitComment = function (comment) {
+    console.log("commenting");
+    workingProjectSrvc.postComment($stateParams.id, comment, $scope.curUser.id).then(function (comments) {
+      $scope.comments = comments.data;
+    });
+  };
+
+  $scope.getComments = function () {
+    console.log("Getting Comments");
+    workingProjectSrvc.getComments($stateParams.id).then(function (comments) {
+      $scope.comments = comments.data;
+    });
+  };
+
+  $scope.getLinks = function () {
+    // console.log("Getting links")
+    workingProjectSrvc.getLinks($stateParams.id).then(function (links) {
+      $scope.links = links.data;
+      console.log($scope.links);
+    });
+  };
+
+  $scope.getTodos = function () {
+    workingProjectSrvc.getTodos($stateParams.id).then(function (todos) {
+      $scope.todos = todos.data;
+      // console.log($scope.todos)
+    });
+  };
+
+  $scope.getContributers = function () {
+    workingProjectSrvc.getContributers($stateParams.id).then(function (users) {
+      $scope.contributers = users.data;
+      $scope.contributers.map(function (user) {
+        if (user.id === $scope.curUser.id) {
+          $scope.allowedAccess = true;
+          $scope.getTodos();
+          $scope.getLinks();
+          $scope.getComments();
         }
+      });
+    });
+  };
+
+  $scope.getProjectById = function () {
+    var param = $stateParams.id;
+    workingProjectSrvc.getProjectById(param).then(function (project) {
+      $scope.project = Object.assign({}, project.data[0]);
+      $scope.getContributers();
+    });
+  };
+
+  $scope.getUpdatedUser = function (userid) {
+    workingProjectSrvc.getUserById(userid).then(function (user) {
+      $scope.curUser = Object.assign({}, user.data[0]);
+      $scope.getProjectById();
+    });
+  };
+
+  $scope.getLoggedUser = function () {
+    workingProjectSrvc.getLoggedInUser().then(function (user) {
+      $scope.curUser = Object.assign({}, user.data);
+      $scope.getUpdatedUser($scope.curUser.id);
+      // $scope.getProjectById();
+    });
+  };
+
+  $scope.submitTodo = function (todo) {
+    if (todo != "") {
+      // console.log("submiting: " + todo)
+      workingProjectSrvc.postTodo($stateParams.id, todo).then(function (todos) {
+        // console.log(todos);
+        $scope.todos = todos.data;
+      });
+    }
+  };
+
+  $scope.deleteTodo = function (todo) {
+    if (todo) {
+      // console.log("Deleting: " + todo.todo);
+      workingProjectSrvc.deleteTodo(todo.id, $stateParams.id).then(function (todos) {
+        // console.log(todos);
+        $scope.todos = todos.data;
+      });
+    }
+  };
+
+  $scope.submitLink = function (linkName, linkUrl) {
+    $scope.ValidURL = function (str) {
+      var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+      if (!regex.test(str)) {
+        alert("Please enter valid URL.");
+        return false;
+      } else {
+        return true;
+      }
     };
 
-    $scope.submitReply = function (comment, reply) {
-        console.log('replying to: ', comment, reply);
-        workingProjectSrvc.postReply($stateParams.id, comment, reply, $scope.curUser.id).then(function (comments) {
-            console.log('Reply Posted: ', comments);
-            $scope.comments = comments.data;
-        });
-    };
+    $scope.isValid = $scope.ValidURL(linkUrl);
+    if (linkName && linkUrl && $scope.isValid) {
+      workingProjectSrvc.postLink(linkName, linkUrl, $stateParams.id).then(function (links) {
+        $scope.links = links.data;
+      });
+    }
+  };
 
-    $scope.submitComment = function (comment) {
-        console.log("commenting");
-        workingProjectSrvc.postComment($stateParams.id, comment, $scope.curUser.id).then(function (comments) {
-            $scope.comments = comments.data;
-        });
-    };
-
-    $scope.getComments = function () {
-        console.log("Getting Comments");
-        workingProjectSrvc.getComments($stateParams.id).then(function (comments) {
-            $scope.comments = comments.data;
-        });
-    };
-
-    $scope.getLinks = function () {
-        // console.log("Getting links")
-        workingProjectSrvc.getLinks($stateParams.id).then(function (links) {
-            $scope.links = links.data;
-            console.log($scope.links);
-        });
-    };
-
-    $scope.getTodos = function () {
-        workingProjectSrvc.getTodos($stateParams.id).then(function (todos) {
-            $scope.todos = todos.data;
-            // console.log($scope.todos)
-        });
-    };
-
-    $scope.getContributers = function () {
-        workingProjectSrvc.getContributers($stateParams.id).then(function (users) {
-            $scope.contributers = users.data;
-            $scope.contributers.map(function (user) {
-                if (user.id === $scope.curUser.id) {
-                    $scope.allowedAccess = true;
-                    $scope.getTodos();
-                    $scope.getLinks();
-                    $scope.getComments();
-                }
-            });
-        });
-    };
-
-    $scope.getProjectById = function () {
-        var param = $stateParams.id;
-        workingProjectSrvc.getProjectById(param).then(function (project) {
-            $scope.project = Object.assign({}, project.data[0]);
-            $scope.getContributers();
-        });
-    };
-
-    $scope.getUpdatedUser = function (userid) {
-        workingProjectSrvc.getUserById(userid).then(function (user) {
-            $scope.curUser = Object.assign({}, user.data[0]);
-            $scope.getProjectById();
-        });
-    };
-
-    $scope.getLoggedUser = function () {
-        workingProjectSrvc.getLoggedInUser().then(function (user) {
-            $scope.curUser = Object.assign({}, user.data);
-            $scope.getUpdatedUser($scope.curUser.id);
-            // $scope.getProjectById();
-        });
-    };
-
-    $scope.submitTodo = function (todo) {
-        if (todo != "") {
-            // console.log("submiting: " + todo)
-            workingProjectSrvc.postTodo($stateParams.id, todo).then(function (todos) {
-                // console.log(todos);
-                $scope.todos = todos.data;
-            });
-        }
-    };
-
-    $scope.deleteTodo = function (todo) {
-        if (todo) {
-            // console.log("Deleting: " + todo.todo);
-            workingProjectSrvc.deleteTodo(todo.id, $stateParams.id).then(function (todos) {
-                // console.log(todos);
-                $scope.todos = todos.data;
-            });
-        }
-    };
-
-    $scope.submitLink = function (linkName, linkUrl) {
-        $scope.ValidURL = function (str) {
-            var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
-            if (!regex.test(str)) {
-                alert("Please enter valid URL.");
-                return false;
-            } else {
-                return true;
-            }
-        };
-
-        $scope.isValid = $scope.ValidURL(linkUrl);
-        if (linkName && linkUrl && $scope.isValid) {
-            workingProjectSrvc.postLink(linkName, linkUrl, $stateParams.id).then(function (links) {
-                $scope.links = links.data;
-            });
-        }
-    };
-
-    $scope.getLoggedUser();
+  $scope.getLoggedUser();
 });
 "use strict";
 
