@@ -833,6 +833,23 @@ var app = angular.module("charityApp", ['ui.router']).config(function ($statePro
         $templateCache.put('src/toast/toast.html', "<div class=\"notification {{vm.style}}\" ng-class=\"vm.classes\"><button class=\"delete\" ng-if=\"vm.showClose\" ng-click=\"vm.close()\"></button><div ng-bind-html=\"vm.contents\"></div></div>");
     }
 })();
+'use strict';
+
+app.directive('topnav', function () {
+    return {
+        Restrict: 'E',
+        templateUrl: './views/components/topnav.html',
+        link: function link(scope, elem, attrs) {
+            scope.toggleBurger = function () {
+                console.log("Toggling!");
+                var burgerIcon = document.getElementById('burger');
+                burgerIcon.classList.toggle('is-active');
+                var navMenu = document.getElementById('navMenu');
+                navMenu.classList.toggle('is-active');
+            };
+        }
+    };
+});
 "use strict";
 
 app.controller('accountDevCtrl', function ($scope, $stateParams, accountDevSrvc) {
@@ -1148,23 +1165,6 @@ app.controller('createAccountCtrl', function ($scope, $location, createAccountSr
 'use strict';
 
 app.service('createAccountSrvc', function ($http) {});
-'use strict';
-
-app.directive('topnav', function () {
-    return {
-        Restrict: 'E',
-        templateUrl: './views/components/topnav.html',
-        link: function link(scope, elem, attrs) {
-            scope.toggleBurger = function () {
-                console.log("Toggling!");
-                var burgerIcon = document.getElementById('burger');
-                burgerIcon.classList.toggle('is-active');
-                var navMenu = document.getElementById('navMenu');
-                navMenu.classList.toggle('is-active');
-            };
-        }
-    };
-});
 'use strict';
 
 app.controller('createProjectCtrl', function ($scope, createProjectSrvc, $location) {
