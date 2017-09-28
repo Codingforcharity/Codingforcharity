@@ -70,7 +70,8 @@
                         <div class="media-left">
                             <div class="">
                                 <figure class="image is-128x128">
-                                    <img ui-sref="accountDev({id: {{project.posterid}}})" ng-src="{{project.profilepic}}" alt="Charity Logo">
+                                    <a ng-href="/#!/account/{{project.posterid}}">
+                                    <img ng-src="{{project.profilepic}}" alt="Charity Logo"></a>
                                 </figure>
                             </div>
                         </div>

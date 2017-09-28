@@ -32,6 +32,10 @@ $dimensions: 16 24 32 48 64 96 128 256 !default;
   }
 }
 
+// .polaroid-feed.is-team .polaroid-image {
+//   background-color: white;
+// }
+
 /////////////////////
 //  Hero        /////
 /////////////////////
@@ -81,6 +85,14 @@ section.account-profile {
 .profile-options.tabs {
   background-color: #f7f7f7;
 }
+
+.np-profile {
+  max-width: 200px;
+  margin: 1rem auto;
+  padding: 1rem 1rem 0.5rem;
+}
+
+
 
 ////////////////////////////
 // Project Feed Modal    //
