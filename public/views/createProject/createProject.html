@@ -58,11 +58,11 @@
 
                         <!-- Dylan, create new project button here -->
                         <div class="control">
-                            <button class="button is-primary" ng-if='curUser.id' ng-click="submitProject(newProjectName, newProjectType, newProjectDesc, newProjectTerms, newProjectSkills">
+                            <button class="button is-primary" ng-if='curUser.id' ng-click="submitProject(newProjectName, newProjectType, newProjectDesc, newProjectTerms);">
                                 List Project
                             </button>
                             <a href="/auth">
-                            <button class="button is-primary" ng-if='!curUser.id'>
+                                <button class="button is-primary" ng-if='!curUser.id'>
                                     Sign-up to list a project
                                 </button></a>
                             <button class="button is-danger is-outlined" ui-sref='projectFeed'>Cancel</button>

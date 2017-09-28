@@ -959,6 +959,7 @@ app.controller("accountDevCtrl", function ($scope, $stateParams, accountDevSrvc)
     };
 
     $scope.subChanges = function (newFirstName, newLastName, newBio, newSkills) {
+        $scope.showInput = false;
         var newUser = {};
         if (newFirstName) {
             newUser.firstname = newFirstName;
@@ -1286,11 +1287,39 @@ app.service('accountDevSrvc', function ($http) {
 });
 'use strict';
 
+app.directive('topnav', function () {
+    return {
+        Restrict: 'E',
+        templateUrl: './views/components/topnav.html',
+        link: function link(scope, elem, attrs) {
+            scope.toggleBurger = function () {
+                console.log("Toggling!");
+                var burgerIcon = document.getElementById('burger');
+                burgerIcon.classList.toggle('is-active');
+                var navMenu = document.getElementById('navMenu');
+                navMenu.classList.toggle('is-active');
+            };
+        }
+    };
+});
+'use strict';
+
+app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
+    console.log("createAccountCtrl");
+    $scope.logout = function () {
+        window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
+    };
+});
+'use strict';
+
+app.service('createAccountSrvc', function ($http) {});
+'use strict';
+
 app.controller('createProjectCtrl', function ($scope, createProjectSrvc, $location) {
     console.log("createProjectCtrl");
 
-    $scope.submitProject = function (title, org, type, desc, terms, skills) {
-        console.log(title, org, type, desc, terms, skills);
+    $scope.submitProject = function (title, type, desc, terms) {
+        console.log(title, type, desc, terms);
         if (title) {
             if (type) {
                 if (desc) {
@@ -1334,66 +1363,6 @@ app.service('createProjectSrvc', function ($http) {
         });
     };
 });
-'use strict';
-
-app.directive('topnav', function () {
-    return {
-        Restrict: 'E',
-        templateUrl: './views/components/topnav.html',
-        link: function link(scope, elem, attrs) {
-            scope.toggleBurger = function () {
-                console.log("Toggling!");
-                var burgerIcon = document.getElementById('burger');
-                burgerIcon.classList.toggle('is-active');
-                var navMenu = document.getElementById('navMenu');
-                navMenu.classList.toggle('is-active');
-            };
-        }
-    };
-});
-'use strict';
-
-app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
-    console.log("createAccountCtrl");
-    $scope.logout = function () {
-        window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
-    };
-});
-'use strict';
-
-app.service('createAccountSrvc', function ($http) {});
-'use strict';
-
-app.controller('homeCtrl', function ($scope, $location, homeSrvc) {
-    console.log($location.$$absUrl);
-    // console.log("HE'LLO WORLD AND ALL WHO INHABIT IT")
-    // $scope.hello = 'hello';
-    $scope.getLoggedUser = function () {
-        homeSrvc.getLoggedUser().then(function (user) {
-            $scope.curUser = Object.assign({}, user.data);
-            console.log($scope.curUser);
-            // $scope.getProjects();
-        });
-    };
-
-    $scope.getLoggedUser();
-});
-'use strict';
-
-app.service('homeSrvc', function ($http) {
-    this.getLoggedUser = function () {
-        return $http({
-            method: 'Get',
-            url: '/me'
-        });
-    };
-});
-'use strict';
-
-app.controller('loginCtrl', function ($scope) {});
-'use strict';
-
-app.service('loginSrvc', function ($http) {});
 'use strict';
 
 app.controller('devProjectApplicationCtrl', function ($scope, devProjectApplicationSrvc, $location, $stateParams) {
@@ -1458,6 +1427,244 @@ app.service('devProjectApplicationSrvc', function ($http) {
                 message: message,
                 email: email
             }
+        });
+    };
+});
+'use strict';
+
+app.controller('homeCtrl', function ($scope, $location, homeSrvc) {
+    console.log($location.$$absUrl);
+    // console.log("HE'LLO WORLD AND ALL WHO INHABIT IT")
+    // $scope.hello = 'hello';
+    $scope.getLoggedUser = function () {
+        homeSrvc.getLoggedUser().then(function (user) {
+            $scope.curUser = Object.assign({}, user.data);
+            console.log($scope.curUser);
+            // $scope.getProjects();
+        });
+    };
+
+    $scope.getLoggedUser();
+});
+'use strict';
+
+app.service('homeSrvc', function ($http) {
+    this.getLoggedUser = function () {
+        return $http({
+            method: 'Get',
+            url: '/me'
+        });
+    };
+});
+'use strict';
+
+app.controller('loginCtrl', function ($scope) {});
+'use strict';
+
+app.service('loginSrvc', function ($http) {});
+"use strict";
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+app.controller("projectFeedCtrl", function ($scope, projectFeedSrvc) {
+    console.log("projectFeedCtrl");
+    $scope.curUser;
+    $scope.skills = [];
+    $scope.filtered = false;
+    $scope.originalProjects;
+    $scope.projectCount = 0;
+    $scope.modalSet = false;
+    $scope.searchProjects = function (str) {
+        $scope.projects = $scope.originalProjects;
+        $scope.projectCount = $scope.projects.length;
+        console.log($scope.projects);
+        if (str) {
+            var newProjects = [];
+            for (var i = 0; i < $scope.projects.length; i++) {
+                if ($scope.projects[i].title.toLowerCase().includes(str.toLowerCase())) {
+                    newProjects.push($scope.projects[i]);
+                }
+            }
+            $scope.projects = newProjects;
+            $scope.projectCount = $scope.projects.length;
+        } else {
+            $scope.getProjects();
+        }
+    };
+
+    $scope.getProjects = function () {
+        $scope.skills = [];
+        projectFeedSrvc.getProjects().then(function (projects) {
+            console.log(projects.data);
+            $scope.filtered = false;
+            $scope.projects = [].concat(_toConsumableArray(projects.data));
+            $scope.projects.map(function (project) {
+                project.skills.map(function (skill) {
+                    $scope.skills.push(skill);
+                });
+                // $scope.projects.showModal = false;
+            });
+            console.log("ALL SKILLS: ", $scope.skills);
+            $scope.skills = $scope.skills.filter(function (item, pos) {
+                return $scope.skills.indexOf(item) == pos;
+            });
+            console.log($scope.skills);
+            $scope.originalProjects = $scope.projects;
+            $scope.projectCount = $scope.projects.length;
+            // console.log("SORTED SKILLS: ", $scope.skills);
+            console.log($scope.projects);
+        });
+    };
+
+    $scope.getUpdatedUser = function (userid) {
+        projectFeedSrvc.getUserById(userid).then(function (user) {
+            $scope.curUser = Object.assign({}, user.data[0]);
+            $scope.getProjects();
+        });
+    };
+
+    $scope.getLoggedUser = function () {
+        projectFeedSrvc.getLoggedUser().then(function (user) {
+            if (user.data == "not logged in!") {
+                $scope.getProjects();
+            } else {
+                $scope.curUser = Object.assign({}, user.data);
+                console.log($scope.curUser);
+                $scope.getUpdatedUser($scope.curUser.id);
+            }
+        });
+    };
+
+    $scope.filter = function (skill) {
+        $scope.filtered = true;
+        $scope.skills = [skill];
+        var newProjects = [];
+        $scope.projects.map(function (project) {
+            var skillFound = false;
+            project.skills.map(function (singleskill) {
+                if (singleskill.toLowerCase().trim() == skill.toLowerCase().trim()) {
+                    skillFound = true;
+                }
+            });
+            if (skillFound) {
+                console.log("FOUND PROJECT");
+                newProjects.push(project);
+            }
+        });
+        $scope.projects = newProjects;
+        $scope.projectCount = $scope.projects.length;
+        console.log($scope.projects);
+    };
+
+    $scope.showModal = function (project) {
+        $scope.modal = {
+            title: project.title,
+            desc: project.description,
+            creator: project.username,
+            pic: project.profilepic,
+            name: project.firstname + " " + project.lastname,
+            email: project.email,
+            id: project.id,
+            projid: project.projid
+
+        };
+        $scope.modalSet = true;
+    };
+
+    $scope.submitApplication = function (message, project) {
+        $scope.modalSet = false;
+        if ($scope.curUser.id) {
+            projectFeedSrvc.submitApplication(project, $scope.curUser, project.email, message).then(function () {
+                $location.path('/projectfeed');
+            });
+        } else {
+            alert("Please Log in first");
+        }
+    };
+
+    $scope.getLoggedUser();
+});
+'use strict';
+
+app.service('projectFeedSrvc', function ($http) {
+    this.getLoggedUser = function () {
+        return $http({
+            method: 'Get',
+            url: '/me'
+        });
+    };
+
+    this.getProjects = function () {
+        return $http({
+            method: "Get",
+            url: "/api/projects"
+        });
+    };
+
+    this.getUserById = function (param) {
+        return $http({
+            method: 'Get',
+            url: "/api/user/" + param
+        });
+    };
+
+    this.submitApplication = function (project, user, email, message) {
+        console.log("EMAIL: ", email);
+        return $http({
+            method: "Post",
+            url: '/api/apply/' + project.projid,
+            data: {
+                project: project,
+                user: user,
+                message: message,
+                email: email
+            }
+        });
+    };
+});
+"use strict";
+
+app.controller('projectPublicDetailCtrl', function ($scope, $stateParams, projectPublicDetailsSrvc) {
+    console.log("projectPublicDetailsCtrl");
+    $scope.curUser;
+    $scope.getProjectById = function () {
+        var param = $stateParams.id;
+        console.log("stateparams: " + param);
+        projectPublicDetailsSrvc.getProjectById(param).then(function (project) {
+            console.log("Returned project: ", project);
+            $scope.project = Object.assign({}, project.data[0]);
+            console.log("scoped project: ", $scope.project);
+        });
+    };
+
+    $scope.getLoggedInUser = function () {
+        projectPublicDetailsSrvc.getLoggedInUser().then(function (user) {
+            $scope.curUser = Object.assign({}, user.data);
+            $scope.getProjectById();
+        });
+    };
+
+    $scope.toggle = function () {
+        $scope.state = !$scope.state;
+    };
+
+    $scope.getLoggedInUser();
+});
+"use strict";
+
+app.service('projectPublicDetailsSrvc', function ($http) {
+
+    this.getProjectById = function (param) {
+        return $http({
+            method: "Get",
+            url: "/api/project/" + param
+        });
+    };
+
+    this.getLoggedInUser = function () {
+        return $http({
+            method: "Get",
+            url: "/me"
         });
     };
 });
@@ -1710,212 +1917,6 @@ app.service('workingProjectSrvc', function ($http) {
         return $http({
             method: "Get",
             url: '/api/user/' + param
-        });
-    };
-});
-"use strict";
-
-app.controller('projectPublicDetailCtrl', function ($scope, $stateParams, projectPublicDetailsSrvc) {
-    console.log("projectPublicDetailsCtrl");
-    $scope.curUser;
-    $scope.getProjectById = function () {
-        var param = $stateParams.id;
-        console.log("stateparams: " + param);
-        projectPublicDetailsSrvc.getProjectById(param).then(function (project) {
-            console.log("Returned project: ", project);
-            $scope.project = Object.assign({}, project.data[0]);
-            console.log("scoped project: ", $scope.project);
-        });
-    };
-
-    $scope.getLoggedInUser = function () {
-        projectPublicDetailsSrvc.getLoggedInUser().then(function (user) {
-            $scope.curUser = Object.assign({}, user.data);
-            $scope.getProjectById();
-        });
-    };
-
-    $scope.toggle = function () {
-        $scope.state = !$scope.state;
-    };
-
-    $scope.getLoggedInUser();
-});
-"use strict";
-
-app.service('projectPublicDetailsSrvc', function ($http) {
-
-    this.getProjectById = function (param) {
-        return $http({
-            method: "Get",
-            url: "/api/project/" + param
-        });
-    };
-
-    this.getLoggedInUser = function () {
-        return $http({
-            method: "Get",
-            url: "/me"
-        });
-    };
-});
-"use strict";
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-app.controller("projectFeedCtrl", function ($scope, projectFeedSrvc) {
-    console.log("projectFeedCtrl");
-    $scope.curUser;
-    $scope.skills = [];
-    $scope.filtered = false;
-    $scope.originalProjects;
-    $scope.projectCount = 0;
-    $scope.modalSet = false;
-    $scope.searchProjects = function (str) {
-        $scope.projects = $scope.originalProjects;
-        $scope.projectCount = $scope.projects.length;
-        console.log($scope.projects);
-        if (str) {
-            var newProjects = [];
-            for (var i = 0; i < $scope.projects.length; i++) {
-                if ($scope.projects[i].title.toLowerCase().includes(str.toLowerCase())) {
-                    newProjects.push($scope.projects[i]);
-                }
-            }
-            $scope.projects = newProjects;
-            $scope.projectCount = $scope.projects.length;
-        } else {
-            $scope.getProjects();
-        }
-    };
-
-    $scope.getProjects = function () {
-        $scope.skills = [];
-        projectFeedSrvc.getProjects().then(function (projects) {
-            console.log(projects.data);
-            $scope.filtered = false;
-            $scope.projects = [].concat(_toConsumableArray(projects.data));
-            $scope.projects.map(function (project) {
-                project.skills.map(function (skill) {
-                    $scope.skills.push(skill);
-                });
-                // $scope.projects.showModal = false;
-            });
-            console.log("ALL SKILLS: ", $scope.skills);
-            $scope.skills = $scope.skills.filter(function (item, pos) {
-                return $scope.skills.indexOf(item) == pos;
-            });
-            console.log($scope.skills);
-            $scope.originalProjects = $scope.projects;
-            $scope.projectCount = $scope.projects.length;
-            // console.log("SORTED SKILLS: ", $scope.skills);
-            console.log($scope.projects);
-        });
-    };
-
-    $scope.getUpdatedUser = function (userid) {
-        projectFeedSrvc.getUserById(userid).then(function (user) {
-            $scope.curUser = Object.assign({}, user.data[0]);
-            $scope.getProjects();
-        });
-    };
-
-    $scope.getLoggedUser = function () {
-        projectFeedSrvc.getLoggedUser().then(function (user) {
-            if (user.data == "not logged in!") {
-                $scope.getProjects();
-            } else {
-                $scope.curUser = Object.assign({}, user.data);
-                console.log($scope.curUser);
-                $scope.getUpdatedUser($scope.curUser.id);
-            }
-        });
-    };
-
-    $scope.filter = function (skill) {
-        $scope.filtered = true;
-        $scope.skills = [skill];
-        var newProjects = [];
-        $scope.projects.map(function (project) {
-            var skillFound = false;
-            project.skills.map(function (singleskill) {
-                if (singleskill.toLowerCase().trim() == skill.toLowerCase().trim()) {
-                    skillFound = true;
-                }
-            });
-            if (skillFound) {
-                console.log("FOUND PROJECT");
-                newProjects.push(project);
-            }
-        });
-        $scope.projects = newProjects;
-        $scope.projectCount = $scope.projects.length;
-        console.log($scope.projects);
-    };
-
-    $scope.showModal = function (project) {
-        $scope.modal = {
-            title: project.title,
-            desc: project.description,
-            creator: project.username,
-            pic: project.profilepic,
-            name: project.firstname + " " + project.lastname,
-            email: project.email,
-            id: project.id,
-            projid: project.projid
-
-        };
-        $scope.modalSet = true;
-    };
-
-    $scope.submitApplication = function (message, project) {
-        $scope.modalSet = false;
-        if ($scope.curUser.id) {
-            projectFeedSrvc.submitApplication(project, $scope.curUser, project.email, message).then(function () {
-                $location.path('/projectfeed');
-            });
-        } else {
-            alert("Please Log in first");
-        }
-    };
-
-    $scope.getLoggedUser();
-});
-'use strict';
-
-app.service('projectFeedSrvc', function ($http) {
-    this.getLoggedUser = function () {
-        return $http({
-            method: 'Get',
-            url: '/me'
-        });
-    };
-
-    this.getProjects = function () {
-        return $http({
-            method: "Get",
-            url: "/api/projects"
-        });
-    };
-
-    this.getUserById = function (param) {
-        return $http({
-            method: 'Get',
-            url: "/api/user/" + param
-        });
-    };
-
-    this.submitApplication = function (project, user, email, message) {
-        console.log("EMAIL: ", email);
-        return $http({
-            method: "Post",
-            url: '/api/apply/' + project.projid,
-            data: {
-                project: project,
-                user: user,
-                message: message,
-                email: email
-            }
         });
     };
 });

@@ -135,6 +135,7 @@ app.controller("accountDevCtrl", function(
     };
 
     $scope.subChanges = (newFirstName, newLastName, newBio, newSkills) => {
+        $scope.showInput = false;
         let newUser = {};
         if (newFirstName) {
             newUser.firstname = newFirstName;
