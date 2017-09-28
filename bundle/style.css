@@ -6325,7 +6325,7 @@ ul.card-stats-list {
   color: #666;
   font-size: 1rem;
   font-weight: bold;
-  transition: max-width 200ms ease-out, color 50ms ease-out, background 50ms ease-out; }
+  transition: max-width 200ms ease-out, color 50ms ease-out, background 50ms ease-out; }
 
 .navigator a:hover,
 .navigator a.is-hovered,
@@ -7701,7 +7701,15 @@ iframe.is-typeform {
   margin-left: 3px; }
 
 .align-button-center {
-  text-align: center; }
+  text-align: center;
+  display: flex;
+  justify-content: center; }
+
+.account-add-margin-right {
+  margin-right: 60px; }
+
+.account-add-max-width-to-input {
+  max-width: 30%; }
 
 .is-last-child {
   margin-bottom: 1.5rem; }

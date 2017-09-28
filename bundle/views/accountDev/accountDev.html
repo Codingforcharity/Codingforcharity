@@ -47,10 +47,10 @@
                                 <span class="title is-bold">{{pageOwner.username}}</span>
                             </p>
                             <p class="title is-4" ng-if='showInput'>
-                                <input class="input" type="text" ng-model="$parent.newFirstName" placeholder="First Name">
+                                <input class="input account-add-max-width-to-input" type="text" ng-model="$parent.newFirstName" placeholder="First Name">
                             </p>
                             <p class="title is-4" ng-if='showInput'>
-                                <input class="input" type="text" ng-model="$parent.newLastName" placeholder="Last Name">
+                                <input class="input account-add-max-width-to-input" type="text" ng-model="$parent.newLastName" placeholder="Last Name">
                             </p>
                         </div>
                         <!-- <div class="column is-2">
@@ -77,14 +77,12 @@
                 </div>
             </div>
             <div class="align-button-center">
+                <button class="button is-danger account-add-margin-right" type="submit" ng-if='ownPage && showInput' ng-click="subChanges($parent.newFirstName, $parent.newLastName, $parent.newBio, $parent.newSkills);">Submit Changes</button>
                 <div class="level-item" ng-if='ownPage && showInput'>
                     <div class="button  is-danger" ng-click="cancelInfo();">Cancel</div>
                 </div>
-                <button class="button is-danger" type="submit" ng-if='ownPage && showInput' ng-click="subChanges($parent.newFirstName, $parent.newLastName, $parent.newBio, $parent.newSkills);">Submit Changes</button>
             </div>
-
-            <br>
-
+            <br><br>
             <footer>
                 <div class="tabs profile is-medium is-centered is-boxed">
                     <ul>
