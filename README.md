@@ -1,11 +1,12 @@
-<h1>
-  <br>
+<div style="text-align:center">
+<a href="https://devgive.net"><img src="https://raw.githubusercontent.com/Codingforcharity/Codingforcharity/master/assets/img/devgivelanding.png" alt="" width="600"></a></div>
+
+
+
   <a href="https://devgive.net"><img src="https://raw.githubusercontent.com/Codingforcharity/Codingforcharity/master/assets/img/DevGiveLogoColored.png" alt="DevGive" width="200"></a>
   <br>
-</h1>
 
-<a href="https://devgive.net"><img src="https://raw.githubusercontent.com/Codingforcharity/Codingforcharity/master/assets/img/devgivelanding.png" alt="Landing Page" width="200"></a>
-
+<br>
 [![Maintenance](https://img.shields.io/maintenance/yes/2017.svg)]()
 [![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=website)]()
 ## Introduction
