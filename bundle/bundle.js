@@ -959,6 +959,7 @@ app.controller("accountDevCtrl", function ($scope, $stateParams, accountDevSrvc)
     };
 
     $scope.subChanges = function (newFirstName, newLastName, newBio, newSkills) {
+        $scope.showInput = false;
         var newUser = {};
         if (newFirstName) {
             newUser.firstname = newFirstName;
@@ -1286,6 +1287,13 @@ app.service('accountDevSrvc', function ($http) {
 });
 'use strict';
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 41c68d512472586460e198d61cda7b2827d22998
+>>>>>>> master
 app.directive('topnav', function () {
     return {
         Restrict: 'E',
@@ -1303,6 +1311,13 @@ app.directive('topnav', function () {
 });
 'use strict';
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 53c3d8f1d10aed6b1ba126fffe21143c62e402fc
+=======
+>>>>>>> master
 app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
     console.log("createAccountCtrl");
     $scope.logout = function () {
@@ -1314,11 +1329,15 @@ app.controller('createAccountCtrl', function ($scope, $location, createAccountSr
 app.service('createAccountSrvc', function ($http) {});
 'use strict';
 
+<<<<<<< HEAD
+=======
+>>>>>>> 41c68d512472586460e198d61cda7b2827d22998
+>>>>>>> master
 app.controller('createProjectCtrl', function ($scope, createProjectSrvc, $location) {
     console.log("createProjectCtrl");
 
-    $scope.submitProject = function (title, org, type, desc, terms, skills) {
-        console.log(title, org, type, desc, terms, skills);
+    $scope.submitProject = function (title, type, desc, terms) {
+        console.log(title, type, desc, terms);
         if (title) {
             if (type) {
                 if (desc) {

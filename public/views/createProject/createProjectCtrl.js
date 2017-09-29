@@ -1,8 +1,8 @@
 app.controller('createProjectCtrl', function($scope, createProjectSrvc, $location) {
     console.log("createProjectCtrl")
 
-    $scope.submitProject = (title, org, type, desc, terms, skills) => {
-        console.log(title, org, type, desc, terms, skills)
+    $scope.submitProject = (title, type, desc, terms) => {
+        console.log(title, type, desc, terms)
         if (title) {
             if (type) {
                 if (desc) {
