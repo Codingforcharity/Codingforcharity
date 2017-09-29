@@ -7,8 +7,11 @@
   <br>
 
 <br>
+
 [![Maintenance](https://img.shields.io/maintenance/yes/2017.svg)]()
 [![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=website)]()
+
+<br>
 ## Introduction
 
 Coding for Charity is a group of like minded developers who felt it would be beneficial to build a web application detected to bringing passionate developers and non-profits together to build meaningful projects.
