@@ -1,7 +1,8 @@
+
 <div style="text-align:center">
 <a href="https://devgive.net"><img src="https://raw.githubusercontent.com/Codingforcharity/Codingforcharity/master/assets/img/devgivelanding.png" alt="" width="600"></a></div>
 
-
+<br><br>
 
   <a href="https://devgive.net"><img src="https://raw.githubusercontent.com/Codingforcharity/Codingforcharity/master/assets/img/DevGiveLogoColored.png" alt="DevGive" width="200"></a>
   <br>
