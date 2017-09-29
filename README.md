@@ -1,26 +1,26 @@
 <h1 align="center">
   <br>
-  <a href="#"><img src="https://raw.githubusercontent.com/Codingforcharity/Codingforcharity/master/assets/img/DevGive-Blue-Logo.png" alt="DevGive" width="200"></a>
-  <br>
-  DevGive
-  <br>
+  <a href="https://www.devgive.net"><img src="https://raw.githubusercontent.com/Codingforcharity/Codingforcharity/master/assets/img/DevGiveLogoColored.png" alt="DevGive" width="200"></a>
 </h1>
 
 ## Introduction
 
 Coding for Charity is a group of like minded developers who felt it would be beneficial to build a web application detected to bringing passionate developers and non-profits together to build meaningful projects.
+<br>
+[Live site](https://www.devgive.net)
 
 ## Questions and issues
 
-The [github issue tracker](https://github.com/codingforcharity/codingforcharity/issues) is **_only_** for bug reports and feature requests. Anything else, such as questions for help in using the site, should be posted in [StackOverflow](http://stackoverflow.com/questions/tagged/DevGive) under tags `DevGive` and `CodingForCharity`.
+The [github issue tracker](https://github.com/codingforcharity/codingforcharity/issues) is **_only_** for bug reports and feature requests. Anything else, such as questions for help in using the site, should be posted in [StackOverflow](http://stackoverflow.com/questions/) under tags `DevGive`.
 
 ## Built With
 
-Bulma - The CSS framework used <br>
-SASS - To extend CSS <br>
-GULP - PostProcessing CSS, build, and development tasks <br>
+AngularJS - Javascript framework 
+Bulma - CSS framework <br>
+SASS - To extend CSS functionally <br>
+GULP - PostProcessing CSS, build task, es6 to es5 transpiler, and development tasks <br>
 Node.js - Server <br>
-Postgres - SQL Database
+SQL - Database
 
 ## Contributing
 
@@ -32,7 +32,7 @@ We use SemVer for versioning. For the versions available, see the tags on this r
 
 ## Authors
 
-Dylan Brown, Dat Tran, & Andy Parker
+[Dylan Brown](https://github.com/Dylandoesprogramming), [Dat Tran](https://github.com/dattran91), & [Andy Parker](https://pages.github.com/)
 
 ## License
 
@@ -41,5 +41,5 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 ## Acknowledgments
 
 DevMountain - thanks for providing office space used during development 
-Eric Patterson & Daanish Nasir - thanks for providing project management and development guidance
-Inspiration - FreeCodeCamp & VolunteerMatch
+[Eric Patterson](https://github.com/erpatterson11) & [Daanish Nasir](https://github.com/Dylandoesprogramming) - thanks for providing project management and development guidance
+Inspiration - [FreeCodeCamp](https://www.freecodecamp.org) & [VolunteerMatch](https://www.volunteermatch.org)

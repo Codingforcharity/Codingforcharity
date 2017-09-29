@@ -833,23 +833,6 @@ var app = angular.module("charityApp", ["ui.router"]).config(function ($statePro
         $templateCache.put('src/toast/toast.html', "<div class=\"notification {{vm.style}}\" ng-class=\"vm.classes\"><button class=\"delete\" ng-if=\"vm.showClose\" ng-click=\"vm.close()\"></button><div ng-bind-html=\"vm.contents\"></div></div>");
     }
 })();
-'use strict';
-
-app.directive('topnav', function () {
-    return {
-        Restrict: 'E',
-        templateUrl: './views/components/topnav.html',
-        link: function link(scope, elem, attrs) {
-            scope.toggleBurger = function () {
-                console.log("Toggling!");
-                var burgerIcon = document.getElementById('burger');
-                burgerIcon.classList.toggle('is-active');
-                var navMenu = document.getElementById('navMenu');
-                navMenu.classList.toggle('is-active');
-            };
-        }
-    };
-});
 "use strict";
 
 app.controller("accountDevCtrl", function ($scope, $stateParams, accountDevSrvc) {
@@ -1303,7 +1286,6 @@ app.service('accountDevSrvc', function ($http) {
 });
 'use strict';
 
-<<<<<<< HEAD
 app.directive('topnav', function () {
     return {
         Restrict: 'E',
@@ -1321,8 +1303,17 @@ app.directive('topnav', function () {
 });
 'use strict';
 
-=======
->>>>>>> 53c3d8f1d10aed6b1ba126fffe21143c62e402fc
+app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
+    console.log("createAccountCtrl");
+    $scope.logout = function () {
+        window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
+    };
+});
+'use strict';
+
+app.service('createAccountSrvc', function ($http) {});
+'use strict';
+
 app.controller('createProjectCtrl', function ($scope, createProjectSrvc, $location) {
     console.log("createProjectCtrl");
 
@@ -1371,17 +1362,6 @@ app.service('createProjectSrvc', function ($http) {
         });
     };
 });
-'use strict';
-
-app.controller('createAccountCtrl', function ($scope, $location, createAccountSrvc) {
-    console.log("createAccountCtrl");
-    $scope.logout = function () {
-        window.location.replace('/auth/logout/?fullUrl=' + $location.$$absUrl);
-    };
-});
-'use strict';
-
-app.service('createAccountSrvc', function ($http) {});
 'use strict';
 
 app.controller('devProjectApplicationCtrl', function ($scope, devProjectApplicationSrvc, $location, $stateParams) {
