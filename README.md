@@ -5,7 +5,7 @@
 
 <br>
 
-[![Maintenance](https://img.shields.io/maintenance/yes/2017.svg)]()
+[![Maintenance](https://img.shields.io/maintenance/yes/2018.svg)]()
 [![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=website)]()
 
 <br>
