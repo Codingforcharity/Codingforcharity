@@ -11,7 +11,7 @@
 <br>
 ## Introduction
 
-Coding for Charity is a group of like minded developers who felt it would be beneficial to build a web application detected to bringing passionate developers and non-profits together to build meaningful projects.
+Coding for Charity is a group of like minded developers who felt it would be beneficial to build a web application dedicated to bringing passionate developers and non-profits together to build meaningful projects.
 
 [Live site](https://www.devgive.net)
 <br>
